@@ -2,6 +2,7 @@
 
 import {
   ArrowUpRight,
+  ArrowLeft,
   CalendarDays,
   Clock3,
   ExternalLink,
@@ -14,6 +15,7 @@ import {
   Route,
   ShieldCheck,
 } from 'lucide-react'
+import Link from 'next/link'
 import { useEffect, useMemo, useState } from 'react'
 import type { Destination, FlightLeg, Hotel, TripDay } from '@/src/data/tripData'
 import { getFamilyMoment } from '@/data/family-live'
@@ -70,9 +72,10 @@ export function FamilyDashboard({
     <div className="family-dashboard">
       <header className="family-dashboard-header">
         <div>
-          <span className="eyebrow">Costa Rica 2026</span>
-          <h1>Hola, familia</h1>
-          <p>Todo lo importante del viaje, explicado de forma sencilla y actualizado con la hora local.</p>
+          <Link className="family-back-link" href="/familia/viajes"><ArrowLeft /> Todos los viajes</Link>
+          <span className="eyebrow">Costa Rica 2026 · Archivo familiar</span>
+          <h1>Viaje finalizado</h1>
+          <p>La ruta completa sigue disponible para consultar alojamientos, vuelos y lo que hicimos cada día.</p>
         </div>
         <form action="/api/familia/logout" method="post">
           <button className="logout-button" type="submit">

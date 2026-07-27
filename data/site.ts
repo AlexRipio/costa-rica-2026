@@ -33,7 +33,7 @@ export const trips: Trip[] = [
     dates: '9–25 julio 2026',
     duration: '17 días',
     bases: '6 bases',
-    status: 'Próxima aventura',
+    status: 'Viaje finalizado',
     image: images.arenal,
     accent: '#f4a63a',
     mapId: '188',

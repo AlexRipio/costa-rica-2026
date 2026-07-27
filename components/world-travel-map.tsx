@@ -5,6 +5,7 @@ import { feature } from 'topojson-client'
 import world from 'world-atlas/countries-110m.json'
 import { useMemo, useState, type CSSProperties } from 'react'
 import { MapPin } from 'lucide-react'
+import Link from 'next/link'
 import { trips } from '@/data/site'
 
 type CountryFeature = GeoJSON.Feature<GeoJSON.Geometry, { name?: string }> & { id?: string | number }
@@ -61,7 +62,10 @@ export function WorldTravelMap() {
           </g>
         </svg>
         <div className="map-active-card" style={{ '--trip-accent': activeTrip.accent } as CSSProperties}>
-          <span><MapPin size={15} /> En nuestro mapa</span><strong>{activeTrip.country}</strong><small>{activeTrip.year} · {activeTrip.subtitle}</small>
+          <span><MapPin size={15} /> En nuestro mapa</span>
+          <strong>{activeTrip.country}</strong>
+          <small>{activeTrip.year} · {activeTrip.subtitle}</small>
+          <Link href={`/viajes/${activeTrip.slug}`}>Abrir el viaje <span aria-hidden="true">→</span></Link>
         </div>
       </div>
       <p className="map-note">El mapa crecerá con cada nueva historia. Pulsa un país coloreado para recordarla.</p>

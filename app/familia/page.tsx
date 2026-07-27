@@ -20,7 +20,7 @@ export default async function FamilyLoginPage({
 }) {
   const cookieStore = await cookies()
   if (isValidFamilySession(cookieStore.get(familyCookieName)?.value)) {
-    redirect('/familia/costa-rica-2026')
+    redirect('/familia/viajes')
   }
   const params = await searchParams
 
@@ -71,7 +71,7 @@ export default async function FamilyLoginPage({
               <LockKeyhole size={16} />
             </button>
           </form>
-          <small>La sesión se mantiene únicamente en este dispositivo.</small>
+          <small>Recordaremos este dispositivo durante un año para que no tengas que volver a escribirla.</small>
         </div>
       </section>
     </main>

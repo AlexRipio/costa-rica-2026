@@ -5,7 +5,7 @@ export async function POST(request: Request) {
   const formData = await request.formData()
   const password = String(formData.get('password') ?? '')
   const origin = request.headers.get('origin') ?? new URL(request.url).origin
-  const destination = new URL('/familia/costa-rica-2026', origin)
+  const destination = new URL('/familia/viajes', origin)
 
   if (!isValidFamilyPassword(password)) {
     return NextResponse.redirect(new URL('/familia?error=1', origin), 303)
@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'strict',
     path: '/',
-    maxAge: 60 * 60 * 24 * 30,
+    maxAge: 60 * 60 * 24 * 365,
   })
   return response
 }

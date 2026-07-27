@@ -2703,6 +2703,1029 @@ img {
   }
 }
 
+/* Family journey hub */
+.family-hub-page {
+  min-height: 100svh;
+  padding: 30px 0 70px;
+  background:
+    radial-gradient(circle at 82% 0, rgba(241, 184, 74, .15), transparent 25%),
+    #eef0e9;
+}
+
+.family-hub-shell {
+  width: min(1160px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.family-hub-header {
+  padding-bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+}
+
+.family-mini-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  text-decoration: none;
+}
+
+.family-mini-brand > span {
+  width: 45px;
+  height: 45px;
+  display: grid;
+  place-items: center;
+  color: white;
+  background: var(--forest);
+  border-radius: 50%;
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.family-mini-brand > span span {
+  color: var(--sun);
+  font-style: italic;
+}
+
+.family-mini-brand div {
+  display: grid;
+  gap: 2px;
+}
+
+.family-mini-brand strong {
+  font-size: .9rem;
+}
+
+.family-mini-brand small {
+  color: var(--muted);
+  font-size: .6rem;
+  font-weight: 750;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.family-hub-intro {
+  padding: 70px 0 48px;
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 8vw;
+  align-items: center;
+}
+
+.family-hub-intro h1 {
+  max-width: 720px;
+  margin: 13px 0 18px;
+  font-family: var(--serif);
+  font-size: clamp(3.3rem, 6.3vw, 6rem);
+  font-weight: 500;
+  line-height: .92;
+  letter-spacing: -.055em;
+}
+
+.family-hub-intro > div:first-child > p {
+  max-width: 650px;
+  color: var(--muted);
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+.family-live-empty {
+  position: relative;
+  padding: 32px;
+  overflow: hidden;
+  color: white;
+  background: var(--forest-deep);
+  box-shadow: var(--shadow);
+}
+
+.family-live-empty > svg {
+  position: absolute;
+  right: -15px;
+  top: 25px;
+  width: 120px;
+  height: 120px;
+  color: rgba(255, 255, 255, .06);
+}
+
+.family-live-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--sun);
+  font-size: .62rem;
+  font-weight: 900;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.family-live-label i {
+  width: 9px;
+  height: 9px;
+  display: block;
+  background: var(--coral);
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(235, 111, 83, .5);
+  animation: family-pulse 1.8s ease-out infinite;
+}
+
+@keyframes family-pulse {
+  70% { box-shadow: 0 0 0 12px rgba(235, 111, 83, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(235, 111, 83, 0); }
+}
+
+.family-live-empty strong {
+  margin: 37px 0 8px;
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.family-live-empty p {
+  margin: 0;
+  color: #a9beb5;
+  font-size: .72rem;
+  line-height: 1.55;
+}
+
+.family-trip-selector {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.family-trip-choice {
+  background: var(--paper);
+  box-shadow: 0 12px 40px rgba(19, 44, 37, .08);
+  transition: transform .3s, box-shadow .3s;
+}
+
+.family-trip-choice:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 22px 55px rgba(19, 44, 37, .14);
+}
+
+.family-trip-choice > a {
+  height: 100%;
+  display: block;
+  text-decoration: none;
+}
+
+.family-trip-photo {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+}
+
+.family-trip-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .7s cubic-bezier(.22, 1, .36, 1);
+}
+
+.family-trip-choice:hover img {
+  transform: scale(1.05);
+}
+
+.family-trip-photo > span {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  padding: 7px 9px;
+  color: white;
+  background: rgba(16, 45, 39, .88);
+  font-size: .66rem;
+  font-weight: 850;
+  backdrop-filter: blur(8px);
+}
+
+.family-trip-choice-copy {
+  padding: 24px;
+}
+
+.family-trip-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: .58rem;
+  font-weight: 850;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.family-trip-status svg {
+  width: 14px;
+}
+
+.family-trip-choice h2 {
+  margin: 8px 0 4px;
+  font-family: var(--serif);
+  font-size: 2.35rem;
+  font-weight: 500;
+  letter-spacing: -.04em;
+}
+
+.family-trip-choice p {
+  min-height: 38px;
+  margin: 0 0 25px;
+  color: var(--muted);
+  font-size: .72rem;
+  line-height: 1.5;
+}
+
+.family-trip-choice-copy > strong {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--coral);
+  font-size: .67rem;
+  font-weight: 850;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.family-trip-choice-copy > strong svg {
+  width: 17px;
+}
+
+.family-hub-note {
+  margin-top: 25px;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 32px 1fr 32px;
+  gap: 14px;
+  align-items: center;
+  color: var(--forest);
+  background: #e1e7df;
+}
+
+.family-hub-note > svg:first-child {
+  color: var(--coral);
+}
+
+.family-hub-note > svg:last-child {
+  color: var(--coral);
+  opacity: .5;
+}
+
+.family-hub-note strong {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.family-hub-note p {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: .67rem;
+  line-height: 1.5;
+}
+
+.family-back-link {
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--muted);
+  font-size: .65rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.family-back-link svg {
+  width: 15px;
+}
+
+/* Map journey button */
+.map-active-card > span {
+  display: flex;
+}
+
+.map-active-card > a {
+  margin-top: 9px;
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  border-top: 1px solid rgba(255, 255, 255, .15);
+  font-size: .64rem;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.map-active-card > a span {
+  color: var(--sun);
+  font-size: 1rem;
+  letter-spacing: 0;
+}
+
+/* About page */
+.about-hero {
+  position: relative;
+  height: 92svh;
+  min-height: 720px;
+  overflow: hidden;
+  color: white;
+}
+
+.about-hero > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-hero-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(8, 31, 25, .9), rgba(8, 31, 25, .34) 68%, rgba(8, 31, 25, .1)),
+    linear-gradient(to top, rgba(8, 31, 25, .6), transparent 50%);
+}
+
+.about-hero-copy {
+  position: absolute;
+  z-index: 2;
+  left: max(24px, calc((100% - 1200px) / 2));
+  bottom: 10vh;
+  max-width: 850px;
+}
+
+.about-hero-copy > span {
+  color: var(--sun);
+  font-size: .68rem;
+  font-weight: 850;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.about-hero-copy h1 {
+  margin: 16px 0 24px;
+  font-family: var(--serif);
+  font-size: clamp(4.6rem, 8.8vw, 8.6rem);
+  font-weight: 500;
+  line-height: .77;
+  letter-spacing: -.065em;
+}
+
+.about-hero-copy p {
+  max-width: 610px;
+  color: #d8e4df;
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  line-height: 1.55;
+}
+
+.about-story-section {
+  padding: 140px 0;
+  background: var(--paper);
+}
+
+.about-story-grid {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 9vw;
+  align-items: center;
+}
+
+.about-portrait-placeholder {
+  min-height: 610px;
+  padding: 28px;
+  display: grid;
+  place-items: center;
+  color: white;
+  background:
+    linear-gradient(rgba(19, 66, 53, .84), rgba(16, 45, 39, .92)),
+    url("https://commons.wikimedia.org/wiki/Special:FilePath/El%20Nido%20in%20Palawan.jpg?width=1000") center/cover;
+  outline: 1px solid rgba(255, 255, 255, .35);
+  outline-offset: -18px;
+  box-shadow: 22px 22px 0 #e2d4bd;
+}
+
+.about-portrait-placeholder > div {
+  max-width: 280px;
+  display: grid;
+  justify-items: center;
+  gap: 11px;
+  text-align: center;
+}
+
+.about-portrait-placeholder svg {
+  width: 43px;
+  height: 43px;
+  color: var(--sun);
+}
+
+.about-portrait-placeholder strong {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.about-portrait-placeholder span {
+  color: #c5d5cf;
+  font-size: .72rem;
+  line-height: 1.6;
+}
+
+.about-story-copy h2,
+.about-section-heading h2,
+.about-timeline-grid h2 {
+  margin: 13px 0 24px;
+  font-family: var(--serif);
+  font-size: clamp(3rem, 5.5vw, 5.3rem);
+  font-weight: 500;
+  line-height: .94;
+  letter-spacing: -.055em;
+}
+
+.about-story-copy > p {
+  color: var(--muted);
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  line-height: 1.74;
+}
+
+.about-handwritten {
+  margin-top: 30px;
+  color: var(--coral);
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+.about-values {
+  padding: 125px 0 140px;
+  color: white;
+  background: var(--forest-deep);
+}
+
+.about-section-heading {
+  max-width: 850px;
+  margin-bottom: 65px;
+}
+
+.about-value-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255, 255, 255, .13);
+}
+
+.about-value-grid > div {
+  position: relative;
+  min-height: 360px;
+  padding: 42px;
+  color: white;
+  background: var(--forest-deep);
+}
+
+.about-value-grid svg {
+  width: 34px;
+  height: 34px;
+  color: var(--sun);
+}
+
+.about-value-grid span {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  color: rgba(255, 255, 255, .2);
+  font-family: var(--serif);
+  font-size: 2.2rem;
+}
+
+.about-value-grid h3,
+.about-blog-grid h3 {
+  margin: 80px 0 14px;
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  font-weight: 500;
+}
+
+.about-value-grid p {
+  color: #aebfb8;
+  font-size: .78rem;
+  line-height: 1.7;
+}
+
+.about-timeline-section {
+  padding: 135px 0;
+  background: #e9ebdf;
+}
+
+.about-timeline-grid {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 10vw;
+  align-items: start;
+}
+
+.about-timeline-grid > div:first-child > p {
+  color: var(--muted);
+  font-family: var(--serif);
+  font-size: 1.1rem;
+}
+
+.about-trip-years {
+  display: grid;
+}
+
+.about-trip-years a {
+  min-height: 130px;
+  padding: 24px 0;
+  display: grid;
+  grid-template-columns: 70px 1fr 30px;
+  gap: 25px;
+  align-items: center;
+  border-bottom: 1px solid rgba(23, 41, 37, .2);
+  text-decoration: none;
+}
+
+.about-trip-years > div:first-child a {
+  border-top: 1px solid rgba(23, 41, 37, .2);
+}
+
+.about-trip-years a > span {
+  color: var(--coral);
+  font-size: .72rem;
+  font-weight: 850;
+}
+
+.about-trip-years h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.about-trip-years p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: .7rem;
+}
+
+.about-trip-years svg {
+  transition: transform .25s;
+}
+
+.about-trip-years a:hover svg {
+  transform: translateX(5px);
+}
+
+.about-blog-section {
+  padding: 130px 0;
+  background: var(--paper);
+}
+
+.about-blog-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.about-blog-grid > div {
+  min-height: 300px;
+  padding: 32px;
+  background: #edece3;
+}
+
+.about-blog-grid svg {
+  color: var(--coral);
+}
+
+.about-blog-grid h3 {
+  margin-top: 70px;
+}
+
+.about-blog-grid p {
+  color: var(--muted);
+  font-size: .74rem;
+  line-height: 1.65;
+}
+
+.about-final-cta {
+  margin-top: 80px;
+  padding-top: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--line);
+}
+
+.about-final-cta p {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 2rem;
+}
+
+@media (max-width: 900px) {
+  .family-hub-intro,
+  .about-story-grid,
+  .about-timeline-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .family-hub-intro {
+    gap: 32px;
+  }
+
+  .family-live-empty {
+    max-width: 520px;
+  }
+
+  .family-trip-selector,
+  .about-value-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .family-trip-choice > a {
+    display: grid;
+    grid-template-columns: 42% 58%;
+  }
+
+  .family-trip-photo {
+    height: 100%;
+    min-height: 260px;
+  }
+
+  .about-portrait-placeholder {
+    min-height: 560px;
+  }
+
+  .about-blog-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Mobile-first calm rhythm */
+  .logo {
+    gap: 7px;
+    font-size: .88rem;
+    white-space: nowrap;
+  }
+
+  .logo-mark {
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
+  }
+
+  .nav-shell {
+    width: calc(100% - 24px);
+  }
+
+  .journal-hero {
+    min-height: 700px;
+  }
+
+  .journal-hero .hero-motion {
+    padding-top: 120px;
+  }
+
+  .journal-hero h1 {
+    max-width: 350px;
+    font-size: clamp(3.65rem, 18vw, 4.8rem);
+    line-height: .87;
+  }
+
+  .journal-hero-copy p {
+    font-size: 1rem;
+    line-height: 1.48;
+  }
+
+  .hero-memory-strip {
+    display: none;
+  }
+
+  .journal-hero .hero-home-actions {
+    max-width: 100%;
+    margin-top: 24px;
+  }
+
+  .journal-hero .button {
+    min-height: 46px;
+  }
+
+  .home-purpose,
+  .travel-archive-preview,
+  .world-section,
+  .about-us-section {
+    padding: 68px 0;
+  }
+
+  .purpose-grid,
+  .about-us-grid {
+    gap: 30px;
+  }
+
+  .purpose-grid h2,
+  .archive-heading h2,
+  .map-intro h2,
+  .about-us-copy h2 {
+    font-size: clamp(2.35rem, 11vw, 3.15rem);
+  }
+
+  .archive-heading {
+    margin-bottom: 35px;
+  }
+
+  .archive-heading p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .journey-cards {
+    width: calc(100% + 16px);
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .journey-cards::-webkit-scrollbar {
+    display: none;
+  }
+
+  .journey-card {
+    min-width: 82vw;
+    scroll-snap-align: start;
+  }
+
+  .journey-card > a,
+  .journey-card-2 > a,
+  .journey-card-3 > a {
+    height: 390px;
+  }
+
+  .journey-overlay h3 {
+    font-size: 2.5rem;
+  }
+
+  .map-intro {
+    margin-bottom: 32px;
+  }
+
+  .world-map-toolbar {
+    gap: 20px;
+  }
+
+  .map-legend button {
+    min-height: 43px;
+    justify-content: center;
+    font-size: .68rem;
+  }
+
+  .map-active-card {
+    min-height: 118px;
+  }
+
+  .couple-photo-placeholder {
+    min-height: 350px;
+  }
+
+  .couple-photo-placeholder strong {
+    font-size: 1.65rem;
+  }
+
+  .about-us-copy > p {
+    line-height: 1.62;
+  }
+
+  .home-stats {
+    padding: 68px 0;
+  }
+
+  .next-trip-banner {
+    margin-top: 45px;
+  }
+
+  .trip-index-image {
+    height: 235px;
+  }
+
+  .trip-index-copy h2 {
+    font-size: 2.4rem;
+  }
+
+  .family-login-shell {
+    padding: 32px 0 50px;
+    gap: 26px;
+  }
+
+  .family-login-copy h1 {
+    margin-bottom: 15px;
+    font-size: 2.6rem;
+  }
+
+  .family-login-copy > p {
+    font-size: 1rem;
+  }
+
+  .family-login-copy ul {
+    display: none;
+  }
+
+  .family-login-card {
+    padding: 27px 20px;
+    box-shadow: 0 18px 50px rgba(6, 27, 22, .18);
+  }
+
+  .family-hub-page {
+    padding: 20px 0 45px;
+  }
+
+  .family-hub-shell {
+    width: calc(100% - 24px);
+  }
+
+  .family-hub-header {
+    padding-bottom: 17px;
+  }
+
+  .family-mini-brand > span {
+    width: 40px;
+    height: 40px;
+  }
+
+  .family-hub-intro {
+    padding: 45px 0 28px;
+  }
+
+  .family-hub-intro h1 {
+    font-size: 2.9rem;
+  }
+
+  .family-hub-intro > div:first-child > p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .family-live-empty {
+    padding: 25px;
+  }
+
+  .family-live-empty strong {
+    margin-top: 28px;
+    font-size: 1.55rem;
+  }
+
+  .family-trip-selector {
+    gap: 12px;
+  }
+
+  .family-trip-choice > a {
+    display: block;
+  }
+
+  .family-trip-photo {
+    height: 190px;
+    min-height: 0;
+  }
+
+  .family-trip-choice-copy {
+    padding: 20px;
+  }
+
+  .family-trip-choice h2 {
+    font-size: 2rem;
+  }
+
+  .family-trip-choice p {
+    min-height: 0;
+    margin-bottom: 20px;
+  }
+
+  .family-hub-note {
+    grid-template-columns: 28px 1fr;
+    padding: 20px;
+  }
+
+  .family-hub-note > svg:last-child {
+    display: none;
+  }
+
+  .family-now {
+    padding: 25px 20px;
+  }
+
+  .family-now-copy h2 {
+    font-size: 2.8rem;
+  }
+
+  .family-map,
+  .family-map iframe {
+    min-height: 320px;
+    height: 320px;
+  }
+
+  .about-hero {
+    min-height: 650px;
+    height: 86svh;
+  }
+
+  .about-hero-copy {
+    right: 20px;
+    left: 20px;
+    bottom: 55px;
+  }
+
+  .about-hero-copy h1 {
+    margin-top: 12px;
+    font-size: clamp(3.35rem, 17vw, 4.6rem);
+    line-height: .84;
+  }
+
+  .about-hero-copy p {
+    font-size: 1rem;
+  }
+
+  .about-story-section,
+  .about-values,
+  .about-timeline-section,
+  .about-blog-section {
+    padding: 72px 0;
+  }
+
+  .about-story-grid,
+  .about-timeline-grid {
+    gap: 45px;
+  }
+
+  .about-portrait-placeholder {
+    min-height: 390px;
+    box-shadow: 10px 10px 0 #e2d4bd;
+  }
+
+  .about-story-copy h2,
+  .about-section-heading h2,
+  .about-timeline-grid h2 {
+    font-size: 2.7rem;
+  }
+
+  .about-story-copy > p {
+    font-size: 1.05rem;
+    line-height: 1.62;
+  }
+
+  .about-section-heading {
+    margin-bottom: 35px;
+  }
+
+  .about-value-grid {
+    gap: 1px;
+  }
+
+  .about-value-grid > div {
+    min-height: 260px;
+    padding: 30px 25px;
+  }
+
+  .about-value-grid h3 {
+    margin-top: 45px;
+  }
+
+  .about-trip-years a {
+    min-height: 105px;
+    padding: 18px 0;
+    grid-template-columns: 48px 1fr 24px;
+    gap: 12px;
+  }
+
+  .about-trip-years h3 {
+    font-size: 1.6rem;
+  }
+
+  .about-blog-grid {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .about-blog-grid > div {
+    min-height: 210px;
+    padding: 25px;
+  }
+
+  .about-blog-grid h3 {
+    margin-top: 35px;
+  }
+
+  .about-final-cta {
+    margin-top: 48px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 22px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -3836,5 +4859,101 @@ img {
 
   .archive-trip-grid figure img {
     height: 420px;
+  }
+}
+
+/* Final mobile pass: intentionally last so the compact layout wins */
+@media (max-width: 600px) {
+  .logo {
+    gap: 7px;
+    font-size: .88rem;
+    white-space: nowrap;
+  }
+
+  .logo-mark {
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
+  }
+
+  .nav-shell {
+    width: calc(100% - 24px);
+  }
+
+  .journal-hero {
+    min-height: 700px;
+  }
+
+  .journal-hero .hero-motion {
+    padding-top: 118px;
+  }
+
+  .journal-hero h1 {
+    max-width: 350px;
+    margin-top: 18px;
+    font-size: clamp(3.65rem, 18vw, 4.8rem);
+    line-height: .87;
+  }
+
+  .journal-hero-copy p {
+    margin-top: 21px;
+    font-size: 1rem;
+    line-height: 1.48;
+  }
+
+  .journal-hero .hero-home-actions {
+    max-width: 100%;
+    margin-top: 22px;
+  }
+
+  .journal-hero .button {
+    min-height: 44px;
+  }
+
+  .hero-memory-strip {
+    display: none;
+  }
+
+  .home-purpose,
+  .travel-archive-preview,
+  .world-section,
+  .about-us-section {
+    padding: 68px 0;
+  }
+
+  .purpose-grid h2,
+  .archive-heading h2,
+  .map-intro h2,
+  .about-us-copy h2 {
+    font-size: clamp(2.35rem, 11vw, 3.15rem);
+  }
+
+  .journey-cards {
+    width: calc(100% + 16px);
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .journey-card {
+    min-width: 82vw;
+    scroll-snap-align: start;
+  }
+
+  .journey-card > a,
+  .journey-card-2 > a,
+  .journey-card-3 > a {
+    height: 390px;
+    margin-top: 0;
+  }
+
+  .couple-photo-placeholder {
+    min-height: 350px;
+  }
+
+  .trip-index-image {
+    height: 235px;
   }
 }

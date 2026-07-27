@@ -30,7 +30,7 @@ export default function CostaRicaPage() {
         <div className="trip-hero-copy">
           <Reveal>
             <span className="hero-kicker">
-              <MapPin size={15} /> Centroamérica · 2026
+              <MapPin size={15} /> Centroamérica · Viaje finalizado
             </span>
             <h1>
               Costa
@@ -163,8 +163,8 @@ export default function CostaRicaPage() {
 
       <section className="trip-closing">
         <Reveal>
-          <span>PURA VIDA</span>
-          <h2>Nos vemos en la carretera.</h2>
+          <span>VIAJE COMPLETADO</span>
+          <h2>Pura vida, Costa Rica.</h2>
           <Link className="button button-light" href="/viajes">
             Todos los viajes <ArrowRight size={17} />
           </Link>

@@ -20,7 +20,7 @@ export default function HomePage() {
           <HeroLine className="journal-hero-copy" delay={0.24}><p>Somos Andrea y Alejandro. Viajamos para descubrir lugares, guardar historias y volver mirando el mundo de otra manera.</p></HeroLine>
           <HeroLine className="hero-home-actions" delay={0.36}>
             <Link className="button button-light" href="/viajes">Ver nuestros viajes <ArrowRight size={17} /></Link>
-            <a className="button button-glass" href="#nosotros">Conócenos <ArrowDown size={17} /></a>
+            <Link className="button button-glass" href="/nosotros">Conócenos <ArrowDown size={17} /></Link>
           </HeroLine>
         </HeroMotion>
         <div className="hero-memory-strip">
@@ -39,7 +39,7 @@ export default function HomePage() {
 
       <section className="travel-archive-preview">
         <div className="section-shell">
-          <Reveal className="archive-heading"><div><span className="eyebrow eyebrow-light">Historias en el mapa</span><h2>Tres viajes.<br />Mil recuerdos.</h2></div><p>De las lagunas de Palawan a los campos de té de Sri Lanka, con una nueva ruta entre dos océanos esperando en Costa Rica.</p></Reveal>
+          <Reveal className="archive-heading"><div><span className="eyebrow eyebrow-light">Historias en el mapa</span><h2>Tres viajes.<br />Mil recuerdos.</h2></div><p>De las lagunas de Palawan a los campos de té de Sri Lanka y una ruta completa entre los dos océanos de Costa Rica.</p></Reveal>
           <div className="journey-cards">
             {trips.map((trip, index) => (
               <Reveal className={`journey-card journey-card-${index + 1}`} delay={index * .08} key={trip.slug}>
@@ -63,7 +63,8 @@ export default function HomePage() {
           <Reveal className="about-us-copy" delay={0.12}>
             <span className="eyebrow">Andrea & Alejandro</span><h2>Viajar es nuestra forma favorita de estar juntos.</h2>
             <p>No somos viajeros a tiempo completo ni pretendemos saberlo todo. Somos dos personas a las que les encanta preparar una ruta, desviarse de ella y convertir cada viaje en una historia compartida.</p>
-            <p>En 2024 nos perdimos entre las islas de Filipinas. En 2025 cruzamos Sri Lanka entre trenes, templos y plantaciones de té. En 2026 Costa Rica nos espera con volcanes, selva y dos océanos.</p>
+            <p>En 2024 nos perdimos entre las islas de Filipinas. En 2025 cruzamos Sri Lanka entre trenes, templos y plantaciones de té. En 2026 recorrimos Costa Rica entre volcanes, selva y dos océanos.</p>
+            <Link className="text-arrow" href="/nosotros">Conocernos de verdad <MoveUpRight size={17} /></Link>
             <div className="about-signature">Andrea <span>&</span> Alejandro</div>
           </Reveal>
         </div>

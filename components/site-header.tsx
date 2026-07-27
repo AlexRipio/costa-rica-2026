@@ -54,7 +54,7 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
             <Link className="all-trips-link" href="/viajes" onClick={() => setOpen(false)}>Ver todos los viajes</Link>
           </div>
           <Link className="drawer-main-link" href="/#mapa" onClick={() => setOpen(false)}>Mapa del mundo</Link>
-          <Link className="drawer-main-link" href="/#nosotros" onClick={() => setOpen(false)}>Nosotros</Link>
+          <Link className="drawer-main-link" href="/nosotros" onClick={() => setOpen(false)}>Conócenos</Link>
         </nav>
         <div className="drawer-family">
           <LockKeyhole />
