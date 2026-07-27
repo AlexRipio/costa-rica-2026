@@ -1,41 +1,34 @@
-# Costa Rica 2026
+# Viajan2Juntos
 
-Mini-app responsive construida a partir del documento `viaje costa rica VF.docx`.
+Blog personal de viajes de Andrea y Alejandro. La portada reúne todas las aventuras y cada viaje tiene su propia página editorial.
 
-Incluye:
+## Estructura
 
-- Ruta interactiva de 17 días.
-- Destinos, hoteles y actividades.
-- Presupuesto editable con tres escenarios y gráficos.
-- Checklists de reservas y maleta.
-- Calendario del Mundial con horas de Costa Rica y España.
-- Mapa Leaflet con OpenStreetMap.
-- Fotos de Wikimedia Commons con atribución.
-- Persistencia automática en `localStorage`.
-- Importación, exportación y reseteo de los datos en JSON.
+- `/`: portada de Viajan2Juntos.
+- `/viajes`: archivo de viajes.
+- `/viajes/costa-rica-2026`: itinerario público y visual de Costa Rica.
+- `/familia`: acceso privado.
+- `/familia/costa-rica-2026`: seguimiento horario, mapa, hoteles y vuelos.
 
-## Ejecutar en local
+## Desarrollo
 
 Requiere Node.js 20 o superior.
 
 ```bash
-pnpm install
-pnpm dev
+npm install
+npm run dev
 ```
 
-La terminal mostrará la dirección local, normalmente `http://localhost:5173`.
-
-## Compilar para producción
+## Producción
 
 ```bash
-pnpm build
-pnpm preview
+npm run build
+npm start
 ```
 
-La versión estática queda en `dist/` y puede publicarse en cualquier hosting estático.
+La zona privada necesita dos variables de entorno:
 
-## Datos
+- `FAMILY_PASSWORD`: contraseña compartida de la familia.
+- `AUTH_SECRET`: secreto largo utilizado para firmar la sesión.
 
-El contenido normalizado está en `src/data/tripData.ts` y las imágenes con su atribución en `src/data/images.ts`.
-
-La web evita publicar los datos personales y localizadores privados visibles en las capturas del Word. La inconsistencia entre las fechas reservadas de Manuel Antonio/Puerto Viejo y la ruta escrita aparece como alerta para resolverla antes del viaje.
+El proyecto se despliega automáticamente en Vercel al actualizar la rama principal de GitHub.

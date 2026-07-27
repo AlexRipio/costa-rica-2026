@@ -2,6 +2,8 @@
 .env*
 node_modules
 dist
+.next
+out
 work
 outputs
 *.tsbuildinfo
