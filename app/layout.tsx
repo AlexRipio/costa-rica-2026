@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   },
   description:
     'Blog personal de viajes con rutas, diarios e historias de dos viajeros descubriendo el mundo juntos.',
-  metadataBase: new URL('https://costa-rica-2026-lime.vercel.app'),
+  metadataBase: new URL('https://viajan2juntos.vercel.app'),
   openGraph: {
     title: 'Viajan2Juntos',
     description: 'Dos viajeros, un mapa y muchas historias.',
