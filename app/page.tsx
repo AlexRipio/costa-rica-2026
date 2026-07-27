@@ -1,166 +1,78 @@
-import {
-  ArrowDown,
-  ArrowRight,
-  Compass,
-  MapPin,
-  MoveUpRight,
-  PlaneTakeoff,
-  Quote,
-  Sparkles,
-} from 'lucide-react'
+import { ArrowDown, ArrowRight, Camera, Compass, Map, MoveUpRight, Sparkles } from 'lucide-react'
 import Link from 'next/link'
 import { HeroLine, HeroMotion, Reveal } from '@/components/reveal'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
-import { StoryMap } from '@/components/story-map'
-import { brand, travelStats, trips } from '@/data/site'
+import { WorldTravelMap } from '@/components/world-travel-map'
+import { travelStats, trips } from '@/data/site'
 import { images } from '@/src/data/images'
-import { initialTripData } from '@/src/data/tripData'
-
-const featured = trips[0]
 
 export default function HomePage() {
   return (
     <main>
       <SiteHeader overlay />
-      <section className="home-hero">
-        <div className="hero-background">
-          <img src={featured.image.url} alt={featured.image.alt} />
-        </div>
-        <div className="home-hero-overlay" />
+      <section className="journal-hero">
+        <div className="journal-hero-image"><img src={images.palawanBay.url} alt={images.palawanBay.alt} /></div>
+        <div className="journal-hero-shade" />
         <HeroMotion>
-          <HeroLine className="hero-kicker">
-            <Compass size={16} /> Diario de dos viajeros
-          </HeroLine>
-          <HeroLine delay={0.12}>
-            <h1>
-              Viajan<span>2</span>
-              <br />
-              Juntos
-            </h1>
-          </HeroLine>
-          <HeroLine className="hero-lead" delay={0.24}>
-            <p>{brand.tagline}</p>
-          </HeroLine>
+          <HeroLine className="hero-kicker"><Compass size={16} /> Un blog de viajes en pareja</HeroLine>
+          <HeroLine delay={0.12}><h1>El mundo se vive mejor <em>juntos.</em></h1></HeroLine>
+          <HeroLine className="journal-hero-copy" delay={0.24}><p>Somos Andrea y Alejandro. Viajamos para descubrir lugares, guardar historias y volver mirando el mundo de otra manera.</p></HeroLine>
           <HeroLine className="hero-home-actions" delay={0.36}>
-            <Link className="button button-light" href="/viajes">
-              Explorar viajes <ArrowRight size={17} />
-            </Link>
-            <a className="button button-glass" href="#ultimo-viaje">
-              Nuestra última ruta <ArrowDown size={17} />
-            </a>
+            <Link className="button button-light" href="/viajes">Ver nuestros viajes <ArrowRight size={17} /></Link>
+            <a className="button button-glass" href="#nosotros">Conócenos <ArrowDown size={17} /></a>
           </HeroLine>
         </HeroMotion>
-        <div className="hero-postcard">
-          <span>PRÓXIMA PARADA</span>
-          <strong>Costa Rica</strong>
-          <small>09°56′N · 84°05′W</small>
+        <div className="hero-memory-strip">
+          <figure><img src={images.sigiriya.url} alt={images.sigiriya.alt} /><figcaption>Sri Lanka · 2025</figcaption></figure>
+          <figure><img src={images.arenal.url} alt={images.arenal.alt} /><figcaption>Costa Rica · 2026</figcaption></figure>
         </div>
-        <div className="hero-scroll">
-          <span>Desliza para viajar</span>
-          <i />
+        <div className="hero-year-mark">VIAJAN<em>2</em>JUNTOS</div>
+      </section>
+
+      <section className="home-purpose">
+        <div className="section-shell purpose-grid">
+          <Reveal><span className="eyebrow">Nuestro cuaderno abierto</span><h2>No contamos países. Contamos las historias que nos trajimos de ellos.</h2></Reveal>
+          <Reveal delay={0.12}><p>Aquí reunimos itinerarios que de verdad usamos, rincones que repetiríamos y recuerdos que no queremos perder. Una guía personal para viajar con curiosidad, calma y los ojos muy abiertos.</p><Link className="text-arrow" href="/viajes">Entrar en el archivo <MoveUpRight size={17} /></Link></Reveal>
         </div>
       </section>
 
-      <section className="intro-section">
-        <div className="section-shell intro-grid">
-          <Reveal className="intro-title">
-            <span className="eyebrow">Nuestro cuaderno abierto</span>
-            <h2>No coleccionamos países. Coleccionamos momentos.</h2>
-          </Reveal>
-          <Reveal className="intro-copy" delay={0.12}>
-            <p>
-              Viajan2Juntos es nuestro rincón para guardar las carreteras que nos sorprendieron, los planes que salieron
-              regular y esos lugares que ya sentimos un poco nuestros.
-            </p>
-            <Link className="text-arrow" href="/#nosotros">
-              Conócenos un poco más <MoveUpRight size={17} />
-            </Link>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="featured-trip-section" id="ultimo-viaje">
+      <section className="travel-archive-preview">
         <div className="section-shell">
-          <Reveal className="featured-trip-head">
-            <span className="eyebrow eyebrow-light">{featured.status}</span>
-            <p>{featured.dates}</p>
-          </Reveal>
-          <div className="featured-trip-grid">
-            <Reveal className="featured-trip-image">
-              <img src={images.santaTeresa.url} alt={images.santaTeresa.alt} />
-              <span className="photo-index">01 / 06</span>
-            </Reveal>
-            <Reveal className="featured-trip-copy" delay={0.15}>
-              <span className="script-label">Pura vida</span>
-              <h2>
-                Costa Rica <em>2026</em>
-              </h2>
-              <p>{featured.subtitle}. Una ruta de océano a océano que cambia de paisaje casi cada dos días.</p>
-              <div className="featured-meta">
-                <span>
-                  <PlaneTakeoff size={17} /> {featured.duration}
-                </span>
-                <span>
-                  <MapPin size={17} /> {featured.bases}
-                </span>
-              </div>
-              <Link className="button button-coral" href="/viajes/costa-rica-2026">
-                Abrir el viaje <ArrowRight size={17} />
-              </Link>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      <section className="map-story-section" id="mapa">
-        <div className="section-shell">
-          <Reveal className="center-heading">
-            <span className="eyebrow">La ruta sobre el mapa</span>
-            <h2>Del Pacífico al Caribe</h2>
-            <p>Seis bases, dos costas y una carretera que atraviesa el corazón verde de Costa Rica.</p>
-          </Reveal>
-          <StoryMap destinations={initialTripData.destinations} />
-        </div>
-      </section>
-
-      <section className="manifesto-section" id="nosotros">
-        <div className="manifesto-photo manifesto-photo-one">
-          <img src={images.fortuna.url} alt={images.fortuna.alt} />
-        </div>
-        <div className="manifesto-photo manifesto-photo-two">
-          <img src={images.puntaUva.url} alt={images.puntaUva.alt} />
-        </div>
-        <Reveal className="manifesto-card">
-          <Quote size={34} />
-          <span className="eyebrow">Por qué viajamos</span>
-          <blockquote>
-            Para volver con menos certezas, más historias y la sensación de haber vivido un poco más despacio.
-          </blockquote>
-          <p>Andrea & Alejandro</p>
-        </Reveal>
-      </section>
-
-      <section className="stats-section">
-        <div className="section-shell">
-          <div className="stats-grid">
-            {travelStats.map((stat, index) => (
-              <Reveal className="stat-item" delay={index * 0.08} key={stat.label}>
-                <strong>{stat.value}</strong>
-                <span>{stat.label}</span>
+          <Reveal className="archive-heading"><div><span className="eyebrow eyebrow-light">Historias en el mapa</span><h2>Tres viajes.<br />Mil recuerdos.</h2></div><p>De las lagunas de Palawan a los campos de té de Sri Lanka, con una nueva ruta entre dos océanos esperando en Costa Rica.</p></Reveal>
+          <div className="journey-cards">
+            {trips.map((trip, index) => (
+              <Reveal className={`journey-card journey-card-${index + 1}`} delay={index * .08} key={trip.slug}>
+                <Link href={`/viajes/${trip.slug}`}><img src={trip.image.url} alt={trip.image.alt} /><span className="journey-number">0{trips.length - index}</span><div className="journey-overlay"><small>{trip.status}</small><h3>{trip.country}</h3><p>{trip.year}</p><i><ArrowRight /></i></div></Link>
               </Reveal>
             ))}
           </div>
-          <Reveal className="next-trip-banner">
-            <div>
-              <Sparkles />
-              <span>El mundo todavía es muy grande</span>
-              <h2>La próxima historia aún no tiene coordenadas.</h2>
-            </div>
-            <Link href="/viajes">
-              Ver nuestro mapa <ArrowRight />
-            </Link>
+        </div>
+      </section>
+
+      <section className="world-section" id="mapa">
+        <div className="section-shell">
+          <Reveal className="map-intro"><span className="eyebrow">Atlas en movimiento</span><h2>Un mapa que crece con nosotros.</h2><p>Cada país coloreado es un viaje vivido. El resto, posibilidades.</p></Reveal>
+          <Reveal delay={0.1}><WorldTravelMap /></Reveal>
+        </div>
+      </section>
+
+      <section className="about-us-section" id="nosotros">
+        <div className="section-shell about-us-grid">
+          <Reveal className="couple-photo-placeholder"><div><Camera /><strong>Nuestra foto, aquí</strong><span>Este espacio está preparado para la foto de los dos que nos pasarás.</span></div></Reveal>
+          <Reveal className="about-us-copy" delay={0.12}>
+            <span className="eyebrow">Andrea & Alejandro</span><h2>Viajar es nuestra forma favorita de estar juntos.</h2>
+            <p>No somos viajeros a tiempo completo ni pretendemos saberlo todo. Somos dos personas a las que les encanta preparar una ruta, desviarse de ella y convertir cada viaje en una historia compartida.</p>
+            <p>En 2024 nos perdimos entre las islas de Filipinas. En 2025 cruzamos Sri Lanka entre trenes, templos y plantaciones de té. En 2026 Costa Rica nos espera con volcanes, selva y dos océanos.</p>
+            <div className="about-signature">Andrea <span>&</span> Alejandro</div>
           </Reveal>
+        </div>
+      </section>
+
+      <section className="stats-section home-stats">
+        <div className="section-shell">
+          <div className="stats-grid">{travelStats.map((stat, index) => <Reveal className="stat-item" delay={index * .06} key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span></Reveal>)}</div>
+          <Reveal className="next-trip-banner"><div><Sparkles /><span>El mundo todavía es muy grande</span><h2>La siguiente historia empieza con una idea.</h2></div><Link href="/viajes">Abrir el atlas <Map /></Link></Reveal>
         </div>
       </section>
       <SiteFooter />

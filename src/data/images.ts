@@ -11,6 +11,39 @@ const commonsFile = (name: string) =>
   `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(name)}?width=1800`
 
 export const images: Record<string, TripImage> = {
+  palawanLagoon: {
+    id: 'palawan-lagoon',
+    url: commonsFile('El Nido Bay, Island lagoon, Palawan, Philippines.jpg'),
+    alt: 'Laguna entre islas de piedra caliza en El Nido, Filipinas',
+    author: 'Vyacheslav Argenberg',
+    license: 'CC BY 4.0',
+    source:
+      'https://commons.wikimedia.org/wiki/File:El_Nido_Bay,_Island_lagoon,_Palawan,_Philippines.jpg',
+  },
+  palawanBay: {
+    id: 'palawan-bay',
+    url: commonsFile('El Nido in Palawan.jpg'),
+    alt: 'Bahía de El Nido y sus islas en Palawan, Filipinas',
+    author: 'choypictures',
+    license: 'CC0',
+    source: 'https://commons.wikimedia.org/wiki/File:El_Nido_in_Palawan.jpg',
+  },
+  sigiriya: {
+    id: 'sigiriya',
+    url: commonsFile('Sigiriya Sri Lanka (30073766295).jpg'),
+    alt: 'La roca de Sigiriya elevándose sobre la selva de Sri Lanka',
+    author: 'dronepicr',
+    license: 'CC BY 2.0',
+    source: 'https://commons.wikimedia.org/wiki/File:Sigiriya_Sri_Lanka_(30073766295).jpg',
+  },
+  sriLankaTea: {
+    id: 'sri-lanka-tea',
+    url: commonsFile('Tea plantation Sri.jpg'),
+    alt: 'Campos de té verdes en las tierras altas de Sri Lanka',
+    author: 'A.Savin',
+    license: 'CC BY-SA 4.0',
+    source: 'https://commons.wikimedia.org/wiki/File:Tea_plantation_Sri.jpg',
+  },
   arenal: {
     id: 'arenal',
     url: commonsFile('Arenal Volcano, Costa Rica.jpg'),

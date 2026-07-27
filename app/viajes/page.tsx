@@ -53,7 +53,7 @@ export default function TripsPage() {
             </Reveal>
           ))}
           <Reveal className="coming-trip-card">
-            <span>02</span>
+            <span>04</span>
             <div>
               <p>Siguiente aventura</p>
               <h2>Destino por descubrir</h2>
