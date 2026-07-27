@@ -99,28 +99,24 @@ img {
 }
 
 .logo-mark {
-  width: 38px;
+  width: 46px;
   height: 38px;
-  display: grid;
-  place-items: center;
-  color: white;
-  background: var(--forest);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
+  display: block;
+  flex: 0 0 46px;
+  color: inherit;
 }
 
 .logo-light .logo-mark {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(10px);
+  color: white;
 }
 
-.logo-mark svg {
-  width: 25px;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 2;
+.logo-symbol {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: currentColor;
+  -webkit-mask: url("/brand/v2-logo-white.png") center / 84px 84px no-repeat;
+  mask: url("/brand/v2-logo-white.png") center / 84px 84px no-repeat;
 }
 
 .site-header {
@@ -3373,9 +3369,14 @@ img {
   }
 
   .logo-mark {
-    width: 32px;
+    width: 39px;
     height: 32px;
-    flex: 0 0 32px;
+    flex: 0 0 39px;
+  }
+
+  .logo-symbol {
+    -webkit-mask-size: 71px 71px;
+    mask-size: 71px 71px;
   }
 
   .nav-shell {
@@ -4871,9 +4872,14 @@ img {
   }
 
   .logo-mark {
-    width: 32px;
+    width: 39px;
     height: 32px;
-    flex: 0 0 32px;
+    flex: 0 0 39px;
+  }
+
+  .logo-symbol {
+    -webkit-mask-size: 71px 71px;
+    mask-size: 71px 71px;
   }
 
   .nav-shell {
