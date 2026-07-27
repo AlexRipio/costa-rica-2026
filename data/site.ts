@@ -20,6 +20,7 @@ export type Trip = {
   accent: string
   mapId: string
   mapLabel: string
+  mapCoordinates: [number, number]
   available: boolean
 }
 
@@ -38,6 +39,7 @@ export const trips: Trip[] = [
     accent: '#f4a63a',
     mapId: '188',
     mapLabel: 'Costa Rica · 2026',
+    mapCoordinates: [-84.2, 9.8],
     available: true,
   },
   {
@@ -54,6 +56,7 @@ export const trips: Trip[] = [
     accent: '#e56f51',
     mapId: '144',
     mapLabel: 'Sri Lanka · 2025',
+    mapCoordinates: [80.77, 7.87],
     available: false,
   },
   {
@@ -70,6 +73,7 @@ export const trips: Trip[] = [
     accent: '#2c9b9a',
     mapId: '608',
     mapLabel: 'Filipinas · 2024',
+    mapCoordinates: [121.77, 12.88],
     available: false,
   },
 ]

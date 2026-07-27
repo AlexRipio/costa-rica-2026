@@ -4957,3 +4957,84 @@ img {
     height: 235px;
   }
 }
+
+/* Permanent destinations on the world map */
+.travel-map-marker {
+  cursor: pointer;
+  outline: none;
+}
+
+.travel-map-marker .marker-wave {
+  opacity: .22;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: map-marker-breathe 2.4s ease-in-out infinite;
+}
+
+.travel-map-marker .marker-core {
+  stroke: white;
+  stroke-width: 3;
+  filter: drop-shadow(0 3px 4px rgba(12, 39, 31, .35));
+  transition: transform .25s ease;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.travel-map-marker:hover .marker-core,
+.travel-map-marker:focus .marker-core,
+.travel-map-marker.selected .marker-core {
+  transform: scale(1.35);
+}
+
+.travel-map-marker.selected .marker-wave {
+  animation-duration: 1.45s;
+  opacity: .36;
+}
+
+.travel-map-marker .marker-number {
+  fill: white;
+  font-family: var(--sans);
+  font-size: 8px;
+  font-weight: 900;
+  pointer-events: none;
+}
+
+.travel-map-marker .marker-label {
+  opacity: .82;
+  pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease;
+}
+
+.travel-map-marker:hover .marker-label,
+.travel-map-marker:focus .marker-label,
+.travel-map-marker.selected .marker-label {
+  opacity: 1;
+}
+
+.travel-map-marker .marker-label rect {
+  fill: rgba(16, 45, 39, .92);
+  stroke: rgba(255, 255, 255, .5);
+  stroke-width: 1;
+}
+
+.travel-map-marker .marker-label text {
+  fill: white;
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+@keyframes map-marker-breathe {
+  0%, 100% { transform: scale(.8); opacity: .18; }
+  50% { transform: scale(1.35); opacity: .38; }
+}
+
+@media (max-width: 600px) {
+  .travel-map-marker .marker-label {
+    display: none;
+  }
+
+  .travel-map-marker .marker-core {
+    stroke-width: 4;
+  }
+}

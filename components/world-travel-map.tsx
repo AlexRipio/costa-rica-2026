@@ -21,7 +21,11 @@ export function WorldTravelMap() {
       ) as unknown as GeoJSON.FeatureCollection<GeoJSON.Geometry, { name?: string }>,
     [],
   )
-  const path = useMemo(() => geoPath(geoNaturalEarth1().fitExtent([[18, 18], [982, 512]], countries)), [countries])
+  const projection = useMemo(
+    () => geoNaturalEarth1().fitExtent([[18, 18], [982, 512]], countries),
+    [countries],
+  )
+  const path = useMemo(() => geoPath(projection), [projection])
   const activeTrip = tripById.get(activeId) ?? trips[0]
 
   return (
@@ -57,6 +61,35 @@ export function WorldTravelMap() {
                   onFocus={() => trip && setActiveId(id)}
                   aria-label={trip?.mapLabel}
                 />
+              )
+            })}
+          </g>
+          <g className="travel-map-markers" aria-label="Destinos señalados">
+            {trips.map((trip, index) => {
+              const point = projection(trip.mapCoordinates)
+              if (!point) return null
+              const selected = activeId === trip.mapId
+              return (
+                <g
+                  className={`travel-map-marker ${selected ? 'selected' : ''}`}
+                  key={trip.mapId}
+                  transform={`translate(${point[0]} ${point[1]})`}
+                  onClick={() => setActiveId(trip.mapId)}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter' || event.key === ' ') setActiveId(trip.mapId)
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Mostrar ${trip.mapLabel}`}
+                >
+                  <circle className="marker-wave" r={selected ? 18 : 14} style={{ fill: trip.accent }} />
+                  <circle className="marker-core" r={8} style={{ fill: trip.accent }} />
+                  <text className="marker-number" textAnchor="middle" y="3">{index + 1}</text>
+                  <g className="marker-label" transform="translate(13 -23)">
+                    <rect width={trip.country.length * 7.2 + 28} height="28" rx="14" />
+                    <text x="14" y="18">{trip.country}</text>
+                  </g>
+                </g>
               )
             })}
           </g>
