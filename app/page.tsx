@@ -5,14 +5,13 @@ import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { WorldTravelMap } from '@/components/world-travel-map'
 import { travelStats, trips } from '@/data/site'
-import { images } from '@/src/data/images'
 
 export default function HomePage() {
   return (
     <main>
       <SiteHeader overlay />
-      <section className="journal-hero">
-        <div className="journal-hero-image"><img src={images.palawanBay.url} alt={images.palawanBay.alt} /></div>
+      <section className="journal-hero personal-home-hero">
+        <div className="journal-hero-image"><img src="/about/espana-playa.jpeg" alt="Andrea y Alejandro con la bandera de España en una playa de Costa Rica" /></div>
         <div className="journal-hero-shade" />
         <HeroMotion>
           <HeroLine className="hero-kicker"><Compass size={16} /> Un blog de viajes en pareja</HeroLine>
@@ -24,8 +23,8 @@ export default function HomePage() {
           </HeroLine>
         </HeroMotion>
         <div className="hero-memory-strip">
-          <figure><img src={images.sigiriya.url} alt={images.sigiriya.alt} /><figcaption>Sri Lanka · 2025</figcaption></figure>
-          <figure><img src={images.arenal.url} alt={images.arenal.alt} /><figcaption>Costa Rica · 2026</figcaption></figure>
+          <figure><img src="/about/playa-palmeras.jpeg" alt="Andrea y Alejandro bajo las palmeras de una playa de Costa Rica" /><figcaption>Caribe · Costa Rica</figcaption></figure>
+          <figure><img src="/about/atardecer-playa.jpeg" alt="Andrea y Alejandro frente a un atardecer en la playa" /><figcaption>Atardecer · 2026</figcaption></figure>
         </div>
         <div className="hero-year-mark">VIAJAN<em>2</em>JUNTOS</div>
       </section>

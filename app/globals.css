@@ -5219,3 +5219,45 @@ img {
     font-size: .82rem;
   }
 }
+
+/* The personal homepage hero becomes an editorial photo + copy stack on phones.
+   This keeps both faces and the flag unobstructed without weakening the desktop cover. */
+@media (max-width: 600px) {
+  .personal-home-hero {
+    height: auto;
+    min-height: 0;
+    padding-top: 64px;
+    background: var(--forest-deep);
+  }
+
+  .personal-home-hero .journal-hero-image {
+    position: relative;
+    inset: auto;
+    height: 500px;
+  }
+
+  .personal-home-hero .journal-hero-image img {
+    height: 500px;
+    object-fit: cover;
+    object-position: center 40%;
+    animation: none;
+  }
+
+  .personal-home-hero .journal-hero-shade {
+    top: 64px;
+    bottom: auto;
+    height: 500px;
+    background: linear-gradient(to top, rgba(8, 31, 25, .3), transparent 58%);
+  }
+
+  .personal-home-hero .hero-motion {
+    width: 100%;
+    padding: 38px 16px 56px;
+    background: var(--forest-deep);
+  }
+
+  .personal-home-hero h1 {
+    max-width: 100%;
+    font-size: clamp(3.35rem, 17vw, 4.65rem);
+  }
+}
