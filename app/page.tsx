@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowRight, Camera, Compass, Map, MoveUpRight, Sparkles } from 'lucide-react'
+import { ArrowDown, ArrowRight, Compass, Map, MoveUpRight, Sparkles } from 'lucide-react'
 import Link from 'next/link'
 import { HeroLine, HeroMotion, Reveal } from '@/components/reveal'
 import { SiteFooter } from '@/components/site-footer'
@@ -59,7 +59,10 @@ export default function HomePage() {
 
       <section className="about-us-section" id="nosotros">
         <div className="section-shell about-us-grid">
-          <Reveal className="couple-photo-placeholder"><div><Camera /><strong>Nuestra foto, aquí</strong><span>Este espacio está preparado para la foto de los dos que nos pasarás.</span></div></Reveal>
+          <Reveal className="couple-photo-placeholder couple-photo-real">
+            <img src="/about/aventura-montana.jpeg" alt="Andrea y Alejandro durante una aventura de montaña en Costa Rica" />
+            <div><strong>Andrea & Alejandro</strong><span>Costa Rica · 2026</span></div>
+          </Reveal>
           <Reveal className="about-us-copy" delay={0.12}>
             <span className="eyebrow">Andrea & Alejandro</span><h2>Viajar es nuestra forma favorita de estar juntos.</h2>
             <p>No somos viajeros a tiempo completo ni pretendemos saberlo todo. Somos dos personas a las que les encanta preparar una ruta, desviarse de ella y convertir cada viaje en una historia compartida.</p>

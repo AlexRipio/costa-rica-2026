@@ -11,7 +11,7 @@ import { trips } from '@/data/site'
 type CountryFeature = GeoJSON.Feature<GeoJSON.Geometry, { name?: string }> & { id?: string | number }
 
 export function WorldTravelMap() {
-  const [activeId, setActiveId] = useState(trips[0].mapId)
+  const [activeId, setActiveId] = useState<string | null>(null)
   const tripById = useMemo(() => new Map(trips.map((trip) => [trip.mapId, trip])), [])
   const countries = useMemo(
     () =>
@@ -26,7 +26,7 @@ export function WorldTravelMap() {
     [countries],
   )
   const path = useMemo(() => geoPath(projection), [projection])
-  const activeTrip = tripById.get(activeId) ?? trips[0]
+  const activeTrip = activeId ? tripById.get(activeId) : undefined
 
   return (
     <div className="world-map-card">
@@ -56,7 +56,6 @@ export function WorldTravelMap() {
                   fill={trip?.accent}
                   key={`${id}-${index}`}
                   onClick={() => trip && setActiveId(id)}
-                  onMouseEnter={() => trip && setActiveId(id)}
                   tabIndex={trip ? 0 : -1}
                   onFocus={() => trip && setActiveId(id)}
                   aria-label={trip?.mapLabel}
@@ -94,14 +93,16 @@ export function WorldTravelMap() {
             })}
           </g>
         </svg>
-        <div className="map-active-card" style={{ '--trip-accent': activeTrip.accent } as CSSProperties}>
-          <span><MapPin size={15} /> En nuestro mapa</span>
-          <strong>{activeTrip.country}</strong>
-          <small>{activeTrip.year} · {activeTrip.subtitle}</small>
-          <Link href={`/viajes/${activeTrip.slug}`}>Abrir el viaje <span aria-hidden="true">→</span></Link>
-        </div>
+        {activeTrip && (
+          <div className="map-active-card" style={{ '--trip-accent': activeTrip.accent } as CSSProperties}>
+            <span><MapPin size={15} /> En nuestro mapa</span>
+            <strong>{activeTrip.country}</strong>
+            <small>{activeTrip.year} · {activeTrip.subtitle}</small>
+            <Link href={`/viajes/${activeTrip.slug}`}>Abrir el viaje <span aria-hidden="true">→</span></Link>
+          </div>
+        )}
       </div>
-      <p className="map-note">El mapa crecerá con cada nueva historia. Pulsa un país coloreado para recordarla.</p>
+      <p className="map-note">Todos nuestros viajes están señalados. Pulsa un marcador para abrir su historia.</p>
     </div>
   )
 }

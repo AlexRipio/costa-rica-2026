@@ -5,7 +5,6 @@ import { Reveal } from '@/components/reveal'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { trips } from '@/data/site'
-import { images } from '@/src/data/images'
 
 export const metadata: Metadata = {
   title: 'Conócenos',
@@ -17,7 +16,7 @@ export default function AboutPage() {
     <main className="about-page">
       <SiteHeader overlay />
       <section className="about-hero">
-        <img src={images.sigiriya.url} alt={images.sigiriya.alt} />
+        <img src="/about/barco-costa-rica.jpeg" alt="Andrea y Alejandro navegando junto a la costa de Costa Rica" />
         <div className="about-hero-shade" />
         <Reveal className="about-hero-copy">
           <span>Andrea & Alejandro</span>
@@ -28,8 +27,9 @@ export default function AboutPage() {
 
       <section className="about-story-section">
         <div className="section-shell about-story-grid">
-          <Reveal className="about-portrait-placeholder">
-            <div><Camera /><strong>Aquí irá nuestra foto</strong><span>El retrato de Andrea y Alejandro tendrá su sitio protagonista.</span></div>
+          <Reveal className="about-portrait-placeholder about-real-portrait">
+            <img src="/about/aventura-montana.jpeg" alt="Andrea y Alejandro preparados para una aventura de montaña en Costa Rica" />
+            <div><strong>Nosotros, en ruta</strong><span>Costa Rica · 2026</span></div>
           </Reveal>
           <Reveal className="about-story-copy" delay={0.1}>
             <span className="eyebrow">Quiénes somos</span>
@@ -37,6 +37,10 @@ export default function AboutPage() {
             <p>Somos Andrea y Alejandro, una pareja que disfruta tanto imaginando una ruta como recorriéndola. Nos gusta investigar, organizar lo importante y dejar espacio suficiente para que el viaje también nos sorprenda.</p>
             <p>Este blog no nace para presumir de destinos. Nace para conservar los pequeños detalles: aquella carretera, una comida inesperada, un paisaje que obligó a parar o el plan que salió distinto y acabó siendo el mejor recuerdo.</p>
             <div className="about-handwritten">Nuestro álbum, nuestra guía, nuestra historia.</div>
+            <figure className="about-candid-photo">
+              <img src="/about/senderismo-selva.jpg" alt="Andrea y Alejandro haciendo senderismo por la selva de Costa Rica" />
+              <figcaption>Una ruta por la selva, tal y como somos: disfrutando del camino.</figcaption>
+            </figure>
           </Reveal>
         </div>
       </section>
