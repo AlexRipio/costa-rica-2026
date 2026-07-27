@@ -33,12 +33,12 @@ export default async function FamilyLoginPage({
           <span className="eyebrow">Espacio privado</span>
           <h1>Para quienes nos esperan en casa.</h1>
           <p>
-            Horarios, vuelos, alojamientos y el punto previsto de la ruta, explicado de forma sencilla y sin información
+            Un acceso sencillo para saber dónde estamos, qué estamos haciendo y si ha cambiado el plan, sin información
             pública innecesaria.
           </p>
           <ul>
             <li>
-              <Eye /> Seguimiento claro del día
+              <Eye /> Estado actualizado del viaje
             </li>
             <li>
               <ShieldCheck /> Información protegida
@@ -71,7 +71,7 @@ export default async function FamilyLoginPage({
               <LockKeyhole size={16} />
             </button>
           </form>
-          <small>Recordaremos este dispositivo durante un año para que no tengas que volver a escribirla.</small>
+          <small>Recordaremos este dispositivo durante un año y te llevaremos directamente al viaje activo.</small>
         </div>
       </section>
     </main>

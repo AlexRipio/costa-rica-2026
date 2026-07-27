@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation'
 import { ArrowRight, Clock3, Heart, LogOut, Radio, ShieldCheck } from 'lucide-react'
 import Link from 'next/link'
 import { familyCookieName, isValidFamilySession } from '@/data/family-auth'
+import { getLiveState } from '@/data/live-state'
 import { trips } from '@/data/site'
 
 export const metadata: Metadata = {
@@ -17,6 +18,7 @@ export const dynamic = 'force-dynamic'
 export default async function FamilyTripsPage() {
   const cookieStore = await cookies()
   if (!isValidFamilySession(cookieStore.get(familyCookieName)?.value)) redirect('/familia')
+  const liveState = await getLiveState()
 
   return (
     <main className="family-hub-page">
@@ -37,11 +39,12 @@ export default async function FamilyTripsPage() {
             <h1>¿Qué viaje quieres consultar?</h1>
             <p>Elige una historia para ver su información. Cuando estemos viajando, aquí aparecerá claramente el seguimiento en directo.</p>
           </div>
-          <div className="family-live-empty">
-            <span className="family-live-label"><i /> Próximamente</span>
+          <div className={`family-live-empty ${liveState.active ? 'is-live' : ''}`}>
+            <span className="family-live-label"><i /> {liveState.active ? 'En directo' : 'Próximamente'}</span>
             <Radio />
-            <strong>Sin viaje en directo</strong>
-            <p>Ahora mismo estamos en casa. Activaremos este espacio en nuestra próxima aventura.</p>
+            <strong>{liveState.active ? liveState.tripName : 'Sin viaje en directo'}</strong>
+            <p>{liveState.active ? liveState.message : 'Ahora mismo estamos en casa. Activaremos este espacio en nuestra próxima aventura.'}</p>
+            {liveState.active && <Link href="/familia/directo">Abrir seguimiento ahora <ArrowRight /></Link>}
           </div>
         </section>
 
