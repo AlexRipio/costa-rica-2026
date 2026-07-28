@@ -5,8 +5,9 @@ import { HeroLine, HeroMotion, KineticWords, Reveal } from '@/components/reveal'
 import { ScrollStory } from '@/components/scroll-story'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
+import { TravelChapters } from '@/components/travel-chapters'
 import { WorldTravelMap } from '@/components/world-travel-map'
-import { travelStats, trips } from '@/data/site'
+import { travelStats } from '@/data/site'
 
 export default function HomePage() {
   return (
@@ -40,18 +41,7 @@ export default function HomePage() {
 
       <ScrollStory />
 
-      <section className="travel-archive-preview">
-        <div className="section-shell">
-          <Reveal className="archive-heading"><div><span className="eyebrow eyebrow-light">Historias en el mapa</span><h2>Tres viajes.<br />Mil recuerdos.</h2></div><p>De las lagunas de Palawan a los campos de té de Sri Lanka y una ruta completa entre los dos océanos de Costa Rica.</p></Reveal>
-          <div className="journey-cards">
-            {trips.map((trip, index) => (
-              <Reveal className={`journey-card journey-card-${index + 1}`} delay={index * .08} key={trip.slug}>
-                <Link href={`/viajes/${trip.slug}`}><img src={trip.image.url} alt={trip.image.alt} /><span className="journey-number">0{trips.length - index}</span><div className="journey-overlay"><small>{trip.status}</small><h3>{trip.country}</h3><p>{trip.year}</p><i><ArrowRight /></i></div></Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TravelChapters />
 
       <section className="world-section" id="mapa">
         <div className="section-shell">
