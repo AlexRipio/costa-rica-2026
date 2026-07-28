@@ -1,6 +1,7 @@
 import { ArrowDown, ArrowRight, Compass, Map, MoveUpRight, Sparkles } from 'lucide-react'
 import Link from 'next/link'
-import { HeroLine, HeroMotion, Reveal } from '@/components/reveal'
+import { HeroLine, HeroMotion, KineticWords, Reveal } from '@/components/reveal'
+import { ScrollStory } from '@/components/scroll-story'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { WorldTravelMap } from '@/components/world-travel-map'
@@ -31,10 +32,12 @@ export default function HomePage() {
 
       <section className="home-purpose">
         <div className="section-shell purpose-grid">
-          <Reveal><span className="eyebrow">Nuestro cuaderno abierto</span><h2>No contamos países. Contamos las historias que nos trajimos de ellos.</h2></Reveal>
+          <Reveal><span className="eyebrow">Nuestro cuaderno abierto</span><h2><KineticWords>No contamos países. Contamos las historias que nos trajimos de ellos.</KineticWords></h2></Reveal>
           <Reveal delay={0.12}><p>Aquí reunimos itinerarios que de verdad usamos, rincones que repetiríamos y recuerdos que no queremos perder. Una guía personal para viajar con curiosidad, calma y los ojos muy abiertos.</p><Link className="text-arrow" href="/viajes">Entrar en el archivo <MoveUpRight size={17} /></Link></Reveal>
         </div>
       </section>
+
+      <ScrollStory />
 
       <section className="travel-archive-preview">
         <div className="section-shell">
@@ -51,7 +54,7 @@ export default function HomePage() {
 
       <section className="world-section" id="mapa">
         <div className="section-shell">
-          <Reveal className="map-intro"><span className="eyebrow">Atlas en movimiento</span><h2>Un mapa que crece con nosotros.</h2><p>Cada país coloreado es un viaje vivido. El resto, posibilidades.</p></Reveal>
+          <Reveal className="map-intro"><span className="eyebrow">Atlas en movimiento</span><h2><KineticWords>Un mapa que crece con nosotros.</KineticWords></h2><p>Cada país coloreado es un viaje vivido. El resto, posibilidades.</p></Reveal>
           <Reveal delay={0.1}><WorldTravelMap /></Reveal>
         </div>
       </section>
