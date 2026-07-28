@@ -7338,3 +7338,240 @@ img {
     display: flex;
   }
 }
+
+/* Mobile cover and atlas — one clear scene, generous spacing and no dead canvas. */
+@media (max-width: 600px) {
+  .personal-home-hero {
+    height: max(100svh, 700px);
+    min-height: 700px;
+    max-height: 920px;
+    padding-top: 0;
+    display: flex;
+    align-items: flex-end;
+    isolation: isolate;
+    background: #071e19;
+  }
+
+  .personal-home-hero .journal-hero-image {
+    position: absolute;
+    inset: 0;
+    height: auto;
+  }
+
+  .personal-home-hero .journal-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 52% 42%;
+    animation: none;
+    transform: scale(1.012);
+  }
+
+  .personal-home-hero .journal-hero-shade {
+    inset: 0;
+    height: auto;
+    background:
+      linear-gradient(180deg, rgba(4, 23, 18, .55) 0, transparent 24%),
+      linear-gradient(0deg, rgba(4, 25, 20, .97) 0, rgba(4, 25, 20, .82) 31%, rgba(4, 25, 20, .18) 66%, transparent 82%);
+  }
+
+  .personal-home-hero .hero-motion {
+    width: 100%;
+    margin: 0;
+    padding: 0 18px max(28px, env(safe-area-inset-bottom));
+    background: transparent;
+    transform: translate3d(0, calc(var(--hero-scroll, 0) * -12px), 0);
+  }
+
+  .personal-home-hero .hero-kicker {
+    margin-bottom: 12px;
+    color: rgba(255, 255, 255, .78);
+    font-size: .59rem;
+    letter-spacing: .16em;
+  }
+
+  .personal-home-hero h1 {
+    max-width: 355px;
+    margin: 0;
+    font-size: clamp(3.35rem, 15.8vw, 4.1rem);
+    line-height: .86;
+  }
+
+  .personal-home-hero .journal-hero-copy {
+    max-width: 350px;
+  }
+
+  .personal-home-hero .journal-hero-copy p {
+    margin-top: 17px;
+    color: rgba(255, 255, 255, .82);
+    font-family: var(--sans);
+    font-size: .91rem;
+    line-height: 1.46;
+  }
+
+  .personal-home-hero .hero-home-actions {
+    max-width: 355px;
+    margin-top: 19px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+  }
+
+  .personal-home-hero .button {
+    min-height: 48px;
+    padding-inline: 16px;
+    justify-content: center;
+    font-size: .64rem;
+  }
+
+  .personal-home-hero .button-glass {
+    padding-inline: 14px;
+  }
+
+  .personal-home-hero .hero-year-mark,
+  .personal-home-hero .hero-memory-strip {
+    display: none;
+  }
+
+  .world-section {
+    padding: 82px 0 88px;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 86% 12%, rgba(241, 184, 74, .11), transparent 34%),
+      #edf0e7;
+  }
+
+  .world-section > .section-shell {
+    width: calc(100% - 24px);
+  }
+
+  .world-section .map-intro {
+    width: calc(100% - 8px);
+    margin: 0 4px 32px;
+  }
+
+  .world-section .map-intro h2 {
+    margin-block: 12px 16px;
+    font-size: clamp(2.85rem, 13.5vw, 3.55rem);
+    line-height: .92;
+  }
+
+  .world-section .map-intro p {
+    max-width: 330px;
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .world-map-card {
+    overflow: hidden;
+    border: 1px solid rgba(16, 47, 39, .1);
+    border-radius: 28px;
+    box-shadow: 0 24px 60px rgba(20, 49, 41, .13);
+  }
+
+  .world-map-toolbar {
+    padding: 24px 20px 17px;
+    gap: 19px;
+    overflow: hidden;
+    background: rgba(255, 253, 247, .98);
+  }
+
+  .world-map-toolbar h3 {
+    max-width: 290px;
+    margin-top: 8px;
+    font-size: 1.55rem;
+    line-height: 1.05;
+  }
+
+  .world-map-toolbar .map-legend {
+    width: calc(100% + 40px);
+    margin-inline: -20px;
+    padding: 0 20px 5px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 7px;
+    overflow-x: auto;
+    scroll-padding-inline: 20px;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+
+  .world-map-toolbar .map-legend::-webkit-scrollbar {
+    display: none;
+  }
+
+  .world-map-toolbar .map-legend button,
+  .world-map-toolbar .map-legend button:last-child {
+    min-width: max-content;
+    min-height: 41px;
+    padding-inline: 13px;
+    flex: 0 0 auto;
+    grid-column: auto;
+    scroll-snap-align: start;
+    background: #f7f5ef;
+  }
+
+  .world-map-toolbar .map-legend button.active {
+    background: #e8ede5;
+    border-color: #879c91;
+  }
+
+  .world-map-canvas {
+    min-height: 0;
+    display: block;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 50% 45%, rgba(255, 255, 255, .4), transparent 55%),
+      #dce3d7;
+  }
+
+  .world-map-canvas > svg {
+    width: 150%;
+    height: auto;
+    max-width: none;
+    margin-left: -25%;
+  }
+
+  .map-active-card {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    width: 100%;
+    padding: 18px 20px 20px;
+    border-top: 4px solid var(--trip-accent);
+    border-left: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    animation: mobile-map-card-in .5s cubic-bezier(.16, 1, .3, 1) both;
+  }
+
+  .map-active-card strong {
+    font-size: 1.65rem;
+  }
+
+  .map-active-card small {
+    font-size: .68rem;
+    line-height: 1.45;
+  }
+
+  .map-note {
+    padding: 15px 20px 17px;
+    color: #65766e;
+    text-align: center;
+    font-size: .6rem;
+    line-height: 1.5;
+  }
+}
+
+@keyframes mobile-map-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
