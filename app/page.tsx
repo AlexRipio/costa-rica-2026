@@ -1,5 +1,6 @@
 import { ArrowDown, ArrowRight, Compass, Map, MoveUpRight, Sparkles } from 'lucide-react'
 import Link from 'next/link'
+import { AnimatedNumber } from '@/components/animated-number'
 import { HeroLine, HeroMotion, KineticWords, Reveal } from '@/components/reveal'
 import { ScrollStory } from '@/components/scroll-story'
 import { SiteFooter } from '@/components/site-footer'
@@ -77,7 +78,7 @@ export default function HomePage() {
 
       <section className="stats-section home-stats">
         <div className="section-shell">
-          <div className="stats-grid">{travelStats.map((stat, index) => <Reveal className="stat-item" delay={index * .06} key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span></Reveal>)}</div>
+          <div className="stats-grid">{travelStats.map((stat, index) => <Reveal className="stat-item" delay={index * .06} key={stat.label}><AnimatedNumber value={stat.value} delay={index * 120} /><span>{stat.label}</span></Reveal>)}</div>
           <Reveal className="next-trip-banner"><div><Sparkles /><span>El mundo todavía es muy grande</span><h2>La siguiente historia empieza con una idea.</h2></div><Link href="/viajes">Abrir el atlas <Map /></Link></Reveal>
         </div>
       </section>
