@@ -7575,3 +7575,177 @@ img {
     transform: translateY(0);
   }
 }
+
+/* Real Costa Rica geography behind the itinerary route. */
+.story-map {
+  min-height: 620px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 48% 45%, rgba(75, 139, 115, .22), transparent 38%),
+    #0c382f;
+}
+
+.story-map .map-grid {
+  opacity: .06;
+}
+
+.story-map .route-svg {
+  inset: 18px 24px 112px;
+  width: calc(100% - 48px);
+  height: calc(100% - 130px);
+  overflow: visible;
+  filter: drop-shadow(0 22px 36px rgba(2, 19, 15, .28));
+}
+
+.costa-rica-outline {
+  fill: rgba(225, 235, 220, .18);
+  stroke: rgba(224, 239, 229, .62);
+  stroke-width: 3;
+  vector-effect: non-scaling-stroke;
+}
+
+.costa-rica-route {
+  fill: none;
+  stroke: var(--coral);
+  stroke-width: 6;
+  filter: drop-shadow(0 0 8px rgba(235, 111, 83, .55));
+  vector-effect: non-scaling-stroke;
+}
+
+.route-map-marker {
+  color: #0b3028;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: opacity .55s ease-out;
+}
+
+.route-marker-halo {
+  fill: rgba(241, 184, 74, .18);
+  stroke: rgba(255, 255, 255, .55);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+
+.route-marker-core {
+  fill: var(--sun);
+  stroke: #0c382f;
+  stroke-width: 5;
+  vector-effect: non-scaling-stroke;
+}
+
+.route-map-marker text {
+  fill: #0b3028;
+  font: 900 14px/1 var(--sans);
+  pointer-events: none;
+}
+
+.story-map-legend {
+  position: absolute;
+  z-index: 4;
+  right: 22px;
+  bottom: 20px;
+  left: 22px;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.story-map-legend > div {
+  min-width: 0;
+  min-height: 72px;
+  padding: 11px 10px;
+  display: grid;
+  grid-template-columns: 27px 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 8px;
+  align-content: center;
+  color: white;
+  background: rgba(7, 35, 29, .8);
+  border: 1px solid rgba(255, 255, 255, .13);
+  border-radius: 14px;
+  backdrop-filter: blur(12px);
+}
+
+.story-map-legend span {
+  grid-row: 1 / 3;
+  width: 27px;
+  height: 27px;
+  display: grid;
+  place-items: center;
+  align-self: center;
+  color: #0b3028;
+  background: var(--sun);
+  border-radius: 50%;
+  font-size: .6rem;
+  font-weight: 900;
+}
+
+.story-map-legend strong {
+  overflow: hidden;
+  font-size: .65rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.story-map-legend small {
+  margin-top: 3px;
+  color: #a9c1b7;
+  font-size: .55rem;
+  line-height: 1.2;
+}
+
+@media (max-width: 600px) {
+  .world-map-canvas > svg {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .story-map {
+    min-height: 460px;
+    border-radius: 26px;
+  }
+
+  .story-map .route-svg {
+    top: 22px;
+    right: 10px;
+    bottom: auto;
+    left: 10px;
+    width: calc(100% - 20px);
+    height: 285px;
+  }
+
+  .story-map-legend {
+    right: 0;
+    bottom: 17px;
+    left: 0;
+    display: flex;
+    gap: 7px;
+    overflow-x: auto;
+    padding: 0 16px 3px;
+    scroll-padding-inline: 16px;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+
+  .story-map-legend::-webkit-scrollbar {
+    display: none;
+  }
+
+  .story-map-legend > div {
+    min-width: 142px;
+    min-height: 67px;
+    flex: 0 0 142px;
+    scroll-snap-align: start;
+  }
+
+  .story-map .map-coordinates {
+    display: none;
+  }
+
+  .story-map .map-watermark {
+    right: -5px;
+    bottom: 92px;
+    font-size: 3.8rem;
+  }
+}
