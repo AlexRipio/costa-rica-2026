@@ -55,6 +55,19 @@ const typographicCover = (id: string, title: string, accent: string, secondary: 
         <path d="M-120 890 C190 615 430 910 735 650 S1120 700 1520 400" fill="none" stroke="white" stroke-width="3" opacity=".3"/>
         <path d="M100 122 H510" stroke="white" stroke-width="3" opacity=".28"/>
         <path d="M890 882 H1290" stroke="white" stroke-width="3" opacity=".28"/>
+        <rect x="72" y="676" width="1256" height="224" rx="28" fill="#082b24" opacity=".28" stroke="white" stroke-width="2"/>
+        <text
+          x="700"
+          y="824"
+          fill="white"
+          font-family="Arial, Helvetica, sans-serif"
+          font-size="${Math.min(190, Math.round(1250 / Math.max(title.length, 1)))}"
+          font-weight="800"
+          letter-spacing="-5"
+          textLength="${Math.min(title.length * 120, 880)}"
+          lengthAdjust="spacingAndGlyphs"
+          text-anchor="middle"
+        >${title}</text>
       </svg>`,
     ),
   alt: `Portada gráfica del viaje a ${title}`,
