@@ -67,7 +67,7 @@ export function SiteHeader({
                     <Link href="/viajes/costa-rica-2026#itinerarios" onClick={() => setOpen(false)}>Itinerarios</Link>
                     <Link href="/viajes/costa-rica-2026#mapa-ruta" onClick={() => setOpen(false)}>Mapa</Link>
                     <Link href="/viajes/costa-rica-2026#destinos" onClick={() => setOpen(false)}>Lugares</Link>
-                    <Link href="/viajes/costa-rica-2026#maleta" onClick={() => setOpen(false)}>Maleta</Link>
+                    <Link href="/viajes/costa-rica-2026/maleta" onClick={() => setOpen(false)}>Maleta</Link>
                     <Link href="/viajes/costa-rica-2026#consejos" onClick={() => setOpen(false)}>Consejos</Link>
                   </div>
                 )}

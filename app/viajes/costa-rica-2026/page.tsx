@@ -1,6 +1,23 @@
 import type { Metadata } from 'next'
-import { ArrowDown, ArrowRight, Backpack, BookOpen, Camera, Car, CloudRain, MapPin, Moon, Plane, Route, ShieldCheck, Smartphone, WalletCards } from 'lucide-react'
+import {
+  ArrowDown,
+  ArrowRight,
+  Backpack,
+  BookOpen,
+  CalendarDays,
+  Camera,
+  Car,
+  CloudRain,
+  Coffee,
+  MapPin,
+  Moon,
+  Plane,
+  ShieldCheck,
+  WalletCards,
+} from 'lucide-react'
 import Link from 'next/link'
+import { AdSpace } from '@/components/ad-space'
+import { GoogleRouteCard } from '@/components/google-route-card'
 import { Reveal } from '@/components/reveal'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
@@ -13,92 +30,122 @@ import { images } from '@/src/data/images'
 import { initialTripData } from '@/src/data/tripData'
 
 export const metadata: Metadata = {
-  title: 'Costa Rica',
-  description: 'Nuestro itinerario de 17 días por volcanes, selva, Pacífico y Caribe en Costa Rica.',
+  title: 'Costa Rica por libre',
+  description: 'Nuestra ruta por Costa Rica, con itinerarios, mapa, lugares, consejos y todo lo que aprendimos preparando el viaje.',
 }
 
 const gallery = [images.fortuna, images.monteverde, images.santaTeresa, images.manuelAntonio, images.cahuita]
+
+const contents = [
+  { number: '01', title: 'Elige tu ruta', text: 'Versiones de 10, 15 y 20 días.', href: '#itinerarios' },
+  { number: '02', title: 'Mira el mapa', text: 'Distancias, orden y rutas guardables.', href: '#mapa-ruta' },
+  { number: '03', title: 'Conoce cada lugar', text: 'Qué hay, dónde está y cuántos días darle.', href: '#destinos' },
+  { number: '04', title: 'Prepara el viaje', text: 'Coche, clima, dinero, reservas y comida.', href: '#preparar' },
+  { number: '05', title: 'Haz la maleta', text: 'Una lista completa en su propia página.', href: '/viajes/costa-rica-2026/maleta' },
+]
 
 export default function CostaRicaPage() {
   const trip = initialTripData
 
   return (
-    <main className="costa-rica-public">
+    <main className="costa-rica-public costa-rica-blog">
       <SiteHeader overlay showTripYears={false} showCostaRicaSections />
+
       <section className="trip-hero">
-        <div className="trip-hero-media">
-          <img src={images.arenal.url} alt={images.arenal.alt} />
-        </div>
+        <div className="trip-hero-media"><img src={images.arenal.url} alt={images.arenal.alt} /></div>
         <div className="trip-hero-overlay" />
         <div className="trip-hero-copy">
           <Reveal>
-            <span className="hero-kicker">
-              <MapPin size={15} /> Centroamérica · Viaje finalizado
-            </span>
-            <h1>
-              Costa
-              <br />
-              Rica
-            </h1>
-            <p>Volcanes, selva, surf y Caribe.</p>
-            <a className="button button-light" href="#itinerarios">
-              Diseña tu ruta <ArrowDown size={17} />
-            </a>
+            <span className="hero-kicker"><MapPin size={15} /> Nuestra guía para viajar por libre</span>
+            <h1>Costa<br />Rica</h1>
+            <p>Lo que vimos, lo que aprendimos y la ruta que volveríamos a hacer.</p>
+            <a className="button button-light" href="#empezar">Empezar a preparar <ArrowDown size={17} /></a>
           </Reveal>
         </div>
-        <div className="trip-hero-facts">
-          <span>
-            <strong>17</strong> días
-          </span>
-          <span>
-            <strong>06</strong> bases
-          </span>
-          <span>
-            <strong>02</strong> océanos
-          </span>
+        <div className="trip-hero-facts trip-hero-useful-facts">
+          <span><strong>15–20</strong> días ideales</span>
+          <span><strong>4×4</strong> recomendado</span>
+          <span><strong>$$$</strong> no es barato</span>
         </div>
       </section>
 
       <nav className="trip-section-nav" aria-label="Secciones de la guía de Costa Rica">
+        <a href="#empezar">La guía</a>
         <a href="#itinerarios">Itinerarios</a>
         <a href="#mapa-ruta">Mapa</a>
         <a href="#destinos">Lugares</a>
-        <a href="#maleta">Maleta</a>
-        <a href="#consejos">Consejos</a>
+        <a href="#preparar">Preparar</a>
+        <Link href="/viajes/costa-rica-2026/maleta">Maleta</Link>
       </nav>
 
-      <section className="trip-intro-section">
-        <div className="section-shell trip-intro-grid">
-          <Reveal>
-            <span className="eyebrow">La aventura</span>
-            <h2>Una carretera entre dos océanos.</h2>
+      <section className="trip-intro-section blog-intro-section" id="empezar">
+        <div className="section-shell blog-intro-grid">
+          <Reveal className="blog-intro-title">
+            <span className="eyebrow">De Andrea y Alejandro</span>
+            <h2>Ojalá hubiéramos encontrado una guía así antes de ir.</h2>
           </Reveal>
-          <Reveal delay={0.12}>
-            <p className="large-copy">
-              Diecisiete días atravesando un país pequeño que parece contener todos los paisajes: volcanes cubiertos de
-              nubes, selva húmeda, carreteras imposibles y playas donde el tiempo se mide en atardeceres.
+          <Reveal className="blog-intro-copy" delay={0.1}>
+            <p>
+              Costa Rica parece pequeño en el mapa, pero <strong>las carreteras cambian todos los cálculos</strong>.
+              Entre un volcán y una playa pueden irse muchas horas, y querer verlo todo es la forma más rápida de
+              pasarse el viaje dentro del coche.
             </p>
-            <div className="trip-intro-details">
-              <span>
-                <Route /> 17 días de viaje
-              </span>
-              <span>
-                <Moon /> 6 bases diferentes
-              </span>
-              <span>
-                <Plane /> Madrid ↔ San José
-              </span>
+            <p>
+              Esta no es una lista de “imprescindibles” escrita desde un escritorio. Es la guía que estamos construyendo
+              con nuestra ruta: qué zonas encajan juntas, dónde merece la pena quedarse más tiempo y qué cosas conviene
+              reservar antes. Cuando añadamos nuestras fotos y vídeos, también contaremos lo que salió bien y lo que
+              cambiaríamos.
+            </p>
+            <div className="personal-note">
+              <strong>Nuestra idea:</strong> ayudarte a montar tu propio viaje, no convencerte de que copies el nuestro.
             </div>
           </Reveal>
         </div>
       </section>
 
+      <section className="blog-contents-section">
+        <div className="section-shell">
+          <Reveal className="blog-section-heading">
+            <span className="eyebrow">Por dónde empezar</span>
+            <h2>Todo está aquí. En el orden en que lo necesitas.</h2>
+          </Reveal>
+          <div className="blog-contents-grid">
+            {contents.map((item) => (
+              <Reveal key={item.number}>
+                <Link className="blog-content-card" href={item.href}>
+                  <span>{item.number}</span>
+                  <div><strong>{item.title}</strong><small>{item.text}</small></div>
+                  <ArrowRight />
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="honest-facts-section">
+        <div className="section-shell">
+          <Reveal className="blog-section-heading">
+            <span className="eyebrow eyebrow-light">Lo primero que debes saber</span>
+            <h2>Costa Rica es una pasada. Pero no siempre es fácil.</h2>
+          </Reveal>
+          <div className="honest-facts-grid">
+            <Reveal><Car /><h3>Los kilómetros engañan</h3><p>Una carretera de 150 km puede ocupar buena parte del día. Planifica por horas de conducción, no por distancia.</p></Reveal>
+            <Reveal><WalletCards /><h3>Es más caro de lo esperado</h3><p>Entradas, actividades y coche pesan mucho. Las sodas, una ruta más corta y reservar con tiempo ayudan a controlar el gasto.</p></Reveal>
+            <Reveal><CloudRain /><h3>La lluvia no arruina el viaje</h3><p>El Pacífico y el Caribe no siguen el mismo calendario. Lleva alternativas y decide algunas cosas al despertar.</p></Reveal>
+            <Reveal><ShieldCheck /><h3>La naturaleza manda</h3><p>Entradas oficiales, guías responsables y nada de alimentar animales. Aquí viajar bien también significa molestar poco.</p></Reveal>
+          </div>
+        </div>
+      </section>
+
+      <div className="section-shell"><AdSpace /></div>
+
       <section className="route-options-section" id="itinerarios">
         <div className="section-shell">
           <Reveal className="route-options-heading">
-            <span className="eyebrow">Elige tu ritmo</span>
-            <h2>Una ruta que se adapta a tus días.</h2>
-            <p>Diez días para lo esencial, quince para sumar el Pacífico y veinte para cruzar también hasta el Caribe.</p>
+            <span className="eyebrow">Tres viajes posibles</span>
+            <h2>¿Tienes 10, 15 o 20 días?</h2>
+            <p>No hemos comprimido la misma ruta. Cada opción elimina desvíos para que el viaje siga teniendo sentido.</p>
           </Reveal>
           <TripItineraryPlanner />
         </div>
@@ -107,21 +154,20 @@ export default function CostaRicaPage() {
       <section className="trip-route-section" id="mapa-ruta">
         <div className="section-shell">
           <Reveal className="split-heading">
-            <div>
-              <span className="eyebrow eyebrow-light">La ruta completa</span>
-              <h2>Pacífico, montaña y Caribe.</h2>
-            </div>
-            <p>Una ruta circular en 4×4 que cambia de clima y ritmo casi cada dos días.</p>
+            <div><span className="eyebrow eyebrow-light">La ruta, de un vistazo</span><h2>Primero entiende el país. Luego elige las paradas.</h2></div>
+            <p>Haz zoom, pulsa cada punto y fíjate en algo importante: el Caribe queda al otro lado de la cordillera.</p>
           </Reveal>
           <StoryMap destinations={trip.destinations} />
+          <GoogleRouteCard />
         </div>
       </section>
 
-      <section className="destinations-editorial" id="destinos">
+      <section className="destinations-editorial blog-destinations" id="destinos">
         <div className="section-shell">
-          <Reveal className="center-heading">
-            <span className="eyebrow">Seis mundos</span>
-            <h2>Los lugares que marcan el viaje</h2>
+          <Reveal className="blog-section-heading">
+            <span className="eyebrow">¿Dónde vas exactamente?</span>
+            <h2>Seis paradas que no se parecen entre sí.</h2>
+            <p>Cada guía explica dónde está el lugar, cómo llegar, qué merece la pena y cómo encajarlo en la ruta.</p>
           </Reveal>
           <div className="editorial-destination-grid">
             {trip.destinations.map((destination, index) => {
@@ -129,26 +175,15 @@ export default function CostaRicaPage() {
               const guide = costaRicaGuides.find((item) => item.destinationId === destination.id)
               return (
                 <Reveal className={`destination-story destination-story-${(index % 3) + 1}`} key={destination.id}>
-                  <Link
-                    className="destination-story-link"
-                    href={`/viajes/costa-rica-2026/${guide?.slug}`}
-                  >
-                    <div className="destination-photo">
-                      <img src={image.url} alt={image.alt} />
-                      <span>0{index + 1}</span>
-                    </div>
+                  <Link className="destination-story-link" href={`/viajes/costa-rica-2026/${guide?.slug}`}>
+                    <div className="destination-photo"><img src={image.url} alt={image.alt} /><span>0{index + 1}</span></div>
                     <div className="destination-story-copy">
-                      <small>Etapa 0{index + 1}</small>
-                      <h3>{destination.name}</h3>
-                      <p>
-                        {destination.activities
-                          .filter((activity) => !/fútbol|mundial|partido/i.test(activity))
-                          .slice(0, 3)
-                          .join(' · ')}
-                      </p>
+                      <small>{guide?.bestFor}</small>
+                      <h3>{guide?.title}</h3>
+                      <p>{guide?.intro}</p>
                       <div className="destination-card-footer">
-                        <span><Moon size={14} /> {destination.nights} {destination.nights === 1 ? 'noche' : 'noches'}</span>
-                        <strong><BookOpen size={14} /> Guía práctica</strong>
+                        <span><Moon size={14} /> {guide?.stay}</span>
+                        <strong>Entender esta parada <ArrowRight size={14} /></strong>
                       </div>
                     </div>
                   </Link>
@@ -159,46 +194,103 @@ export default function CostaRicaPage() {
         </div>
       </section>
 
-      <section className="travel-carousel-section" aria-label="Explora las guías por destino">
+      <section className="travel-carousel-section" aria-label="Más imágenes de los destinos">
         <div className="section-shell">
           <Reveal className="split-heading gallery-heading">
-            <div><span className="eyebrow">Explora a tu manera</span><h2>Seis lugares, seis ritmos distintos.</h2></div>
+            <div><span className="eyebrow">Para ir abriendo boca</span><h2>Así cambia el paisaje durante la ruta.</h2></div>
+            <Camera size={34} />
           </Reveal>
           <TravelAutoCarousel />
         </div>
       </section>
 
-      <section className="packing-section" id="maleta">
-        <div className="section-shell packing-grid">
-          <Reveal className="packing-heading">
-            <span className="eyebrow eyebrow-light">Maleta inteligente</span>
-            <h2>Menos cosas. Las cosas correctas.</h2>
-            <p>En una misma ruta tendrás humedad, lluvia, montaña fresca, playa y caminos de tierra.</p>
+      <section className="prepare-guide-section" id="preparar">
+        <div className="section-shell">
+          <Reveal className="prepare-guide-heading">
+            <span className="eyebrow">Preparar Costa Rica por libre</span>
+            <h2>Las preguntas que aparecen antes de comprar los vuelos.</h2>
+            <p>Respuestas directas, con lo importante en negrita y sin esconder la información útil entre párrafos eternos.</p>
           </Reveal>
-          <div className="packing-cards">
-            {[
-              { icon: CloudRain, title: 'Lluvia', text: 'Chubasquero ligero, funda de mochila y bolsas para separar ropa mojada.' },
-              { icon: Backpack, title: 'Senderos', text: 'Calzado cerrado con agarre, botella reutilizable y mochila pequeña.' },
-              { icon: Smartphone, title: 'Conexión', text: 'Mapas sin conexión, batería externa y capturas de entradas y reservas.' },
-              { icon: ShieldCheck, title: 'Sol y fauna', text: 'Protector biodegradable, repelente y nada de alimentar animales.' },
-            ].map(({ icon: Icon, title, text }) => (
-              <Reveal className="packing-card" key={title}><Icon /><h3>{title}</h3><p>{text}</p></Reveal>
-            ))}
+
+          <div className="prepare-article-grid">
+            <Reveal className="prepare-article">
+              <CalendarDays />
+              <span>Cuándo ir</span>
+              <h3>No hay una única temporada para todo el país.</h3>
+              <p>
+                En el Pacífico, la época más seca suele ir de diciembre a marzo; el Caribe tiene otro patrón y puede
+                funcionar mejor en septiembre y octubre. <strong>Elige la fecha según las zonas</strong>, no según una tabla genérica.
+              </p>
+              <a href="https://www.visitcostarica.com/planning-your-trip/climate" target="_blank" rel="noreferrer">Clima oficial por regiones <ArrowRight /></a>
+            </Reveal>
+            <Reveal className="prepare-article">
+              <Car />
+              <span>Cómo moverse</span>
+              <h3>El coche da libertad, pero también marca el ritmo.</h3>
+              <p>
+                Para esta ruta, un coche alto resulta cómodo en montaña y accesos secundarios. <strong>Evita conducir de noche</strong>,
+                descarga mapas sin conexión y pregunta siempre si el seguro incluye lo que te están prometiendo.
+              </p>
+            </Reveal>
+            <Reveal className="prepare-article">
+              <WalletCards />
+              <span>Cuánto cuesta</span>
+              <h3>Presupuesto medio-alto, incluso viajando por libre.</h3>
+              <p>
+                Lo que más pesa suele ser coche, alojamiento y actividades. Comer en <strong>sodas locales</strong>, alternar tours
+                con senderos y no cambiar de hotel cada noche reduce bastante el gasto.
+              </p>
+            </Reveal>
+            <Reveal className="prepare-article">
+              <BookOpen />
+              <span>Qué reservar</span>
+              <h3>Parques y ferris antes; playas y tardes libres después.</h3>
+              <p>
+                Compra entradas de parques en canales oficiales y reserva alojamientos si viajas en temporada alta.
+                Mantén flexibles las actividades que dependen del clima.
+              </p>
+              <a href="https://serviciosenlinea.sinac.go.cr/" target="_blank" rel="noreferrer">Entradas oficiales SINAC <ArrowRight /></a>
+            </Reveal>
+            <Reveal className="prepare-article">
+              <Coffee />
+              <span>Qué comer</span>
+              <h3>Casados, gallo pinto y cocina caribeña.</h3>
+              <p>
+                Las sodas son una forma sencilla de comer bien. En el Caribe busca rice and beans cocinado con coco;
+                en las zonas turísticas compara precios antes de sentarte.
+              </p>
+            </Reveal>
+            <Reveal className="prepare-article prepare-packing-link">
+              <Backpack />
+              <span>Qué llevar</span>
+              <h3>Una maleta para lluvia, montaña y playa.</h3>
+              <p>Hemos separado la lista completa para que puedas abrirla mientras preparas el equipaje y no mezclarla con la ruta.</p>
+              <Link href="/viajes/costa-rica-2026/maleta">Abrir la guía de equipaje <ArrowRight /></Link>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      <section className="travel-tips-section" id="consejos">
+      <section className="media-journal-section">
         <div className="section-shell">
-          <Reveal className="center-heading">
-            <span className="eyebrow">Antes de arrancar</span>
-            <h2>Consejos que evitan problemas.</h2>
+          <Reveal className="blog-section-heading">
+            <span className="eyebrow eyebrow-light">Diario visual</span>
+            <h2>Aquí vivirán nuestras fotos y vídeos.</h2>
+            <p>La estructura ya está preparada para sustituir estas imágenes por la carpeta personal que nos enviarás.</p>
           </Reveal>
-          <div className="travel-tips-grid">
-            <Reveal><Car /><span>01</span><h3>Conduce con luz</h3><p>Las distancias engañan. Curvas, lluvia y tráfico convierten pocos kilómetros en varias horas.</p></Reveal>
-            <Reveal><WalletCards /><span>02</span><h3>Combina tarjeta y efectivo</h3><p>La mayoría de lugares aceptan tarjeta, pero aparcamientos, propinas y pequeños negocios pueden no hacerlo.</p></Reveal>
-            <Reveal><CloudRain /><span>03</span><h3>Decide cada mañana</h3><p>Conserva alternativas de lluvia y mueve playa, volcán o senderos según las condiciones reales.</p></Reveal>
-            <Reveal><ShieldCheck /><span>04</span><h3>Reserva lo limitado</h3><p>Parques nacionales y ferris primero; playas y paseos flexibles después.</p></Reveal>
+          <div className="media-journal-grid">
+            {gallery.slice(0, 3).map((image, index) => (
+              <figure className={`media-photo media-photo-${index + 1}`} key={image.id}>
+                <img src={image.url} alt={image.alt} />
+                <figcaption>{image.alt}</figcaption>
+              </figure>
+            ))}
+            <div className="video-placeholder">
+              <span>Vídeo 01</span><strong>La ruta en movimiento</strong><p>Espacio preparado para un vídeo horizontal o de YouTube.</p>
+            </div>
+            <div className="video-placeholder">
+              <span>Vídeo 02</span><strong>Lo que no sale en las fotos</strong><p>Perfecto para una pieza corta grabada con el móvil.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -206,46 +298,34 @@ export default function CostaRicaPage() {
       <section className="itinerary-section" id="diario">
         <div className="section-shell itinerary-grid">
           <Reveal className="itinerary-heading">
-            <span className="eyebrow">Nuestra ruta</span>
-            <h2>El viaje original, día a día.</h2>
-            <p>Una referencia completa para combinar lugares o ampliar cualquiera de los itinerarios anteriores.</p>
-            <Link className="private-hint" href="/familia">
-              ¿Eres de la familia? Accede al seguimiento privado <ArrowRight size={15} />
-            </Link>
+            <span className="eyebrow">Nuestro viaje</span>
+            <h2>La ruta original, día a día.</h2>
+            <p>No es la única forma de hacerlo. Es la nuestra, contada para que puedas quedarte con lo que te sirva.</p>
+            <Link className="private-hint" href="/familia">¿Eres de la familia? Accede al seguimiento privado <ArrowRight size={15} /></Link>
           </Reveal>
-          <Reveal>
-            <TripTimeline days={trip.days} />
-          </Reveal>
+          <Reveal><TripTimeline days={trip.days} /></Reveal>
         </div>
       </section>
 
-      <section className="gallery-section">
-        <div className="section-shell">
-          <Reveal className="split-heading gallery-heading">
-            <div>
-              <span className="eyebrow">Postales de la ruta</span>
-              <h2>Un país difícil de guardar en una sola foto.</h2>
-            </div>
-            <Camera size={34} />
-          </Reveal>
-          <div className="travel-gallery">
-            {gallery.map((image, index) => (
-              <Reveal className={`gallery-item gallery-item-${index + 1}`} delay={index * 0.05} key={image.id}>
-                <img src={image.url} alt={image.alt} />
-                <span>{image.alt}</span>
-              </Reveal>
-            ))}
+      <section className="blog-faq-section">
+        <div className="section-shell blog-faq-grid">
+          <Reveal><span className="eyebrow">Preguntas rápidas</span><h2>Lo que siempre acaba saliendo en el grupo de viaje.</h2></Reveal>
+          <div>
+            <details><summary>¿Cuántos días merece Costa Rica?</summary><p>Con 10 días hay que elegir tres zonas. Con 15 se puede sumar el Pacífico. Entre 18 y 20 días el Caribe empieza a encajar sin convertir el viaje en una carrera.</p></details>
+            <details><summary>¿Hace falta un 4×4?</summary><p>No para cada carretera, pero un coche alto aporta tranquilidad en Monteverde, Bajos del Toro y accesos secundarios. Pregunta al alojamiento por el último tramo.</p></details>
+            <details><summary>¿Es un destino barato?</summary><p>No especialmente. La naturaleza parece gratuita, pero parques, guías, coche y actividades suman rápido. Se puede ajustar el viaje alternando experiencias de pago con playas y senderos.</p></details>
+            <details><summary>¿Se puede hacer en transporte público?</summary><p>Sí, pero exige más tiempo y planificación. Para una ruta con muchas paradas, los buses y shuttles funcionan mejor si reduces el número de cambios de base.</p></details>
           </div>
         </div>
       </section>
 
+      <div className="section-shell"><AdSpace compact /></div>
+
       <section className="trip-closing">
         <Reveal>
-          <span>VIAJE COMPLETADO</span>
-          <h2>Pura vida, Costa Rica.</h2>
-          <Link className="button button-light" href="/viajes">
-            Todos los viajes <ArrowRight size={17} />
-          </Link>
+          <span>UNA GUÍA QUE SEGUIRÁ CRECIENDO</span>
+          <h2>Nos falta lo mejor: contaros lo que vivimos.</h2>
+          <Link className="button button-light" href="/viajes">Todos los viajes <ArrowRight size={17} /></Link>
         </Reveal>
       </section>
       <SiteFooter />
