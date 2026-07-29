@@ -11414,6 +11414,17 @@ img {
   text-wrap: balance;
 }
 
+.costa-rica-blog p.living-statement {
+  max-width: 1180px;
+  margin: 0 auto;
+  font-family: var(--sans);
+  font-size: clamp(3.2rem, 6.4vw, 6.8rem);
+  font-weight: 800;
+  line-height: .94;
+  letter-spacing: -.065em;
+  text-wrap: balance;
+}
+
 .living-word {
   display: inline-block;
   transition: transform .35s cubic-bezier(.2,.8,.2,1), color .35s ease;
@@ -11638,6 +11649,11 @@ img {
   }
 
   .living-statement {
+    font-size: clamp(2.45rem, 12vw, 4.2rem);
+    line-height: .96;
+  }
+
+  .costa-rica-blog p.living-statement {
     font-size: clamp(2.45rem, 12vw, 4.2rem);
     line-height: .96;
   }
