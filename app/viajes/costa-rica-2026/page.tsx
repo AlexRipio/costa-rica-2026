@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
-import { ArrowDown, ArrowRight, Camera, MapPin, Moon, Plane, Route } from 'lucide-react'
+import { ArrowDown, ArrowRight, BookOpen, Camera, MapPin, Moon, Plane, Route } from 'lucide-react'
 import Link from 'next/link'
 import { Reveal } from '@/components/reveal'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { StoryMap } from '@/components/story-map'
 import { TripTimeline } from '@/components/trip-timeline'
+import { costaRicaGuides } from '@/src/data/costaRicaGuides'
 import { images } from '@/src/data/images'
 import { initialTripData } from '@/src/data/tripData'
 
@@ -95,7 +96,7 @@ export default function CostaRicaPage() {
         </div>
       </section>
 
-      <section className="destinations-editorial">
+      <section className="destinations-editorial" id="destinos">
         <div className="section-shell">
           <Reveal className="center-heading">
             <span className="eyebrow">Seis mundos</span>
@@ -104,25 +105,32 @@ export default function CostaRicaPage() {
           <div className="editorial-destination-grid">
             {trip.destinations.map((destination, index) => {
               const image = images[destination.image]
+              const guide = costaRicaGuides.find((item) => item.destinationId === destination.id)
               return (
                 <Reveal className={`destination-story destination-story-${(index % 3) + 1}`} key={destination.id}>
-                  <div className="destination-photo">
-                    <img src={image.url} alt={image.alt} />
-                    <span>0{index + 1}</span>
-                  </div>
-                  <div className="destination-story-copy">
-                    <small>Etapa 0{index + 1}</small>
-                    <h3>{destination.name}</h3>
-                    <p>
-                      {destination.activities
-                        .filter((activity) => !/fútbol|mundial|partido/i.test(activity))
-                        .slice(0, 3)
-                        .join(' · ')}
-                    </p>
-                    <span>
-                      <Moon size={14} /> {destination.nights} noches
-                    </span>
-                  </div>
+                  <Link
+                    className="destination-story-link"
+                    href={`/viajes/costa-rica-2026/${guide?.slug}`}
+                  >
+                    <div className="destination-photo">
+                      <img src={image.url} alt={image.alt} />
+                      <span>0{index + 1}</span>
+                    </div>
+                    <div className="destination-story-copy">
+                      <small>Etapa 0{index + 1}</small>
+                      <h3>{destination.name}</h3>
+                      <p>
+                        {destination.activities
+                          .filter((activity) => !/fútbol|mundial|partido/i.test(activity))
+                          .slice(0, 3)
+                          .join(' · ')}
+                      </p>
+                      <div className="destination-card-footer">
+                        <span><Moon size={14} /> {destination.nights} {destination.nights === 1 ? 'noche' : 'noches'}</span>
+                        <strong><BookOpen size={14} /> Guía práctica</strong>
+                      </div>
+                    </div>
+                  </Link>
                 </Reveal>
               )
             })}

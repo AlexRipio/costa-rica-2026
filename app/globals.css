@@ -2752,6 +2752,544 @@ img {
   }
 }
 
+/* Clickable destination cards. */
+.destination-story-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.destination-story-link:focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: 6px;
+}
+
+.destination-card-footer {
+  margin-top: 14px;
+  padding-top: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.destination-card-footer span,
+.destination-card-footer strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .67rem;
+}
+
+.destination-card-footer span {
+  color: var(--moss);
+  font-weight: 750;
+}
+
+.destination-card-footer strong {
+  color: var(--forest);
+  font-weight: 900;
+}
+
+/* Practical Costa Rica destination guides. */
+.destination-guide-page {
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.guide-hero {
+  position: relative;
+  min-height: 82vh;
+  display: flex;
+  align-items: end;
+  overflow: hidden;
+  color: #fff;
+  background: #173f35;
+}
+
+.guide-hero > img,
+.guide-hero-shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.guide-hero > img {
+  object-fit: cover;
+}
+
+.guide-hero-shade {
+  background:
+    linear-gradient(180deg, rgba(7, 26, 21, .12) 15%, rgba(7, 26, 21, .35) 55%, rgba(7, 26, 21, .92) 100%),
+    linear-gradient(90deg, rgba(7, 26, 21, .45), transparent 65%);
+}
+
+.guide-hero-copy {
+  position: relative;
+  z-index: 1;
+  padding-bottom: clamp(52px, 8vw, 105px);
+}
+
+.guide-hero-copy > a {
+  margin-bottom: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-size: .69rem;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.guide-hero-copy > span {
+  display: block;
+  color: #f7c66d;
+  font-size: .66rem;
+  font-weight: 900;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.guide-hero-copy h1 {
+  max-width: 920px;
+  margin: 10px 0 14px;
+  font-family: var(--serif);
+  font-size: clamp(4rem, 10vw, 8.8rem);
+  font-weight: 450;
+  letter-spacing: -.055em;
+  line-height: .84;
+}
+
+.guide-hero-copy p {
+  max-width: 650px;
+  margin: 0;
+  color: #d7e3de;
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  line-height: 1.4;
+}
+
+.guide-intro {
+  padding: 120px 0;
+}
+
+.guide-intro-grid {
+  display: grid;
+  grid-template-columns: .78fr 1.22fr;
+  gap: 8vw;
+  align-items: start;
+}
+
+.guide-intro h2,
+.guide-section-heading h2,
+.guide-advice-title h2,
+.guide-mobility-card h2,
+.guide-sources h2 {
+  margin: 10px 0 0;
+  font-family: var(--serif);
+  font-size: clamp(2.7rem, 5vw, 5.3rem);
+  font-weight: 450;
+  letter-spacing: -.045em;
+  line-height: .95;
+}
+
+.guide-intro .large-copy {
+  margin-top: 0;
+}
+
+.guide-quick-facts {
+  margin-top: 45px;
+  padding-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.guide-quick-facts > span {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 8px;
+}
+
+.guide-quick-facts svg {
+  grid-row: 1 / 3;
+  color: var(--coral);
+}
+
+.guide-quick-facts small {
+  color: var(--muted);
+  font-size: .57rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.guide-quick-facts strong {
+  margin-top: 4px;
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.guide-essentials {
+  padding: 120px 0;
+  color: #fff;
+  background: #123f35;
+}
+
+.guide-section-heading {
+  max-width: 760px;
+  margin-bottom: 60px;
+}
+
+.guide-section-heading h2 {
+  color: inherit;
+}
+
+.guide-essential-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255, 255, 255, .14);
+  border: 1px solid rgba(255, 255, 255, .14);
+}
+
+.guide-essential-grid article {
+  min-height: 330px;
+  padding: 38px;
+  background: #123f35;
+}
+
+.guide-essential-grid article > span {
+  color: #f7c66d;
+  font-family: var(--serif);
+  font-size: 1rem;
+}
+
+.guide-essential-grid h3,
+.guide-plan-grid h3 {
+  margin: 75px 0 15px;
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.guide-essential-grid p,
+.guide-plan-grid p {
+  margin: 0;
+  color: #bdd0c8;
+  font-size: .78rem;
+  line-height: 1.7;
+}
+
+.guide-advice-section {
+  padding: 125px 0;
+  background: #f4efe4;
+}
+
+.guide-advice-grid {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 9vw;
+}
+
+.guide-advice-title p {
+  max-width: 410px;
+  margin-top: 25px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.guide-advice-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.guide-advice-list li {
+  padding: 25px 4px;
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 14px;
+  align-items: start;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  line-height: 1.45;
+}
+
+.guide-advice-list svg {
+  margin-top: 2px;
+  color: var(--coral);
+}
+
+.guide-plan-section {
+  padding: 125px 0;
+  background: var(--paper);
+}
+
+.guide-section-heading-dark {
+  color: var(--ink);
+}
+
+.guide-plan-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.guide-plan-grid article {
+  min-height: 320px;
+  padding: 32px;
+  color: #fff;
+  background: #1a4c40;
+  border-radius: 2px;
+}
+
+.guide-plan-grid article:nth-child(2) {
+  background: #e9684e;
+}
+
+.guide-plan-grid article:nth-child(3) {
+  color: var(--ink);
+  background: #efc063;
+}
+
+.guide-plan-grid article > span {
+  font-size: .6rem;
+  font-weight: 900;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.guide-plan-grid article:nth-child(3) p {
+  color: #52615c;
+}
+
+.guide-practical-section {
+  padding: 120px 0;
+  background: #10382f;
+}
+
+.guide-practical-grid {
+  display: grid;
+  grid-template-columns: 1.4fr .8fr .8fr;
+  gap: 16px;
+}
+
+.guide-practical-grid article {
+  padding: 36px;
+  border-radius: 2px;
+}
+
+.guide-practical-grid article > svg {
+  margin-bottom: 60px;
+}
+
+.guide-mobility-card {
+  color: #fff;
+  background: #194f42;
+}
+
+.guide-mobility-card h2 {
+  font-size: clamp(2.7rem, 4.3vw, 4.6rem);
+}
+
+.guide-mobility-card p {
+  max-width: 580px;
+  color: #c4d6cf;
+  line-height: 1.75;
+}
+
+.guide-list-card {
+  color: var(--ink);
+  background: #f1c468;
+}
+
+.guide-avoid-card {
+  background: #efe9dc;
+}
+
+.guide-list-card h3 {
+  margin: 0 0 24px;
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.guide-list-card ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.guide-list-card li {
+  padding: 6px 0;
+  font-size: .75rem;
+  line-height: 1.5;
+}
+
+.guide-sources {
+  padding: 105px 0;
+  background: #f4efe4;
+}
+
+.guide-sources-inner {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 8vw;
+}
+
+.guide-sources h2 {
+  font-size: clamp(2.6rem, 4.5vw, 4.7rem);
+}
+
+.guide-sources p {
+  max-width: 440px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.guide-source-links {
+  border-top: 1px solid var(--line);
+}
+
+.guide-source-links a {
+  padding: 22px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  color: var(--forest);
+  border-bottom: 1px solid var(--line);
+  font-size: .78rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.guide-next {
+  padding: 55px 0;
+  color: #fff;
+  background: var(--coral);
+}
+
+.guide-next a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .guide-intro-grid,
+  .guide-advice-grid,
+  .guide-sources-inner {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .guide-essential-grid,
+  .guide-plan-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-essential-grid article {
+    min-height: 0;
+  }
+
+  .guide-essential-grid h3,
+  .guide-plan-grid h3 {
+    margin-top: 45px;
+  }
+
+  .guide-practical-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .guide-mobility-card {
+    grid-column: 1 / 3;
+  }
+}
+
+@media (max-width: 600px) {
+  .destination-card-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .guide-hero {
+    min-height: 680px;
+  }
+
+  .guide-hero-copy {
+    padding-bottom: 48px;
+  }
+
+  .guide-hero-copy > a {
+    margin-bottom: 34px;
+  }
+
+  .guide-hero-copy h1 {
+    font-size: clamp(3.55rem, 17vw, 5.4rem);
+  }
+
+  .guide-hero-copy p {
+    font-size: 1.03rem;
+  }
+
+  .guide-intro,
+  .guide-essentials,
+  .guide-advice-section,
+  .guide-plan-section,
+  .guide-practical-section,
+  .guide-sources {
+    padding: 82px 0;
+  }
+
+  .guide-quick-facts {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .guide-section-heading {
+    margin-bottom: 38px;
+  }
+
+  .guide-essential-grid article,
+  .guide-plan-grid article {
+    padding: 27px;
+  }
+
+  .guide-plan-grid article {
+    min-height: 270px;
+  }
+
+  .guide-practical-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-mobility-card {
+    grid-column: auto;
+  }
+
+  .guide-practical-grid article {
+    padding: 28px;
+  }
+
+  .guide-practical-grid article > svg {
+    margin-bottom: 42px;
+  }
+}
+
 /* Family journey hub */
 .family-hub-page {
   min-height: 100svh;
