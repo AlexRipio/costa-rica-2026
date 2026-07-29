@@ -6959,10 +6959,10 @@ img {
 .hero-year-mark {
   position: absolute;
   z-index: 2;
-  right: -10px;
+  right: -16px;
   top: 50%;
-  width: clamp(86px, 7vw, 112px);
-  height: min(72vh, 690px);
+  width: clamp(120px, 10vw, 155px);
+  height: min(80vh, 790px);
   overflow: hidden;
   pointer-events: none;
   transform: translateY(-50%);
@@ -6972,10 +6972,11 @@ img {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: min(72vh, 690px);
+  width: min(80vh, 790px);
   max-width: none;
   height: auto;
-  opacity: .42;
+  opacity: .52;
+  mix-blend-mode: screen;
   transform: translate(-50%, -50%) rotate(90deg);
 }
 
