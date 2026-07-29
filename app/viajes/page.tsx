@@ -7,8 +7,8 @@ import { SiteHeader } from '@/components/site-header'
 import { trips } from '@/data/site'
 
 export const metadata: Metadata = {
-  title: 'Viajes',
-  description: 'Todas las rutas y diarios de viaje de Viajan2Juntos.',
+  title: 'Guías de viaje, rutas e itinerarios',
+  description: 'Guías de viaje de Viajan2Juntos organizadas por continente y país: rutas por libre, mapas, itinerarios y consejos útiles para preparar cada destino.',
   alternates: { canonical: '/viajes' },
 }
 
@@ -48,7 +48,7 @@ export default function TripsPage() {
       <section className="page-heading">
         <div className="section-shell">
           <Reveal>
-            <span className="eyebrow">Nuestro atlas personal</span>
+            <span className="eyebrow">Atlas de viajes</span>
             <h1>Viajes</h1>
             <p>Cada lugar tiene una ruta, una banda sonora y una historia que merece ser recordada.</p>
           </Reveal>

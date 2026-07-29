@@ -14238,3 +14238,67 @@ main small {
     text-align: center;
   }
 }
+
+/* Clean, highly legible navigation typography. */
+.drawer-all-trips span,
+.drawer-main-link,
+.drawer-continent > summary span,
+.drawer-country > summary span,
+.drawer-country-trips strong {
+  font-family: var(--ui);
+  letter-spacing: -.015em;
+}
+
+.drawer-main-link {
+  min-height: 54px;
+  padding: 13px 0;
+  font-size: 1.12rem;
+  font-weight: 760;
+  line-height: 1.2;
+}
+
+.drawer-head {
+  font-family: var(--ui);
+  font-size: .74rem;
+  letter-spacing: .08em;
+}
+
+.drawer-all-trips span {
+  font-size: 1.08rem;
+  font-weight: 760;
+}
+
+.drawer-continent > summary span {
+  font-size: 1.08rem;
+  font-weight: 760;
+  line-height: 1.2;
+}
+
+.drawer-country > summary span {
+  font-size: 1rem;
+  font-weight: 740;
+  line-height: 1.25;
+}
+
+.drawer-country-trips strong {
+  overflow: visible;
+  font-size: .98rem;
+  font-weight: 740;
+  line-height: 1.22;
+  text-overflow: clip;
+}
+
+.drawer-continent > summary small,
+.drawer-country > summary small,
+.drawer-country-trips small,
+.drawer-all-trips small {
+  font-size: .78rem;
+  font-weight: 650;
+  line-height: 1.25;
+}
+
+/* Generated covers are abstract artwork; never crop a duplicated destination title. */
+.trip-index-image img,
+.drawer-country-trips img {
+  object-position: center;
+}

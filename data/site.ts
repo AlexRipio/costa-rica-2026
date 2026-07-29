@@ -3,7 +3,7 @@ import { images, type TripImage } from '@/src/data/images'
 export const brand = {
   name: 'Viajan2Juntos',
   tagline: 'Dos viajeros, un mapa y muchas historias.',
-  description: 'Un diario visual de viajes, rutas imperfectas y lugares a los que siempre querríamos volver.',
+  description: 'Guías de viaje, rutas por libre, mapas y consejos útiles contados después de vivir cada destino.',
 }
 
 export type Trip = {
@@ -47,13 +47,17 @@ const typographicCover = (id: string, title: string, accent: string, secondary: 
         </defs>
         <rect width="1400" height="1000" fill="url(#g)"/>
         <rect width="1400" height="1000" fill="url(#p)"/>
-        <circle cx="1130" cy="170" r="115" fill="none" stroke="white" stroke-width="2" opacity=".28"/>
-        <path d="M-80 770 C220 560 420 890 720 650 S1110 700 1500 430" fill="none" stroke="white" stroke-width="3" opacity=".34"/>
-        <text x="90" y="790" fill="white" font-family="Arial, sans-serif" font-size="142" font-weight="800" letter-spacing="-8">${title}</text>
-        <text x="98" y="875" fill="white" opacity=".72" font-family="Arial, sans-serif" font-size="28" letter-spacing="7">VIAJAN2JUNTOS · ARCHIVO PERSONAL</text>
+        <circle cx="1110" cy="185" r="118" fill="none" stroke="white" stroke-width="3" opacity=".34"/>
+        <circle cx="258" cy="238" r="18" fill="white" opacity=".78"/>
+        <circle cx="735" cy="566" r="18" fill="white" opacity=".78"/>
+        <circle cx="1170" cy="744" r="18" fill="white" opacity=".78"/>
+        <path d="M258 238 C390 350 560 440 735 566 S1010 675 1170 744" fill="none" stroke="white" stroke-width="5" stroke-linecap="round" opacity=".52"/>
+        <path d="M-120 890 C190 615 430 910 735 650 S1120 700 1520 400" fill="none" stroke="white" stroke-width="3" opacity=".3"/>
+        <path d="M100 122 H510" stroke="white" stroke-width="3" opacity=".28"/>
+        <path d="M890 882 H1290" stroke="white" stroke-width="3" opacity=".28"/>
       </svg>`,
     ),
-  alt: `Portada tipográfica del viaje a ${title}; fotografía personal pendiente`,
+  alt: `Portada gráfica del viaje a ${title}`,
   author: 'Viajan2Juntos',
   license: 'Diseño propio',
   source: '',
@@ -252,11 +256,11 @@ export const trips: Trip[] = [
     territory: 'Asturias · España',
     scope: 'nacional',
     year: 'Fecha pendiente',
-    title: 'Asturias y Luarca',
-    subtitle: 'El norte visto desde uno de sus pueblos marineros',
+    title: 'Asturias',
+    subtitle: 'Mar, montaña y pueblos del norte',
     dates: 'Fecha por completar',
     duration: 'Por completar',
-    bases: 'Luarca',
+    bases: 'Asturias',
     status: 'Historia vivida',
     image: typographicCover('asturias-luarca', 'ASTURIAS', '#174e52', '#5d8c78'),
     hasPersonalPhotos: false,

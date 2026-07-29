@@ -1,7 +1,7 @@
 export const siteUrl = 'https://viajan2juntos.vercel.app'
 export const siteName = 'Viajan2Juntos'
 export const siteDescription =
-  'Blog de viajes en pareja de Andrea y Alejandro: rutas por libre, itinerarios, mapas y consejos contados después de vivir cada destino.'
+  'Guías de viaje de Andrea y Alejandro: rutas por libre, itinerarios, mapas y consejos útiles contados después de vivir cada destino.'
 export const contactEmail = 'hola@viajan2juntos.com'
 export const tiktokUrl = 'https://www.tiktok.com/@viajan2juntos'
 export const defaultSocialImage = '/about/espana-playa.jpeg'

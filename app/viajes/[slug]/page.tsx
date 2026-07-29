@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const trip = trips.find((item) => item.slug === slug && item.slug !== 'costa-rica-2026')
   const journal = travelJournals[slug]
   if (!trip || !journal) return {}
-  const description = `${journal.introTitle} Diario personal de Andrea y Alejandro: datos confirmados, mapa y recuerdos pendientes de completar.`
+  const description = `${journal.introTitle} Guía de viaje de Andrea y Alejandro con mapa, ruta, lugares y consejos para preparar el destino.`
   const socialImage = trip.hasPersonalPhotos ? trip.image.url : defaultSocialImage
 
   return {
