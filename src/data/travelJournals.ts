@@ -35,7 +35,7 @@ const pending = (item: string) => `TODO: completar con Alejandro — ${item}`
 export const travelJournals: Record<string, TravelJournal> = {
   'filipinas-2024': {
     slug: 'filipinas-2024',
-    kicker: 'Julio de 2024 · nuestro viaje con amigos',
+    kicker: 'Viaje entre islas · con amigos',
     introTitle: 'Cuatro amigos y un país que todavía estamos ordenando.',
     intro: [
       'Filipinas fue nuestro gran viaje de julio de 2024. No viajamos solos: éramos cuatro amigos, dos parejas, compartiendo trayectos, decisiones y días entre islas.',
@@ -68,7 +68,7 @@ export const travelJournals: Record<string, TravelJournal> = {
   },
   'sri-lanka-2025': {
     slug: 'sri-lanka-2025',
-    kicker: 'Agosto de 2025 · historia vivida',
+    kicker: 'Ruta por Sri Lanka · guía en construcción',
     introTitle: 'La isla está en el mapa; ahora toca recuperar nuestra ruta.',
     intro: [
       'Sri Lanka fue uno de nuestros grandes viajes de 2025. El archivo actual conserva tres ideas muy claras —templos, trenes y plantaciones de té— y dos referencias visuales: Sigiriya y las tierras altas.',
@@ -100,28 +100,36 @@ export const travelJournals: Record<string, TravelJournal> = {
   },
   'italia-2025': {
     slug: 'italia-2025',
-    kicker: 'Noviembre de 2025 · viaje independiente de Roma',
-    introTitle: 'Italia tuvo dos viajes y este fue el primero.',
+    kicker: 'Norte de Italia · tres ciudades',
+    introTitle: 'Venecia, Bérgamo y Verona en un viaje distinto de Roma.',
     intro: [
-      'En noviembre de 2025 hicimos un viaje a Italia distinto de la escapada a Roma de marzo de 2026. Separarlos es importante: fueron momentos diferentes y no queremos mezclar recuerdos, rutas ni fotografías.',
-      'El país y el mes están confirmados. Las ciudades, el orden de la ruta y las experiencias concretas quedan pendientes hasta revisar nuestras reservas y fotos.',
+      'Este viaje reunió Venecia, Bérgamo y Verona. Lo tratamos como una ruta propia por el norte de Italia, separada de la escapada posterior a Roma para que cada guía sea fácil de entender.',
+      'Las tres ciudades están confirmadas. Todavía necesitamos recuperar el orden exacto, las noches y los trayectos antes de convertir la base en un itinerario personal completo.',
     ],
     companions: 'TODO: confirmar acompañantes',
     tripType: 'Viaje internacional',
-    mapQuery: 'Italy',
-    statement: { before: 'Dos viajes al mismo país pueden guardar', accent: 'historias completamente distintas', after: 'y esta merece su propio cuaderno.' },
-    confirmed: ['Viaje realizado en noviembre de 2025.', 'Fue una experiencia distinta de Roma, marzo de 2026.'],
-    route: [],
-    places: [],
+    mapQuery: 'Venice Bergamo Verona Italy',
+    statement: { before: 'Un mismo país puede guardar', accent: 'viajes completamente distintos', after: 'y esta ruta del norte merece su propio cuaderno.' },
+    confirmed: ['El viaje reunió Venecia, Bérgamo y Verona.', 'Fue una experiencia distinta de la escapada a Roma.', 'Se realizó en noviembre de 2025.'],
+    route: [
+      { label: 'Parada confirmada · orden pendiente', title: 'Venecia', text: 'La ciudad forma parte del viaje. Falta recuperar cuántas noches pasamos y cómo conectó con las siguientes etapas.' },
+      { label: 'Parada confirmada · orden pendiente', title: 'Bérgamo', text: 'Bérgamo fue otra de las ciudades de la ruta. La experiencia y el alojamiento se completarán con nuestros recuerdos.' },
+      { label: 'Parada confirmada · orden pendiente', title: 'Verona', text: 'Verona completa las tres ciudades confirmadas de este viaje por el norte de Italia.' },
+    ],
+    places: [
+      { title: 'Venecia', text: 'Guía de la ciudad pendiente de contrastar con nuestra ruta y fotografías.' },
+      { title: 'Bérgamo', text: 'Guía práctica pendiente de completar con lo que vimos y cómo llegamos.' },
+      { title: 'Verona', text: 'Guía pendiente de ordenar a partir de reservas, notas y material personal.' },
+    ],
     reflections: [{ title: 'Una historia separada', text: 'No mezclaremos este viaje con Roma. Cuando recuperemos el recorrido, tendrá su propio orden, tono y galería.' }],
     practical: [],
     gallery: [],
-    todoDetails: [pending('ciudades visitadas y ruta completa'), pending('fechas exactas y duración'), pending('acompañantes, alojamientos, transporte y presupuesto'), pending('anécdotas, comidas y recomendaciones personales')],
+    todoDetails: [pending('orden de Venecia, Bérgamo y Verona'), pending('duración y noches en cada ciudad'), pending('acompañantes, alojamientos, transporte y presupuesto'), pending('anécdotas, comidas y recomendaciones personales')],
     todoPhotos: ['TODO: fotografía de portada de Italia en noviembre de 2025', 'TODO: galería personal del viaje'],
   },
   'roma-2026': {
     slug: 'roma-2026',
-    kicker: '20–24 de marzo de 2026 · escapada urbana',
+    kicker: 'Italia · escapada urbana',
     introTitle: 'Cinco días en Roma, sin mezclarla con el viaje anterior a Italia.',
     intro: [
       'Roma fue una escapada propia del 20 al 24 de marzo de 2026. Sabemos la fecha y la duración; todavía necesitamos recuperar el barrio, el alojamiento y el itinerario real antes de contar qué vimos cada día.',
@@ -142,7 +150,7 @@ export const travelJournals: Record<string, TravelJournal> = {
   },
   'marrakech-desierto': {
     slug: 'marrakech-desierto',
-    kicker: 'Marruecos · fecha pendiente',
+    kicker: 'Marruecos · ciudad y desierto',
     introTitle: 'Marrakech y el desierto fueron un mismo viaje.',
     intro: [
       'Está confirmado que viajamos a Marrakech y al desierto de Marruecos. Lo que aún no está documentado en el proyecto es la fecha, la ruta entre ambos lugares y las experiencias concretas.',
@@ -163,7 +171,7 @@ export const travelJournals: Record<string, TravelJournal> = {
   },
   malaga: {
     slug: 'malaga',
-    kicker: 'Andalucía · viaje nacional',
+    kicker: 'España · guía de Málaga',
     introTitle: 'Málaga también forma parte de nuestro atlas.',
     intro: ['Málaga es un viaje realizado y confirmado. Todavía no tenemos en el proyecto la fecha, la duración ni el recorrido, así que esta primera versión funciona como un archivo honesto listo para recibir nuestros recuerdos.'],
     companions: 'TODO: confirmar acompañantes',
@@ -181,7 +189,7 @@ export const travelJournals: Record<string, TravelJournal> = {
   },
   sevilla: {
     slug: 'sevilla',
-    kicker: 'Andalucía · viaje nacional',
+    kicker: 'España · guía de Sevilla',
     introTitle: 'Sevilla, pendiente de volver a nuestro carrete.',
     intro: ['El viaje a Sevilla está confirmado, pero el archivo actual no conserva aún fechas ni detalles suficientes para escribir una ruta personal con rigor. La página queda creada sin rellenarla con tópicos.'],
     companions: 'TODO: confirmar acompañantes',
@@ -199,7 +207,7 @@ export const travelJournals: Record<string, TravelJournal> = {
   },
   'asturias-luarca': {
     slug: 'asturias-luarca',
-    kicker: 'Asturias · viaje nacional',
+    kicker: 'España · Asturias y Luarca',
     introTitle: 'Asturias, con Luarca como recuerdo confirmado.',
     intro: ['Asturias forma parte de nuestros viajes nacionales y Luarca es la referencia más clara que tenemos ahora mismo. Antes de añadir playas, pueblos o una ruta de carretera necesitamos revisar el material real del viaje.'],
     companions: 'TODO: confirmar acompañantes',
@@ -217,7 +225,7 @@ export const travelJournals: Record<string, TravelJournal> = {
   },
   calpe: {
     slug: 'calpe',
-    kicker: 'Comunidad Valenciana · viaje nacional',
+    kicker: 'España · guía de Calpe',
     introTitle: 'Calpe fue una escapada real; el diario todavía está en blanco.',
     intro: ['Calpe es otro de nuestros viajes nacionales confirmados. No añadimos ahora una lista de playas o excursiones porque no tenemos registrado cuáles formaron parte de nuestra experiencia.'],
     companions: 'TODO: confirmar acompañantes',

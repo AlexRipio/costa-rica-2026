@@ -37,13 +37,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const socialImage = trip.hasPersonalPhotos ? trip.image.url : defaultSocialImage
 
   return {
-    title: `${trip.title} ${trip.year}`,
+    title: trip.title,
     description,
     alternates: { canonical: `/viajes/${trip.slug}` },
     openGraph: {
       type: 'article',
       url: `/viajes/${trip.slug}`,
-      title: `${trip.title} ${trip.year} | Viajan2Juntos`,
+      title: `${trip.title} | Viajan2Juntos`,
       description,
       images: [{ url: socialImage, alt: trip.image.alt }],
     },
@@ -75,7 +75,7 @@ export default async function TravelJournalPage({ params }: { params: Promise<{ 
         data={{
           '@context': 'https://schema.org',
           '@type': 'BlogPosting',
-          headline: `${trip.title} ${trip.year}`,
+          headline: trip.title,
           description: journal.introTitle,
           url: `${siteUrl}/viajes/${trip.slug}`,
           dateModified: contentUpdatedAt,
@@ -96,16 +96,16 @@ export default async function TravelJournalPage({ params }: { params: Promise<{ 
           <span><MapPin size={16} /> {journal.kicker}</span>
           <h1>{trip.title}</h1>
           <p>{trip.subtitle}</p>
-          <a className="button button-light" href="#historia">Abrir el cuaderno <ArrowRight size={17} /></a>
+          <a className="button button-light" href="#historia">Abrir la guía <ArrowRight size={17} /></a>
         </Reveal>
         <div className="travel-journal-status">
           <small>{trip.status}</small>
-          <strong>{trip.dates}</strong>
+          <strong>Guía del destino</strong>
         </div>
       </section>
 
       <nav className="trip-section-nav journal-section-nav" aria-label={`Secciones del viaje a ${trip.title}`}>
-        <a href="#historia">La historia</a>
+        <a href="#historia">La guía</a>
         <a href="#mapa">Mapa</a>
         {hasRoute && <a href="#ruta">Ruta</a>}
         {hasPlaces && <a href="#lugares">Lugares</a>}
@@ -116,7 +116,7 @@ export default async function TravelJournalPage({ params }: { params: Promise<{ 
       <section className="journal-intro" id="historia">
         <div className="section-shell journal-intro-grid">
           <Reveal>
-            <span className="eyebrow">Nuestro cuaderno</span>
+            <span className="eyebrow">Guía del viaje</span>
             <h2>{journal.introTitle}</h2>
           </Reveal>
           <Reveal className="journal-intro-copy" delay={0.1}>
@@ -260,7 +260,7 @@ export default async function TravelJournalPage({ params }: { params: Promise<{ 
       <section className="journal-pending">
         <div className="section-shell journal-pending-grid">
           <Reveal>
-            <span className="eyebrow eyebrow-light">Este cuaderno sigue abierto</span>
+            <span className="eyebrow eyebrow-light">Esta guía seguirá creciendo</span>
             <h2>Lo próximo es volver a nuestras reservas, fotos y notas.</h2>
             <p>No verás datos personales inventados. Estos son exactamente los detalles que faltan para convertir esta base en nuestra historia completa.</p>
           </Reveal>

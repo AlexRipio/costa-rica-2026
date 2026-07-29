@@ -45,7 +45,7 @@ function TravelChapterCard({
         <span className="travel-chapter-shade" />
         <span className="travel-chapter-number">0{index + 1}</span>
         <div className="travel-chapter-copy">
-          <small>{trip.status} · {trip.year}</small>
+          <small>{trip.status}</small>
           <h3>{trip.country}</h3>
           <p>{trip.subtitle}</p>
           <span className="travel-chapter-link">Abrir el viaje <ArrowRight size={18} /></span>

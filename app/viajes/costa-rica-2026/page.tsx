@@ -19,6 +19,7 @@ import Link from 'next/link'
 import { AdSpace } from '@/components/ad-space'
 import { CostaRicaRouteProvider } from '@/components/costa-rica-route-context'
 import { JsonLd } from '@/components/json-ld'
+import { LivingStatement } from '@/components/living-statement'
 import { GoogleRouteCard } from '@/components/google-route-card'
 import { Reveal } from '@/components/reveal'
 import { SiteFooter } from '@/components/site-footer'
@@ -199,6 +200,16 @@ export default function CostaRicaPage() {
             </div>
           </Reveal>
         </div>
+      </section>
+
+      <section className="living-statement-section costa-guide-statement" aria-label="La idea principal de la guía">
+        <Reveal className="section-shell">
+          <LivingStatement
+            before="Costa Rica se disfruta mejor cuando eliges"
+            accent="menos lugares"
+            after="y les das mucho más tiempo."
+          />
+        </Reveal>
       </section>
 
       <section className="blog-contents-section">

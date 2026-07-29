@@ -4,19 +4,35 @@ import { ChevronDown, Compass, LockKeyhole, Menu, X } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { Logo } from './logo'
-import { trips } from '@/data/site'
+import { trips, type Trip } from '@/data/site'
+
+type CountryGroup = { country: string; trips: Trip[] }
+type ContinentGroup = { continent: Trip['continent']; countries: CountryGroup[] }
+
+const continentOrder: Trip['continent'][] = ['América', 'Europa', 'Asia', 'África']
+
+const travelNavigation: ContinentGroup[] = continentOrder
+  .map((continent) => {
+    const countries = new Map<string, Trip[]>()
+    trips.filter((trip) => trip.continent === continent).forEach((trip) => {
+      countries.set(trip.countryGroup, [...(countries.get(trip.countryGroup) ?? []), trip])
+    })
+    return {
+      continent,
+      countries: [...countries].map(([country, countryTrips]) => ({ country, trips: countryTrips })),
+    }
+  })
+  .filter((group) => group.countries.length)
 
 export function SiteHeader({
   overlay = false,
-  showTripYears = true,
-  showCostaRicaSections = false,
 }: {
   overlay?: boolean
   showTripYears?: boolean
   showCostaRicaSections?: boolean
 }) {
   const [open, setOpen] = useState(false)
-  const [tripsOpen, setTripsOpen] = useState(true)
+  const [tripsOpen, setTripsOpen] = useState(false)
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
@@ -28,12 +44,14 @@ export function SiteHeader({
     }
   }, [open])
 
+  const closeDrawer = () => setOpen(false)
+
   return (
     <>
       <header className={`site-header ${overlay ? 'site-header-overlay' : ''}`}>
         <div className="nav-shell">
           <Logo light={overlay} />
-          <div className="header-caption">Historias, rutas y recuerdos de Andrea & Alejandro</div>
+          <div className="header-caption">Guías, rutas y recuerdos de Andrea & Alejandro</div>
           <button className="menu-toggle menu-toggle-visible" type="button" onClick={() => setOpen(true)} aria-label="Abrir menú">
             <Menu />
             <span>Menú</span>
@@ -41,49 +59,80 @@ export function SiteHeader({
         </div>
       </header>
 
-      <div className={`drawer-backdrop ${open ? 'open' : ''}`} onClick={() => setOpen(false)} />
-      <aside className={`nav-drawer ${open ? 'open' : ''}`} aria-hidden={!open}>
+      <div className={`drawer-backdrop ${open ? 'open' : ''}`} onClick={closeDrawer} />
+      <aside className={`nav-drawer ${open ? 'open' : ''}`} aria-hidden={!open} aria-label="Menú principal">
         <div className="drawer-head">
           <span>Explorar Viajan2Juntos</span>
-          <button type="button" onClick={() => setOpen(false)} aria-label="Cerrar menú"><X /></button>
+          <button type="button" onClick={closeDrawer} aria-label="Cerrar menú"><X /></button>
         </div>
-        <nav aria-label="Navegación principal">
-          <Link className="drawer-main-link" href="/" onClick={() => setOpen(false)}>Inicio</Link>
-          <button className="drawer-main-link drawer-trip-toggle" type="button" onClick={() => setTripsOpen((value) => !value)} aria-expanded={tripsOpen}>
-            Viajes <ChevronDown className={tripsOpen ? 'rotated' : ''} />
-          </button>
-          <div className={`drawer-trips ${tripsOpen ? 'open' : ''}`}>
-            {trips.map((trip) => (
-              <div className="drawer-trip-entry" key={trip.slug}>
-                <Link href={`/viajes/${trip.slug}`} onClick={() => setOpen(false)}>
-                  <img src={trip.image.url} alt="" />
-                  <span>
-                    <strong>{trip.country}</strong>
-                    <small>{showTripYears ? `${trip.year} · ` : ''}{trip.status}</small>
-                  </span>
-                </Link>
-                {showCostaRicaSections && trip.slug === 'costa-rica-2026' && (
-                  <div className="drawer-trip-sections" aria-label="Secciones de Costa Rica">
-                    <Link href="/viajes/costa-rica-2026#itinerarios" onClick={() => setOpen(false)}>Itinerarios</Link>
-                    <Link href="/viajes/costa-rica-2026#mapa-ruta" onClick={() => setOpen(false)}>Mapa</Link>
-                    <Link href="/viajes/costa-rica-2026#destinos" onClick={() => setOpen(false)}>Lugares</Link>
-                    <Link href="/viajes/costa-rica-2026/maleta" onClick={() => setOpen(false)}>Maleta</Link>
-                    <Link href="/viajes/costa-rica-2026#consejos" onClick={() => setOpen(false)}>Consejos</Link>
+
+        <div className="drawer-scroll-area">
+          <nav aria-label="Navegación principal">
+            <Link className="drawer-main-link" href="/" onClick={closeDrawer}>Inicio</Link>
+
+            <div className="drawer-main-row">
+              <Link className="drawer-main-link" href="/viajes" onClick={closeDrawer}>Viajes</Link>
+              <button
+                className="drawer-expand-button"
+                type="button"
+                onClick={() => setTripsOpen((value) => !value)}
+                aria-expanded={tripsOpen}
+                aria-controls="drawer-travel-tree"
+                aria-label={tripsOpen ? 'Ocultar destinos' : 'Mostrar destinos'}
+              >
+                <ChevronDown className={tripsOpen ? 'rotated' : ''} />
+              </button>
+            </div>
+
+            <div className={`drawer-travel-tree ${tripsOpen ? 'open' : ''}`} id="drawer-travel-tree">
+              <Link className="drawer-all-trips" href="/viajes" onClick={closeDrawer}>
+                <span>Ver el atlas completo</span><small>Todos los viajes en una página</small>
+              </Link>
+
+              {travelNavigation.map((continent) => (
+                <details className="drawer-continent" key={continent.continent}>
+                  <summary>
+                    <span>{continent.continent}</span>
+                    <small>{continent.countries.length} {continent.countries.length === 1 ? 'país' : 'países'}</small>
+                    <ChevronDown />
+                  </summary>
+                  <div className="drawer-continent-content">
+                    {continent.countries.map((country) => (
+                      <details className="drawer-country" key={country.country} open={country.trips.length === 1}>
+                        <summary>
+                          <span>{country.country}</span>
+                          <small>{country.trips.length} {country.trips.length === 1 ? 'guía' : 'viajes'}</small>
+                          <ChevronDown />
+                        </summary>
+                        <div className="drawer-country-trips">
+                          {country.trips.map((trip) => (
+                            <Link href={`/viajes/${trip.slug}`} onClick={closeDrawer} key={trip.slug}>
+                              <img src={trip.image.url} alt="" />
+                              <span>
+                                <strong>{trip.title}</strong>
+                                <small>{trip.status}</small>
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+                      </details>
+                    ))}
                   </div>
-                )}
-              </div>
-            ))}
-            <Link className="all-trips-link" href="/viajes" onClick={() => setOpen(false)}>Ver todos los viajes</Link>
+                </details>
+              ))}
+            </div>
+
+            <Link className="drawer-main-link" href="/#mapa" onClick={closeDrawer}>Mapa del mundo</Link>
+            <Link className="drawer-main-link" href="/nosotros" onClick={closeDrawer}>Conócenos</Link>
+          </nav>
+
+          <div className="drawer-family">
+            <LockKeyhole />
+            <div><span>Acceso privado</span><strong>Zona Familia</strong></div>
+            <Link href="/familia" onClick={closeDrawer}>Entrar</Link>
           </div>
-          <Link className="drawer-main-link" href="/#mapa" onClick={() => setOpen(false)}>Mapa del mundo</Link>
-          <Link className="drawer-main-link" href="/nosotros" onClick={() => setOpen(false)}>Conócenos</Link>
-        </nav>
-        <div className="drawer-family">
-          <LockKeyhole />
-          <div><span>Acceso privado</span><strong>Zona Familia</strong></div>
-          <Link href="/familia" onClick={() => setOpen(false)}>Entrar</Link>
+          <div className="drawer-signoff"><Compass /> Dos personas, una brújula y muchas historias.</div>
         </div>
-        <div className="drawer-signoff"><Compass /> Dos personas, una brújula y muchas historias.</div>
       </aside>
     </>
   )

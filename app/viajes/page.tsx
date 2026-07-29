@@ -25,7 +25,7 @@ export default function TripsPage() {
         <div className="trip-index-copy">
           <span>{trip.status}</span>
           <h2>
-            {trip.title} <em>{trip.year}</em>
+            {trip.title}
           </h2>
           <p>{trip.subtitle}</p>
           <div>

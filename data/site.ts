@@ -9,6 +9,8 @@ export const brand = {
 export type Trip = {
   slug: string
   country: string
+  countryGroup: string
+  continent: 'América' | 'Europa' | 'Asia' | 'África'
   territory: string
   scope: 'internacional' | 'nacional'
   year: string
@@ -61,6 +63,8 @@ export const trips: Trip[] = [
   {
     slug: 'costa-rica-2026',
     country: 'Costa Rica',
+    countryGroup: 'Costa Rica',
+    continent: 'América',
     territory: 'Costa Rica',
     scope: 'internacional',
     year: '2026',
@@ -82,6 +86,8 @@ export const trips: Trip[] = [
   {
     slug: 'roma-2026',
     country: 'Roma',
+    countryGroup: 'Italia',
+    continent: 'Europa',
     territory: 'Italia',
     scope: 'internacional',
     year: '2026',
@@ -103,11 +109,13 @@ export const trips: Trip[] = [
   {
     slug: 'italia-2025',
     country: 'Italia',
+    countryGroup: 'Italia',
+    continent: 'Europa',
     territory: 'Italia',
     scope: 'internacional',
     year: '2025',
-    title: 'Italia',
-    subtitle: 'Un viaje distinto a nuestra escapada posterior a Roma',
+    title: 'Venecia, Bérgamo y Verona',
+    subtitle: 'Tres ciudades del norte de Italia en un mismo viaje',
     dates: 'Noviembre 2025',
     duration: 'Por completar',
     bases: 'Ruta por recuperar',
@@ -124,6 +132,8 @@ export const trips: Trip[] = [
   {
     slug: 'sri-lanka-2025',
     country: 'Sri Lanka',
+    countryGroup: 'Sri Lanka',
+    continent: 'Asia',
     territory: 'Sri Lanka',
     scope: 'internacional',
     year: '2025',
@@ -145,6 +155,8 @@ export const trips: Trip[] = [
   {
     slug: 'filipinas-2024',
     country: 'Filipinas',
+    countryGroup: 'Filipinas',
+    continent: 'Asia',
     territory: 'Filipinas',
     scope: 'internacional',
     year: '2024',
@@ -166,6 +178,8 @@ export const trips: Trip[] = [
   {
     slug: 'marrakech-desierto',
     country: 'Marrakech',
+    countryGroup: 'Marruecos',
+    continent: 'África',
     territory: 'Marruecos',
     scope: 'internacional',
     year: 'Fecha pendiente',
@@ -187,6 +201,8 @@ export const trips: Trip[] = [
   {
     slug: 'malaga',
     country: 'Málaga',
+    countryGroup: 'España',
+    continent: 'Europa',
     territory: 'Andalucía · España',
     scope: 'nacional',
     year: 'Fecha pendiente',
@@ -208,6 +224,8 @@ export const trips: Trip[] = [
   {
     slug: 'sevilla',
     country: 'Sevilla',
+    countryGroup: 'España',
+    continent: 'Europa',
     territory: 'Andalucía · España',
     scope: 'nacional',
     year: 'Fecha pendiente',
@@ -229,6 +247,8 @@ export const trips: Trip[] = [
   {
     slug: 'asturias-luarca',
     country: 'Asturias',
+    countryGroup: 'España',
+    continent: 'Europa',
     territory: 'Asturias · España',
     scope: 'nacional',
     year: 'Fecha pendiente',
@@ -250,6 +270,8 @@ export const trips: Trip[] = [
   {
     slug: 'calpe',
     country: 'Calpe',
+    countryGroup: 'España',
+    continent: 'Europa',
     territory: 'Comunidad Valenciana · España',
     scope: 'nacional',
     year: 'Fecha pendiente',
