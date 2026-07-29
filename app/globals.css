@@ -14302,3 +14302,254 @@ main small {
 .drawer-country-trips img {
   object-position: center;
 }
+
+/* Scalable world atlas: countries first, individual journeys on demand. */
+.world-map-toolbar > div:first-child {
+  min-width: 0;
+}
+
+.world-map-toolbar > div:first-child p {
+  margin: 9px 0 0;
+  color: var(--muted);
+  font-family: var(--ui);
+  font-size: .9rem;
+  font-weight: 620;
+}
+
+.map-expand-button {
+  min-height: 46px;
+  padding: 0 17px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  flex: 0 0 auto;
+  color: white;
+  background: var(--forest-deep);
+  border: 0;
+  border-radius: 999px;
+  font-family: var(--ui);
+  font-size: .9rem;
+  font-weight: 720;
+  cursor: pointer;
+  transition: transform .25s ease, background .25s ease;
+}
+
+.map-expand-button:hover {
+  background: #20584b;
+  transform: translateY(-2px);
+}
+
+.country-cluster .marker-wave {
+  animation: none;
+  opacity: .18;
+}
+
+.country-cluster:hover .marker-wave,
+.country-cluster:focus .marker-wave,
+.country-cluster.selected .marker-wave {
+  opacity: .34;
+}
+
+.country-cluster .marker-count {
+  font-size: 9px;
+  font-weight: 850;
+}
+
+.map-country-card {
+  top: 28px;
+  bottom: auto;
+  width: min(360px, calc(100% - 56px));
+  gap: 6px;
+}
+
+.map-card-close {
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  color: white;
+  background: rgba(255, 255, 255, .1);
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.map-country-card > strong {
+  padding-right: 38px;
+}
+
+.map-country-links {
+  margin-top: 10px;
+  display: grid;
+  border-top: 1px solid rgba(255, 255, 255, .15);
+}
+
+.map-country-links a {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
+  font-family: var(--ui);
+  font-size: .9rem;
+  font-weight: 680;
+  text-decoration: none;
+}
+
+.map-country-links a:last-child {
+  border-bottom: 0;
+}
+
+.map-country-links a > span:last-child {
+  color: var(--sun);
+  font-size: 1.1rem;
+}
+
+.world-map-modal {
+  position: fixed;
+  z-index: 5000;
+  inset: 0;
+  padding: 20px;
+  display: grid;
+  place-items: center;
+  background: rgba(5, 24, 19, .76);
+  backdrop-filter: blur(14px);
+  animation: world-map-modal-in .3s ease both;
+}
+
+.world-map-modal-panel {
+  width: min(1500px, 100%);
+  max-height: calc(100dvh - 40px);
+  overflow: hidden;
+  background: var(--paper);
+  border-radius: 24px;
+  box-shadow: 0 35px 100px rgba(0, 0, 0, .35);
+}
+
+.world-map-modal-head {
+  min-height: 86px;
+  padding: 16px 22px 16px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.world-map-modal-head > div {
+  display: grid;
+  gap: 4px;
+}
+
+.world-map-modal-head strong {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 2vw, 2rem);
+  font-weight: 500;
+}
+
+.world-map-modal-head button {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  color: var(--ink);
+  background: #f1eee5;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.world-map-canvas-expanded {
+  max-height: calc(100dvh - 126px);
+}
+
+.world-map-canvas-expanded > svg {
+  width: 100%;
+  max-height: calc(100dvh - 126px);
+}
+
+@keyframes world-map-modal-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 760px) {
+  .world-map-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .world-map-toolbar h3 {
+    max-width: 100%;
+  }
+
+  .map-expand-button {
+    align-self: flex-start;
+  }
+
+  .world-map-canvas > svg {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .map-country-card {
+    top: auto;
+    width: 100%;
+  }
+
+  .world-map-modal {
+    padding: 0;
+  }
+
+  .world-map-modal-panel {
+    width: 100%;
+    height: 100dvh;
+    max-height: none;
+    border-radius: 0;
+  }
+
+  .world-map-modal-head {
+    min-height: 78px;
+    padding: 13px 16px 13px 20px;
+  }
+
+  .world-map-modal-head strong {
+    font-family: var(--ui);
+    font-size: 1.08rem;
+    font-weight: 760;
+  }
+
+  .world-map-canvas-expanded {
+    height: calc(100dvh - 78px);
+    max-height: none;
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+
+  .world-map-canvas-expanded > svg {
+    width: 900px;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+  }
+
+  .world-map-canvas-expanded .map-country-card {
+    position: sticky;
+    top: auto;
+    left: 12px;
+    bottom: 12px;
+    width: min(340px, calc(100vw - 24px));
+    margin: -12px 12px 12px;
+    border-left: 5px solid var(--trip-accent);
+    border-top: 0;
+    box-shadow: 0 18px 50px rgba(5, 28, 22, .3);
+  }
+}
