@@ -11739,3 +11739,529 @@ img {
     padding: 1rem;
   }
 }
+
+/* Readable type system: personality should never depend on tiny text */
+.eyebrow,
+.hero-kicker,
+.trip-index-copy > span,
+.destination-photo > span,
+.destination-story-copy small,
+.guide-breadcrumbs,
+.guide-plan-grid article > span,
+.guide-card-kicker,
+.family-login-card > span,
+.family-login-card label,
+.now-activity span,
+.family-clock-panel span,
+.family-clock-panel small,
+.map-current-card span,
+.family-card-title span,
+.family-schedule-card li > span,
+.flight-route-row span,
+.flight-route-row small {
+  font-size: clamp(.75rem, .72rem + .12vw, .82rem);
+  line-height: 1.35;
+  letter-spacing: .1em;
+}
+
+.hero-postcard small,
+.hero-scroll,
+.photo-index,
+.map-stop > span,
+.map-stop small,
+.map-coordinates,
+.day-date,
+.gallery-item span,
+.trip-closing span,
+.guide-quick-facts small,
+.real-map-heading span,
+.footer-legal-links a,
+.legal-hero small,
+.guide-editorial-note small,
+.image-credit-list a {
+  font-size: clamp(.7rem, .68rem + .1vw, .77rem);
+  line-height: 1.45;
+}
+
+.family-link,
+.featured-trip-head p,
+.featured-meta,
+.stat-item span,
+.next-trip-banner span,
+.footer-links a,
+.footer-bottom,
+.trip-index-copy > div,
+.coming-trip-card p,
+.trip-hero-facts span,
+.trip-intro-details span,
+.destination-story-copy p,
+.destination-story-copy > span,
+.private-hint,
+.timeline-meta,
+.day-schedule,
+.family-login-copy li,
+.family-login-card button,
+.family-login-card > small,
+.login-error,
+.logout-button,
+.live-pill,
+.family-day-label,
+.family-schedule-card li,
+.transfer-note,
+.family-info-card > p,
+.flight-tracker,
+.privacy-copy,
+.guide-article-aside nav a,
+.legal-layout > aside strong,
+.legal-layout > aside a,
+.legal-content dt,
+.image-credit-list p {
+  font-size: clamp(.78rem, .75rem + .12vw, .86rem) !important;
+  line-height: 1.5;
+}
+
+.guide-section-heading > p,
+.guide-location-copy > p,
+.guide-location-copy li,
+.guide-stay-card > p,
+.guide-stay-card li,
+.guide-stay-options p,
+.guide-faq-heading p,
+.guide-faq-list details p {
+  font-size: clamp(1rem, .96rem + .18vw, 1.08rem);
+}
+
+.guide-quick-facts strong {
+  font-family: var(--sans);
+  font-size: clamp(1rem, .96rem + .22vw, 1.14rem);
+  font-weight: 780;
+  line-height: 1.25;
+}
+
+.guide-essential-rich-grid article > div > span {
+  font-family: var(--sans);
+  font-size: .86rem;
+  font-weight: 850;
+  letter-spacing: .08em;
+}
+
+.guide-essential-rich-grid h3 {
+  margin-top: 1.8rem;
+  font-size: clamp(1.38rem, 1.15rem + .8vw, 1.9rem);
+}
+
+.guide-essential-rich-grid p,
+.guide-plan-grid p {
+  color: rgba(255, 255, 255, .8);
+  font-size: clamp(.98rem, .94rem + .14vw, 1.06rem);
+  line-height: 1.66;
+}
+
+.guide-plan-grid h3 {
+  margin-top: clamp(3.2rem, 6vw, 5rem);
+  font-size: clamp(1.5rem, 1.25rem + .9vw, 2.1rem);
+}
+
+.guide-plan-grid article:nth-child(3) p {
+  color: #3f514b;
+}
+
+.guide-practical-grid {
+  align-items: stretch;
+}
+
+.guide-practical-grid article {
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+  min-height: 510px;
+  overflow: hidden;
+  border-radius: 22px;
+  box-shadow: 0 22px 70px rgba(5, 29, 23, .16);
+  transition: transform .45s cubic-bezier(.2, .8, .2, 1), box-shadow .45s ease;
+}
+
+.guide-practical-grid article::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(145deg, rgba(255,255,255,.08), transparent 42%);
+  pointer-events: none;
+}
+
+.guide-practical-grid article > *:not(.guide-card-display-word) {
+  position: relative;
+  z-index: 1;
+}
+
+.guide-card-display-word {
+  position: absolute;
+  z-index: 0;
+  top: .15em;
+  right: -.08em;
+  color: currentColor;
+  font-family: var(--sans);
+  font-size: clamp(4.8rem, 8vw, 8.4rem);
+  font-weight: 900;
+  letter-spacing: -.09em;
+  line-height: .8;
+  opacity: .055;
+  white-space: nowrap;
+  pointer-events: none;
+  transform: rotate(-4deg);
+  transform-origin: top right;
+  transition: transform .55s cubic-bezier(.2, .8, .2, 1), opacity .4s ease;
+}
+
+.guide-practical-grid article:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 90px rgba(5, 29, 23, .24);
+}
+
+.guide-practical-grid article:hover .guide-card-display-word {
+  opacity: .1;
+  transform: rotate(0) translateX(-.06em);
+}
+
+.guide-practical-grid article > svg {
+  width: 30px;
+  height: 30px;
+  margin-bottom: clamp(5.8rem, 11vw, 8.5rem);
+  stroke-width: 1.7;
+}
+
+.guide-mobility-card .eyebrow {
+  display: block;
+  width: fit-content;
+  margin-bottom: 1.25rem;
+  color: #ffd66f;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+
+.guide-mobility-card h2 {
+  max-width: 620px;
+  margin-top: 0;
+  font-family: var(--sans);
+  font-size: clamp(2.7rem, 4.7vw, 5rem);
+  font-weight: 850;
+  letter-spacing: -.06em;
+  line-height: .92;
+  text-wrap: balance;
+}
+
+.guide-mobility-card p {
+  margin-top: 1.7rem;
+  color: rgba(255, 255, 255, .82);
+  font-size: clamp(1rem, .96rem + .18vw, 1.1rem);
+  line-height: 1.7;
+}
+
+.guide-card-kicker {
+  display: block;
+  margin-bottom: .9rem;
+  color: #38554e;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.guide-list-card h3 {
+  margin: 0 0 1.6rem;
+  font-size: clamp(1.8rem, 2.6vw, 2.65rem);
+  letter-spacing: -.045em;
+  line-height: .98;
+  text-wrap: balance;
+}
+
+.guide-list-card li {
+  padding: .48rem 0;
+  font-size: clamp(.98rem, .94rem + .16vw, 1.07rem);
+  line-height: 1.5;
+}
+
+.destination-blog-guide .guide-list-card > a {
+  margin-top: 2rem;
+  font-size: .86rem;
+  line-height: 1.35;
+}
+
+.guide-faq-list summary span {
+  font-size: .78rem;
+}
+
+.blog-content-card small,
+.prepare-article > span,
+.travel-tips-grid span {
+  font-size: clamp(.76rem, .72rem + .16vw, .84rem);
+  line-height: 1.4;
+}
+
+.blog-content-card strong,
+.prepare-article h3,
+.packing-card h3,
+.travel-tips-grid h3 {
+  text-wrap: balance;
+}
+
+.blog-content-card small,
+.prepare-article p,
+.packing-card p,
+.travel-tips-grid p,
+.honest-facts-grid p {
+  font-size: clamp(.96rem, .92rem + .16vw, 1.05rem);
+  line-height: 1.65;
+}
+
+@media (max-width: 760px) {
+  .section-shell {
+    width: min(100% - 30px, 1200px);
+  }
+
+  .eyebrow {
+    font-size: .78rem;
+    letter-spacing: .1em;
+  }
+
+  .guide-article-aside nav a {
+    font-size: .78rem;
+  }
+
+  .guide-practical-grid {
+    gap: 12px;
+  }
+
+  .guide-practical-grid article {
+    min-height: 0;
+    padding: 28px 24px 30px;
+    border-radius: 18px;
+  }
+
+  .guide-practical-grid article > svg {
+    margin-bottom: 6.5rem;
+  }
+
+  .guide-card-display-word {
+    top: .25em;
+    right: -.04em;
+    font-size: clamp(4.4rem, 23vw, 7rem);
+  }
+
+  .guide-mobility-card h2 {
+    font-size: clamp(2.7rem, 13vw, 4.1rem);
+  }
+
+  .guide-list-card h3 {
+    font-size: clamp(1.9rem, 9vw, 2.65rem);
+  }
+
+  .guide-essential-rich-grid article {
+    min-height: 0;
+  }
+
+  .guide-essential-rich-grid article > div {
+    padding: 26px 24px 32px;
+  }
+
+  .guide-plan-grid article {
+    min-height: 280px;
+    padding: 28px 24px;
+  }
+
+  .guide-plan-grid h3 {
+    margin-top: 3.6rem;
+  }
+
+  .footer-legal-links a {
+    font-size: .74rem;
+  }
+}
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .guide-practical-grid article,
+  .guide-card-display-word {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* Hard legibility floor for navigation, metadata and supporting labels */
+main small,
+main nav a,
+main button,
+.drawer-head > span,
+.drawer-trip-sections a,
+.drawer-trip-entry small,
+.all-trips-link,
+.drawer-family span,
+.drawer-family a,
+.guide-hero-copy > span,
+.guide-section-nav a,
+.guide-quick-facts small,
+.guide-location-copy > a,
+.guide-location-map > span,
+.route-progress-label,
+.destination-prev-next small,
+.guide-editorial-note small,
+.guide-editorial-note small a,
+.footer-legal-links a {
+  font-size: max(13px, .78rem);
+  line-height: 1.45;
+}
+
+.eyebrow,
+.guide-card-kicker {
+  font-size: max(13px, .78rem);
+}
+
+.drawer-family span,
+.drawer-trip-entry small,
+.guide-quick-facts small,
+.destination-prev-next small {
+  letter-spacing: .06em;
+}
+
+.guide-section-nav a {
+  padding-block: 1rem;
+  font-weight: 800;
+  letter-spacing: .015em;
+}
+
+.drawer-signoff {
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.guide-breadcrumbs,
+.guide-breadcrumbs strong,
+.guide-breadcrumbs span {
+  font-size: 13px;
+}
+
+.guide-quick-facts strong {
+  font-size: 15px;
+}
+
+.guide-article-aside nav a,
+.guide-plan-grid article > span,
+.guide-faq-list summary span,
+.guide-source-links span,
+.footer-links a,
+.footer-bottom {
+  font-size: 13px !important;
+}
+
+.guide-mobility-card .eyebrow,
+.guide-card-kicker {
+  font-size: 14px;
+}
+
+/* Costa Rica hub: readable controls, route cards and itinerary */
+.trip-section-nav a,
+.route-planner-tabs button span,
+.route-planner-tabs button small,
+.route-planner-stops small,
+.route-planner-stops article > a,
+.real-map-heading span,
+.story-map-legend span,
+.story-map-legend strong,
+.story-map-legend small,
+.destination-card-footer span,
+.destination-card-footer strong,
+.travel-carousel-controls span,
+.travel-carousel-card > span,
+.prepare-article > a,
+.media-journal-grid figcaption,
+.day-number small,
+.day-heading small,
+.public-day-label,
+.google-route-note {
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.route-planner-tabs button small,
+.story-map-legend small,
+.day-number small {
+  font-size: 12px;
+}
+
+.route-planner-tabs button strong {
+  font-size: clamp(2.3rem, 8vw, 3.6rem);
+}
+
+.route-planner-stops h4,
+.day-heading strong {
+  font-size: clamp(1.05rem, .98rem + .3vw, 1.22rem);
+  line-height: 1.2;
+}
+
+.route-planner-stops p,
+.timeline-detail p,
+.timeline-detail li {
+  font-size: max(15px, .94rem);
+  line-height: 1.6;
+}
+
+.google-route-links small,
+.trip-closing > .v2-reveal > span {
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.route-map-div-icon span {
+  font-size: 12px;
+}
+
+/* Home and about pages: larger editorial labels and clearer actions */
+.personal-home-hero .hero-kicker,
+.scroll-story-kicker,
+.scroll-story-index span,
+.travel-chapter-number,
+.travel-chapter-copy small,
+.world-map-toolbar .map-legend button,
+.couple-photo-real span,
+.about-hero-copy > span,
+.about-real-portrait span {
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.hero-home-actions .button,
+.travel-chapter-link {
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.map-note,
+.about-blog-grid p {
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.about-timeline a > div > p {
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.about-timeline a > div > span {
+  font-size: 13px;
+}
+
+.travel-map-marker .marker-number {
+  font-size: 12px;
+}
+
+.couple-photo-real > div span,
+.about-real-portrait > div span {
+  font-size: 13px;
+}
+
+.about-trip-years a > span {
+  font-size: 14px;
+}
+
+.about-trip-years a p {
+  font-size: 15px;
+  line-height: 1.5;
+}

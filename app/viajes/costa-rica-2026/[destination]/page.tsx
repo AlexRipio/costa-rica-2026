@@ -295,16 +295,19 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
       <section className="guide-practical-section">
         <Reveal className="section-shell guide-practical-grid">
           <article className="guide-mobility-card">
+            <span className="guide-card-display-word" aria-hidden="true">MOVERSE</span>
             <Car /><span className="eyebrow eyebrow-light">Cómo moverse</span>
             <h2>Lo práctico al llegar.</h2><p>{guide.gettingAround}</p>
           </article>
           <article className="guide-list-card">
-            <Backpack /><h3>Qué llevar ese día</h3>
+            <span className="guide-card-display-word" aria-hidden="true">LLEVAR</span>
+            <Backpack /><span className="guide-card-kicker">Para ir cómodo</span><h3>Qué llevar ese día</h3>
             <ul>{guide.pack.map((item) => <li key={item}>{item}</li>)}</ul>
             <Link href="/viajes/costa-rica-2026/maleta">Ver la maleta completa <ArrowRight /></Link>
           </article>
           <article className="guide-list-card guide-avoid-card">
-            <Ban /><h3>Lo que evitaríamos</h3>
+            <span className="guide-card-display-word" aria-hidden="true">EVITAR</span>
+            <Ban /><span className="guide-card-kicker">Para no perder el día</span><h3>Lo que evitaríamos</h3>
             <ul>{guide.avoid.map((item) => <li key={item}>{item}</li>)}</ul>
           </article>
         </Reveal>
