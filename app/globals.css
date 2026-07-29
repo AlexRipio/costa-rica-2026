@@ -11,7 +11,8 @@
   --line: rgba(23, 41, 37, 0.14);
   --muted: #697872;
   --serif: "Iowan Old Style", "Baskerville", "Times New Roman", serif;
-  --sans: "Avenir Next", "Segoe UI", Arial, sans-serif;
+  --sans: "Segoe UI Variable Display", "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --ui: "Segoe UI Variable Text", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --shadow: 0 24px 70px rgba(19, 44, 37, 0.14);
 }
 
@@ -12264,4 +12265,268 @@ main button,
 .about-trip-years a p {
   font-size: 15px;
   line-height: 1.5;
+}
+
+/* Human UI typography — no compressed, shouty micro-copy */
+body {
+  font-family: var(--ui);
+}
+
+small,
+button,
+nav a,
+.eyebrow,
+.hero-kicker,
+.scroll-story-kicker,
+.guide-card-kicker,
+.trip-closing span,
+.route-progress-label,
+.public-day-label,
+.day-date,
+.timeline-meta,
+.featured-meta,
+.photo-index,
+.map-coordinates,
+.map-note,
+.family-day-label,
+.live-pill,
+.flight-tracker,
+.legal-content dt {
+  font-family: var(--ui);
+  font-optical-sizing: auto;
+}
+
+small,
+.eyebrow,
+.hero-kicker,
+.scroll-story-kicker,
+.guide-card-kicker,
+.guide-quick-facts small,
+.trip-section-nav a,
+.guide-section-nav a,
+.drawer-head > span,
+.drawer-trip-entry small,
+.drawer-trip-sections a,
+.drawer-family span,
+.route-planner-tabs small,
+.story-map-legend small,
+.destination-card-footer span,
+.travel-carousel-card > span,
+.prepare-article > span,
+.day-number small,
+.day-heading small,
+.public-day-label,
+.trip-closing span,
+.route-progress-label,
+.footer-bottom,
+.footer-legal-links a {
+  font-weight: 600;
+  letter-spacing: .015em;
+  text-transform: none;
+}
+
+.eyebrow {
+  color: var(--coral);
+  font-size: clamp(14px, .82rem + .08vw, 15px);
+  line-height: 1.35;
+}
+
+.eyebrow-light,
+.guide-mobility-card .eyebrow {
+  color: #f6c85f;
+}
+
+.guide-quick-facts {
+  gap: clamp(1.2rem, 3vw, 2.6rem);
+}
+
+.guide-quick-facts small {
+  color: #64756f;
+  font-size: 14px;
+}
+
+.destination-blog-guide .guide-quick-facts strong {
+  margin-top: .45rem;
+  font-family: var(--ui);
+  font-size: clamp(16px, .95rem + .2vw, 18px);
+  font-weight: 650;
+  letter-spacing: -.015em;
+  line-height: 1.45;
+}
+
+.trip-section-nav a,
+.guide-section-nav a {
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: -.005em;
+}
+
+.drawer-head > span {
+  font-size: 14px;
+}
+
+.drawer-trip-entry strong {
+  font-family: var(--ui);
+  font-weight: 650;
+  letter-spacing: -.015em;
+}
+
+.drawer-family strong,
+.drawer-signoff {
+  font-family: var(--ui);
+  font-weight: 550;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+.drawer-trip-entry small,
+.drawer-trip-sections a,
+.drawer-family span,
+.drawer-family a,
+.all-trips-link {
+  font-family: var(--ui);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .005em;
+  text-transform: none;
+}
+
+.personal-home-hero .hero-kicker,
+.scroll-story-kicker {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .01em;
+}
+
+.scroll-story-kicker {
+  color: #f1c34a;
+}
+
+.guide-card-kicker,
+.guide-mobility-card .eyebrow {
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: .01em;
+}
+
+.route-planner-tabs button,
+.story-map-legend > button,
+.timeline-trigger,
+.map-legend button {
+  font-family: var(--ui);
+}
+
+.route-planner-tabs button small,
+.story-map-legend small,
+.day-number small,
+.day-heading small,
+.public-day-label {
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.route-planner-stops h4,
+.story-map-legend strong,
+.day-heading strong,
+.destination-card-footer strong,
+.travel-carousel-card strong {
+  font-family: var(--ui);
+  font-weight: 650;
+  letter-spacing: -.015em;
+}
+
+.day-number small,
+.day-heading small,
+.timeline-detail p,
+.timeline-detail li {
+  font-family: var(--ui) !important;
+}
+
+.personal-home-hero p,
+.travel-chapter-copy p,
+.about-trip-years a p {
+  font-family: var(--ui);
+  font-weight: 450;
+  letter-spacing: 0;
+}
+
+.travel-chapter-copy p,
+.about-trip-years a p {
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.travel-chapter-number,
+.travel-map-marker .marker-number {
+  font-family: var(--ui);
+  font-weight: 650;
+}
+
+.footer-links a,
+.footer-bottom,
+.footer-legal-links a {
+  font-family: var(--ui);
+  font-weight: 550;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+@media (max-width: 760px) {
+  .trip-section-nav a,
+  .guide-section-nav a {
+    font-size: 14px;
+  }
+
+  .guide-quick-facts small {
+    font-size: 14px;
+  }
+
+  .destination-blog-guide .guide-quick-facts strong {
+    font-size: 16px;
+  }
+}
+
+/* Never use forced capitals for compact interface copy */
+main span,
+main small,
+main a,
+main button,
+footer span,
+footer a {
+  text-transform: none !important;
+}
+
+main small {
+  font-family: var(--ui) !important;
+  font-weight: 600 !important;
+  letter-spacing: .01em !important;
+}
+
+.travel-chapter-link,
+.stat-item span,
+.trip-hero-facts span,
+.route-planner-tabs button span,
+.route-planner-stops article > span,
+.travel-carousel-card > span,
+.destination-prev-next small,
+.about-hero-copy > span,
+.about-real-portrait span,
+.couple-photo-real span {
+  font-family: var(--ui);
+  font-weight: 600;
+  letter-spacing: .005em;
+}
+
+.stat-item span,
+.trip-hero-facts span {
+  font-size: 14px;
+}
+
+.coming-trip-card p {
+  font-family: var(--ui);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .005em;
+  text-transform: none;
 }
