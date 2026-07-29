@@ -8017,6 +8017,10 @@ img {
   transform: none !important;
 }
 
+.costa-rica-public {
+  overflow-x: clip;
+}
+
 .real-story-map {
   min-height: 0;
   padding: 18px;
@@ -8144,13 +8148,16 @@ img {
 }
 
 .timeline-trigger {
+  padding-right: 14px;
+  padding-left: 14px;
   grid-template-columns: 60px 1fr 28px;
 }
 
 .timeline-detail > div,
 .timeline-detail > ol,
 .timeline-detail > ul {
-  margin-left: 77px;
+  margin-right: 14px;
+  margin-left: 91px;
 }
 
 @media (max-width: 600px) {
@@ -8207,12 +8214,15 @@ img {
   }
 
   .timeline-trigger {
+    padding-right: 8px;
+    padding-left: 8px;
     grid-template-columns: 44px 1fr 24px;
   }
 
   .timeline-detail > div,
   .timeline-detail > ol,
   .timeline-detail > ul {
-    margin-left: 54px;
+    margin-right: 8px;
+    margin-left: 62px;
   }
 }

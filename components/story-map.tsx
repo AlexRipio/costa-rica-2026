@@ -64,6 +64,22 @@ export function StoryMap({ destinations }: { destinations: Destination[] }) {
         (destination) => [destination.coordinates[0], destination.coordinates[1]] as [number, number],
       )
 
+      L.polyline(coordinates, {
+        color: '#ffffff',
+        opacity: 0.92,
+        weight: 8,
+        lineCap: 'round',
+        lineJoin: 'round',
+      }).addTo(map)
+
+      L.polyline(coordinates, {
+        color: '#e9684e',
+        opacity: 1,
+        weight: 4,
+        lineCap: 'round',
+        lineJoin: 'round',
+      }).addTo(map)
+
       destinations.forEach((destination, index) => {
         const marker = L.marker([destination.coordinates[0], destination.coordinates[1]], {
           icon: L.divIcon({
@@ -129,9 +145,12 @@ export function StoryMap({ destinations }: { destinations: Destination[] }) {
               event.preventDefault()
               window.location.hash = `day-${activeStage.day}`
               window.setTimeout(() => {
-                document.getElementById(`day-${activeStage.day}`)?.scrollIntoView({
+                const target = document.getElementById(`day-${activeStage.day}`)
+                if (!target) return
+                window.scrollTo({
                   behavior: 'auto',
-                  block: 'start',
+                  left: 0,
+                  top: target.getBoundingClientRect().top + window.scrollY - 96,
                 })
               }, 40)
             }}

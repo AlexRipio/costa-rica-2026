@@ -102,9 +102,12 @@ export function TripTimeline({ days }: { days: TripDay[] }) {
       if (linkedDay) {
         setOpenDay(linkedDay.id)
         window.setTimeout(() => {
-          document.getElementById(`day-${dayNumber}`)?.scrollIntoView({
+          const target = document.getElementById(`day-${dayNumber}`)
+          if (!target) return
+          window.scrollTo({
             behavior: 'auto',
-            block: 'start',
+            left: 0,
+            top: target.getBoundingClientRect().top + window.scrollY - 96,
           })
         }, 40)
       }
