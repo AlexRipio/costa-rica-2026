@@ -12530,3 +12530,119 @@ main small {
   letter-spacing: .005em;
   text-transform: none;
 }
+
+/* Editorial emphasis: readable sentences with one clear visual accent */
+.living-statement-section {
+  min-height: clamp(460px, 54vw, 760px);
+  display: grid;
+  align-items: center;
+}
+
+.destination-blog-guide p.living-statement {
+  max-width: 1260px;
+  margin: 0 auto;
+  font-family: var(--sans);
+  font-size: clamp(3.2rem, 6.8vw, 7.7rem);
+  font-weight: 720;
+  line-height: .96;
+  letter-spacing: -.06em;
+  text-wrap: balance;
+}
+
+.living-word {
+  display: inline-block;
+  font-family: inherit;
+  transition: transform .35s cubic-bezier(.2, .8, .2, 1), color .35s ease;
+}
+
+.destination-blog-guide p.living-statement strong {
+  display: inline;
+  color: #e85f49;
+  font-family: var(--serif);
+  font-size: 1.08em;
+  font-style: italic;
+  font-weight: 650;
+  line-height: .86;
+  letter-spacing: -.055em;
+}
+
+.living-accent-focus {
+  display: inline-block;
+  position: relative;
+  color: #103f35;
+  font-family: var(--sans);
+  font-size: 1.22em;
+  font-style: normal;
+  font-weight: 850;
+  letter-spacing: -.07em;
+  line-height: .78;
+  transform: rotate(-2deg);
+  transform-origin: center bottom;
+  transition: transform .35s cubic-bezier(.2, .8, .2, 1), color .35s ease;
+}
+
+.living-accent-focus::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -.09em;
+  left: 0;
+  height: .07em;
+  background: #fff4d8;
+  border-radius: 999px;
+  transform: scaleX(.84) rotate(1deg);
+}
+
+.living-statement:hover .living-accent-focus {
+  color: #fffaf0;
+  transform: rotate(0) translateY(-.04em);
+}
+
+.blog-intro-copy > p strong,
+.prepare-article p strong,
+.google-route-copy p strong,
+.guide-our-route strong,
+.guide-location-copy > p strong,
+.packing-guide-intro p strong {
+  color: #d9513e;
+  font-family: var(--serif);
+  font-size: 1.15em;
+  font-style: italic;
+  font-weight: 650;
+  letter-spacing: -.025em;
+  line-height: 1;
+}
+
+.guide-long-copy p::first-line {
+  color: #153f36;
+  font-weight: 650;
+}
+
+@media (max-width: 760px) {
+  .living-statement-section {
+    min-height: 560px;
+    padding-block: 5.5rem;
+  }
+
+  .destination-blog-guide p.living-statement {
+    font-size: clamp(2.45rem, 11.5vw, 4.35rem);
+    line-height: .98;
+    letter-spacing: -.055em;
+  }
+
+  .destination-blog-guide p.living-statement strong {
+    font-size: 1.06em;
+  }
+
+  .living-accent-focus {
+    font-size: 1.16em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .living-word,
+  .living-accent-focus {
+    transition: none;
+    transform: none;
+  }
+}
