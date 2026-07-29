@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     images: [defaultSocialImage],
   },
   verification: { google: 'v8NCp-2SF9WZhMmesZWCd-Co1xJ774qluerAnT5afUw' },
-  icons: { icon: '/brand/v2-logo-white.png', apple: '/brand/v2-logo-white.png' },
+  icons: { icon: '/icon.png', apple: '/apple-icon.png' },
 }
 
 export const viewport: Viewport = {
@@ -75,7 +75,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 '@id': `${siteUrl}/#publisher`,
                 name: siteName,
                 url: siteUrl,
-                logo: `${siteUrl}/brand/v2-logo-white.png`,
+                logo: `${siteUrl}/icon.png`,
                 sameAs: [tiktokUrl],
                 founder: [
                   { '@type': 'Person', name: 'Andrea', url: `${siteUrl}/nosotros` },
