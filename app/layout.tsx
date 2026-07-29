@@ -43,6 +43,7 @@ export const metadata: Metadata = {
     description: siteDescription,
     images: [defaultSocialImage],
   },
+  verification: { google: 'v8NCp-2SF9WZhMmesZWCd-Co1xJ774qluerAnT5afUw' },
   icons: { icon: '/brand/v2-logo-white.png', apple: '/brand/v2-logo-white.png' },
 }
 
