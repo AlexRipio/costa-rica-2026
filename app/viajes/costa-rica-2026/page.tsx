@@ -54,6 +54,60 @@ const contents = [
   { number: '03', title: 'Conoce cada lugar', text: 'Qué hay, dónde está y cuántos días darle.', href: '#destinos' },
   { number: '04', title: 'Prepara el viaje', text: 'Coche, clima, dinero, reservas y comida.', href: '#preparar' },
   { number: '05', title: 'Haz la maleta', text: 'Una lista completa en su propia página.', href: '/viajes/costa-rica-2026/maleta' },
+  { number: '06', title: 'Mira otras rutas', text: 'Paradas recomendadas que nosotros no hicimos.', href: '#extras' },
+]
+
+const extraStops = [
+  {
+    name: 'Corcovado',
+    area: 'Península de Osa · Pacífico Sur',
+    ideal: '3–4 días extra',
+    fit: 'Para una ruta de 20 días o más',
+    text: 'La alternativa más salvaje. Merece una ruta propia con base en Drake Bay o Puerto Jiménez; no lo añadiríamos como excursión rápida desde Manuel Antonio.',
+    practical: 'Reserva previa obligatoria. Para las travesías largas se necesita guía y SINAC recomienda contratar guía local para las caminatas.',
+    source: 'https://www.sinac.go.cr/ES/ac/acosa/pnc/Paginas/default.aspx',
+    map: 'https://www.google.com/maps/search/?api=1&query=Parque+Nacional+Corcovado+Costa+Rica',
+  },
+  {
+    name: 'Tortuguero',
+    area: 'Caribe Norte',
+    ideal: '2–3 noches',
+    fit: 'Mejor al principio o al final',
+    text: 'Canales, selva y observación de fauna. No encaja como una parada de coche convencional: el último tramo se hace en lancha y obliga a reorganizar la ruta.',
+    practical: 'Se llega únicamente por agua o aire. Las entradas del parque se compran en el sistema oficial de SINAC.',
+    source: 'https://www.sinac.go.cr/ES/ac/acto/pnt/Paginas/default.aspx',
+    map: 'https://www.google.com/maps/search/?api=1&query=Parque+Nacional+Tortuguero+Costa+Rica',
+  },
+  {
+    name: 'Río Celeste',
+    area: 'Bijagua · Volcán Tenorio',
+    ideal: '1–2 noches',
+    fit: 'El extra más fácil de encajar',
+    text: 'Una parada razonable si se añade Bijagua cerca de la etapa de Arenal. Dormir allí evita convertir el sendero y la carretera en una carrera contra el reloj.',
+    practical: 'El acceso al sendero cierra a las 14:00 y la entrada se compra únicamente en la web oficial de SINAC.',
+    source: 'https://www.sinac.go.cr/ES/ac/acat/pnvt/Paginas/default.aspx',
+    map: 'https://www.google.com/maps/search/?api=1&query=Rio+Celeste+Volcan+Tenorio+Costa+Rica',
+  },
+  {
+    name: 'Uvita',
+    area: 'Costa Ballena · Pacífico Sur',
+    ideal: '1–2 noches',
+    fit: 'Después de Manuel Antonio',
+    text: 'Playas, la Cola de Ballena y opciones de avistamiento según la temporada. Es la ampliación más natural si se quiere seguir bajando por la costa sin llegar hasta Corcovado.',
+    practical: 'Consulta la tabla de mareas: solo se puede caminar hasta la Cola de Ballena durante la marea baja.',
+    source: 'https://sinac.go.cr/es/ac/acosa/pnmb/paginas/default.aspx',
+    map: 'https://www.google.com/maps/search/?api=1&query=Parque+Nacional+Marino+Ballena+Uvita',
+  },
+  {
+    name: 'Rincón de la Vieja',
+    area: 'Guanacaste',
+    ideal: '1–2 noches',
+    fit: 'Como ruta alternativa por el norte',
+    text: 'Fumarolas, pailas de barro, bosque seco y senderos volcánicos. Está fuera del trazado actual y funciona mejor sustituyendo otra zona, no sumándolo a la fuerza.',
+    practical: 'El sector Las Pailas cierra los lunes. Las entradas se adquieren en el sistema oficial de reservas.',
+    source: 'https://sinac.go.cr/ES/ac/acg/pnrv/Paginas/default.aspx',
+    map: 'https://www.google.com/maps/search/?api=1&query=Parque+Nacional+Rincon+de+la+Vieja+Costa+Rica',
+  },
 ]
 
 export default function CostaRicaPage() {
@@ -117,6 +171,7 @@ export default function CostaRicaPage() {
         <a href="#itinerarios">Itinerarios</a>
         <a href="#mapa-ruta">Mapa</a>
         <a href="#destinos">Lugares</a>
+        <a href="#extras">Extras</a>
         <a href="#preparar">Preparar</a>
         <Link href="/viajes/costa-rica-2026/maleta">Maleta</Link>
       </nav>
@@ -247,6 +302,45 @@ export default function CostaRicaPage() {
             <Camera size={34} />
           </Reveal>
           <TravelAutoCarousel />
+        </div>
+      </section>
+
+      <section className="extra-stops-section" id="extras">
+        <div className="section-shell">
+          <Reveal className="extra-stops-heading">
+            <span className="eyebrow">Más allá de nuestra ruta</span>
+            <h2>No estuvimos aquí.<br /><em>Pero merece la pena tenerlos en el mapa.</em></h2>
+            <p>
+              Estas no son recomendaciones basadas en nuestra experiencia. Son alternativas que aparecen de forma
+              recurrente en rutas de viajeros y que hemos contrastado con la información oficial de los parques.
+            </p>
+          </Reveal>
+          <div className="extra-stops-grid">
+            {extraStops.map((stop, index) => (
+              <Reveal className={`extra-stop-card ${index === 0 ? 'extra-stop-featured' : ''}`} delay={index * 0.04} key={stop.name}>
+                <div className="extra-stop-topline">
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  <small>No estuvimos aquí</small>
+                </div>
+                <p className="extra-stop-area"><MapPin /> {stop.area}</p>
+                <h3>{stop.name}</h3>
+                <p className="extra-stop-text">{stop.text}</p>
+                <div className="extra-stop-fit">
+                  <span><strong>{stop.ideal}</strong>Tiempo recomendado</span>
+                  <span><strong>{stop.fit}</strong>Cómo encajarlo</span>
+                </div>
+                <p className="extra-stop-practical"><strong>Antes de ir:</strong> {stop.practical}</p>
+                <div className="extra-stop-links">
+                  <a href={stop.map} target="_blank" rel="noreferrer">Ver en el mapa <ArrowRight /></a>
+                  <a href={stop.source} target="_blank" rel="noreferrer">Información oficial</a>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <Reveal className="extra-stops-note">
+            <strong>Una ruta no mejora por tener más puntos.</strong>
+            <p>Corcovado o Tortuguero pueden ser lo mejor del viaje, pero solo si les das tiempo. Para incluirlos, quitaríamos otra etapa antes de encadenar más horas de coche.</p>
+          </Reveal>
         </div>
       </section>
 
