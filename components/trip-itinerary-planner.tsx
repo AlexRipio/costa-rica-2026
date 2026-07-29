@@ -1,8 +1,8 @@
 'use client'
 
 import { ArrowRight, Check, MapPin } from 'lucide-react'
-import { useState } from 'react'
 import Link from 'next/link'
+import { useCostaRicaRoute } from '@/components/costa-rica-route-context'
 
 type RouteOption = {
   days: 10 | 15 | 20
@@ -62,7 +62,8 @@ const routes: RouteOption[] = [
 ]
 
 export function TripItineraryPlanner() {
-  const [selected, setSelected] = useState<RouteOption>(routes[1])
+  const { selectedDays, setSelectedDays } = useCostaRicaRoute()
+  const selected = routes.find((route) => route.days === selectedDays) ?? routes[1]
 
   return (
     <div className="route-planner">
@@ -73,7 +74,7 @@ export function TripItineraryPlanner() {
             role="tab"
             aria-selected={selected.days === route.days}
             className={selected.days === route.days ? 'active' : ''}
-            onClick={() => setSelected(route)}
+            onClick={() => setSelectedDays(route.days)}
             key={route.days}
           >
             <strong>{route.days}</strong><span>días</span><small>{route.label}</small>
@@ -110,4 +111,3 @@ export function TripItineraryPlanner() {
     </div>
   )
 }
-

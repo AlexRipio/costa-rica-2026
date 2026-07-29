@@ -17,6 +17,7 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 import { AdSpace } from '@/components/ad-space'
+import { CostaRicaRouteProvider } from '@/components/costa-rica-route-context'
 import { JsonLd } from '@/components/json-ld'
 import { GoogleRouteCard } from '@/components/google-route-card'
 import { Reveal } from '@/components/reveal'
@@ -182,6 +183,7 @@ export default function CostaRicaPage() {
 
       <div className="section-shell"><AdSpace /></div>
 
+      <CostaRicaRouteProvider>
       <section className="route-options-section" id="itinerarios">
         <div className="section-shell">
           <Reveal className="route-options-heading">
@@ -203,6 +205,8 @@ export default function CostaRicaPage() {
           <GoogleRouteCard />
         </div>
       </section>
+
+      </CostaRicaRouteProvider>
 
       <section className="destinations-editorial blog-destinations" id="destinos">
         <div className="section-shell">
