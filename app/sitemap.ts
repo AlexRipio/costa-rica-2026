@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { costaRicaGuides } from '@/src/data/costaRicaGuides'
 import { contentUpdatedAt, siteUrl } from '@/src/data/siteSeo'
+import { trips } from '@/data/site'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const modified = new Date(`${contentUpdatedAt}T12:00:00+02:00`)
@@ -28,6 +29,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: modified,
       changeFrequency: 'monthly' as const,
       priority: 0.85,
+    })),
+    ...trips.filter((trip) => trip.slug !== 'costa-rica-2026').map((trip) => ({
+      url: `${siteUrl}/viajes/${trip.slug}`,
+      lastModified: modified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.72,
     })),
   ]
 }

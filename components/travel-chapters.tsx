@@ -13,6 +13,10 @@ const cardRanges = [
   { input: [.56, .8, 1], opacity: [0, 1, 1], scale: [.9, 1, 1], y: [70, 0, 0] },
 ]
 
+const featuredTrips = ['costa-rica-2026', 'sri-lanka-2025', 'filipinas-2024']
+  .map((slug) => trips.find((trip) => trip.slug === slug))
+  .filter((trip): trip is (typeof trips)[number] => Boolean(trip))
+
 function TravelChapterCard({
   index,
   progress,
@@ -24,7 +28,7 @@ function TravelChapterCard({
   active: boolean
   desktop: boolean
 }) {
-  const trip = trips[index]
+  const trip = featuredTrips[index]
   const range = cardRanges[index]
   const opacity = useTransform(progress, range.input, range.opacity)
   const scale = useTransform(progress, range.input, range.scale)
@@ -102,10 +106,10 @@ export function TravelChapters() {
       <div className="travel-chapters-sticky">
         <div className="travel-chapters-intro">
           <span className="eyebrow eyebrow-light">Historias en el mapa</span>
-          <h2 id="travel-chapters-title">Tres viajes.<br /><em>Mil recuerdos.</em></h2>
-          <p>De las lagunas de Palawan a los campos de té de Sri Lanka y una ruta completa entre los dos océanos de Costa Rica.</p>
+          <h2 id="travel-chapters-title">Tres historias.<br /><em>Un atlas que crece.</em></h2>
+          <p>Empezamos por Filipinas, Sri Lanka y Costa Rica. El resto de nuestros viajes ya espera dentro del atlas.</p>
           <div className="travel-chapter-tabs" aria-label="Elegir viaje">
-            {trips.map((trip, index) => (
+            {featuredTrips.map((trip, index) => (
               <button
                 type="button"
                 className={active === index ? 'is-active' : ''}
@@ -119,7 +123,7 @@ export function TravelChapters() {
           </div>
         </div>
         <div className="travel-chapters-stage">
-          {trips.map((trip, index) => (
+          {featuredTrips.map((trip, index) => (
             <TravelChapterCard
               index={index}
               progress={progress}
@@ -130,7 +134,7 @@ export function TravelChapters() {
           ))}
         </div>
         <div className="travel-chapters-progress" aria-hidden="true">
-          <i style={{ transform: `scaleX(${(active + 1) / trips.length})` }} />
+          <i style={{ transform: `scaleX(${(active + 1) / featuredTrips.length})` }} />
         </div>
       </div>
     </section>

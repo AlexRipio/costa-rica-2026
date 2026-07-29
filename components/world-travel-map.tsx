@@ -11,8 +11,15 @@ import { trips } from '@/data/site'
 type CountryFeature = GeoJSON.Feature<GeoJSON.Geometry, { name?: string }> & { id?: string | number }
 
 export function WorldTravelMap() {
-  const [activeId, setActiveId] = useState<string | null>(null)
-  const tripById = useMemo(() => new Map(trips.map((trip) => [trip.mapId, trip])), [])
+  const [activeSlug, setActiveSlug] = useState<string | null>(null)
+  const tripBySlug = useMemo(() => new Map(trips.map((trip) => [trip.slug, trip])), [])
+  const tripByCountry = useMemo(() => {
+    const map = new Map<string, (typeof trips)[number]>()
+    trips.forEach((trip) => {
+      if (!map.has(trip.mapId)) map.set(trip.mapId, trip)
+    })
+    return map
+  }, [])
   const countries = useMemo(
     () =>
       feature(
@@ -26,7 +33,7 @@ export function WorldTravelMap() {
     [countries],
   )
   const path = useMemo(() => geoPath(projection), [projection])
-  const activeTrip = activeId ? tripById.get(activeId) : undefined
+  const activeTrip = activeSlug ? tripBySlug.get(activeSlug) : undefined
 
   return (
     <div className="world-map-card">
@@ -34,8 +41,8 @@ export function WorldTravelMap() {
         <div><span className="eyebrow">Nuestro mundo</span><h3>Los lugares que ya forman parte de nosotros</h3></div>
         <div className="map-legend" aria-label="Viajes del mapa">
           {trips.map((trip) => (
-            <button className={activeId === trip.mapId ? 'active' : ''} key={trip.mapId} onClick={() => setActiveId(trip.mapId)} type="button">
-              <i style={{ background: trip.accent }} />{trip.country} <small>{trip.year}</small>
+            <button className={activeSlug === trip.slug ? 'active' : ''} key={trip.slug} onClick={() => setActiveSlug(trip.slug)} type="button">
+              <i style={{ background: trip.accent }} />{trip.title} <small>{trip.year}</small>
             </button>
           ))}
         </div>
@@ -48,16 +55,16 @@ export function WorldTravelMap() {
             {countries.features.map((country, index) => {
               const countryFeature = country as CountryFeature
               const id = String(countryFeature.id ?? '')
-              const trip = tripById.get(id)
+              const trip = tripByCountry.get(id)
               return (
                 <path
-                  className={`world-country ${trip ? 'visited' : ''} ${activeId === id ? 'selected' : ''}`}
+                  className={`world-country ${trip ? 'visited' : ''} ${activeTrip?.mapId === id ? 'selected' : ''}`}
                   d={path(country) ?? undefined}
                   fill={trip?.accent}
                   key={`${id}-${index}`}
-                  onClick={() => trip && setActiveId(id)}
+                  onClick={() => trip && setActiveSlug(trip.slug)}
                   tabIndex={trip ? 0 : -1}
-                  onFocus={() => trip && setActiveId(id)}
+                  onFocus={() => trip && setActiveSlug(trip.slug)}
                   aria-label={trip?.mapLabel}
                 />
               )
@@ -67,15 +74,15 @@ export function WorldTravelMap() {
             {trips.map((trip, index) => {
               const point = projection(trip.mapCoordinates)
               if (!point) return null
-              const selected = activeId === trip.mapId
+              const selected = activeSlug === trip.slug
               return (
                 <g
                   className={`travel-map-marker ${selected ? 'selected' : ''}`}
-                  key={trip.mapId}
+                  key={trip.slug}
                   transform={`translate(${point[0]} ${point[1]})`}
-                  onClick={() => setActiveId(trip.mapId)}
+                  onClick={() => setActiveSlug(trip.slug)}
                   onKeyDown={(event) => {
-                    if (event.key === 'Enter' || event.key === ' ') setActiveId(trip.mapId)
+                    if (event.key === 'Enter' || event.key === ' ') setActiveSlug(trip.slug)
                   }}
                   role="button"
                   tabIndex={0}
@@ -85,8 +92,8 @@ export function WorldTravelMap() {
                   <circle className="marker-core" r={8} style={{ fill: trip.accent }} />
                   <text className="marker-number" textAnchor="middle" y="3">{index + 1}</text>
                   <g className="marker-label" transform="translate(13 -23)">
-                    <rect width={trip.country.length * 7.2 + 28} height="28" rx="14" />
-                    <text x="14" y="18">{trip.country}</text>
+                    <rect width={trip.title.length * 7.2 + 28} height="28" rx="14" />
+                    <text x="14" y="18">{trip.title}</text>
                   </g>
                 </g>
               )

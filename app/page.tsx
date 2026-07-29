@@ -67,7 +67,7 @@ export default function HomePage() {
           <Reveal className="about-us-copy" delay={0.12}>
             <span className="eyebrow">Andrea & Alejandro</span><h2>Viajar es nuestra forma favorita de estar juntos.</h2>
             <p>No somos viajeros a tiempo completo ni pretendemos saberlo todo. Somos dos personas a las que les encanta preparar una ruta, desviarse de ella y convertir cada viaje en una historia compartida.</p>
-            <p>En 2024 nos perdimos entre las islas de Filipinas. En 2025 cruzamos Sri Lanka entre trenes, templos y plantaciones de té. En 2026 recorrimos Costa Rica entre volcanes, selva y dos océanos.</p>
+            <p>Empezamos guardando Filipinas, Sri Lanka y Costa Rica. Después abrimos el mapa: Italia, Roma, Marrakech y esas escapadas por España que también forman parte de nuestra historia.</p>
             <Link className="text-arrow" href="/nosotros">Conocernos de verdad <MoveUpRight size={17} /></Link>
             <div className="about-signature">Andrea <span>&</span> Alejandro</div>
           </Reveal>
