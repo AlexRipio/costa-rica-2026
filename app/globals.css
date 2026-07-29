@@ -6958,17 +6958,25 @@ img {
 
 .hero-year-mark {
   position: absolute;
-  right: -12px;
-  top: 110px;
-  color: rgba(255, 255, 255, .12);
-  font-size: clamp(3rem, 7vw, 7rem);
-  font-weight: 900;
-  letter-spacing: -.08em;
-  writing-mode: vertical-rl;
+  z-index: 2;
+  right: -10px;
+  top: 50%;
+  width: clamp(86px, 7vw, 112px);
+  height: min(72vh, 690px);
+  overflow: hidden;
+  pointer-events: none;
+  transform: translateY(-50%);
 }
 
-.hero-year-mark em {
-  color: rgba(241, 184, 74, .34);
+.hero-year-mark img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(72vh, 690px);
+  max-width: none;
+  height: auto;
+  opacity: .42;
+  transform: translate(-50%, -50%) rotate(90deg);
 }
 
 .home-purpose {

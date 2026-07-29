@@ -37,7 +37,9 @@ export default function HomePage() {
           <figure><img src="/about/playa-palmeras.jpeg" alt="Andrea y Alejandro bajo las palmeras de una playa de Costa Rica" /><figcaption>Caribe · Costa Rica</figcaption></figure>
           <figure><img src="/about/atardecer-playa.jpeg" alt="Andrea y Alejandro frente a un atardecer en la playa" /><figcaption>Atardecer · 2026</figcaption></figure>
         </div>
-        <div className="hero-year-mark">VIAJAN<em>2</em>JUNTOS</div>
+        <div className="hero-year-mark" aria-hidden="true">
+          <img src="/brand/viajan2juntos-wordmark-glow.png" alt="" />
+        </div>
       </section>
 
       <section className="home-purpose">
