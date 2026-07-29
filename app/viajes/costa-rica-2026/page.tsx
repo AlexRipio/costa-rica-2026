@@ -275,8 +275,8 @@ export default function CostaRicaPage() {
         <div className="section-shell">
           <Reveal className="blog-section-heading">
             <span className="eyebrow eyebrow-light">Diario visual</span>
-            <h2>Aquí vivirán nuestras fotos y vídeos.</h2>
-            <p>La estructura ya está preparada para sustituir estas imágenes por la carpeta personal que nos enviarás.</p>
+            <h2>Hay lugares que se cuentan mejor con imágenes.</h2>
+            <p>Una pausa visual entre carreteras, bosque y costa.</p>
           </Reveal>
           <div className="media-journal-grid">
             {gallery.slice(0, 3).map((image, index) => (
@@ -285,12 +285,6 @@ export default function CostaRicaPage() {
                 <figcaption>{image.alt}</figcaption>
               </figure>
             ))}
-            <div className="video-placeholder">
-              <span>Vídeo 01</span><strong>La ruta en movimiento</strong><p>Espacio preparado para un vídeo horizontal o de YouTube.</p>
-            </div>
-            <div className="video-placeholder">
-              <span>Vídeo 02</span><strong>Lo que no sale en las fotos</strong><p>Perfecto para una pieza corta grabada con el móvil.</p>
-            </div>
           </div>
         </div>
       </section>

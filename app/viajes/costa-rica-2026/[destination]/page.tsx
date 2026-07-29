@@ -9,6 +9,9 @@ import {
   Clock3,
   Compass,
   ExternalLink,
+  HelpCircle,
+  Hotel,
+  Utensils,
   LocateFixed,
   MapPin,
   Navigation,
@@ -16,8 +19,8 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { AdSpace } from '@/components/ad-space'
 import { Reveal } from '@/components/reveal'
+import { LivingStatement } from '@/components/living-statement'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { costaRicaGuideBySlug, costaRicaGuides } from '@/src/data/costaRicaGuides'
@@ -75,10 +78,11 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
       </section>
 
       <nav className="guide-section-nav" aria-label={`Secciones de ${guide.title}`}>
-        <a href="#situarse">Dónde está</a>
-        <a href="#que-ver">Qué ver</a>
-        <a href="#organizar">Cómo organizarlo</a>
-        <a href="#consejos">Consejos</a>
+        <a href="#entender">Entender la zona</a>
+        <a href="#que-ver">Qué hacer</a>
+        <a href="#organizar">Organizar los días</a>
+        <a href="#dormir">Dormir y comer</a>
+        <a href="#dudas">Dudas</a>
         <Link href="/viajes/costa-rica-2026/maleta">Maleta</Link>
       </nav>
 
@@ -100,6 +104,26 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
         </Reveal>
       </section>
 
+      <section className="guide-article-section" id="entender">
+        <div className="section-shell guide-article-layout">
+          <Reveal className="guide-article-aside">
+            <span className="eyebrow">Primero, entiende el lugar</span>
+            <h2>Lo que conviene saber antes de reservar.</h2>
+            <nav aria-label={`Índice de la guía de ${guide.title}`}>
+              <a href="#situarse">01 · Situarse en el mapa</a>
+              <a href="#que-ver">02 · Qué merece la pena</a>
+              <a href="#organizar">03 · Repartir los días</a>
+              <a href="#dormir">04 · Dormir, comer y reservar</a>
+              <a href="#consejos">05 · Consejos prácticos</a>
+              <a href="#dudas">06 · Dudas frecuentes</a>
+            </nav>
+          </Reveal>
+          <Reveal className="guide-long-copy">
+            {extra.understand.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+          </Reveal>
+        </div>
+      </section>
+
       <section className="guide-location-section" id="situarse">
         <div className="section-shell guide-location-grid">
           <Reveal className="guide-location-copy">
@@ -117,6 +141,12 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
             <span><Navigation /> Mapa real de la zona</span>
           </Reveal>
         </div>
+      </section>
+
+      <section className="living-statement-section" aria-label="Una idea para recordar">
+        <Reveal className="section-shell">
+          <LivingStatement {...extra.highlight} />
+        </Reveal>
       </section>
 
       <section className="guide-essentials" id="que-ver">
@@ -142,8 +172,6 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
         </div>
       </section>
 
-      <div className="section-shell"><AdSpace compact /></div>
-
       <section className="guide-plan-section" id="organizar">
         <div className="section-shell">
           <Reveal className="guide-section-heading guide-section-heading-dark">
@@ -156,6 +184,35 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
                 <article><span>{step.label}</span><h3>{step.title}</h3><p>{step.text}</p></article>
               </Reveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="guide-stay-section" id="dormir">
+        <div className="section-shell">
+          <Reveal className="guide-section-heading">
+            <span className="eyebrow">Decisiones que cambian el viaje</span>
+            <h2>Dónde dormir, qué probar y qué reservar.</h2>
+            <p>La parte práctica explicada antes de que una mala ubicación o una reserva innecesaria te complique el día.</p>
+          </Reveal>
+          <div className="guide-stay-grid">
+            <Reveal className="guide-stay-card guide-stay-card-wide">
+              <Hotel />
+              <span className="eyebrow">Dónde dormir</span>
+              <div className="guide-stay-options">
+                {extra.stayAreas.map((area) => <div key={area.title}><h3>{area.title}</h3><p>{area.text}</p></div>)}
+              </div>
+            </Reveal>
+            <Reveal className="guide-stay-card">
+              <Utensils />
+              <span className="eyebrow">Comer sin caer en la lista de moda</span>
+              <p>{extra.eat}</p>
+            </Reveal>
+            <Reveal className="guide-stay-card guide-booking-card">
+              <Check />
+              <span className="eyebrow">Reserva con sentido</span>
+              <ul>{extra.reserve.map((item) => <li key={item}>{item}</li>)}</ul>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -191,9 +248,29 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
         </Reveal>
       </section>
 
-      <section className="guide-photo-break">
+      <figure className="guide-photo-break guide-photo-only">
         <img src={images[extra.photoKeys[1]].url} alt={images[extra.photoKeys[1]].alt} />
-        <Reveal><span>Cuando lleguen nuestras fotos</span><strong>este será el espacio para contar la historia real del lugar.</strong></Reveal>
+      </figure>
+
+      <section className="guide-faq-section" id="dudas">
+        <div className="section-shell guide-faq-layout">
+          <Reveal className="guide-faq-heading">
+            <HelpCircle />
+            <span className="eyebrow">Dudas reales</span>
+            <h2>Lo que querríamos saber antes de llegar.</h2>
+            <p>Respuestas cortas para tomar decisiones. Si algo depende del clima o de una norma, compruébalo de nuevo justo antes del viaje.</p>
+          </Reveal>
+          <div className="guide-faq-list">
+            {extra.faq.map((item, index) => (
+              <Reveal key={item.question} delay={index * 0.04}>
+                <details>
+                  <summary><span>0{index + 1}</span>{item.question}</summary>
+                  <p>{item.answer}</p>
+                </details>
+              </Reveal>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section className="guide-sources">
