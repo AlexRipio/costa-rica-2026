@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { ArrowLeft, ArrowRight, Backpack, Ban, Car, Check, Clock3, Compass, ExternalLink, MapPin } from 'lucide-react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { Reveal } from '@/components/reveal'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { costaRicaGuideBySlug, costaRicaGuides } from '@/src/data/costaRicaGuides'
@@ -37,23 +38,23 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
 
   return (
     <main className="destination-guide-page costa-rica-public">
-      <SiteHeader overlay showTripYears={false} />
+      <SiteHeader overlay showTripYears={false} showCostaRicaSections />
 
       <section className="guide-hero">
         <img src={image.url} alt={image.alt} />
         <div className="guide-hero-shade" />
-        <div className="section-shell guide-hero-copy">
+        <Reveal className="section-shell guide-hero-copy">
           <Link href="/viajes/costa-rica-2026#destinos">
             <ArrowLeft size={16} /> Volver a la ruta
           </Link>
           <span>Guía práctica · Costa Rica</span>
           <h1>{guide.title}</h1>
           <p>{guide.subtitle}</p>
-        </div>
+        </Reveal>
       </section>
 
       <section className="guide-intro">
-        <div className="section-shell guide-intro-grid">
+        <Reveal className="section-shell guide-intro-grid">
           <div>
             <span className="eyebrow">Lo esencial</span>
             <h2>Lo que conviene saber antes de llegar.</h2>
@@ -66,11 +67,11 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
               <span><MapPin /> <small>Lo mejor</small><strong>{guide.bestFor}</strong></span>
             </div>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section className="guide-essentials">
-        <div className="section-shell">
+        <Reveal className="section-shell">
           <div className="guide-section-heading">
             <span className="eyebrow eyebrow-light">Prioridades</span>
             <h2>Si solo haces tres cosas.</h2>
@@ -84,11 +85,11 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
               </article>
             ))}
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section className="guide-advice-section">
-        <div className="section-shell guide-advice-grid">
+        <Reveal className="section-shell guide-advice-grid">
           <div className="guide-advice-title">
             <span className="eyebrow">Consejos útiles</span>
             <h2>Detalles que cambian el viaje.</h2>
@@ -99,11 +100,11 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
               <li key={tip}><Check size={18} /><span>{tip}</span></li>
             ))}
           </ul>
-        </div>
+        </Reveal>
       </section>
 
       <section className="guide-plan-section">
-        <div className="section-shell">
+        <Reveal className="section-shell">
           <div className="guide-section-heading guide-section-heading-dark">
             <span className="eyebrow">Plan sencillo</span>
             <h2>Una forma lógica de organizarlo.</h2>
@@ -117,11 +118,11 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
               </article>
             ))}
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section className="guide-practical-section">
-        <div className="section-shell guide-practical-grid">
+        <Reveal className="section-shell guide-practical-grid">
           <article className="guide-mobility-card">
             <Car />
             <span className="eyebrow eyebrow-light">Cómo moverse</span>
@@ -138,11 +139,11 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
             <h3>Qué evitar</h3>
             <ul>{guide.avoid.map((item) => <li key={item}>{item}</li>)}</ul>
           </article>
-        </div>
+        </Reveal>
       </section>
 
       <section className="guide-sources">
-        <div className="section-shell guide-sources-inner">
+        <Reveal className="section-shell guide-sources-inner">
           <div>
             <span className="eyebrow">Fuentes reales</span>
             <h2>Para ampliar y comprobar.</h2>
@@ -155,7 +156,7 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
               </a>
             ))}
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section className="guide-next">

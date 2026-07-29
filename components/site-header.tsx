@@ -9,9 +9,11 @@ import { trips } from '@/data/site'
 export function SiteHeader({
   overlay = false,
   showTripYears = true,
+  showCostaRicaSections = false,
 }: {
   overlay?: boolean
   showTripYears?: boolean
+  showCostaRicaSections?: boolean
 }) {
   const [open, setOpen] = useState(false)
   const [tripsOpen, setTripsOpen] = useState(true)
@@ -52,13 +54,24 @@ export function SiteHeader({
           </button>
           <div className={`drawer-trips ${tripsOpen ? 'open' : ''}`}>
             {trips.map((trip) => (
-              <Link href={`/viajes/${trip.slug}`} key={trip.slug} onClick={() => setOpen(false)}>
-                <img src={trip.image.url} alt="" />
-                <span>
-                  <strong>{trip.country}</strong>
-                  <small>{showTripYears ? `${trip.year} · ` : ''}{trip.status}</small>
-                </span>
-              </Link>
+              <div className="drawer-trip-entry" key={trip.slug}>
+                <Link href={`/viajes/${trip.slug}`} onClick={() => setOpen(false)}>
+                  <img src={trip.image.url} alt="" />
+                  <span>
+                    <strong>{trip.country}</strong>
+                    <small>{showTripYears ? `${trip.year} · ` : ''}{trip.status}</small>
+                  </span>
+                </Link>
+                {showCostaRicaSections && trip.slug === 'costa-rica-2026' && (
+                  <div className="drawer-trip-sections" aria-label="Secciones de Costa Rica">
+                    <Link href="/viajes/costa-rica-2026#itinerarios" onClick={() => setOpen(false)}>Itinerarios</Link>
+                    <Link href="/viajes/costa-rica-2026#mapa-ruta" onClick={() => setOpen(false)}>Mapa</Link>
+                    <Link href="/viajes/costa-rica-2026#destinos" onClick={() => setOpen(false)}>Lugares</Link>
+                    <Link href="/viajes/costa-rica-2026#maleta" onClick={() => setOpen(false)}>Maleta</Link>
+                    <Link href="/viajes/costa-rica-2026#consejos" onClick={() => setOpen(false)}>Consejos</Link>
+                  </div>
+                )}
+              </div>
             ))}
             <Link className="all-trips-link" href="/viajes" onClick={() => setOpen(false)}>Ver todos los viajes</Link>
           </div>
