@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { ArrowDown, ArrowRight, CalendarDays, Camera, MapPin, Moon, Plane, Route } from 'lucide-react'
+import { ArrowDown, ArrowRight, Camera, MapPin, Moon, Plane, Route } from 'lucide-react'
 import Link from 'next/link'
 import { Reveal } from '@/components/reveal'
 import { SiteFooter } from '@/components/site-footer'
@@ -10,7 +10,7 @@ import { images } from '@/src/data/images'
 import { initialTripData } from '@/src/data/tripData'
 
 export const metadata: Metadata = {
-  title: 'Costa Rica 2026',
+  title: 'Costa Rica',
   description: 'Nuestro itinerario de 17 días por volcanes, selva, Pacífico y Caribe en Costa Rica.',
 }
 
@@ -20,8 +20,8 @@ export default function CostaRicaPage() {
   const trip = initialTripData
 
   return (
-    <main>
-      <SiteHeader overlay />
+    <main className="costa-rica-public">
+      <SiteHeader overlay showTripYears={false} />
       <section className="trip-hero">
         <div className="trip-hero-media">
           <img src={images.arenal.url} alt={images.arenal.alt} />
@@ -69,10 +69,10 @@ export default function CostaRicaPage() {
             </p>
             <div className="trip-intro-details">
               <span>
-                <CalendarDays /> 9–25 julio 2026
+                <Route /> 17 días de viaje
               </span>
               <span>
-                <Route /> Alajuela → Puerto Viejo
+                <Moon /> 6 bases diferentes
               </span>
               <span>
                 <Plane /> Madrid ↔ San José
@@ -111,7 +111,7 @@ export default function CostaRicaPage() {
                     <span>0{index + 1}</span>
                   </div>
                   <div className="destination-story-copy">
-                    <small>{destination.dates}</small>
+                    <small>Etapa 0{index + 1}</small>
                     <h3>{destination.name}</h3>
                     <p>
                       {destination.activities

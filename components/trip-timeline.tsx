@@ -1,7 +1,6 @@
 'use client'
 
 import { ChevronDown, MapPin } from 'lucide-react'
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { useEffect, useState } from 'react'
 import type { TripDay } from '@/src/data/tripData'
 
@@ -95,25 +94,25 @@ const publicDayCopy: Record<number, { title: string; story: string; highlights: 
 
 export function TripTimeline({ days }: { days: TripDay[] }) {
   const [openDay, setOpenDay] = useState(days[0]?.id)
-  const reduceMotion = useReducedMotion()
 
   useEffect(() => {
     const openLinkedDay = () => {
-      const id = window.location.hash.replace('#day-', '')
-      if (days.some((day) => day.id === id)) {
-        setOpenDay(id)
+      const dayNumber = Number(window.location.hash.replace('#day-', ''))
+      const linkedDay = days.find((day) => day.day === dayNumber)
+      if (linkedDay) {
+        setOpenDay(linkedDay.id)
         window.setTimeout(() => {
-          document.getElementById(`day-${id}`)?.scrollIntoView({
-            behavior: reduceMotion ? 'auto' : 'smooth',
+          document.getElementById(`day-${dayNumber}`)?.scrollIntoView({
+            behavior: 'auto',
             block: 'start',
           })
-        }, 420)
+        }, 40)
       }
     }
     openLinkedDay()
     window.addEventListener('hashchange', openLinkedDay)
     return () => window.removeEventListener('hashchange', openLinkedDay)
-  }, [days, reduceMotion])
+  }, [days])
 
   return (
     <div className="trip-timeline">
@@ -121,7 +120,7 @@ export function TripTimeline({ days }: { days: TripDay[] }) {
         const open = openDay === day.id
         const publicDay = publicDayCopy[day.day]
         return (
-          <article className={`timeline-day ${open ? 'open' : ''}`} id={`day-${day.id}`} key={day.id}>
+          <article className={`timeline-day ${open ? 'open' : ''}`} id={`day-${day.day}`} key={day.id}>
             <button
               className="timeline-trigger"
               type="button"
@@ -129,7 +128,6 @@ export function TripTimeline({ days }: { days: TripDay[] }) {
               aria-expanded={open}
             >
               <span className="day-number"><small>Día</small>{day.day}</span>
-              <span className="day-date">{day.dateLabel}</span>
               <span className="day-heading">
                 <strong>{publicDay?.title ?? day.title}</strong>
                 <small>
@@ -138,15 +136,8 @@ export function TripTimeline({ days }: { days: TripDay[] }) {
               </span>
               <ChevronDown className="day-chevron" size={21} />
             </button>
-            <AnimatePresence initial={false}>
-              {open && (
-                <motion.div
-                  className="timeline-detail"
-                  initial={reduceMotion ? false : { height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={reduceMotion ? undefined : { height: 0, opacity: 0 }}
-                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                >
+            {open && (
+              <div className="timeline-detail">
                   <div className="timeline-copy">
                     <span className="public-day-label">Qué haremos</span>
                     <p>{publicDay?.story ?? day.summary}</p>
@@ -156,9 +147,8 @@ export function TripTimeline({ days }: { days: TripDay[] }) {
                       <li key={entry}>{entry}</li>
                     ))}
                   </ul>
-                </motion.div>
-              )}
-            </AnimatePresence>
+              </div>
+            )}
           </article>
         )
       })}

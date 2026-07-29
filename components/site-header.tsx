@@ -6,7 +6,13 @@ import { useEffect, useState } from 'react'
 import { Logo } from './logo'
 import { trips } from '@/data/site'
 
-export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
+export function SiteHeader({
+  overlay = false,
+  showTripYears = true,
+}: {
+  overlay?: boolean
+  showTripYears?: boolean
+}) {
   const [open, setOpen] = useState(false)
   const [tripsOpen, setTripsOpen] = useState(true)
 
@@ -48,7 +54,10 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
             {trips.map((trip) => (
               <Link href={`/viajes/${trip.slug}`} key={trip.slug} onClick={() => setOpen(false)}>
                 <img src={trip.image.url} alt="" />
-                <span><strong>{trip.country}</strong><small>{trip.year} · {trip.status}</small></span>
+                <span>
+                  <strong>{trip.country}</strong>
+                  <small>{showTripYears ? `${trip.year} · ` : ''}{trip.status}</small>
+                </span>
               </Link>
             ))}
             <Link className="all-trips-link" href="/viajes" onClick={() => setOpen(false)}>Ver todos los viajes</Link>
