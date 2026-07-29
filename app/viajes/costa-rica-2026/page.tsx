@@ -113,7 +113,12 @@ export default function CostaRicaPage() {
                   <div className="destination-story-copy">
                     <small>{destination.dates}</small>
                     <h3>{destination.name}</h3>
-                    <p>{destination.activities.slice(0, 3).join(' · ')}</p>
+                    <p>
+                      {destination.activities
+                        .filter((activity) => !/fútbol|mundial|partido/i.test(activity))
+                        .slice(0, 3)
+                        .join(' · ')}
+                    </p>
                     <span>
                       <Moon size={14} /> {destination.nights} noches
                     </span>
@@ -129,8 +134,8 @@ export default function CostaRicaPage() {
         <div className="section-shell itinerary-grid">
           <Reveal className="itinerary-heading">
             <span className="eyebrow">Día a día</span>
-            <h2>El itinerario completo</h2>
-            <p>Abre cada jornada para ver el ritmo, los traslados y los momentos principales.</p>
+            <h2>Diecisiete días, paso a paso.</h2>
+            <p>Pulsa un día para ver, de forma sencilla, dónde estuvimos y qué hicimos.</p>
             <Link className="private-hint" href="/familia">
               ¿Eres de la familia? Accede al seguimiento privado <ArrowRight size={15} />
             </Link>
