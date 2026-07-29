@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { JsonLd } from '@/components/json-ld'
 import { MotionExperience } from '@/components/motion-experience'
-import { authors, defaultSocialImage, siteDescription, siteName, siteUrl } from '@/src/data/siteSeo'
+import { authors, defaultSocialImage, siteDescription, siteName, siteUrl, tiktokUrl } from '@/src/data/siteSeo'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -76,6 +76,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 name: siteName,
                 url: siteUrl,
                 logo: `${siteUrl}/brand/v2-logo-white.png`,
+                sameAs: [tiktokUrl],
                 founder: [
                   { '@type': 'Person', name: 'Andrea', url: `${siteUrl}/nosotros` },
                   { '@type': 'Person', name: 'Alejandro', url: `${siteUrl}/nosotros` },

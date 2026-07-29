@@ -3,6 +3,7 @@ export const siteName = 'Viajan2Juntos'
 export const siteDescription =
   'Blog de viajes en pareja de Andrea y Alejandro: rutas por libre, itinerarios, mapas y consejos contados después de vivir cada destino.'
 export const contactEmail = 'hola@viajan2juntos.com'
+export const tiktokUrl = 'https://www.tiktok.com/@viajan2juntos'
 export const defaultSocialImage = '/about/espana-playa.jpeg'
 export const contentUpdatedAt = '2026-07-29'
 

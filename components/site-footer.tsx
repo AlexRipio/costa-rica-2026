@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { ArrowUpRight, Instagram, Mail } from 'lucide-react'
+import { ArrowUpRight, Mail, Play } from 'lucide-react'
+import { tiktokUrl } from '@/src/data/siteSeo'
 import { Logo } from './logo'
 
 export function SiteFooter() {
@@ -19,6 +20,20 @@ export function SiteFooter() {
           </a>
         </div>
       </div>
+      <a
+        className="footer-tiktok"
+        href={tiktokUrl}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Seguir a Viajan2Juntos en TikTok"
+      >
+        <span className="footer-tiktok-icon"><Play size={18} fill="currentColor" /></span>
+        <span className="footer-tiktok-copy">
+          <small>También nos movemos en vídeo</small>
+          <strong>TikTok <em>@viajan2juntos</em></strong>
+        </span>
+        <ArrowUpRight className="footer-tiktok-arrow" />
+      </a>
       <div className="footer-bottom">
         <span>Viajan2Juntos © 2026</span>
         <nav className="footer-legal-links" aria-label="Información legal">
@@ -27,9 +42,9 @@ export function SiteFooter() {
           <Link href="/cookies">Cookies</Link>
           <Link href="/creditos">Créditos</Link>
         </nav>
-        <div className="footer-social-icons" aria-hidden="true">
-          <Instagram size={17} />
-          <Mail size={17} />
+        <div className="footer-social-icons" aria-label="Contacto y redes">
+          <a href={tiktokUrl} target="_blank" rel="noreferrer">TikTok</a>
+          <a href="mailto:hola@viajan2juntos.com" aria-label="Enviar un correo a Viajan2Juntos"><Mail size={17} /></a>
         </div>
       </div>
     </footer>
