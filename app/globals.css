@@ -9587,7 +9587,7 @@ img {
 }
 
 .motion-enhanced .hero-year-mark.scroll-reveal-target.is-visible {
-  transform: translate3d(0, calc(var(--hero-scroll, 0) * 52px), 0);
+  transform: translate3d(0, calc(-50% + var(--hero-scroll, 0) * 52px), 0);
 }
 
 .hero-memory-strip figure {
