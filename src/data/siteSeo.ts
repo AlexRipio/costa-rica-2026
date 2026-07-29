@@ -4,7 +4,7 @@ export const siteDescription =
   'Guías de viaje de Andrea y Alejandro: rutas por libre, itinerarios, mapas y consejos útiles contados después de vivir cada destino.'
 export const contactEmail = 'hola@viajan2juntos.com'
 export const tiktokUrl = 'https://www.tiktok.com/@viajan2juntos'
-export const defaultSocialImage = '/about/espana-playa.jpeg'
+export const defaultSocialImage = '/brand/social-card.png'
 export const contentUpdatedAt = '2026-07-29'
 
 export const authors = [

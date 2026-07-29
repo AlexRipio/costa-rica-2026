@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: 'Blog de viajes en pareja: rutas por libre y mapas',
   description: 'Andrea y Alejandro comparten rutas por libre, mapas, itinerarios y consejos reales para preparar viajes en pareja sin correr.',
   alternates: { canonical: '/' },
-  openGraph: { url: '/', images: [{ url: defaultSocialImage, alt: 'Andrea y Alejandro viajando juntos' }] },
+  openGraph: { url: '/', images: [{ url: defaultSocialImage, alt: 'Logo de Viajan2Juntos' }] },
 }
 
 export default function HomePage() {

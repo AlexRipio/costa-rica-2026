@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     locale: 'es_ES',
     url: siteUrl,
     siteName,
-    images: [{ url: defaultSocialImage, width: 1152, height: 1536, alt: 'Andrea y Alejandro viajando juntos' }],
+    images: [{ url: defaultSocialImage, width: 1200, height: 630, alt: 'Logo de Viajan2Juntos' }],
   },
   twitter: {
     card: 'summary_large_image',
