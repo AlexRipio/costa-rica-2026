@@ -30,7 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.85,
     })),
-    ...trips.filter((trip) => trip.slug !== 'costa-rica-2026').map((trip) => ({
+    ...trips.filter((trip) => trip.slug !== 'costa-rica-2026' && trip.available).map((trip) => ({
       url: `${siteUrl}/viajes/${trip.slug}`,
       lastModified: modified,
       changeFrequency: 'monthly' as const,

@@ -40,6 +40,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: trip.title,
     description,
     alternates: { canonical: `/viajes/${trip.slug}` },
+    robots: trip.available
+      ? { index: true, follow: true }
+      : { index: false, follow: true },
     openGraph: {
       type: 'article',
       url: `/viajes/${trip.slug}`,
