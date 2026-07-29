@@ -19,6 +19,7 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { JsonLd } from '@/components/json-ld'
 import { Reveal } from '@/components/reveal'
 import { LivingStatement } from '@/components/living-statement'
 import { SiteFooter } from '@/components/site-footer'
@@ -26,6 +27,7 @@ import { SiteHeader } from '@/components/site-header'
 import { costaRicaGuideBySlug, costaRicaGuides } from '@/src/data/costaRicaGuides'
 import { costaRicaGuideExtras } from '@/src/data/costaRicaGuideExtras'
 import { images } from '@/src/data/images'
+import { contentUpdatedAt, defaultSocialImage, siteName, siteUrl } from '@/src/data/siteSeo'
 import { initialTripData } from '@/src/data/tripData'
 
 type GuidePageProps = { params: Promise<{ destination: string }> }
@@ -38,7 +40,27 @@ export async function generateMetadata({ params }: GuidePageProps): Promise<Meta
   const { destination } = await params
   const guide = costaRicaGuideBySlug[destination]
   if (!guide) return {}
-  return { title: `${guide.title} · Costa Rica`, description: guide.intro }
+  const destinationData = initialTripData.destinations.find((item) => item.id === guide.destinationId)
+  const image = destinationData ? images[destinationData.image] : undefined
+  const canonical = `/viajes/costa-rica-2026/${guide.slug}`
+  const description = `${guide.title} por libre: qué ver, cuántos días dedicar, dónde dormir, cómo moverse, reservas y consejos prácticos para organizar la ruta.`
+  return {
+    title: `${guide.title}: guía práctica por libre`,
+    description,
+    keywords: [guide.title, `${guide.title} Costa Rica`, `qué ver en ${guide.title}`, `dónde dormir en ${guide.title}`, 'Costa Rica por libre'],
+    alternates: { canonical },
+    openGraph: {
+      type: 'article',
+      url: canonical,
+      title: `${guide.title}: guía práctica por libre`,
+      description,
+      siteName,
+      locale: 'es_ES',
+      images: [{ url: image?.url ?? defaultSocialImage, alt: image?.alt ?? guide.title }],
+    },
+    twitter: { card: 'summary_large_image', title: `${guide.title}: guía práctica`, description, images: [image?.url ?? defaultSocialImage] },
+    other: { 'article:modified_time': `${contentUpdatedAt}T12:00:00+02:00`, 'geo.region': 'CR' },
+  }
 }
 
 export default async function CostaRicaDestinationGuide({ params }: GuidePageProps) {
@@ -55,9 +77,49 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
   const next = costaRicaGuides[currentIndex + 1]
   const googleMapUrl = `https://www.google.com/maps?q=${encodeURIComponent(extra.mapQuery)}&z=10&output=embed`
   const googleOpenUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(extra.mapQuery)}`
+  const canonicalUrl = `${siteUrl}/viajes/costa-rica-2026/${guide.slug}`
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BlogPosting',
+        '@id': `${canonicalUrl}#article`,
+        mainEntityOfPage: canonicalUrl,
+        headline: `${guide.title}: guía práctica por libre`,
+        description: guide.intro,
+        image: [image.url],
+        dateModified: contentUpdatedAt,
+        inLanguage: 'es-ES',
+        author: [
+          { '@type': 'Person', name: 'Andrea', url: `${siteUrl}/nosotros` },
+          { '@type': 'Person', name: 'Alejandro', url: `${siteUrl}/nosotros` },
+        ],
+        publisher: { '@type': 'Organization', name: siteName, url: siteUrl, logo: { '@type': 'ImageObject', url: `${siteUrl}/brand/v2-logo-white.png` } },
+        about: { '@type': 'Place', name: guide.title, address: { '@type': 'PostalAddress', addressCountry: 'CR' } },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Inicio', item: siteUrl },
+          { '@type': 'ListItem', position: 2, name: 'Viajes', item: `${siteUrl}/viajes` },
+          { '@type': 'ListItem', position: 3, name: 'Costa Rica', item: `${siteUrl}/viajes/costa-rica-2026` },
+          { '@type': 'ListItem', position: 4, name: guide.title, item: canonicalUrl },
+        ],
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: extra.faq.map((item) => ({
+          '@type': 'Question',
+          name: item.question,
+          acceptedAnswer: { '@type': 'Answer', text: item.answer },
+        })),
+      },
+    ],
+  }
 
   return (
     <main className="destination-guide-page costa-rica-public destination-blog-guide">
+      <JsonLd data={structuredData} />
       <SiteHeader overlay showTripYears={false} showCostaRicaSections />
 
       <section className="guide-hero">
@@ -284,6 +346,15 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
             {guide.sources.map((source) => (
               <a href={source.url} target="_blank" rel="noreferrer" key={source.url}><span>{source.name}</span><ExternalLink size={15} /></a>
             ))}
+          </div>
+        </Reveal>
+        <Reveal className="section-shell guide-editorial-note">
+          <img src="/about/aventura-montana.jpeg" alt="Andrea y Alejandro durante su viaje por Costa Rica" />
+          <div>
+            <span className="eyebrow">Quién ha preparado esta guía</span>
+            <h2>Andrea y Alejandro, detrás de Viajan2Juntos.</h2>
+            <p>Escribimos para resolver las dudas que también tuvimos nosotros. Separamos la experiencia personal de los datos que pueden cambiar y enlazamos las fuentes oficiales para comprobar entradas, normas y reservas.</p>
+            <small>Contenido revisado el 29 de julio de 2026 · <Link href="/nosotros">Conoce cómo viajamos y contamos cada lugar</Link></small>
           </div>
         </Reveal>
       </section>

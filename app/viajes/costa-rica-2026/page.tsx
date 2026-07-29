@@ -17,6 +17,7 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 import { AdSpace } from '@/components/ad-space'
+import { JsonLd } from '@/components/json-ld'
 import { GoogleRouteCard } from '@/components/google-route-card'
 import { Reveal } from '@/components/reveal'
 import { SiteFooter } from '@/components/site-footer'
@@ -28,10 +29,20 @@ import { TripTimeline } from '@/components/trip-timeline'
 import { costaRicaGuides } from '@/src/data/costaRicaGuides'
 import { images } from '@/src/data/images'
 import { initialTripData } from '@/src/data/tripData'
+import { contentUpdatedAt, siteName, siteUrl } from '@/src/data/siteSeo'
 
 export const metadata: Metadata = {
-  title: 'Costa Rica por libre',
-  description: 'Nuestra ruta por Costa Rica, con itinerarios, mapa, lugares, consejos y todo lo que aprendimos preparando el viaje.',
+  title: 'Costa Rica por libre: rutas de 10, 15 y 20 días',
+  description: 'Guía de Costa Rica por libre con itinerarios de 10, 15 y 20 días, mapa, lugares, coche, presupuesto, maleta y consejos prácticos.',
+  keywords: ['Costa Rica por libre', 'ruta Costa Rica 15 días', 'itinerario Costa Rica', 'viaje Costa Rica en coche', 'qué ver en Costa Rica'],
+  alternates: { canonical: '/viajes/costa-rica-2026' },
+  openGraph: {
+    type: 'article',
+    url: '/viajes/costa-rica-2026',
+    title: 'Costa Rica por libre: rutas de 10, 15 y 20 días',
+    description: 'Itinerarios, mapa, lugares y consejos claros para preparar Costa Rica por libre.',
+    images: [{ url: images.arenal.url, alt: images.arenal.alt }],
+  },
 }
 
 const gallery = [images.fortuna, images.monteverde, images.santaTeresa, images.manuelAntonio, images.cahuita]
@@ -49,6 +60,37 @@ export default function CostaRicaPage() {
 
   return (
     <main className="costa-rica-public costa-rica-blog">
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@graph': [
+            {
+              '@type': 'BlogPosting',
+              headline: 'Costa Rica por libre: rutas de 10, 15 y 20 días',
+              description: 'Guía práctica de Costa Rica con itinerarios, mapa, lugares y preparación.',
+              url: `${siteUrl}/viajes/costa-rica-2026`,
+              image: [images.arenal.url],
+              dateModified: contentUpdatedAt,
+              inLanguage: 'es-ES',
+              author: [
+                { '@type': 'Person', name: 'Andrea', url: `${siteUrl}/nosotros` },
+                { '@type': 'Person', name: 'Alejandro', url: `${siteUrl}/nosotros` },
+              ],
+              publisher: { '@type': 'Organization', name: siteName, url: siteUrl },
+            },
+            {
+              '@type': 'ItemList',
+              name: 'Lugares de la ruta por Costa Rica',
+              itemListElement: costaRicaGuides.map((guide, index) => ({
+                '@type': 'ListItem',
+                position: index + 1,
+                name: guide.title,
+                url: `${siteUrl}/viajes/costa-rica-2026/${guide.slug}`,
+              })),
+            },
+          ],
+        }}
+      />
       <SiteHeader overlay showTripYears={false} showCostaRicaSections />
 
       <section className="trip-hero">

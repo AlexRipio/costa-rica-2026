@@ -9,6 +9,7 @@ import { trips } from '@/data/site'
 export const metadata: Metadata = {
   title: 'Viajes',
   description: 'Todas las rutas y diarios de viaje de Viajan2Juntos.',
+  alternates: { canonical: '/viajes' },
 }
 
 export default function TripsPage() {

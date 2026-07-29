@@ -11,6 +11,7 @@ import { initialTripData } from '@/src/data/tripData'
 export const metadata: Metadata = {
   title: 'Qué llevar a Costa Rica · Maleta completa',
   description: 'Lista práctica e interactiva para preparar la maleta de un viaje a Costa Rica.',
+  alternates: { canonical: '/viajes/costa-rica-2026/maleta' },
 }
 
 export default function CostaRicaPackingPage() {

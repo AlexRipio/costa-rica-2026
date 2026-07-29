@@ -1,0 +1,19 @@
+# Viajan2Juntos
+
+> Blog personal de viajes en pareja de Andrea y Alejandro. Publicamos rutas por libre, mapas, consejos prácticos y aprendizajes propios.
+
+## Guías principales
+
+- [Costa Rica por libre](https://viajan2juntos.vercel.app/viajes/costa-rica-2026): itinerarios de 10, 15 y 20 días, mapa y preparación.
+- [Lugares de Costa Rica](https://viajan2juntos.vercel.app/viajes/costa-rica-2026#destinos): guías individuales con contexto, alojamiento, transporte, reservas y preguntas frecuentes.
+- [Maleta para Costa Rica](https://viajan2juntos.vercel.app/viajes/costa-rica-2026/maleta): lista práctica e interactiva.
+- [Andrea y Alejandro](https://viajan2juntos.vercel.app/nosotros): quiénes somos y cómo preparamos el contenido.
+
+## Criterio editorial
+
+- Diferenciamos experiencia personal, recomendación y datos que pueden cambiar.
+- Enlazamos fuentes oficiales para entradas, normas y reservas.
+- Indicamos cuándo una información debe comprobarse antes del viaje.
+- No aceptamos contenido patrocinado oculto.
+
+Contacto editorial: hola@viajan2juntos.com

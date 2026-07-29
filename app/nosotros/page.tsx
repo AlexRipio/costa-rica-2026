@@ -1,19 +1,37 @@
 import type { Metadata } from 'next'
 import { ArrowRight, Camera, Compass, Heart, Map, NotebookPen, Route, Sparkles } from 'lucide-react'
 import Link from 'next/link'
+import { JsonLd } from '@/components/json-ld'
 import { Reveal } from '@/components/reveal'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { trips } from '@/data/site'
+import { siteUrl } from '@/src/data/siteSeo'
 
 export const metadata: Metadata = {
   title: 'Conócenos',
   description: 'La historia y la forma de viajar de Andrea y Alejandro, creadores de Viajan2Juntos.',
+  alternates: { canonical: '/nosotros' },
 }
 
 export default function AboutPage() {
   return (
     <main className="about-page">
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'ProfilePage',
+          mainEntity: {
+            '@type': 'Organization',
+            name: 'Viajan2Juntos',
+            url: siteUrl,
+            founder: [
+              { '@type': 'Person', name: 'Andrea' },
+              { '@type': 'Person', name: 'Alejandro' },
+            ],
+          },
+        }}
+      />
       <SiteHeader overlay />
       <section className="about-hero">
         <img src="/about/barco-costa-rica.jpeg" alt="Andrea y Alejandro navegando junto a la costa de Costa Rica" />

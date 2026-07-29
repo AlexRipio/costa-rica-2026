@@ -8,6 +8,14 @@ import { SiteHeader } from '@/components/site-header'
 import { TravelChapters } from '@/components/travel-chapters'
 import { WorldTravelMap } from '@/components/world-travel-map'
 import { travelStats } from '@/data/site'
+import { defaultSocialImage } from '@/src/data/siteSeo'
+
+export const metadata: Metadata = {
+  title: 'Blog de viajes en pareja: rutas por libre y mapas',
+  description: 'Andrea y Alejandro comparten rutas por libre, mapas, itinerarios y consejos reales para preparar viajes en pareja sin correr.',
+  alternates: { canonical: '/' },
+  openGraph: { url: '/', images: [{ url: defaultSocialImage, alt: 'Andrea y Alejandro viajando juntos' }] },
+}
 
 export default function HomePage() {
   return (
@@ -76,3 +84,4 @@ export default function HomePage() {
     </main>
   )
 }
+import type { Metadata } from 'next'

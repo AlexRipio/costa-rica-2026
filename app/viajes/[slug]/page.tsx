@@ -10,6 +10,17 @@ export function generateStaticParams() {
   return trips.filter((trip) => !trip.available).map((trip) => ({ slug: trip.slug }))
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const trip = trips.find((item) => item.slug === slug && !item.available)
+  if (!trip) return {}
+  return {
+    title: `${trip.country} ${trip.year}`,
+    description: `Archivo personal del viaje de Andrea y Alejandro a ${trip.country}.`,
+    robots: { index: false, follow: true },
+  }
+}
+
 export default async function ArchiveTripPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const trip = trips.find((item) => item.slug === slug && !item.available)
@@ -40,3 +51,4 @@ export default async function ArchiveTripPage({ params }: { params: Promise<{ sl
     </main>
   )
 }
+import type { Metadata } from 'next'

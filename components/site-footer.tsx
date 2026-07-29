@@ -12,6 +12,7 @@ export function SiteFooter() {
         </div>
         <div className="footer-links">
           <Link href="/viajes">Todos los viajes</Link>
+          <Link href="/nosotros">Quiénes somos</Link>
           <Link href="/familia">Zona Familia</Link>
           <a href="mailto:hola@viajan2juntos.com">
             Contacto <ArrowUpRight size={14} />
@@ -20,7 +21,13 @@ export function SiteFooter() {
       </div>
       <div className="footer-bottom">
         <span>Viajan2Juntos © 2026</span>
-        <div>
+        <nav className="footer-legal-links" aria-label="Información legal">
+          <Link href="/aviso-legal">Aviso legal</Link>
+          <Link href="/privacidad">Privacidad</Link>
+          <Link href="/cookies">Cookies</Link>
+          <Link href="/creditos">Créditos</Link>
+        </nav>
+        <div className="footer-social-icons" aria-hidden="true">
           <Instagram size={17} />
           <Mail size={17} />
         </div>
