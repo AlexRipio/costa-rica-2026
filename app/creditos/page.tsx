@@ -9,7 +9,10 @@ export const metadata: Metadata = {
   alternates: { canonical: '/creditos' },
 }
 
-const creditedImages = Object.values(images).filter((image) => !image.id.startsWith('hotel-'))
+const personalImages = Object.values(images).filter((image) => image.id.startsWith('personal-'))
+const creditedImages = Object.values(images).filter(
+  (image) => !image.id.startsWith('hotel-') && !image.id.startsWith('personal-'),
+)
 
 export default function CreditsPage() {
   return (
@@ -18,6 +21,22 @@ export default function CreditsPage() {
       title="Créditos de imágenes"
       intro="Agradecemos y atribuimos el trabajo de quienes han publicado imágenes con licencias que permiten reutilizarlas."
     >
+      <section>
+        <h2>Fotografías propias</h2>
+        <p>Estas imágenes fueron tomadas durante nuestro viaje y pertenecen a Andrea y Alejandro. Se publican para acompañar las guías de Viajan2Juntos y no se autoriza su copia, redistribución, edición, entrenamiento de modelos ni uso comercial sin permiso escrito.</p>
+        <div className="image-credit-list">
+          {personalImages.map((image) => (
+            <article key={image.id}>
+              <img src={image.url} alt="" loading="lazy" draggable={false} />
+              <div>
+                <h3>{image.alt}</h3>
+                <p><strong>Autor:</strong> {image.author}</p>
+                <p><strong>Licencia:</strong> {image.license}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
       <section>
         <h2>Imágenes de las guías</h2>
         <p>Las fotografías personales de Andrea y Alejandro pertenecen a sus autores. Las siguientes imágenes proceden de fuentes abiertas y se utilizan respetando la atribución y la licencia indicada en su página original.</p>

@@ -32,6 +32,7 @@ export default function LegalNoticePage() {
       <section>
         <h2>3. Uso del contenido</h2>
         <p>Los textos originales, el diseño, la marca y las fotografías propias están protegidos por la normativa de propiedad intelectual. Puede compartirse un enlace o una cita breve con atribución, pero no reproducirse una guía completa, redistribuir fotografías ni explotar el contenido sin autorización previa.</p>
+        <p>Las fotografías identificadas como propias se publican con todos los derechos reservados. No se autoriza su descarga, republicación, modificación, uso comercial, inclusión en bancos de imágenes ni utilización para entrenar sistemas de inteligencia artificial sin consentimiento escrito de sus autores. Las medidas técnicas de la web dificultan la copia casual, pero no sustituyen esta protección legal.</p>
         <p>Algunas imágenes proceden de Wikimedia Commons u otras fuentes abiertas. Su autoría y licencia se mantienen en los datos del proyecto y siguen sujetas a las condiciones indicadas por cada titular.</p>
       </section>
       <section>

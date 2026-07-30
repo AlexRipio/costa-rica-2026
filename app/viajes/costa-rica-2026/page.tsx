@@ -22,6 +22,7 @@ import { CostaRicaExperienceGuide } from '@/components/costa-rica-experience-gui
 import { JsonLd } from '@/components/json-ld'
 import { LivingStatement } from '@/components/living-statement'
 import { GoogleRouteCard } from '@/components/google-route-card'
+import { ProtectedImage } from '@/components/protected-image'
 import { Reveal } from '@/components/reveal'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
@@ -49,7 +50,14 @@ export const metadata: Metadata = {
   },
 }
 
-const gallery = [images.fortuna, images.monteverde, images.santaTeresa, images.manuelAntonio, images.cahuita]
+const gallery = [
+  images.personalSantaTeresaBeach,
+  images.personalMonkeyManuelAntonio,
+  images.personalManuelAntonioSunset,
+  images.personalMariposaPool,
+  images.fortuna,
+  images.monteverde,
+]
 
 const contents = [
   { number: '01', title: 'Elige tu ruta', text: 'Versiones de 10, 15 y 20 días.', href: '#itinerarios' },
@@ -298,7 +306,15 @@ export default function CostaRicaPage() {
               return (
                 <Reveal className={`destination-story destination-story-${(index % 3) + 1}`} key={destination.id}>
                   <Link className="destination-story-link" href={`/viajes/costa-rica-2026/${guide?.slug}`}>
-                    <div className="destination-photo"><img src={image.url} alt={image.alt} /><span>0{index + 1}</span></div>
+                    <div className={`destination-photo ${image.id.startsWith('personal-') ? 'personal-photo-frame' : ''}`}>
+                      {image.id.startsWith('personal-') ? (
+                        <ProtectedImage src={image.url} alt={image.alt} loading="lazy" />
+                      ) : (
+                        <img src={image.url} alt={image.alt} loading="lazy" />
+                      )}
+                      <span>0{index + 1}</span>
+                      {image.id.startsWith('personal-') && <small>© Viajan2Juntos</small>}
+                    </div>
                     <div className="destination-story-copy">
                       <small>{guide?.bestFor}</small>
                       <h3>{guide?.title}</h3>
@@ -442,11 +458,17 @@ export default function CostaRicaPage() {
             <p>Una pausa visual entre carreteras, bosque y costa.</p>
           </Reveal>
           <div className="media-journal-grid">
-            {gallery.slice(0, 3).map((image, index) => (
-              <figure className={`media-photo media-photo-${index + 1}`} key={image.id}>
-                <img src={image.url} alt={image.alt} />
-                <figcaption>{image.alt}</figcaption>
-              </figure>
+            {gallery.slice(0, 4).map((image, index) => (
+              <Reveal
+                className={`media-photo media-photo-${index + 1} personal-photo-frame`}
+                delay={index * 0.06}
+                key={image.id}
+              >
+                <figure>
+                  <ProtectedImage src={image.url} alt={image.alt} loading="lazy" />
+                  <figcaption>{image.alt}<small>Fotografía propia · © Viajan2Juntos</small></figcaption>
+                </figure>
+              </Reveal>
             ))}
           </div>
         </div>

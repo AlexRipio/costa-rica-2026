@@ -20,6 +20,7 @@ import {
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { JsonLd } from '@/components/json-ld'
+import { ProtectedImage } from '@/components/protected-image'
 import { Reveal } from '@/components/reveal'
 import { LivingStatement } from '@/components/living-statement'
 import { DroneScrollStory } from '@/components/drone-scroll-story'
@@ -129,8 +130,12 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
       <JsonLd data={structuredData} />
       <SiteHeader overlay showTripYears={false} showCostaRicaSections />
 
-      <section className="guide-hero">
-        <img src={image.url} alt={image.alt} />
+      <section className={`guide-hero ${image.id.startsWith('personal-') ? 'personal-photo-frame' : ''}`}>
+        {image.id.startsWith('personal-') ? (
+          <ProtectedImage src={image.url} alt={image.alt} />
+        ) : (
+          <img src={image.url} alt={image.alt} />
+        )}
         <div className="guide-hero-shade" />
         <Reveal className="section-shell guide-hero-copy">
           <nav className="guide-breadcrumbs" aria-label="Migas de pan">
@@ -235,8 +240,12 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
               const supportingImage = images[extra.photoKeys[index]]
               return (
                 <Reveal key={item.title}>
-                  <article>
-                    <img src={supportingImage.url} alt={supportingImage.alt} />
+                  <article className={supportingImage.id.startsWith('personal-') ? 'personal-photo-frame' : undefined}>
+                    {supportingImage.id.startsWith('personal-') ? (
+                      <ProtectedImage src={supportingImage.url} alt={supportingImage.alt} loading="lazy" />
+                    ) : (
+                      <img src={supportingImage.url} alt={supportingImage.alt} loading="lazy" />
+                    )}
                     <div><span>0{index + 1}</span><h3>{item.title}</h3><p>{item.text}</p></div>
                   </article>
                 </Reveal>
@@ -327,8 +336,13 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
         </Reveal>
       </section>
 
-      <figure className="guide-photo-break guide-photo-only">
-        <img src={images[extra.photoKeys[1]].url} alt={images[extra.photoKeys[1]].alt} />
+      <figure className={`guide-photo-break guide-photo-only ${images[extra.photoKeys[1]].id.startsWith('personal-') ? 'personal-photo-frame' : ''}`}>
+        {images[extra.photoKeys[1]].id.startsWith('personal-') ? (
+          <ProtectedImage src={images[extra.photoKeys[1]].url} alt={images[extra.photoKeys[1]].alt} loading="lazy" />
+        ) : (
+          <img src={images[extra.photoKeys[1]].url} alt={images[extra.photoKeys[1]].alt} loading="lazy" />
+        )}
+        {images[extra.photoKeys[1]].id.startsWith('personal-') && <figcaption>Fotografía propia · © Viajan2Juntos</figcaption>}
       </figure>
 
       <section className="guide-faq-section" id="dudas">
