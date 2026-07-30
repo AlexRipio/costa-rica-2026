@@ -21,9 +21,9 @@ function initialiseConsentMode() {
   window.dataLayer = window.dataLayer || []
   window.gtag =
     window.gtag ||
-    ((...args: unknown[]) => {
-      window.dataLayer?.push(args)
-    })
+    function gtag(..._args: unknown[]) {
+      window.dataLayer?.push(arguments)
+    }
 
   window.gtag('consent', 'default', {
     analytics_storage: 'denied',
