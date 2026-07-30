@@ -44,7 +44,15 @@ export const metadata: Metadata = {
     images: [defaultSocialImage],
   },
   verification: { google: 'v8NCp-2SF9WZhMmesZWCd-Co1xJ774qluerAnT5afUw' },
-  icons: { icon: '/icon.png', apple: '/apple-icon.png' },
+  icons: {
+    icon: [
+      { url: '/favicon-48.png', type: 'image/png', sizes: '48x48' },
+      { url: '/favicon-96.png', type: 'image/png', sizes: '96x96' },
+      { url: '/icon.png', type: 'image/png', sizes: '512x512' },
+    ],
+    shortcut: '/favicon-48.png',
+    apple: [{ url: '/apple-icon.png', type: 'image/png', sizes: '180x180' }],
+  },
 }
 
 export const viewport: Viewport = {
@@ -75,7 +83,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 '@id': `${siteUrl}/#publisher`,
                 name: siteName,
                 url: siteUrl,
-                logo: `${siteUrl}/icon.png`,
+                logo: {
+                  '@type': 'ImageObject',
+                  url: `${siteUrl}/icon.png`,
+                  width: 512,
+                  height: 512,
+                },
                 sameAs: [tiktokUrl],
                 founder: [
                   { '@type': 'Person', name: 'Andrea', url: `${siteUrl}/nosotros` },
