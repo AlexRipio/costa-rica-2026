@@ -5,6 +5,7 @@ import type { Map as LeafletMap } from 'leaflet'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useCostaRicaRoute, type CostaRicaRouteDays } from '@/components/costa-rica-route-context'
 import type { Destination } from '@/src/data/tripData'
+import { trackAnalyticsEvent } from '@/src/lib/analytics'
 
 type RouteStage = {
   days: Record<CostaRicaRouteDays, string>
@@ -114,7 +115,14 @@ export function StoryMap({ destinations }: { destinations: Destination[] }) {
           title: destination.name,
         }).addTo(map)
 
-        marker.on('click', () => setActiveId(destination.id))
+        marker.on('click', () => {
+          setActiveId(destination.id)
+          trackAnalyticsEvent('map_destination_select', {
+            destination: destination.id,
+            itinerary_days: selectedDays,
+            interaction_source: 'marker',
+          })
+        })
       })
 
       map.fitBounds(L.latLngBounds(coordinates), {
@@ -136,6 +144,11 @@ export function StoryMap({ destinations }: { destinations: Destination[] }) {
 
   const selectDestination = (destination: Destination) => {
     setActiveId(destination.id)
+    trackAnalyticsEvent('map_destination_select', {
+      destination: destination.id,
+      itinerary_days: selectedDays,
+      interaction_source: 'legend',
+    })
     mapRef.current?.setView(
       [destination.coordinates[0], destination.coordinates[1]],
       Math.max(mapRef.current.getZoom(), 8),
@@ -161,7 +174,11 @@ export function StoryMap({ destinations }: { destinations: Destination[] }) {
           <span>{activeStage.days[selectedDays]}</span>
           <strong>{activeDestination.name.split(' / ')[0]}</strong>
           <p>{activeStage.summary}</p>
-          <a href={`/viajes/costa-rica-2026/${activeStage.guide}`}>
+          <a
+            href={`/viajes/costa-rica-2026/${activeStage.guide}`}
+            data-analytics-event="open_destination_guide"
+            data-analytics-label={activeStage.guide}
+          >
             Ver guía del lugar <span aria-hidden="true">→</span>
           </a>
         </div>

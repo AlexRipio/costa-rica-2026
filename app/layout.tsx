@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { JsonLd } from '@/components/json-ld'
 import { MotionExperience } from '@/components/motion-experience'
+import { AnalyticsConsent } from '@/components/analytics-consent'
 import { authors, defaultSocialImage, siteDescription, siteName, siteUrl, tiktokUrl } from '@/src/data/siteSeo'
 import './globals.css'
 
@@ -100,6 +101,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         />
         <MotionExperience />
         {children}
+        <AnalyticsConsent />
       </body>
     </html>
   )

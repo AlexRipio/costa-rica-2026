@@ -2,10 +2,12 @@
 
 import { motion, useScroll, useTransform } from 'motion/react'
 import { useEffect, useRef } from 'react'
+import { trackAnalyticsEvent } from '@/src/lib/analytics'
 
 export function DroneScrollStory() {
   const sectionRef = useRef<HTMLElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
+  const trackedViewRef = useRef(false)
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start end', 'end start'],
@@ -57,6 +59,14 @@ export function DroneScrollStory() {
           preload="metadata"
           poster="/media/playa-negra-drone-poster.jpg"
           aria-hidden="true"
+          onPlay={() => {
+            if (trackedViewRef.current) return
+            trackedViewRef.current = true
+            trackAnalyticsEvent('video_view', {
+              video_name: 'playa_negra_dron',
+              destination: 'puerto_viejo',
+            })
+          }}
         >
           <source
             src="/media/playa-negra-drone-mobile.mp4"

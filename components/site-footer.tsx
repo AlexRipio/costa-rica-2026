@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { ArrowUpRight, Mail, Play } from 'lucide-react'
 import { tiktokUrl } from '@/src/data/siteSeo'
 import { Logo } from './logo'
+import { CookieSettingsButton } from './analytics-consent'
 
 export function SiteFooter() {
   return (
@@ -40,6 +41,7 @@ export function SiteFooter() {
           <Link href="/aviso-legal">Aviso legal</Link>
           <Link href="/privacidad">Privacidad</Link>
           <Link href="/cookies">Cookies</Link>
+          <CookieSettingsButton />
           <Link href="/creditos">Créditos</Link>
         </nav>
         <div className="footer-social-icons" aria-label="Contacto y redes">

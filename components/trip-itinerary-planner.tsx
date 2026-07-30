@@ -75,6 +75,9 @@ export function TripItineraryPlanner() {
             aria-selected={selected.days === route.days}
             className={selected.days === route.days ? 'active' : ''}
             onClick={() => setSelectedDays(route.days)}
+            data-analytics-event="select_itinerary"
+            data-analytics-label={`costa_rica_${route.days}_dias`}
+            data-analytics-value={route.days}
             key={route.days}
           >
             <strong>{route.days}</strong><span>días</span><small>{route.label}</small>
@@ -101,7 +104,12 @@ export function TripItineraryPlanner() {
               <p>{stop.text}</p>
             </div>
             {stop.guide && (
-              <Link href={`/viajes/costa-rica-2026/${stop.guide}`} aria-label={`Abrir guía de ${stop.place}`}>
+              <Link
+                href={`/viajes/costa-rica-2026/${stop.guide}`}
+                aria-label={`Abrir guía de ${stop.place}`}
+                data-analytics-event="open_destination_guide"
+                data-analytics-label={stop.guide}
+              >
                 <ArrowRight />
               </Link>
             )}

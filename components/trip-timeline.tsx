@@ -129,6 +129,9 @@ export function TripTimeline({ days }: { days: TripDay[] }) {
               type="button"
               onClick={() => setOpenDay(open ? '' : day.id)}
               aria-expanded={open}
+              data-analytics-event="open_itinerary_day"
+              data-analytics-label={`costa_rica_dia_${day.day}`}
+              data-analytics-value={day.day}
             >
               <span className="day-number"><small>Día</small>{day.day}</span>
               <span className="day-heading">
