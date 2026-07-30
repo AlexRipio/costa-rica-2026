@@ -18,6 +18,7 @@ import {
 import Link from 'next/link'
 import { AdSpace } from '@/components/ad-space'
 import { CostaRicaRouteProvider } from '@/components/costa-rica-route-context'
+import { CostaRicaExperienceGuide } from '@/components/costa-rica-experience-guide'
 import { JsonLd } from '@/components/json-ld'
 import { LivingStatement } from '@/components/living-statement'
 import { GoogleRouteCard } from '@/components/google-route-card'
@@ -29,6 +30,7 @@ import { TravelAutoCarousel } from '@/components/travel-auto-carousel'
 import { TripItineraryPlanner } from '@/components/trip-itinerary-planner'
 import { TripTimeline } from '@/components/trip-timeline'
 import { costaRicaGuides } from '@/src/data/costaRicaGuides'
+import { costaRicaExperienceFaq } from '@/src/data/costaRicaExperience'
 import { images } from '@/src/data/images'
 import { initialTripData } from '@/src/data/tripData'
 import { contentUpdatedAt, siteName, siteUrl } from '@/src/data/siteSeo'
@@ -144,6 +146,14 @@ export default function CostaRicaPage() {
                 url: `${siteUrl}/viajes/costa-rica-2026/${guide.slug}`,
               })),
             },
+            {
+              '@type': 'FAQPage',
+              mainEntity: costaRicaExperienceFaq.map((item) => ({
+                '@type': 'Question',
+                name: item.question,
+                acceptedAnswer: { '@type': 'Answer', text: item.answer },
+              })),
+            },
           ],
         }}
       />
@@ -174,6 +184,7 @@ export default function CostaRicaPage() {
         <a href="#destinos">Lugares</a>
         <a href="#extras">Extras</a>
         <a href="#preparar">Preparar</a>
+        <a href="#experiencia">Experiencia real</a>
         <Link href="/viajes/costa-rica-2026/maleta">Maleta</Link>
       </nav>
 
@@ -190,10 +201,9 @@ export default function CostaRicaPage() {
               pasarse el viaje dentro del coche.
             </p>
             <p>
-              Esta no es una lista de “imprescindibles” escrita desde un escritorio. Es la guía que estamos construyendo
-              con nuestra ruta: qué zonas encajan juntas, dónde merece la pena quedarse más tiempo y qué cosas conviene
-              reservar antes. Cuando añadamos nuestras fotos y vídeos, también contaremos lo que salió bien y lo que
-              cambiaríamos.
+              Esta no es una lista de “imprescindibles” escrita desde un escritorio. Ya hemos hecho la ruta completa y
+              aquí contamos <strong>qué salió bien, qué fue prescindible, cuánto pagamos y qué cambiaríamos</strong>.
+              Cada recomendación personal está separada de los datos que pueden cambiar.
             </p>
             <div className="personal-note">
               <strong>Nuestra idea:</strong> ayudarte a montar tu propio viaje, no convencerte de que copies el nuestro.
@@ -239,10 +249,10 @@ export default function CostaRicaPage() {
             <h2>Costa Rica es una pasada. Pero no siempre es fácil.</h2>
           </Reveal>
           <div className="honest-facts-grid">
-            <Reveal><Car /><h3>Los kilómetros engañan</h3><p>Una carretera de 150 km puede ocupar buena parte del día. Planifica por horas de conducción, no por distancia.</p></Reveal>
-            <Reveal><WalletCards /><h3>Es más caro de lo esperado</h3><p>Entradas, actividades y coche pesan mucho. Las sodas, una ruta más corta y reservar con tiempo ayudan a controlar el gasto.</p></Reveal>
-            <Reveal><CloudRain /><h3>La lluvia no arruina el viaje</h3><p>El Pacífico y el Caribe no siguen el mismo calendario. Lleva alternativas y decide algunas cosas al despertar.</p></Reveal>
-            <Reveal><ShieldCheck /><h3>La naturaleza manda</h3><p>Entradas oficiales, guías responsables y nada de alimentar animales. Aquí viajar bien también significa molestar poco.</p></Reveal>
+            <Reveal><Car /><h3>Waze nos salvó tiempo</h3><p>En carreteras de un carril, un accidente puede bloquear la ruta. Waze reflejó mejor los atascos que Google Maps durante nuestro viaje.</p></Reveal>
+            <Reveal><WalletCards /><h3>El efectivo sigue haciendo falta</h3><p>Pagamos casi todo con tarjeta, pero sodas, souvenirs y un hotel exigieron cash. Con 400 USD fuimos tranquilos.</p></Reveal>
+            <Reveal><CloudRain /><h3>La lluvia no nos paró</h3><p>Nos mojamos en senderos y cataratas. Chubasquero, muda seca y flexibilidad funcionaron mejor que esperar un día perfecto.</p></Reveal>
+            <Reveal><ShieldCheck /><h3>El 4×4 nos dio tranquilidad</h3><p>No fue necesario en cada carretera, pero sí muy útil en baches, accesos de tierra y el regreso nocturno desde Montezuma.</p></Reveal>
           </div>
         </div>
       </section>
@@ -379,8 +389,8 @@ export default function CostaRicaPage() {
               <span>Cómo moverse</span>
               <h3>El coche da libertad, pero también marca el ritmo.</h3>
               <p>
-                Para esta ruta, un coche alto resulta cómodo en montaña y accesos secundarios. <strong>Evita conducir de noche</strong>,
-                descarga mapas sin conexión y pregunta siempre si el seguro incluye lo que te están prometiendo.
+                Para nuestra ruta, alquilar coche compensó rotundamente. El Suzuki Jimny 4×4 nos dio libertad en montaña,
+                accesos secundarios y caminos de tierra. <strong>Usamos Waze</strong> y evitamos los trayectos nocturnos largos.
               </p>
             </Reveal>
             <Reveal className="prepare-article">
@@ -388,8 +398,8 @@ export default function CostaRicaPage() {
               <span>Cuánto cuesta</span>
               <h3>Presupuesto medio-alto, incluso viajando por libre.</h3>
               <p>
-                Lo que más pesa suele ser coche, alojamiento y actividades. Comer en <strong>sodas locales</strong>, alternar tours
-                con senderos y no cambiar de hotel cada noche reduce bastante el gasto.
+                Lo que más pesó fue coche, alojamiento y actividades. Comer en <strong>sodas locales</strong>, cocinar alguna
+                cena y elegir experiencias por su valor real —no por acumular tours— nos ayudó a equilibrarlo.
               </p>
             </Reveal>
             <Reveal className="prepare-article">
@@ -397,8 +407,8 @@ export default function CostaRicaPage() {
               <span>Qué reservar</span>
               <h3>Parques y ferris antes; playas y tardes libres después.</h3>
               <p>
-                Compra entradas de parques en canales oficiales y reserva alojamientos si viajas en temporada alta.
-                Mantén flexibles las actividades que dependen del clima.
+                En nuestra visita, Místico, Extremo Park y el bosque nuboso exigían o aconsejaban compra online.
+                Reserva lo que tenga cupo y <strong>mantén flexibles las playas y actividades que dependen del clima</strong>.
               </p>
               <a href="https://serviciosenlinea.sinac.go.cr/" target="_blank" rel="noreferrer">Entradas oficiales SINAC <ArrowRight /></a>
             </Reveal>
@@ -407,8 +417,8 @@ export default function CostaRicaPage() {
               <span>Qué comer</span>
               <h3>Casados, gallo pinto y cocina caribeña.</h3>
               <p>
-                Las sodas son una forma sencilla de comer bien. En el Caribe busca rice and beans cocinado con coco;
-                en las zonas turísticas compara precios antes de sentarte.
+                El casado de una soda solía rondar 8–10 USD y era un plato completo. Pedimos agua filtrada y cocinamos
+                alguna noche; en las zonas turísticas <strong>comparar antes de sentarse</strong> marcó diferencia.
               </p>
             </Reveal>
             <Reveal className="prepare-article prepare-packing-link">
@@ -421,6 +431,8 @@ export default function CostaRicaPage() {
           </div>
         </div>
       </section>
+
+      <CostaRicaExperienceGuide />
 
       <section className="media-journal-section">
         <div className="section-shell">
@@ -452,14 +464,17 @@ export default function CostaRicaPage() {
         </div>
       </section>
 
-      <section className="blog-faq-section">
+      <section className="blog-faq-section" id="dudas-experiencia">
         <div className="section-shell blog-faq-grid">
-          <Reveal><span className="eyebrow">Preguntas rápidas</span><h2>Lo que siempre acaba saliendo en el grupo de viaje.</h2></Reveal>
+          <Reveal>
+            <span className="eyebrow">Después de volver</span>
+            <h2>Lo que nos preocupaba antes de viajar y ahora podemos responder.</h2>
+            <p>Son respuestas desde nuestra experiencia. Salud, visados, normas de parques y condiciones de acceso deben comprobarse de nuevo antes de viajar.</p>
+          </Reveal>
           <div>
-            <details><summary>¿Cuántos días merece Costa Rica?</summary><p>Con 10 días hay que elegir tres zonas. Con 15 se puede sumar el Pacífico. Entre 18 y 20 días el Caribe empieza a encajar sin convertir el viaje en una carrera.</p></details>
-            <details><summary>¿Hace falta un 4×4?</summary><p>No para cada carretera, pero un coche alto aporta tranquilidad en Monteverde, Bajos del Toro y accesos secundarios. Pregunta al alojamiento por el último tramo.</p></details>
-            <details><summary>¿Es un destino barato?</summary><p>No especialmente. La naturaleza parece gratuita, pero parques, guías, coche y actividades suman rápido. Se puede ajustar el viaje alternando experiencias de pago con playas y senderos.</p></details>
-            <details><summary>¿Se puede hacer en transporte público?</summary><p>Sí, pero exige más tiempo y planificación. Para una ruta con muchas paradas, los buses y shuttles funcionan mejor si reduces el número de cambios de base.</p></details>
+            {costaRicaExperienceFaq.map((item) => (
+              <details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>
+            ))}
           </div>
         </div>
       </section>
@@ -468,8 +483,8 @@ export default function CostaRicaPage() {
 
       <section className="trip-closing">
         <Reveal>
-          <span>UNA GUÍA QUE SEGUIRÁ CRECIENDO</span>
-          <h2>Nos falta lo mejor: contaros lo que vivimos.</h2>
+          <span>UN VIAJE VIVIDO, UNA GUÍA EN MOVIMIENTO</span>
+          <h2>Ya volvimos. Ahora te contamos lo que de verdad nos habría ayudado saber.</h2>
           <Link className="button button-light" href="/viajes">Todos los viajes <ArrowRight size={17} /></Link>
         </Reveal>
       </section>

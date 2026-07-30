@@ -95,16 +95,16 @@ export const costaRicaGuides: CostaRicaGuide[] = [
     bestFor: 'Volcán, fauna y aventura',
     essentials: [
       {
-        title: 'Senderos del Arenal',
-        text: 'Camina por bosque y antiguas coladas con vistas al volcán. Si se busca una ruta sencilla, el sector del Parque Nacional es una buena referencia.',
+        title: 'Mirador El Silencio',
+        text: 'Fue nuestra alternativa económica y terminó siendo una de las sorpresas. No es solo un mirador: tiene rutas, mapa, zonas de fauna y vistas al volcán cuando las nubes dan tregua.',
       },
       {
         title: 'Puentes colgantes',
         text: 'Místico permite recorrer distintos niveles del bosque. Con guía se ve mucha más fauna; sin guía, merece la pena ir muy temprano.',
       },
       {
-        title: 'Termas al final',
-        text: 'Las aguas termales encajan mejor después de una caminata. Hay desde resorts completos hasta opciones sencillas junto al río.',
+        title: 'Termas con presupuesto',
+        text: 'Baldi es enorme y completo, con 27 piscinas y toboganes. Nos gustó para relajarnos, pero si hay que elegir pondríamos antes Místico o El Silencio.',
       },
     ],
     advice: [
@@ -115,14 +115,14 @@ export const costaRicaGuides: CostaRicaGuide[] = [
     ],
     simplePlan: [
       {
-        label: 'Día completo',
-        title: 'Volcán y catarata',
-        text: 'Sendero del Arenal por la mañana, comida con calma y catarata o termas según energía.',
+        label: 'Primer día',
+        title: 'Místico y El Silencio',
+        text: 'Puentes colgantes por la mañana y senderos de El Silencio después. Son dos formas muy distintas de entrar en la selva.',
       },
       {
         label: 'Segundo día',
-        title: 'Bosque desde las alturas',
-        text: 'Místico temprano con guía y tarde libre para termas, café o paseo por el pueblo.',
+        title: 'Volcán, soda y termas',
+        text: 'Aprovecha cualquier claro para ver el volcán, come un casado y decide si una tarde de termas encaja en tu presupuesto.',
       },
       {
         label: 'Si llueve',
@@ -169,8 +169,8 @@ export const costaRicaGuides: CostaRicaGuide[] = [
         text: 'La zona es una referencia para canopy. Escoge un parque por su estilo —más aventura o más naturaleza— y no por acumular el mayor número de actividades.',
       },
       {
-        title: 'Paseo nocturno',
-        text: 'Muchos animales son nocturnos. Un guía y una linterna adecuada hacen que la experiencia tenga sentido.',
+        title: 'Un mirador al atardecer',
+        text: 'La combinación de sol y nubes crea una luz muy especial. Nosotros vimos aparecer un arcoíris sobre el paisaje y desde entonces la recordamos como la ciudad de arcoíris.',
       },
     ],
     advice: [
@@ -182,8 +182,8 @@ export const costaRicaGuides: CostaRicaGuide[] = [
     simplePlan: [
       {
         label: 'Llegada',
-        title: 'Santa Elena y paseo nocturno',
-        text: 'Instálate sin correr, contempla el atardecer si está despejado y entra al bosque con guía después.',
+        title: 'Tirolinas y atardecer',
+        text: 'Reserva el canopy con margen para la carretera y guarda el final de la tarde para uno de los miradores de la zona.',
       },
       {
         label: 'Mañana',
@@ -191,9 +191,9 @@ export const costaRicaGuides: CostaRicaGuide[] = [
         text: 'Camina temprano, con guía si la prioridad es fauna. No intentes cubrir todos los senderos.',
       },
       {
-        label: 'Tarde',
-        title: 'Canopy o café',
-        text: 'Elige aventura si el clima acompaña; si no, cambia a un tour de café, cacao y caña.',
+        label: 'Después',
+        title: 'Comida y carretera sin prisa',
+        text: 'La ruta alrededor del lago forma parte de la etapa. Deja margen para una soda con vistas o un cambio de tiempo.',
       },
     ],
     gettingAround:
@@ -235,8 +235,8 @@ export const costaRicaGuides: CostaRicaGuide[] = [
         text: 'Más abierta y tranquila para pasar una mañana larga. Es buena alternativa cuando se busca menos movimiento.',
       },
       {
-        title: 'Montezuma',
-        text: 'Excursión posible para cascadas y pueblo, pero no es un paseo rápido. Hazla solo si apetece cambiar un día entero de playa.',
+        title: 'Isla Tortuga y bioluminiscencia',
+        text: 'Nuestra excursión favorita salió desde Montezuma y terminó de noche dentro del mar bioluminiscente. Requiere un día completo, pero fue la actividad más mágica del viaje.',
       },
     ],
     advice: [
@@ -257,9 +257,9 @@ export const costaRicaGuides: CostaRicaGuide[] = [
         text: 'Clase o sesión según condiciones, comida tranquila y atardecer sin otro traslado.',
       },
       {
-        label: 'Día alternativo',
-        title: 'Playa Hermosa o Montezuma',
-        text: 'Escoge descanso o excursión, pero no intentes encajar ambas cosas.',
+        label: 'Día especial',
+        title: 'Montezuma y bioluminiscencia',
+        text: 'Reserva el día completo para la lancha, las playas y la experiencia nocturna. El regreso por carretera pide 4×4 y mucha calma.',
       },
     ],
     gettingAround:
@@ -418,4 +418,3 @@ export const costaRicaGuides: CostaRicaGuide[] = [
 export const costaRicaGuideBySlug = Object.fromEntries(
   costaRicaGuides.map((guide) => [guide.slug, guide]),
 ) as Record<string, CostaRicaGuide>
-

@@ -25,7 +25,7 @@ export const costaRicaGuideExtras: Record<string, CostaRicaGuideExtra> = {
     arrival: 'Desde el aeropuerto: unos 40 min a Alajuela y cerca de 2 h hasta Bajos del Toro',
     feel: 'Carretera de montaña, pueblos pequeños, niebla y cascadas enormes',
     ourRoute:
-      'En nuestra ruta esta etapa sirve para aterrizar sin prisas y entrar en Costa Rica por una zona verde y poco urbana. No hace falta coleccionar cascadas: con una buena elección el día ya merece la pena.',
+      'Dormimos cerca del aeropuerto, volvimos al día siguiente a recoger el Jimny y elegimos Catarata del Toro antes de continuar hacia La Fortuna. Ahora recogeríamos el coche nada más aterrizar para no perder esa mañana.',
     nearby: ['Volcán Poás', 'Vara Blanca', 'Catarata del Toro', 'Blue Falls'],
     photoKeys: ['fortuna', 'arenal', 'monteverde'],
     understand: [
@@ -52,10 +52,10 @@ export const costaRicaGuideExtras: Record<string, CostaRicaGuideExtra> = {
     routePosition: 'Segunda parada · Al norte del país',
     mapQuery: 'La Fortuna Costa Rica',
     base: 'La Fortuna, el pueblo con más servicios junto al volcán',
-    arrival: 'Desde Alajuela: 3–4 h según la carretera y la lluvia',
+    arrival: 'Desde Bajos del Toro: unas 2 h en nuestra ruta; desde Alajuela el tiempo cambia mucho según la vía',
     feel: 'Volcán, bosque tropical, puentes, cataratas y aguas termales',
     ourRoute:
-      'Aquí reservamos varios días porque todo está repartido alrededor del volcán. La clave no es hacer cinco tours diarios, sino combinar una mañana potente con una tarde más lenta.',
+      'Combinamos Místico, Mirador El Silencio y Baldi. Místico fue una gran primera selva; El Silencio, por 9 USD, terminó siendo una de las sorpresas; y Baldi nos gustó, aunque lo recortaríamos antes que las otras dos.',
     nearby: ['Volcán Arenal', 'Catarata La Fortuna', 'Místico', 'Lago Arenal'],
     photoKeys: ['arenal', 'fortuna', 'monteverde'],
     understand: [
@@ -82,10 +82,10 @@ export const costaRicaGuideExtras: Record<string, CostaRicaGuideExtra> = {
     routePosition: 'Tercera parada · Entre Arenal y el Pacífico',
     mapQuery: 'Monteverde Costa Rica',
     base: 'Santa Elena o Cerro Plano',
-    arrival: 'Desde La Fortuna: 3–4 h rodeando el lago; los últimos kilómetros son lentos',
+    arrival: 'Desde La Fortuna: unas 2 h 30 min en nuestro viaje, rodeando el lago',
     feel: 'Bosque nuboso, viento fresco, aves y caminos de montaña',
     ourRoute:
-      'Monteverde cambia por completo el viaje: baja la temperatura y la selva se vuelve silenciosa. En nuestra ruta encaja para caminar, ver animales de noche y elegir una actividad de aventura.',
+      'Llegamos por la carretera del lago, hicimos las tirolinas de Extremo Park y al día siguiente elegimos el sendero Bosque Profundo. El atardecer con arcoíris terminó siendo el recuerdo más personal de la etapa.',
     nearby: ['Reserva Monteverde', 'Curi-Cancha', 'Santa Elena', 'Cerro Plano'],
     photoKeys: ['monteverde', 'arenal', 'santaTeresa'],
     understand: [
@@ -112,10 +112,10 @@ export const costaRicaGuideExtras: Record<string, CostaRicaGuideExtra> = {
     routePosition: 'Cuarta parada · Costa oeste',
     mapQuery: 'Santa Teresa Puntarenas Costa Rica',
     base: 'Playa Carmen para servicios o Santa Teresa para estar junto al mar',
-    arrival: 'Desde Monteverde: jornada larga con ferry Puntarenas–Paquera',
+    arrival: 'Desde Monteverde: unas 4 h 30 min por carretera en nuestro cambio de plan; volvimos en ferry al salir',
     feel: 'Surf, carretera polvorienta, restaurantes pequeños y grandes atardeceres',
     ourRoute:
-      'Después de varias etapas activas, Santa Teresa es donde dejamos espacio en blanco. La zona se disfruta mejor eligiendo bien dónde dormir y organizando el día alrededor del mar, no del reloj.',
+      'Un atasco nos hizo descartar el ferry de ida y atravesar la península por carretera. Después alternamos surf, Playa Hermosa y una excursión desde Montezuma que terminó con el mar bioluminiscente.',
     nearby: ['Playa Carmen', 'Playa Hermosa', 'Mal País', 'Montezuma'],
     photoKeys: ['santaTeresa', 'manuelAntonio', 'fortuna'],
     understand: [
@@ -142,10 +142,10 @@ export const costaRicaGuideExtras: Record<string, CostaRicaGuideExtra> = {
     routePosition: 'Quinta parada · Al sur de Jacó y junto a Quepos',
     mapQuery: 'Parque Nacional Manuel Antonio Costa Rica',
     base: 'La carretera entre Quepos y el parque',
-    arrival: 'Desde Santa Teresa: 5–7 h según el ferry y el tráfico',
+    arrival: 'Desde Santa Teresa: ferry de unas 1 h 15 min y cerca de 3 h desde Puntarenas por el tráfico',
     feel: 'Selva pegada al mar, playas pequeñas y fauna muy visible',
     ourRoute:
-      'Venimos por el parque, pero dejamos otra jornada para disfrutar la costa sin repetir el mismo plan. Es una zona popular y eso obliga a reservar bien y madrugar un poco.',
+      'Dedicamos una mañana a Espadilla y una tarde al day pass del Hotel Mariposa. Al día siguiente entramos al parque con guía, nos quedamos en la playa y vimos el atardecer desde Bar El Avión.',
     nearby: ['Quepos', 'Playa Espadilla', 'Playa Biesanz', 'Nauyaca'],
     photoKeys: ['manuelAntonio', 'santaTeresa', 'cahuita'],
     understand: [
@@ -172,10 +172,10 @@ export const costaRicaGuideExtras: Record<string, CostaRicaGuideExtra> = {
     routePosition: 'Sexta parada · El otro lado del país',
     mapQuery: 'Puerto Viejo de Talamanca Costa Rica',
     base: 'Puerto Viejo para ambiente; Cocles o Punta Uva para tranquilidad',
-    arrival: 'Desde Manuel Antonio: cruce largo de 7–9 h; conviene valorar una noche intermedia',
+    arrival: 'Desde Manuel Antonio: casi 10 h en nuestro viaje por tráfico; conviene añadir noches o una parada intermedia',
     feel: 'Cultura caribeña, bicicletas, selva costera y playas con personalidad propia',
     ourRoute:
-      'El Caribe no es una extensión del Pacífico. Cambian el clima, la comida y el ritmo. Lo incluimos para cerrar el viaje en un paisaje distinto, con margen para decidir según el estado del mar.',
+      'Solo tuvimos un día completo: recorrimos Cahuita hasta donde permitió el temporal, vimos Punta Uva con viento, disfrutamos el atardecer en Cocles y volamos el dron en Playa Negra antes de regresar.',
     nearby: ['Cahuita', 'Cocles', 'Punta Uva', 'Manzanillo'],
     photoKeys: ['puertoViejo', 'cahuita', 'puntaUva'],
     understand: [

@@ -22,10 +22,16 @@ import { notFound } from 'next/navigation'
 import { JsonLd } from '@/components/json-ld'
 import { Reveal } from '@/components/reveal'
 import { LivingStatement } from '@/components/living-statement'
+import { DroneScrollStory } from '@/components/drone-scroll-story'
+import {
+  DestinationExperienceOpening,
+  DestinationExperiencePractical,
+} from '@/components/destination-experience'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { costaRicaGuideBySlug, costaRicaGuides } from '@/src/data/costaRicaGuides'
 import { costaRicaGuideExtras } from '@/src/data/costaRicaGuideExtras'
+import { destinationExperiences } from '@/src/data/costaRicaExperience'
 import { images } from '@/src/data/images'
 import { contentUpdatedAt, defaultSocialImage, siteName, siteUrl } from '@/src/data/siteSeo'
 import { initialTripData } from '@/src/data/tripData'
@@ -67,7 +73,8 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
   const { destination } = await params
   const guide = costaRicaGuideBySlug[destination]
   const extra = costaRicaGuideExtras[destination]
-  if (!guide || !extra) notFound()
+  const experience = destinationExperiences[destination]
+  if (!guide || !extra || !experience) notFound()
 
   const destinationData = initialTripData.destinations.find((item) => item.id === guide.destinationId)
   if (!destinationData) notFound()
@@ -108,7 +115,7 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
       },
       {
         '@type': 'FAQPage',
-        mainEntity: extra.faq.map((item) => ({
+        mainEntity: [...extra.faq, ...experience.personalFaq].map((item) => ({
           '@type': 'Question',
           name: item.question,
           acceptedAnswer: { '@type': 'Answer', text: item.answer },
@@ -141,6 +148,7 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
 
       <nav className="guide-section-nav" aria-label={`Secciones de ${guide.title}`}>
         <a href="#entender">Entender la zona</a>
+        <a href="#nuestra-experiencia">Nuestra experiencia</a>
         <a href="#que-ver">Qué hacer</a>
         <a href="#organizar">Organizar los días</a>
         <a href="#dormir">Dormir y comer</a>
@@ -165,6 +173,10 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
           </div>
         </Reveal>
       </section>
+
+      {guide.slug === 'puerto-viejo' && <DroneScrollStory />}
+
+      <DestinationExperienceOpening experience={experience} />
 
       <section className="guide-article-section" id="entender">
         <div className="section-shell guide-article-layout">
@@ -279,6 +291,8 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
         </div>
       </section>
 
+      <DestinationExperiencePractical experience={experience} />
+
       <section className="guide-advice-section" id="consejos">
         <Reveal className="section-shell guide-advice-grid">
           <div className="guide-advice-title">
@@ -326,7 +340,7 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
             <p>Respuestas cortas para tomar decisiones. Si algo depende del clima o de una norma, compruébalo de nuevo justo antes del viaje.</p>
           </Reveal>
           <div className="guide-faq-list">
-            {extra.faq.map((item, index) => (
+            {[...experience.personalFaq, ...extra.faq].map((item, index) => (
               <Reveal key={item.question} delay={index * 0.04}>
                 <details>
                   <summary><span>0{index + 1}</span>{item.question}</summary>

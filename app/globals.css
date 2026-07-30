@@ -16,6 +16,190 @@
   --shadow: 0 24px 70px rgba(19, 44, 37, 0.14);
 }
 
+/* Puerto Viejo · immersive drone story */
+.drone-scroll-story {
+  position: relative;
+  min-height: 165svh;
+  color: #fff;
+  background: #061c18;
+}
+
+.drone-scroll-sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  min-height: 620px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.drone-scroll-video {
+  position: absolute;
+  inset: -4%;
+  z-index: -3;
+  width: 108%;
+  height: 108%;
+  max-width: none;
+  object-fit: cover;
+  will-change: transform;
+}
+
+.drone-scroll-shade {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(circle at 52% 44%, transparent 12%, rgba(1, 18, 15, .12) 55%, rgba(1, 18, 15, .48) 100%),
+    linear-gradient(180deg, rgba(2, 21, 18, .18), rgba(2, 21, 18, .08) 38%, rgba(2, 21, 18, .63));
+}
+
+.drone-scroll-copy {
+  position: absolute;
+  inset: 0;
+  width: min(900px, calc(100% - 48px));
+  margin: auto;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  text-align: center;
+  text-shadow: 0 2px 30px rgba(1, 19, 16, .58);
+  will-change: transform, opacity;
+}
+
+.drone-scroll-copy > span {
+  margin-bottom: 22px;
+  font-family: var(--ui);
+  font-size: clamp(.82rem, 1.1vw, 1rem);
+  font-weight: 760;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+
+.drone-scroll-copy h2 {
+  margin: 0;
+  display: grid;
+  font-family: var(--sans);
+  font-size: clamp(4.6rem, 11vw, 10.5rem);
+  font-weight: 780;
+  letter-spacing: -.075em;
+  line-height: .72;
+}
+
+.drone-scroll-copy h2 em {
+  margin-top: .28em;
+  font-family: var(--serif);
+  font-size: .48em;
+  font-weight: 400;
+  letter-spacing: -.035em;
+  line-height: 1;
+}
+
+.drone-scroll-copy p {
+  width: min(620px, 92%);
+  margin: 30px 0 22px;
+  color: rgba(255, 255, 255, .92);
+  font-family: var(--ui);
+  font-size: clamp(1.05rem, 1.8vw, 1.34rem);
+  font-weight: 560;
+  line-height: 1.55;
+  text-wrap: balance;
+}
+
+.drone-scroll-copy > i {
+  width: min(180px, 35vw);
+  height: 2px;
+  display: block;
+  background: var(--sun);
+  transform-origin: center;
+  box-shadow: 0 0 22px rgba(241, 184, 74, .55);
+}
+
+.drone-scroll-credit {
+  position: absolute;
+  right: 26px;
+  bottom: 22px;
+  font-family: var(--ui);
+  font-size: .76rem;
+  font-weight: 650;
+  letter-spacing: .035em;
+  opacity: .78;
+}
+
+@media (max-width: 760px) {
+  .drone-scroll-story {
+    min-height: 145svh;
+  }
+
+  .drone-scroll-sticky {
+    min-height: 540px;
+  }
+
+  .drone-scroll-video {
+    inset: -2% -24%;
+    width: 148%;
+    height: 104%;
+  }
+
+  .drone-scroll-copy {
+    width: calc(100% - 34px);
+  }
+
+  .drone-scroll-copy > span {
+    margin-bottom: 16px;
+    font-size: .74rem;
+    letter-spacing: .085em;
+  }
+
+  .drone-scroll-copy h2 {
+    font-size: clamp(4rem, 21vw, 6.3rem);
+    line-height: .76;
+  }
+
+  .drone-scroll-copy h2 em {
+    margin-top: .34em;
+    font-size: .43em;
+  }
+
+  .drone-scroll-copy p {
+    max-width: 340px;
+    margin-top: 24px;
+    font-size: 1rem;
+    line-height: 1.48;
+  }
+
+  .drone-scroll-credit {
+    right: 16px;
+    bottom: 16px;
+    font-size: .67rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drone-scroll-story {
+    min-height: 90svh;
+  }
+
+  .drone-scroll-sticky {
+    position: relative;
+    height: 90svh;
+  }
+
+  .drone-scroll-video {
+    display: none;
+  }
+
+  .drone-scroll-sticky {
+    background:
+      linear-gradient(rgba(2, 21, 18, .28), rgba(2, 21, 18, .55)),
+      url("/media/playa-negra-drone-poster.jpg") center / cover no-repeat;
+  }
+
+  .drone-scroll-copy {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 /* Costa Rica editorial guide */
 .costa-rica-public > .trip-hero {
   min-height: 88svh;
@@ -14576,5 +14760,601 @@ main small {
     border-left: 5px solid var(--trip-accent);
     border-top: 0;
     box-shadow: 0 18px 50px rgba(5, 28, 22, .3);
+  }
+}
+
+/* Experience-led Costa Rica editorial blocks */
+.destination-experience-section {
+  padding: clamp(84px, 10vw, 150px) 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 92% 8%, rgba(241, 184, 74, .15), transparent 28%),
+    var(--paper);
+}
+
+.destination-experience-heading {
+  max-width: 920px;
+  margin-bottom: clamp(44px, 7vw, 82px);
+}
+
+.destination-experience-heading h2,
+.costa-experience-heading h2 {
+  max-width: 880px;
+  margin: 14px 0 24px;
+  font-family: var(--serif);
+  font-size: clamp(3.1rem, 7vw, 7.3rem);
+  font-weight: 400;
+  letter-spacing: -.055em;
+  line-height: .87;
+  text-wrap: balance;
+}
+
+.destination-experience-heading > p,
+.costa-experience-heading > p {
+  max-width: 800px;
+  margin: 0;
+  color: var(--muted);
+  font-family: var(--ui);
+  font-size: clamp(1.1rem, 1.7vw, 1.35rem);
+  font-weight: 520;
+  line-height: 1.65;
+}
+
+.experience-moment-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.experience-moment-grid > .v2-reveal {
+  grid-column: span 4;
+  min-width: 0;
+}
+
+.experience-moment-grid > .v2-reveal:nth-child(4) {
+  grid-column: 4 / span 6;
+}
+
+.experience-moment-card {
+  min-height: 100%;
+  padding: clamp(26px, 3.1vw, 42px);
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  background:
+    linear-gradient(155deg, rgba(255, 255, 255, .045), transparent 58%),
+    var(--forest-deep);
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 2px;
+  box-shadow: 0 24px 60px rgba(12, 47, 39, .12);
+  transition: transform .55s cubic-bezier(.16, 1, .3, 1), box-shadow .55s ease;
+}
+
+.experience-moment-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 36px 76px rgba(12, 47, 39, .2);
+}
+
+.experience-moment-top {
+  margin-bottom: clamp(44px, 6vw, 88px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.experience-moment-top > span {
+  color: rgba(255, 255, 255, .52);
+  font-family: var(--serif);
+  font-size: 1.15rem;
+}
+
+.experience-verdict {
+  padding: 7px 10px;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, .22);
+  border-radius: 999px;
+  font-family: var(--ui);
+  font-size: .76rem;
+  font-weight: 720;
+}
+
+.experience-verdict.best {
+  color: #142c26;
+  background: var(--sun);
+  border-color: var(--sun);
+}
+
+.experience-verdict.liked {
+  background: rgba(80, 173, 151, .24);
+}
+
+.experience-verdict.mixed {
+  background: rgba(235, 111, 83, .18);
+}
+
+.experience-verdict.optional {
+  color: rgba(255, 255, 255, .78);
+}
+
+.experience-moment-card > p {
+  margin: 0 0 12px;
+  color: var(--sun);
+  font-family: var(--ui);
+  font-size: .78rem;
+  font-weight: 780;
+  letter-spacing: .045em;
+  text-transform: uppercase;
+}
+
+.experience-moment-card h3 {
+  margin: 0 0 24px;
+  font-family: var(--serif);
+  font-size: clamp(2rem, 3.1vw, 3.3rem);
+  font-weight: 400;
+  letter-spacing: -.035em;
+  line-height: .98;
+}
+
+.experience-moment-card > div:last-child {
+  color: rgba(255, 255, 255, .83);
+  font-family: var(--ui);
+  font-size: 1rem;
+  font-weight: 480;
+  line-height: 1.67;
+}
+
+.experience-reality-panel {
+  margin-top: clamp(22px, 4vw, 48px);
+  padding: clamp(34px, 5vw, 70px);
+  display: grid;
+  grid-template-columns: minmax(230px, .75fr) minmax(0, 1.25fr);
+  gap: clamp(38px, 7vw, 100px);
+  color: #fff;
+  background: var(--forest);
+}
+
+.experience-reality-panel h3 {
+  margin: 14px 0 0;
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 4.6vw, 5rem);
+  font-weight: 400;
+  letter-spacing: -.05em;
+  line-height: .92;
+}
+
+.experience-reality-panel ul {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  list-style: none;
+}
+
+.experience-reality-panel li {
+  padding: 18px 0;
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 14px;
+  align-items: start;
+  border-bottom: 1px solid rgba(255, 255, 255, .15);
+  font-family: var(--ui);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.experience-reality-panel li:first-child {
+  padding-top: 0;
+}
+
+.experience-reality-panel li:last-child {
+  border-bottom: 0;
+}
+
+.experience-reality-panel li svg {
+  width: 19px;
+  color: var(--sun);
+}
+
+.experience-statement-section {
+  background: #f4c84f;
+}
+
+.destination-experience-practical {
+  padding: clamp(78px, 9vw, 138px) 0;
+  background: #ece8df;
+}
+
+.experience-practical-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.experience-practical-grid > .v2-reveal {
+  grid-column: span 4;
+}
+
+.experience-lodging-card,
+.experience-food-card,
+.experience-price-card {
+  min-height: 100%;
+  padding: clamp(28px, 3.7vw, 52px);
+  background: var(--paper);
+  border: 1px solid rgba(19, 63, 54, .12);
+}
+
+.experience-lodging-card {
+  color: #fff;
+  background: var(--forest-deep);
+}
+
+.experience-lodging-card > svg,
+.experience-food-card > svg,
+.experience-price-card > svg {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 54px;
+  color: var(--sun);
+}
+
+.experience-lodging-card h3,
+.experience-food-card h3 {
+  margin: 14px 0 16px;
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 2.8vw, 3rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.experience-lodging-card p,
+.experience-food-card p {
+  margin: 0;
+  font-family: var(--ui);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.experience-lodging-card p {
+  color: rgba(255, 255, 255, .8);
+}
+
+.experience-food-card > div + div {
+  margin-top: 28px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.experience-price-card > div {
+  margin-top: 18px;
+}
+
+.experience-price-card > div > p {
+  margin: 0;
+  padding: 17px 0;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.experience-price-card > div > p > span {
+  display: grid;
+  gap: 4px;
+}
+
+.experience-price-card small {
+  color: var(--muted);
+  font-family: var(--ui);
+  font-size: .82rem;
+}
+
+.experience-price-card b {
+  flex: 0 0 auto;
+  color: var(--coral);
+  font-family: var(--sans);
+  font-size: 1.1rem;
+}
+
+.costa-experience-guide {
+  padding: clamp(90px, 11vw, 170px) 0;
+  overflow: hidden;
+  color: #fff;
+  background:
+    radial-gradient(circle at 82% 14%, rgba(241, 184, 74, .16), transparent 28%),
+    var(--forest-deep);
+}
+
+.costa-experience-heading {
+  margin-bottom: clamp(48px, 7vw, 88px);
+}
+
+.costa-experience-heading h2 em {
+  display: block;
+  color: var(--sun);
+  font-weight: 400;
+}
+
+.costa-experience-heading > p {
+  color: rgba(255, 255, 255, .73);
+}
+
+.costa-lessons-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid rgba(255, 255, 255, .18);
+  border-left: 1px solid rgba(255, 255, 255, .18);
+}
+
+.costa-lessons-grid > .v2-reveal {
+  min-width: 0;
+}
+
+.costa-lessons-grid article {
+  min-height: 410px;
+  padding: clamp(26px, 3.4vw, 48px);
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid rgba(255, 255, 255, .18);
+  border-bottom: 1px solid rgba(255, 255, 255, .18);
+  transition: background .45s ease;
+}
+
+.costa-lessons-grid article:hover {
+  background: rgba(255, 255, 255, .055);
+}
+
+.costa-lessons-grid article > span {
+  color: rgba(255, 255, 255, .66);
+  font-family: var(--ui);
+  font-size: .8rem;
+  font-weight: 700;
+}
+
+.costa-lessons-grid article > b {
+  margin: clamp(50px, 6vw, 86px) 0 18px;
+  display: block;
+  color: var(--sun);
+  font-family: var(--serif);
+  font-size: clamp(3rem, 5.5vw, 6rem);
+  font-weight: 400;
+  letter-spacing: -.055em;
+  line-height: .8;
+  transition: transform .55s cubic-bezier(.16, 1, .3, 1);
+}
+
+.costa-lessons-grid article:hover > b {
+  transform: translateX(8px) scale(1.035);
+}
+
+.costa-lessons-grid h3 {
+  margin: 0 0 16px;
+  font-family: var(--sans);
+  font-size: clamp(1.4rem, 2vw, 1.9rem);
+  line-height: 1.04;
+}
+
+.costa-lessons-grid p {
+  margin: 0;
+  color: rgba(255, 255, 255, .72);
+  font-family: var(--ui);
+  font-size: .98rem;
+  line-height: 1.6;
+}
+
+.costa-prices-panel {
+  margin-top: clamp(52px, 8vw, 100px);
+  padding: clamp(34px, 5vw, 68px);
+  display: grid;
+  grid-template-columns: minmax(250px, .8fr) minmax(0, 1.2fr);
+  gap: clamp(40px, 8vw, 110px);
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.costa-prices-intro > svg {
+  width: 34px;
+  height: 34px;
+  margin-bottom: 50px;
+  color: var(--coral);
+}
+
+.costa-prices-intro h3 {
+  margin: 14px 0 20px;
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 4vw, 4.4rem);
+  font-weight: 400;
+  letter-spacing: -.05em;
+  line-height: .9;
+}
+
+.costa-prices-intro p {
+  color: var(--muted);
+  font-family: var(--ui);
+  line-height: 1.6;
+}
+
+.costa-price-list {
+  display: grid;
+  align-content: start;
+}
+
+.costa-price-list > div {
+  padding: 14px 0;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.costa-price-list span {
+  display: grid;
+  gap: 3px;
+}
+
+.costa-price-list small {
+  color: var(--muted);
+  font-family: var(--ui);
+  font-size: .78rem;
+}
+
+.costa-price-list b {
+  flex: 0 0 auto;
+  color: var(--coral);
+  font-family: var(--sans);
+}
+
+.costa-prices-panel > a {
+  grid-column: 1 / -1;
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--forest);
+  font-family: var(--ui);
+  font-weight: 760;
+  text-decoration: none;
+}
+
+.costa-prices-panel > a svg {
+  width: 18px;
+  transition: transform .3s ease;
+}
+
+.costa-prices-panel > a:hover svg {
+  transform: translateX(5px);
+}
+
+.blog-faq-grid > .v2-reveal > p {
+  max-width: 620px;
+  color: var(--muted);
+  font-family: var(--ui);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 980px) {
+  .experience-moment-grid > .v2-reveal {
+    grid-column: span 6;
+  }
+
+  .experience-moment-grid > .v2-reveal:nth-child(3),
+  .experience-moment-grid > .v2-reveal:nth-child(4) {
+    grid-column: span 6;
+  }
+
+  .experience-practical-grid > .v2-reveal {
+    grid-column: span 6;
+  }
+
+  .experience-practical-grid > .v2-reveal:last-child {
+    grid-column: 3 / span 8;
+  }
+
+  .costa-lessons-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .destination-experience-section,
+  .destination-experience-practical,
+  .costa-experience-guide {
+    padding-top: 76px;
+    padding-bottom: 76px;
+  }
+
+  .destination-experience-heading h2,
+  .costa-experience-heading h2 {
+    font-size: clamp(3.05rem, 15vw, 4.8rem);
+    line-height: .9;
+  }
+
+  .destination-experience-heading > p,
+  .costa-experience-heading > p {
+    font-size: 1.04rem;
+    line-height: 1.62;
+  }
+
+  .experience-moment-grid,
+  .experience-practical-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .experience-moment-grid > .v2-reveal,
+  .experience-moment-grid > .v2-reveal:nth-child(3),
+  .experience-moment-grid > .v2-reveal:nth-child(4),
+  .experience-practical-grid > .v2-reveal,
+  .experience-practical-grid > .v2-reveal:last-child {
+    grid-column: auto;
+  }
+
+  .experience-moment-top {
+    margin-bottom: 44px;
+  }
+
+  .experience-moment-card h3 {
+    font-size: 2.35rem;
+  }
+
+  .experience-reality-panel {
+    padding: 30px 24px;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .experience-reality-panel h3 {
+    font-size: 2.65rem;
+  }
+
+  .experience-lodging-card > svg,
+  .experience-food-card > svg,
+  .experience-price-card > svg {
+    margin-bottom: 38px;
+  }
+
+  .costa-lessons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .costa-lessons-grid article {
+    min-height: 345px;
+  }
+
+  .costa-lessons-grid article > b {
+    margin-top: 52px;
+    font-size: clamp(4.2rem, 19vw, 6.2rem);
+  }
+
+  .costa-prices-panel {
+    padding: 28px 22px;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .costa-prices-intro > svg {
+    margin-bottom: 34px;
+  }
+
+  .costa-price-list > div,
+  .experience-price-card > div > p {
+    align-items: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .experience-moment-card,
+  .costa-lessons-grid article,
+  .costa-lessons-grid article > b,
+  .costa-prices-panel > a svg {
+    transition: none;
+  }
+
+  .experience-moment-card:hover,
+  .costa-lessons-grid article:hover > b,
+  .costa-prices-panel > a:hover svg {
+    transform: none;
   }
 }
