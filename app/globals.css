@@ -15090,6 +15090,19 @@ main small {
   line-height: 1.67;
 }
 
+.experience-moment-card.experience-moment-card-photo > p {
+  margin: 0 30px 12px;
+}
+
+.experience-moment-card.experience-moment-card-photo > h3 {
+  margin: 0 30px 24px;
+}
+
+.experience-moment-card.experience-moment-card-photo > div:last-child {
+  margin: 0;
+  padding: 0 30px 36px;
+}
+
 .experience-reality-panel {
   margin-top: clamp(22px, 4vw, 48px);
   padding: clamp(34px, 5vw, 70px);
