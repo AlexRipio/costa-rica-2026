@@ -117,7 +117,7 @@ export const costaRicaGuideExtras: Record<string, CostaRicaGuideExtra> = {
     ourRoute:
       'Un atasco nos hizo descartar el ferry de ida y atravesar la península por carretera. Después alternamos surf, Playa Hermosa y una excursión desde Montezuma que terminó con el mar bioluminiscente.',
     nearby: ['Playa Carmen', 'Playa Hermosa', 'Mal País', 'Montezuma'],
-    photoKeys: ['personalSantaTeresaBeach', 'santaTeresa', 'personalManuelAntonioSunset'],
+    photoKeys: ['santaTeresa', 'manuelAntonio', 'fortuna'],
     understand: [
       'Santa Teresa no tiene un centro compacto: es una franja larga paralela al mar, con tramos de carretera, playa y comercios. La ubicación del alojamiento cambia por completo la experiencia y determina si podrás hacer casi todo andando.',
       'El surf marca el ritmo, pero no hace falta surfear para disfrutarla. Amanecer, playa, una comida larga y atardecer ya forman un buen día. Para explorar Montezuma o Cabo Blanco, reserva otra jornada y asume carreteras lentas.',
@@ -147,7 +147,7 @@ export const costaRicaGuideExtras: Record<string, CostaRicaGuideExtra> = {
     ourRoute:
       'Dedicamos una mañana a Espadilla y una tarde al day pass del Hotel Mariposa. Al día siguiente entramos al parque con guía, nos quedamos en la playa y vimos el atardecer desde Bar El Avión.',
     nearby: ['Quepos', 'Playa Espadilla', 'Playa Biesanz', 'Nauyaca'],
-    photoKeys: ['personalMonkeyManuelAntonio', 'personalMariposaPool', 'personalManuelAntonioSunset'],
+    photoKeys: ['manuelAntonio', 'santaTeresa', 'cahuita'],
     understand: [
       'Manuel Antonio mezcla tres lugares: el parque nacional, la carretera de hoteles y restaurantes, y Quepos, donde están muchos servicios. Saber en cuál vas a dormir evita depender de taxis o caminar por una carretera sin aceras.',
       'El parque tiene cupo y normas propias. Compra únicamente por el canal oficial enlazado al final de esta guía y revisa el día de cierre antes de organizar la ruta. La entrada no incluye automáticamente guía.',

@@ -80,6 +80,16 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
   const destinationData = initialTripData.destinations.find((item) => item.id === guide.destinationId)
   if (!destinationData) notFound()
   const image = images[destinationData.image]
+  const momentImages =
+    destination === 'santa-teresa'
+      ? [null, images.personalSantaTeresaBeach, null]
+      : destination === 'manuel-antonio'
+        ? [
+            images.personalMariposaPool,
+            images.personalMonkeyManuelAntonio,
+            images.personalManuelAntonioSunset,
+          ]
+        : []
   const currentIndex = costaRicaGuides.findIndex((item) => item.slug === guide.slug)
   const previous = costaRicaGuides[currentIndex - 1]
   const next = costaRicaGuides[currentIndex + 1]
@@ -181,7 +191,7 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
 
       {guide.slug === 'puerto-viejo' && <DroneScrollStory />}
 
-      <DestinationExperienceOpening experience={experience} />
+      <DestinationExperienceOpening experience={experience} momentImages={momentImages} />
 
       <section className="guide-article-section" id="entender">
         <div className="section-shell guide-article-layout">

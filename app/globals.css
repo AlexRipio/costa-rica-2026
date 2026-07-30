@@ -5417,6 +5417,14 @@ img {
   .guide-essential-rich-grid article.personal-photo-frame::after {
     top: 188px;
   }
+
+  .experience-moment-card-photo > img {
+    height: 250px;
+  }
+
+  .experience-moment-card-photo.personal-photo-frame::after {
+    top: 224px;
+  }
 }
 
 .guide-hero-shade {
@@ -14973,6 +14981,44 @@ main small {
 .experience-moment-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 36px 76px rgba(12, 47, 39, .2);
+}
+
+.experience-moment-card-photo {
+  padding: 0;
+  overflow: hidden;
+}
+
+.experience-moment-card-photo > img {
+  width: 100%;
+  height: 270px;
+  display: block;
+  object-fit: cover;
+  transition: transform .9s cubic-bezier(.16, 1, .3, 1);
+}
+
+.experience-moment-card-photo:hover > img {
+  transform: scale(1.035);
+}
+
+.experience-moment-card-photo > .experience-moment-top {
+  margin-bottom: 34px;
+  padding: 26px 30px 0;
+}
+
+.experience-moment-card-photo > p,
+.experience-moment-card-photo > h3,
+.experience-moment-card-photo > div:last-child {
+  margin-right: 30px;
+  margin-left: 30px;
+}
+
+.experience-moment-card-photo > div:last-child {
+  padding-bottom: 36px;
+}
+
+.experience-moment-card-photo.personal-photo-frame::after {
+  top: 244px;
+  bottom: auto;
 }
 
 .experience-moment-top {

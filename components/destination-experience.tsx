@@ -1,7 +1,9 @@
 import { BadgeDollarSign, BedDouble, Check, Utensils } from 'lucide-react'
 import { LivingStatement } from '@/components/living-statement'
+import { ProtectedImage } from '@/components/protected-image'
 import { Reveal } from '@/components/reveal'
 import type { DestinationExperience } from '@/src/data/costaRicaExperience'
+import type { TripImage } from '@/src/data/images'
 
 const verdictClass: Record<string, string> = {
   'De lo mejor': 'best',
@@ -12,8 +14,10 @@ const verdictClass: Record<string, string> = {
 
 export function DestinationExperienceOpening({
   experience,
+  momentImages = [],
 }: {
   experience: DestinationExperience
+  momentImages?: Array<TripImage | null>
 }) {
   return (
     <>
@@ -27,7 +31,14 @@ export function DestinationExperienceOpening({
           <div className="experience-moment-grid">
             {experience.moments.map((moment, index) => (
               <Reveal delay={index * 0.05} key={moment.title}>
-                <article className="experience-moment-card">
+                <article className={`experience-moment-card ${momentImages[index] ? 'experience-moment-card-photo personal-photo-frame' : ''}`}>
+                  {momentImages[index] && (
+                    <ProtectedImage
+                      src={momentImages[index]!.url}
+                      alt={momentImages[index]!.alt}
+                      loading="lazy"
+                    />
+                  )}
                   <div className="experience-moment-top">
                     <span>0{index + 1}</span>
                     <small className={`experience-verdict ${verdictClass[moment.verdict]}`}>
