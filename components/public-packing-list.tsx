@@ -8,6 +8,7 @@ const storageKey = 'viajan2juntos-costa-rica-packing'
 type ItemState = 'packed' | 'skipped'
 
 export function PublicPackingList({ categories }: { categories: PackingCategory[] }) {
+  const requiredIds = useMemo(() => new Set(categories.flatMap((category) => category.items.filter((item) => item.required).map((item) => item.id))), [categories])
   const [itemsState, setItemsState] = useState<Record<string, ItemState>>({})
   const [email, setEmail] = useState('')
   const [subscribeState, setSubscribeState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
@@ -21,9 +22,9 @@ export function PublicPackingList({ categories }: { categories: PackingCategory[
     if (Array.isArray(parsed)) {
       setItemsState(Object.fromEntries(parsed.map((id) => [id, 'packed' as const])))
     } else {
-      setItemsState(parsed)
+      setItemsState(Object.fromEntries(Object.entries(parsed).filter(([id, state]) => state !== 'skipped' || !requiredIds.has(id))))
     }
-  }, [])
+  }, [requiredIds])
 
   const total = categories.reduce((sum, category) => sum + category.items.length, 0)
   const packedCount = Object.values(itemsState).filter((state) => state === 'packed').length
@@ -37,6 +38,7 @@ export function PublicPackingList({ categories }: { categories: PackingCategory[
   )
 
   const setItemState = (id: string, state: ItemState) => {
+    if (state === 'skipped' && requiredIds.has(id)) return
     setItemsState((current) => {
       const next = { ...current }
       if (next[id] === state) delete next[id]
@@ -121,15 +123,21 @@ export function PublicPackingList({ categories }: { categories: PackingCategory[
             <div>
               {category.items.map((item) => (
                 <article className={`packing-item ${itemsState[item.id] || ''}`} key={item.id}>
-                  <span>{item.text}{itemsState[item.id] === 'skipped' && <small>Apartado de tu lista</small>}</span>
+                  <span>
+                    {item.text}
+                    {item.required && <small className="required">Imprescindible</small>}
+                    {itemsState[item.id] === 'skipped' && <small>Apartado de tu lista</small>}
+                  </span>
                   <div>
                     <button type="button" aria-pressed={itemsState[item.id] === 'packed'} onClick={() => setItemState(item.id, 'packed')}>
                       <i><Check /></i> Lo tengo
                     </button>
-                    <button type="button" aria-pressed={itemsState[item.id] === 'skipped'} onClick={() => setItemState(item.id, 'skipped')}>
-                      <i><Minus /></i>
-                      No lo necesito
-                    </button>
+                    {!item.required && (
+                      <button type="button" aria-pressed={itemsState[item.id] === 'skipped'} onClick={() => setItemState(item.id, 'skipped')}>
+                        <i><Minus /></i>
+                        No lo necesito
+                      </button>
+                    )}
                   </div>
                 </article>
               ))}

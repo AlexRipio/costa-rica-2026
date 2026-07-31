@@ -82,7 +82,7 @@ export type BudgetRow = {
   note: string
 }
 
-export type PackingItem = { id: string; text: string; checked: boolean }
+export type PackingItem = { id: string; text: string; checked: boolean; required?: boolean }
 export type PackingCategory = { id: string; name: string; items: PackingItem[] }
 
 export type FootballMatch = {
@@ -342,12 +342,12 @@ export const initialTripData: TripData = {
     { id: 'optional', category: 'Compras opcionales', adjusted: 0, realistic: 0, high: 150, note: 'Salomon + pantalón; fuera del presupuesto principal' },
   ],
   packing: [
-    { id: 'docs', name: 'Documentación', items: ['Pasaporte', 'Carnet de conducir', 'Permiso internacional si aplica', 'Seguro de viaje', 'Reservas descargadas', 'Tarjeta bancaria', 'Efectivo'].map((text, i) => ({ id: `docs-${i}`, text, checked: false })) },
-    { id: 'tech', name: 'Tecnología', items: ['Móvil', 'Cargador móvil', 'Tablet o portátil si lo usas', 'Cargador extra si llevas tablet', 'Power bank', 'Adaptador de enchufe', 'Auriculares', 'Cámara / GoPro'].map((text, i) => ({ id: `tech-${i}`, text, checked: false })) },
+    { id: 'docs', name: 'Documentación', items: ['Pasaporte', 'Carnet de conducir', 'Permiso internacional si aplica', 'Seguro de viaje', 'Reservas descargadas', 'Tarjeta bancaria', 'Efectivo'].map((text, i) => ({ id: `docs-${i}`, text, checked: false, required: true })) },
+    { id: 'tech', name: 'Tecnología', items: ['Móvil', 'Cargador móvil', 'Tablet o portátil si lo usas', 'Cargador extra si llevas tablet', 'Power bank', 'Adaptador de enchufe', 'Auriculares', 'Cámara / GoPro'].map((text, i) => ({ id: `tech-${i}`, text, checked: false, required: i < 2 })) },
     { id: 'clothes', name: 'Ropa', items: ['Camisetas transpirables', 'Bañadores', 'Ropa interior', 'Calcetines', 'Pantalón largo ligero', 'Pantalón corto', 'Sudadera fina', 'Chubasquero', 'Ropa para salir', 'Pijama'].map((text, i) => ({ id: `clothes-${i}`, text, checked: false })) },
     { id: 'shoes', name: 'Calzado', items: ['Salomon / zapatillas de trekking', 'Chanclas', 'Escarpines si aplica'].map((text, i) => ({ id: `shoes-${i}`, text, checked: false })) },
-    { id: 'beach', name: 'Playa y surf', items: ['Toalla microfibra', 'Gafas de sol', 'Gorra', 'Bolsa impermeable', 'Crema solar', 'After sun'].map((text, i) => ({ id: `beach-${i}`, text, checked: false })) },
-    { id: 'health', name: 'Salud', items: ['Repelente fuerte', 'Medicamentos básicos', 'Ibuprofeno / paracetamol', 'Biodramina si aplica', 'Tiritas', 'Fortasec / suero oral', 'Gel hidroalcohólico'].map((text, i) => ({ id: `health-${i}`, text, checked: false })) },
+    { id: 'beach', name: 'Playa y surf', items: ['Toalla microfibra', 'Gafas de sol', 'Gorra', 'Bolsa impermeable', 'Crema solar', 'After sun'].map((text, i) => ({ id: `beach-${i}`, text, checked: false, required: text === 'Crema solar' })) },
+    { id: 'health', name: 'Salud', items: ['Repelente fuerte', 'Medicamentos básicos', 'Ibuprofeno / paracetamol', 'Biodramina si aplica', 'Tiritas', 'Fortasec / suero oral', 'Gel hidroalcohólico'].map((text, i) => ({ id: `health-${i}`, text, checked: false, required: i < 3 })) },
     { id: 'other', name: 'Otros', items: ['Candado', 'Mochila pequeña', 'Bolsas zip', 'Bolsa para ropa mojada', 'Libreta', 'Snacks'].map((text, i) => ({ id: `other-${i}`, text, checked: false })) },
   ],
   football: [

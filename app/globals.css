@@ -2366,6 +2366,15 @@
   font-weight: 850;
 }
 
+.packing-item > span small.required {
+  width: fit-content;
+  padding: 4px 8px;
+  color: var(--forest);
+  background: rgba(17, 63, 53, .08);
+  border: 1px solid rgba(17, 63, 53, .12);
+  border-radius: 999px;
+}
+
 .packing-item > div {
   display: flex;
   flex-wrap: wrap;
