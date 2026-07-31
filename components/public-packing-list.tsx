@@ -4,7 +4,7 @@ import { Check, Mail, Minus, RotateCcw } from 'lucide-react'
 import { useEffect, useMemo, useState, type FormEvent } from 'react'
 import type { PackingCategory } from '@/src/data/tripData'
 
-const storageKey = 'viajan2juntos-costa-rica-packing'
+const storageKey = 'viajan2juntos-costa-rica-packing-v2'
 type ItemState = 'packed' | 'skipped'
 
 export function PublicPackingList({ categories }: { categories: PackingCategory[] }) {
@@ -138,6 +138,7 @@ export function PublicPackingList({ categories }: { categories: PackingCategory[
                         No lo necesito
                       </button>
                     )}
+                    {item.required && <em>No se puede descartar</em>}
                   </div>
                 </article>
               ))}

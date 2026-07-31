@@ -2399,6 +2399,20 @@
   transition: transform .2s ease, background .2s ease, color .2s ease;
 }
 
+.packing-item em {
+  min-height: 34px;
+  padding: 0 11px;
+  display: inline-flex;
+  align-items: center;
+  color: var(--muted);
+  background: rgba(17, 63, 53, .06);
+  border: 1px dashed rgba(17, 63, 53, .18);
+  border-radius: 999px;
+  font-size: .7rem;
+  font-style: normal;
+  font-weight: 850;
+}
+
 .packing-item button:hover {
   transform: translateY(-1px);
   background: rgba(17, 63, 53, .1);
