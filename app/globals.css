@@ -2350,11 +2350,20 @@
   gap: 14px;
   color: var(--ink);
   border-top: 1px solid var(--line);
+  transition: padding .2s ease, background .2s ease, border-color .2s ease;
 }
 
 .packing-item > span {
+  display: grid;
+  gap: 4px;
   font-size: .92rem;
   line-height: 1.35;
+}
+
+.packing-item > span small {
+  color: var(--coral);
+  font-size: .68rem;
+  font-weight: 850;
 }
 
 .packing-item > div {
@@ -2412,6 +2421,7 @@
 .packing-item.packed button:first-child {
   color: white;
   background: var(--forest);
+  border-color: var(--forest);
 }
 
 .packing-item.packed button:first-child i {
@@ -2423,8 +2433,25 @@
 }
 
 .packing-item.skipped button:last-child {
-  color: var(--muted);
-  background: rgba(107, 119, 113, .1);
+  color: white;
+  background: var(--coral);
+  border-color: var(--coral);
+}
+
+.packing-item.skipped button:last-child i {
+  border-color: rgba(255, 255, 255, .55);
+}
+
+.packing-item.skipped button:last-child i svg {
+  opacity: 1;
+}
+
+.packing-item.skipped {
+  margin: 7px 0;
+  padding: 13px 14px;
+  background: rgba(239, 103, 82, .08);
+  border: 1px solid rgba(239, 103, 82, .18);
+  border-radius: 14px;
 }
 
 .packing-final-tip {

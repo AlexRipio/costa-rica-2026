@@ -1,6 +1,6 @@
 'use client'
 
-import { Check, Mail, RotateCcw } from 'lucide-react'
+import { Check, Mail, Minus, RotateCcw } from 'lucide-react'
 import { useEffect, useMemo, useState, type FormEvent } from 'react'
 import type { PackingCategory } from '@/src/data/tripData'
 
@@ -121,12 +121,13 @@ export function PublicPackingList({ categories }: { categories: PackingCategory[
             <div>
               {category.items.map((item) => (
                 <article className={`packing-item ${itemsState[item.id] || ''}`} key={item.id}>
-                  <span>{item.text}</span>
+                  <span>{item.text}{itemsState[item.id] === 'skipped' && <small>Apartado de tu lista</small>}</span>
                   <div>
-                    <button type="button" onClick={() => setItemState(item.id, 'packed')}>
+                    <button type="button" aria-pressed={itemsState[item.id] === 'packed'} onClick={() => setItemState(item.id, 'packed')}>
                       <i><Check /></i> Lo tengo
                     </button>
-                    <button type="button" onClick={() => setItemState(item.id, 'skipped')}>
+                    <button type="button" aria-pressed={itemsState[item.id] === 'skipped'} onClick={() => setItemState(item.id, 'skipped')}>
+                      <i><Minus /></i>
                       No lo necesito
                     </button>
                   </div>
