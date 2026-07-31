@@ -22,7 +22,7 @@ import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { trips } from '@/data/site'
 import { travelJournals } from '@/src/data/travelJournals'
-import { contentUpdatedAt, defaultSocialImage, siteName, siteUrl } from '@/src/data/siteSeo'
+import { contentUpdatedAt, defaultSocialImage, siteLaunchedAt, siteName, siteUrl } from '@/src/data/siteSeo'
 
 export function generateStaticParams() {
   return trips.filter((trip) => trip.slug !== 'costa-rica-2026').map((trip) => ({ slug: trip.slug }))
@@ -48,6 +48,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url: `/viajes/${trip.slug}`,
       title: `${trip.title} | Viajan2Juntos`,
       description,
+      publishedTime: `${siteLaunchedAt}T12:00:00+02:00`,
+      modifiedTime: `${contentUpdatedAt}T12:00:00+02:00`,
+      authors: [`${siteUrl}/nosotros`],
       images: [{ url: socialImage, alt: trip.image.alt }],
     },
   }
@@ -81,13 +84,16 @@ export default async function TravelJournalPage({ params }: { params: Promise<{ 
           headline: trip.title,
           description: journal.introTitle,
           url: `${siteUrl}/viajes/${trip.slug}`,
+          mainEntityOfPage: `${siteUrl}/viajes/${trip.slug}`,
+          datePublished: siteLaunchedAt,
           dateModified: contentUpdatedAt,
           inLanguage: 'es-ES',
           author: [
             { '@type': 'Person', name: 'Andrea', url: `${siteUrl}/nosotros` },
             { '@type': 'Person', name: 'Alejandro', url: `${siteUrl}/nosotros` },
           ],
-          publisher: { '@type': 'Organization', name: siteName, url: siteUrl },
+          publisher: { '@id': `${siteUrl}/#publisher`, '@type': 'Organization', name: siteName, url: siteUrl },
+          isPartOf: { '@id': `${siteUrl}/#website` },
         }}
       />
       <SiteHeader overlay />

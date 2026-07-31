@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
 import { ArrowRight, Map, MapPin } from 'lucide-react'
 import Link from 'next/link'
+import { JsonLd } from '@/components/json-ld'
 import { Reveal } from '@/components/reveal'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { trips } from '@/data/site'
+import { siteName, siteUrl } from '@/src/data/siteSeo'
 
 export const metadata: Metadata = {
   title: 'Guías de viaje, rutas e itinerarios',
@@ -44,6 +46,27 @@ export default function TripsPage() {
 
   return (
     <main className="cream-page">
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          '@id': `${siteUrl}/viajes#collection`,
+          url: `${siteUrl}/viajes`,
+          name: 'Guías de viaje, rutas e itinerarios',
+          description: 'Archivo de viajes de Viajan2Juntos organizado por destinos.',
+          isPartOf: { '@id': `${siteUrl}/#website` },
+          publisher: { '@id': `${siteUrl}/#publisher`, '@type': 'Organization', name: siteName },
+          mainEntity: {
+            '@type': 'ItemList',
+            itemListElement: trips.map((trip, index) => ({
+              '@type': 'ListItem',
+              position: index + 1,
+              name: trip.title,
+              url: `${siteUrl}/viajes/${trip.slug}`,
+            })),
+          },
+        }}
+      />
       <SiteHeader />
       <section className="page-heading">
         <div className="section-shell">

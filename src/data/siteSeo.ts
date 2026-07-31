@@ -5,7 +5,9 @@ export const siteDescription =
 export const contactEmail = 'hola@viajan2juntos.com'
 export const tiktokUrl = 'https://www.tiktok.com/@viajan2juntos'
 export const defaultSocialImage = '/brand/social-card.png'
-export const contentUpdatedAt = '2026-07-30'
+export const siteLaunchedAt = '2026-07-27'
+export const costaRicaGuidesPublishedAt = '2026-07-29'
+export const contentUpdatedAt = '2026-07-31'
 
 export const authors = [
   { name: 'Andrea', url: `${siteUrl}/nosotros` },

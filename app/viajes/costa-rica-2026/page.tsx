@@ -34,7 +34,7 @@ import { costaRicaGuides } from '@/src/data/costaRicaGuides'
 import { costaRicaExperienceFaq } from '@/src/data/costaRicaExperience'
 import { images } from '@/src/data/images'
 import { initialTripData } from '@/src/data/tripData'
-import { contentUpdatedAt, siteName, siteUrl } from '@/src/data/siteSeo'
+import { contentUpdatedAt, siteLaunchedAt, siteName, siteUrl } from '@/src/data/siteSeo'
 
 export const metadata: Metadata = {
   title: 'Costa Rica por libre: rutas de 10, 15 y 20 días',
@@ -46,6 +46,9 @@ export const metadata: Metadata = {
     url: '/viajes/costa-rica-2026',
     title: 'Costa Rica por libre: rutas de 10, 15 y 20 días',
     description: 'Itinerarios, mapa, lugares y consejos claros para preparar Costa Rica por libre.',
+    publishedTime: `${siteLaunchedAt}T12:00:00+02:00`,
+    modifiedTime: `${contentUpdatedAt}T12:00:00+02:00`,
+    authors: [`${siteUrl}/nosotros`],
     images: [{ url: images.arenal.url, alt: images.arenal.alt }],
   },
 }
@@ -132,17 +135,21 @@ export default function CostaRicaPage() {
           '@graph': [
             {
               '@type': 'BlogPosting',
+              '@id': `${siteUrl}/viajes/costa-rica-2026#article`,
+              mainEntityOfPage: `${siteUrl}/viajes/costa-rica-2026`,
               headline: 'Costa Rica por libre: rutas de 10, 15 y 20 días',
               description: 'Guía práctica de Costa Rica con itinerarios, mapa, lugares y preparación.',
               url: `${siteUrl}/viajes/costa-rica-2026`,
               image: [images.arenal.url],
+              datePublished: siteLaunchedAt,
               dateModified: contentUpdatedAt,
               inLanguage: 'es-ES',
               author: [
                 { '@type': 'Person', name: 'Andrea', url: `${siteUrl}/nosotros` },
                 { '@type': 'Person', name: 'Alejandro', url: `${siteUrl}/nosotros` },
               ],
-              publisher: { '@type': 'Organization', name: siteName, url: siteUrl },
+              publisher: { '@id': `${siteUrl}/#publisher`, '@type': 'Organization', name: siteName, url: siteUrl },
+              isPartOf: { '@id': `${siteUrl}/#website` },
             },
             {
               '@type': 'ItemList',

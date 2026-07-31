@@ -34,7 +34,13 @@ import { costaRicaGuideBySlug, costaRicaGuides } from '@/src/data/costaRicaGuide
 import { costaRicaGuideExtras } from '@/src/data/costaRicaGuideExtras'
 import { destinationExperiences } from '@/src/data/costaRicaExperience'
 import { images } from '@/src/data/images'
-import { contentUpdatedAt, defaultSocialImage, siteName, siteUrl } from '@/src/data/siteSeo'
+import {
+  contentUpdatedAt,
+  costaRicaGuidesPublishedAt,
+  defaultSocialImage,
+  siteName,
+  siteUrl,
+} from '@/src/data/siteSeo'
 import { initialTripData } from '@/src/data/tripData'
 
 type GuidePageProps = { params: Promise<{ destination: string }> }
@@ -63,6 +69,9 @@ export async function generateMetadata({ params }: GuidePageProps): Promise<Meta
       description,
       siteName,
       locale: 'es_ES',
+      publishedTime: `${costaRicaGuidesPublishedAt}T12:00:00+02:00`,
+      modifiedTime: `${contentUpdatedAt}T12:00:00+02:00`,
+      authors: [`${siteUrl}/nosotros`],
       images: [{ url: image?.url ?? defaultSocialImage, alt: image?.alt ?? guide.title }],
     },
     twitter: { card: 'summary_large_image', title: `${guide.title}: guía práctica`, description, images: [image?.url ?? defaultSocialImage] },
@@ -106,13 +115,15 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
         headline: `${guide.title}: guía práctica por libre`,
         description: guide.intro,
         image: [image.url],
+        datePublished: costaRicaGuidesPublishedAt,
         dateModified: contentUpdatedAt,
         inLanguage: 'es-ES',
         author: [
           { '@type': 'Person', name: 'Andrea', url: `${siteUrl}/nosotros` },
           { '@type': 'Person', name: 'Alejandro', url: `${siteUrl}/nosotros` },
         ],
-        publisher: { '@type': 'Organization', name: siteName, url: siteUrl, logo: { '@type': 'ImageObject', url: `${siteUrl}/brand/v2-logo-white.png` } },
+        publisher: { '@id': `${siteUrl}/#publisher`, '@type': 'Organization', name: siteName, url: siteUrl },
+        isPartOf: { '@id': `${siteUrl}/#website` },
         about: { '@type': 'Place', name: guide.title, address: { '@type': 'PostalAddress', addressCountry: 'CR' } },
       },
       {

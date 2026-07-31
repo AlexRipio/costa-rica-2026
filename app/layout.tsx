@@ -78,12 +78,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 alternateName: 'V2J',
                 description: siteDescription,
                 inLanguage: 'es-ES',
+                publisher: { '@id': `${siteUrl}/#publisher` },
               },
               {
                 '@type': 'Organization',
                 '@id': `${siteUrl}/#publisher`,
                 name: siteName,
                 url: siteUrl,
+                description: siteDescription,
+                email: 'hola@viajan2juntos.com',
                 logo: {
                   '@type': 'ImageObject',
                   url: `${siteUrl}/icon.png`,
@@ -91,6 +94,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                   height: 512,
                 },
                 sameAs: [tiktokUrl],
+                knowsAbout: ['viajes en pareja', 'rutas por libre', 'itinerarios de viaje', 'Costa Rica'],
                 founder: [
                   { '@type': 'Person', name: 'Andrea', url: `${siteUrl}/nosotros` },
                   { '@type': 'Person', name: 'Alejandro', url: `${siteUrl}/nosotros` },
