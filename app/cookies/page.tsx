@@ -12,7 +12,7 @@ export default function CookiesPage() {
     <LegalDocument
       eyebrow="Tú decides"
       title="Cookies y almacenamiento local"
-      intro="La web utiliza funciones técnicas necesarias y, únicamente si lo aceptas, Google Analytics para entender qué guías ayudan de verdad."
+      intro="La web utiliza funciones técnicas necesarias y, únicamente con la gestión de consentimiento correspondiente, analítica y publicidad para sostener y mejorar las guías."
     >
       <section>
         <h2>1. Cómo funciona el consentimiento</h2>
@@ -106,7 +106,30 @@ export default function CookiesPage() {
       </section>
 
       <section>
-        <h2>4. Otras funciones locales</h2>
+        <h2>4. Google AdSense y publicidad</h2>
+        <p>
+          Algunas guías pueden incluir espacios publicitarios de Google AdSense,
+          identificados de forma visible como <strong>Publicidad</strong>. Google
+          puede utilizar cookies o almacenamiento local para seleccionar, limitar y
+          medir anuncios, detectar fraude y generar informes.
+        </p>
+        <p>
+          Para visitantes del Espacio Económico Europeo, Reino Unido y Suiza, la
+          publicidad se acompaña de una plataforma de consentimiento certificada por
+          Google. Desde ese mensaje se puede aceptar, rechazar o ajustar la
+          personalización. La web sigue siendo accesible si se rechaza.
+        </p>
+        <p>
+          Según la elección y la disponibilidad, Google puede servir anuncios
+          personalizados, no personalizados o limitados. Consulta la{' '}
+          <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noreferrer">
+            información de Google sobre publicidad y cookies
+          </a>.
+        </p>
+      </section>
+
+      <section>
+        <h2>5. Otras funciones locales</h2>
         <p>
           La lista interactiva de equipaje guarda en el dispositivo la clave
           <strong> viajan2juntos-costa-rica-packing</strong> con los elementos marcados.
@@ -116,7 +139,7 @@ export default function CookiesPage() {
       </section>
 
       <section>
-        <h2>5. Retirar el consentimiento</h2>
+        <h2>6. Retirar el consentimiento</h2>
         <p>
           Abre <strong>Configurar cookies</strong> en el pie y pulsa «Rechazar».
           La web comunicará la retirada a Google Analytics y eliminará las cookies

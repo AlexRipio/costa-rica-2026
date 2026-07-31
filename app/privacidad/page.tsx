@@ -12,7 +12,7 @@ export default function PrivacyPage() {
     <LegalDocument
       eyebrow="Tus datos"
       title="Política de privacidad"
-      intro="Recogemos la información mínima necesaria para mantener la web segura, responder mensajes y, si lo autorizas, mejorar las guías con estadísticas agregadas."
+      intro="Recogemos la información mínima necesaria para mantener la web segura, responder mensajes y, si lo autorizas, mejorar y sostener las guías con estadísticas y publicidad."
     >
       <section>
         <h2>1. Responsable y contacto</h2>
@@ -32,6 +32,7 @@ export default function PrivacyPage() {
           <li><strong>Accesos privados:</strong> cookies técnicas que confirman el acceso a Familia o al editor, sin guardar la contraseña.</li>
           <li><strong>Seguimiento privado:</strong> ubicación y estado introducidos por los administradores durante un viaje.</li>
           <li><strong>Analítica consentida:</strong> identificador seudónimo de navegador, páginas visitadas, duración, dispositivo, ubicación aproximada e interacciones con el contenido.</li>
+          <li><strong>Publicidad:</strong> señales técnicas, consentimiento, dispositivo, ubicación aproximada e interacciones necesarias para seleccionar, limitar y medir anuncios y prevenir fraude.</li>
         </ul>
         <p>No existe registro público, newsletter ni sistema de comentarios.</p>
       </section>
@@ -43,6 +44,7 @@ export default function PrivacyPage() {
           <div><dt>Proteger la web</dt><dd>Interés legítimo en la seguridad del servicio y de las zonas privadas.</dd></div>
           <div><dt>Mantener una sesión privada</dt><dd>Prestación de la funcionalidad expresamente utilizada.</dd></div>
           <div><dt>Medir y mejorar las guías</dt><dd>Consentimiento, que puede rechazarse o retirarse sin perder acceso al contenido.</dd></div>
+          <div><dt>Financiar el contenido con publicidad</dt><dd>Consentimiento cuando sea necesario y legítimo interés para anuncios limitados en los supuestos permitidos.</dd></div>
         </dl>
       </section>
 
@@ -64,7 +66,25 @@ export default function PrivacyPage() {
       </section>
 
       <section>
-        <h2>5. Conservación</h2>
+        <h2>5. Google AdSense</h2>
+        <p>
+          Algunas páginas pueden mostrar publicidad mediante Google AdSense. Google
+          Ireland Limited puede procesar datos técnicos y de interacción para servir
+          y medir anuncios, controlar su frecuencia y evitar actividad inválida. En
+          las regiones donde corresponde, utilizamos una plataforma de consentimiento
+          certificada por Google y el contenido sigue disponible si se rechaza la
+          personalización.
+        </p>
+        <p>
+          Consulta cómo utiliza Google la información de sitios asociados en{' '}
+          <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noreferrer">
+            sus tecnologías y políticas
+          </a>.
+        </p>
+      </section>
+
+      <section>
+        <h2>6. Conservación</h2>
         <p>
           Los mensajes se conservan durante el tiempo necesario para responder y
           atender responsabilidades. Los contadores de intentos caducan
@@ -77,21 +97,22 @@ export default function PrivacyPage() {
       </section>
 
       <section>
-        <h2>6. Proveedores</h2>
+        <h2>7. Proveedores</h2>
         <p>
           La web utiliza{' '}
           <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noreferrer">Vercel</a>{' '}
           para alojamiento,{' '}
           <a href="https://upstash.com/trust/privacy.pdf" target="_blank" rel="noreferrer">Upstash</a>{' '}
           para el estado privado y, con consentimiento,{' '}
-          <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Google Analytics</a>{' '}
-          para estadísticas. Estos proveedores pueden procesar datos técnicos por
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Google</a>{' '}
+          para estadísticas y, cuando esté activo, publicidad mediante AdSense.
+          Estos proveedores pueden procesar datos técnicos por
           cuenta del proyecto.
         </p>
       </section>
 
       <section>
-        <h2>7. Derechos</h2>
+        <h2>8. Derechos</h2>
         <p>
           Puedes solicitar acceso, rectificación, supresión, oposición, limitación
           o portabilidad escribiendo al correo indicado, además de retirar el
@@ -103,10 +124,10 @@ export default function PrivacyPage() {
       </section>
 
       <section>
-        <h2>8. Menores y cambios</h2>
+        <h2>9. Menores y cambios</h2>
         <p>
           La web no está diseñada para recoger datos de menores. Esta política se
-          actualizará si se añaden formularios, publicidad, comentarios u otra
+          actualizará si se añaden formularios, comentarios u otra
           funcionalidad que modifique el tratamiento.
         </p>
       </section>

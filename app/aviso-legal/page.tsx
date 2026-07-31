@@ -38,7 +38,7 @@ export default function LegalNoticePage() {
       <section>
         <h2>4. Enlaces, reservas y recomendaciones</h2>
         <p>Los enlaces a hoteles, parques, mapas, vuelos o terceros se facilitan para ayudar al lector. Viajan2Juntos no controla sus contenidos, disponibilidad, precios ni políticas y no interviene en la relación que el usuario pueda establecer con esas entidades.</p>
-        <p>Actualmente no mostramos publicidad ni enlaces de afiliación activos. Si una publicación incluye en el futuro una colaboración, invitación, enlace afiliado o contenido patrocinado, se identificará de forma visible y no modificará nuestra obligación de contar la experiencia con honestidad.</p>
+        <p>Algunas páginas pueden mostrar publicidad automática de Google AdSense, siempre identificada como tal y separada del contenido editorial. Si una publicación incluye una colaboración, invitación, enlace afiliado o contenido patrocinado, también se identificará de forma visible y no modificará nuestra obligación de contar la experiencia con honestidad.</p>
       </section>
       <section>
         <h2>5. Responsabilidad</h2>

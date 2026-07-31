@@ -20,6 +20,7 @@ import {
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { JsonLd } from '@/components/json-ld'
+import { AdSpace } from '@/components/ad-space'
 import { ProtectedImage } from '@/components/protected-image'
 import { Reveal } from '@/components/reveal'
 import { LivingStatement } from '@/components/living-statement'
@@ -335,6 +336,8 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
           </ul>
         </Reveal>
       </section>
+
+      <div className="section-shell"><AdSpace /></div>
 
       <section className="guide-practical-section">
         <Reveal className="section-shell guide-practical-grid">
