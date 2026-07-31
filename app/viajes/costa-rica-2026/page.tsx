@@ -473,7 +473,7 @@ export default function CostaRicaPage() {
               >
                 <figure>
                   <ProtectedImage src={image.url} alt={image.alt} loading="lazy" />
-                  <figcaption>{image.alt}<small>Fotografía propia · © Viajan2Juntos</small></figcaption>
+                  <figcaption>{image.alt}<small>Foto propia · Viajan2Juntos</small></figcaption>
                 </figure>
               </Reveal>
             ))}

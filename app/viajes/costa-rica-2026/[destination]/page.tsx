@@ -366,7 +366,7 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
         ) : (
           <img src={images[extra.photoKeys[1]].url} alt={images[extra.photoKeys[1]].alt} loading="lazy" />
         )}
-        {images[extra.photoKeys[1]].id.startsWith('personal-') && <figcaption>Fotografía propia · © Viajan2Juntos</figcaption>}
+        {images[extra.photoKeys[1]].id.startsWith('personal-') && <figcaption>Foto propia · Viajan2Juntos</figcaption>}
       </figure>
 
       <section className="guide-faq-section" id="dudas">
