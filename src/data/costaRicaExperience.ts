@@ -312,9 +312,9 @@ export const destinationExperiences: Record<string, DestinationExperience> = {
       'Nos pareció una zona más cara y desarrollada que otras etapas. Para cenar buscamos una parte más local y encontramos precios menos inflados.',
     ],
     lodging: {
-      name: 'Hotel Mariposa · day pass',
+      name: 'Day pass Hotel Mariposa',
       verdict: 'Una forma inteligente de usar la tarde',
-      text: 'Pagamos 50 USD y 40 USD se convertían en crédito para comida y cena. En la práctica sentimos que las piscinas costaban unos 10 USD y el resto lo consumimos con vistas a la bahía.',
+      text: 'No dormimos allí: fuimos con day pass. Pagamos 50 USD por persona y 40 USD se convertían en crédito para consumir comida o bebida dentro del hotel. En la práctica, sentimos que el acceso a las piscinas y a las vistas de la bahía nos salía por unos 10 USD.',
     },
     food: [
       {
@@ -327,7 +327,7 @@ export const destinationExperiences: Record<string, DestinationExperience> = {
       },
     ],
     prices: [
-      { item: 'Hotel Mariposa', paid: '50 USD', note: '40 USD de crédito para consumo' },
+      { item: 'Day pass Hotel Mariposa', paid: '50 USD', note: 'Incluía 40 USD de crédito para consumir' },
       { item: 'Parking con consumo', paid: '6.000 CRC', note: 'Importe mínimo de factura en nuestra visita' },
     ],
     personalFaq: [
@@ -473,7 +473,7 @@ export const costaRicaPaidPrices: ExperiencePrice[] = [
   { item: 'Clase de surf', paid: '55–60 USD', note: '1,5 horas' },
   { item: 'Isla Tortuga + bioluminiscencia', paid: '≈100 EUR', note: 'Tour completo' },
   { item: 'Ferry con coche', paid: '≈15 EUR', note: 'Coche + dos adultos' },
-  { item: 'Hotel Mariposa', paid: '50 USD', note: '40 USD de crédito' },
+  { item: 'Day pass Hotel Mariposa', paid: '50 USD', note: 'Incluía 40 USD de crédito' },
   { item: 'Puerto Vargas', paid: '6 USD', note: 'Entrada a Cahuita' },
   { item: 'Combustible', paid: '≈1,56 EUR/l', note: 'Precio observado' },
 ]
