@@ -28,7 +28,7 @@ export default function PrivacyPage() {
         <h2>2. Qué datos tratamos</h2>
         <ul>
           <li><strong>Mensajes:</strong> correo, nombre si se facilita y contenido de la conversación.</li>
-          <li><strong>Avisos de guías:</strong> correo electrónico si decides apuntarte para recibir novedades o mejoras de una guía concreta.</li>
+          <li><strong>Avisos y listas de guías:</strong> correo electrónico si decides recibir tu lista pendiente de maleta, novedades o mejoras de una guía concreta.</li>
           <li><strong>Seguridad:</strong> datos técnicos mínimos como IP, fecha, solicitud y eventos de error presentes en registros de infraestructura.</li>
           <li><strong>Accesos privados:</strong> cookies técnicas que confirman el acceso a Familia o al editor, sin guardar la contraseña.</li>
           <li><strong>Seguimiento privado:</strong> ubicación y estado introducidos por los administradores durante un viaje.</li>
@@ -42,7 +42,7 @@ export default function PrivacyPage() {
         <h2>3. Finalidad y base jurídica</h2>
         <dl>
           <div><dt>Responder mensajes</dt><dd>Consentimiento y medidas solicitadas por quien contacta.</dd></div>
-          <div><dt>Enviar avisos de guías</dt><dd>Consentimiento de quien deja su correo para recibir novedades relacionadas con el contenido solicitado.</dd></div>
+          <div><dt>Enviar avisos o listas de guías</dt><dd>Consentimiento de quien deja su correo para recibir la lista pendiente o novedades relacionadas con el contenido solicitado.</dd></div>
           <div><dt>Proteger la web</dt><dd>Interés legítimo en la seguridad del servicio y de las zonas privadas.</dd></div>
           <div><dt>Mantener una sesión privada</dt><dd>Prestación de la funcionalidad expresamente utilizada.</dd></div>
           <div><dt>Medir y mejorar las guías</dt><dd>Consentimiento, que puede rechazarse o retirarse sin perder acceso al contenido.</dd></div>

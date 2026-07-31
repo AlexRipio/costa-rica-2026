@@ -5,36 +5,52 @@ import { useEffect, useMemo, useState, type FormEvent } from 'react'
 import type { PackingCategory } from '@/src/data/tripData'
 
 const storageKey = 'viajan2juntos-costa-rica-packing'
+type ItemState = 'packed' | 'skipped'
 
 export function PublicPackingList({ categories }: { categories: PackingCategory[] }) {
-  const [checked, setChecked] = useState<Set<string>>(new Set())
+  const [itemsState, setItemsState] = useState<Record<string, ItemState>>({})
   const [email, setEmail] = useState('')
   const [subscribeState, setSubscribeState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [subscribeMessage, setSubscribeMessage] = useState('')
 
   useEffect(() => {
     const saved = window.localStorage.getItem(storageKey)
-    if (saved) setChecked(new Set(JSON.parse(saved) as string[]))
+    if (!saved) return
+
+    const parsed = JSON.parse(saved) as string[] | Record<string, ItemState>
+    if (Array.isArray(parsed)) {
+      setItemsState(Object.fromEntries(parsed.map((id) => [id, 'packed' as const])))
+    } else {
+      setItemsState(parsed)
+    }
   }, [])
 
   const total = categories.reduce((sum, category) => sum + category.items.length, 0)
-  const progress = total ? Math.round((checked.size / total) * 100) : 0
+  const packedCount = Object.values(itemsState).filter((state) => state === 'packed').length
+  const skippedCount = Object.values(itemsState).filter((state) => state === 'skipped').length
+  const resolvedCount = packedCount + skippedCount
+  const progress = total ? Math.round((resolvedCount / total) * 100) : 0
+  const pendingItems = categories.flatMap((category) =>
+    category.items
+      .filter((item) => !itemsState[item.id])
+      .map((item) => ({ id: item.id, text: item.text, category: category.name })),
+  )
 
-  const toggle = (id: string) => {
-    setChecked((current) => {
-      const next = new Set(current)
-      if (next.has(id)) next.delete(id)
-      else next.add(id)
-      window.localStorage.setItem(storageKey, JSON.stringify([...next]))
+  const setItemState = (id: string, state: ItemState) => {
+    setItemsState((current) => {
+      const next = { ...current }
+      if (next[id] === state) delete next[id]
+      else next[id] = state
+      window.localStorage.setItem(storageKey, JSON.stringify(next))
       return next
     })
   }
 
   const status = useMemo(() => {
-    if (!checked.size) return 'Empieza por documentación y calzado.'
-    if (checked.size === total) return '¡Maleta terminada!'
-    return `${checked.size} de ${total} cosas preparadas`
-  }, [checked.size, total])
+    if (!resolvedCount) return 'Empieza por documentación y calzado.'
+    if (resolvedCount === total) return 'Lista resuelta.'
+    return `${packedCount} preparado · ${skippedCount} no necesario · ${pendingItems.length} pendiente`
+  }, [packedCount, pendingItems.length, resolvedCount, skippedCount, total])
 
   const subscribe = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -45,16 +61,22 @@ export function PublicPackingList({ categories }: { categories: PackingCategory[
       const response = await fetch('/api/newsletter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, source: 'costa-rica-packing' }),
+        body: JSON.stringify({
+          email,
+          source: 'costa-rica-packing',
+          pendingItems,
+          skippedCount,
+          packedCount,
+        }),
       })
       const data = await response.json()
-      if (!response.ok) throw new Error(data?.message || 'No hemos podido guardar el correo.')
+      if (!response.ok) throw new Error(data?.message || 'No hemos podido preparar tu lista.')
       setSubscribeState('success')
       setSubscribeMessage(data.message)
       setEmail('')
     } catch (error) {
       setSubscribeState('error')
-      setSubscribeMessage(error instanceof Error ? error.message : 'No hemos podido guardar el correo.')
+      setSubscribeMessage(error instanceof Error ? error.message : 'No hemos podido preparar tu lista.')
     }
   }
 
@@ -63,7 +85,7 @@ export function PublicPackingList({ categories }: { categories: PackingCategory[
       <div className="packing-progress-card">
         <div><span>{status}</span><strong>{progress}%</strong></div>
         <div className="packing-progress-track"><i style={{ width: `${progress}%` }} /></div>
-        <button type="button" onClick={() => { setChecked(new Set()); window.localStorage.removeItem(storageKey) }}>
+        <button type="button" onClick={() => { setItemsState({}); window.localStorage.removeItem(storageKey) }}>
           <RotateCcw /> Empezar de nuevo
         </button>
       </div>
@@ -71,8 +93,8 @@ export function PublicPackingList({ categories }: { categories: PackingCategory[
         <div>
           <Mail />
           <div>
-            <strong>¿Quieres que te avisemos cuando mejoremos esta guía?</strong>
-            <p>Déjanos tu correo y te mandamos las novedades útiles: más consejos, cambios de ruta y recursos nuevos para preparar Costa Rica.</p>
+            <strong>¿Quieres recibir solo lo que te falta?</strong>
+            <p>Marca lo preparado y aparta lo que no necesitas. Te mandamos una lista limpia con lo pendiente para terminar la maleta sin volver a revisarlo todo.</p>
           </div>
         </div>
         <label>
@@ -87,10 +109,10 @@ export function PublicPackingList({ categories }: { categories: PackingCategory[
           />
         </label>
         <button type="submit" disabled={subscribeState === 'loading'}>
-          {subscribeState === 'loading' ? 'Guardando...' : 'Avisadme'}
+          {subscribeState === 'loading' ? 'Preparando...' : 'Mandarme pendientes'}
         </button>
         {subscribeMessage && <p className={`packing-email-message ${subscribeState}`}>{subscribeMessage}</p>}
-        <small>Sin spam. Solo correos relacionados con la guía. Puedes pedir que borremos tus datos cuando quieras.</small>
+        <small>Usaremos este correo solo para enviarte esta lista o avisos relacionados con la guía si lo pides. Puedes pedir que lo borremos cuando quieras.</small>
       </form>
       <div className="packing-category-grid">
         {categories.map((category) => (
@@ -98,9 +120,17 @@ export function PublicPackingList({ categories }: { categories: PackingCategory[
             <h2>{category.name}</h2>
             <div>
               {category.items.map((item) => (
-                <button className={checked.has(item.id) ? 'checked' : ''} type="button" onClick={() => toggle(item.id)} key={item.id}>
-                  <i><Check /></i><span>{item.text}</span>
-                </button>
+                <article className={`packing-item ${itemsState[item.id] || ''}`} key={item.id}>
+                  <span>{item.text}</span>
+                  <div>
+                    <button type="button" onClick={() => setItemState(item.id, 'packed')}>
+                      <i><Check /></i> Lo tengo
+                    </button>
+                    <button type="button" onClick={() => setItemState(item.id, 'skipped')}>
+                      No lo necesito
+                    </button>
+                  </div>
+                </article>
               ))}
             </div>
           </section>

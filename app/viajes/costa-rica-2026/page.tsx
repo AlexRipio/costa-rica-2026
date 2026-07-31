@@ -30,6 +30,7 @@ import { StoryMap } from '@/components/story-map'
 import { TravelAutoCarousel } from '@/components/travel-auto-carousel'
 import { TripItineraryPlanner } from '@/components/trip-itinerary-planner'
 import { TripTimeline } from '@/components/trip-timeline'
+import { TripUpdateSignup } from '@/components/trip-update-signup'
 import { costaRicaGuides } from '@/src/data/costaRicaGuides'
 import { costaRicaExperienceFaq } from '@/src/data/costaRicaExperience'
 import { images } from '@/src/data/images'
@@ -515,6 +516,7 @@ export default function CostaRicaPage() {
           <span>UN VIAJE VIVIDO, UNA GUÍA EN MOVIMIENTO</span>
           <h2>Ya volvimos. Ahora te contamos lo que de verdad nos habría ayudado saber.</h2>
           <Link className="button button-light" href="/viajes">Todos los viajes <ArrowRight size={17} /></Link>
+          <TripUpdateSignup />
         </Reveal>
       </section>
       <SiteFooter />

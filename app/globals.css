@@ -2231,6 +2231,95 @@
   font-weight: 800;
 }
 
+.trip-update-signup {
+  width: min(760px, 100%);
+  margin: 34px auto 0;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr minmax(210px, .5fr) auto;
+  align-items: end;
+  gap: 14px;
+  color: var(--ink);
+  background: rgba(255, 250, 241, .94);
+  border-radius: 20px;
+}
+
+.trip-update-signup > div {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 13px;
+  text-align: left;
+}
+
+.trip-update-signup svg {
+  width: 26px;
+  color: var(--coral);
+}
+
+.trip-update-signup span {
+  display: block;
+  color: var(--coral);
+  font-size: .68rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.trip-update-signup h3 {
+  margin: 2px 0 0;
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  line-height: 1.08;
+}
+
+.trip-update-signup p {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: .78rem;
+  line-height: 1.55;
+}
+
+.trip-update-signup label {
+  display: grid;
+  gap: 6px;
+  text-align: left;
+}
+
+.trip-update-signup input {
+  min-height: 45px;
+  padding: 0 13px;
+  border: 1px solid rgba(17, 63, 53, .18);
+  border-radius: 12px;
+  font: inherit;
+}
+
+.trip-update-signup button {
+  min-height: 45px;
+  padding: 0 16px;
+  color: white;
+  background: var(--forest);
+  border: 0;
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.trip-update-message {
+  grid-column: 1 / -1;
+  margin: 0;
+  text-align: left;
+}
+
+.trip-update-message.success {
+  color: var(--forest);
+  font-weight: 800;
+}
+
+.trip-update-message.error {
+  color: var(--coral);
+  font-weight: 800;
+}
+
 .packing-category-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -2253,21 +2342,51 @@
   display: grid;
 }
 
-.packing-category-grid button {
+.packing-item {
   padding: 13px 0;
   display: grid;
-  grid-template-columns: 28px 1fr;
+  grid-template-columns: 1fr auto;
   align-items: center;
-  gap: 10px;
+  gap: 14px;
   color: var(--ink);
-  background: none;
-  border: 0;
   border-top: 1px solid var(--line);
-  text-align: left;
-  cursor: pointer;
 }
 
-.packing-category-grid button i {
+.packing-item > span {
+  font-size: .92rem;
+  line-height: 1.35;
+}
+
+.packing-item > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.packing-item button {
+  min-height: 34px;
+  padding: 0 11px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--forest);
+  background: rgba(17, 63, 53, .06);
+  border: 1px solid rgba(17, 63, 53, .12);
+  border-radius: 999px;
+  text-align: left;
+  font-size: .72rem;
+  font-weight: 850;
+  cursor: pointer;
+  transition: transform .2s ease, background .2s ease, color .2s ease;
+}
+
+.packing-item button:hover {
+  transform: translateY(-1px);
+  background: rgba(17, 63, 53, .1);
+}
+
+.packing-item button i {
   width: 22px;
   height: 22px;
   display: grid;
@@ -2276,23 +2395,36 @@
   border-radius: 50%;
 }
 
-.packing-category-grid button i svg {
+.packing-item button i svg {
   width: 13px;
   opacity: 0;
 }
 
-.packing-category-grid button.checked {
+.packing-item.packed > span,
+.packing-item.skipped > span {
   color: var(--muted);
+}
+
+.packing-item.packed > span {
   text-decoration: line-through;
 }
 
-.packing-category-grid button.checked i {
+.packing-item.packed button:first-child {
   color: white;
   background: var(--forest);
 }
 
-.packing-category-grid button.checked i svg {
+.packing-item.packed button:first-child i {
+  border-color: rgba(255, 255, 255, .45);
+}
+
+.packing-item.packed button:first-child i svg {
   opacity: 1;
+}
+
+.packing-item.skipped button:last-child {
+  color: var(--muted);
+  background: rgba(107, 119, 113, .1);
 }
 
 .packing-final-tip {
@@ -2493,6 +2625,35 @@
   }
 
   .packing-email-card button {
+    width: 100%;
+  }
+
+  .packing-item {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .packing-item > div {
+    justify-content: flex-start;
+  }
+
+  .packing-item button {
+    flex: 1 1 135px;
+    justify-content: center;
+  }
+
+  .trip-update-signup {
+    padding: 18px;
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .trip-update-signup > div {
+    grid-template-columns: 30px 1fr;
+  }
+
+  .trip-update-signup button {
     width: 100%;
   }
 
