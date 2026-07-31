@@ -28,19 +28,21 @@ export default function PrivacyPage() {
         <h2>2. Qué datos tratamos</h2>
         <ul>
           <li><strong>Mensajes:</strong> correo, nombre si se facilita y contenido de la conversación.</li>
+          <li><strong>Avisos de guías:</strong> correo electrónico si decides apuntarte para recibir novedades o mejoras de una guía concreta.</li>
           <li><strong>Seguridad:</strong> datos técnicos mínimos como IP, fecha, solicitud y eventos de error presentes en registros de infraestructura.</li>
           <li><strong>Accesos privados:</strong> cookies técnicas que confirman el acceso a Familia o al editor, sin guardar la contraseña.</li>
           <li><strong>Seguimiento privado:</strong> ubicación y estado introducidos por los administradores durante un viaje.</li>
           <li><strong>Analítica consentida:</strong> identificador seudónimo de navegador, páginas visitadas, duración, dispositivo, ubicación aproximada e interacciones con el contenido.</li>
           <li><strong>Publicidad:</strong> señales técnicas, consentimiento, dispositivo, ubicación aproximada e interacciones necesarias para seleccionar, limitar y medir anuncios y prevenir fraude.</li>
         </ul>
-        <p>No existe registro público, newsletter ni sistema de comentarios.</p>
+        <p>No existe registro público ni sistema de comentarios.</p>
       </section>
 
       <section>
         <h2>3. Finalidad y base jurídica</h2>
         <dl>
           <div><dt>Responder mensajes</dt><dd>Consentimiento y medidas solicitadas por quien contacta.</dd></div>
+          <div><dt>Enviar avisos de guías</dt><dd>Consentimiento de quien deja su correo para recibir novedades relacionadas con el contenido solicitado.</dd></div>
           <div><dt>Proteger la web</dt><dd>Interés legítimo en la seguridad del servicio y de las zonas privadas.</dd></div>
           <div><dt>Mantener una sesión privada</dt><dd>Prestación de la funcionalidad expresamente utilizada.</dd></div>
           <div><dt>Medir y mejorar las guías</dt><dd>Consentimiento, que puede rechazarse o retirarse sin perder acceso al contenido.</dd></div>
@@ -90,7 +92,8 @@ export default function PrivacyPage() {
           atender responsabilidades. Los contadores de intentos caducan
           aproximadamente a los 15 minutos y las sesiones privadas duran hasta un
           año o hasta cerrarlas. La elección de analítica se recuerda unos seis
-          meses. Los datos de usuario y eventos de Analytics se configuran con el
+          meses. Los correos para avisos de guías se conservan hasta que solicites
+          la baja o la supresión. Los datos de usuario y eventos de Analytics se configuran con el
           periodo disponible en la propiedad y las estadísticas agregadas pueden
           conservarse durante más tiempo.
         </p>

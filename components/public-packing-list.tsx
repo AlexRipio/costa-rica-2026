@@ -1,13 +1,16 @@
 'use client'
 
-import { Check, RotateCcw } from 'lucide-react'
-import { useEffect, useMemo, useState } from 'react'
+import { Check, Mail, RotateCcw } from 'lucide-react'
+import { useEffect, useMemo, useState, type FormEvent } from 'react'
 import type { PackingCategory } from '@/src/data/tripData'
 
 const storageKey = 'viajan2juntos-costa-rica-packing'
 
 export function PublicPackingList({ categories }: { categories: PackingCategory[] }) {
   const [checked, setChecked] = useState<Set<string>>(new Set())
+  const [email, setEmail] = useState('')
+  const [subscribeState, setSubscribeState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [subscribeMessage, setSubscribeMessage] = useState('')
 
   useEffect(() => {
     const saved = window.localStorage.getItem(storageKey)
@@ -33,6 +36,28 @@ export function PublicPackingList({ categories }: { categories: PackingCategory[
     return `${checked.size} de ${total} cosas preparadas`
   }, [checked.size, total])
 
+  const subscribe = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    setSubscribeState('loading')
+    setSubscribeMessage('')
+
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'costa-rica-packing' }),
+      })
+      const data = await response.json()
+      if (!response.ok) throw new Error(data?.message || 'No hemos podido guardar el correo.')
+      setSubscribeState('success')
+      setSubscribeMessage(data.message)
+      setEmail('')
+    } catch (error) {
+      setSubscribeState('error')
+      setSubscribeMessage(error instanceof Error ? error.message : 'No hemos podido guardar el correo.')
+    }
+  }
+
   return (
     <div className="public-packing-list">
       <div className="packing-progress-card">
@@ -42,6 +67,31 @@ export function PublicPackingList({ categories }: { categories: PackingCategory[
           <RotateCcw /> Empezar de nuevo
         </button>
       </div>
+      <form className="packing-email-card" onSubmit={subscribe}>
+        <div>
+          <Mail />
+          <div>
+            <strong>¿Quieres que te avisemos cuando mejoremos esta guía?</strong>
+            <p>Déjanos tu correo y te mandamos las novedades útiles: más consejos, cambios de ruta y recursos nuevos para preparar Costa Rica.</p>
+          </div>
+        </div>
+        <label>
+          <span>Tu correo</span>
+          <input
+            type="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            placeholder="tu@email.com"
+            autoComplete="email"
+            required
+          />
+        </label>
+        <button type="submit" disabled={subscribeState === 'loading'}>
+          {subscribeState === 'loading' ? 'Guardando...' : 'Avisadme'}
+        </button>
+        {subscribeMessage && <p className={`packing-email-message ${subscribeState}`}>{subscribeMessage}</p>}
+        <small>Sin spam. Solo correos relacionados con la guía. Puedes pedir que borremos tus datos cuando quieras.</small>
+      </form>
       <div className="packing-category-grid">
         {categories.map((category) => (
           <section key={category.id}>
@@ -59,4 +109,3 @@ export function PublicPackingList({ categories }: { categories: PackingCategory[
     </div>
   )
 }
-
