@@ -7,6 +7,11 @@ declare global {
   interface Window {
     dataLayer?: unknown[]
     gtag?: (...args: unknown[]) => void
+    __v2jConsentDefaultsSet?: boolean
+    googlefc?: {
+      callbackQueue?: Array<Record<string, () => void>>
+      showRevocationMessage?: () => void
+    }
   }
 }
 

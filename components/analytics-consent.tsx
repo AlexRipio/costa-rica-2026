@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import { useCallback, useEffect, useState } from 'react'
 import { BarChart3, ShieldCheck, X } from 'lucide-react'
 import { analyticsMeasurementId, trackAnalyticsEvent } from '@/src/lib/analytics'
+import { adsenseEnabled } from '@/src/lib/adsense'
 
 type ConsentChoice = 'accepted' | 'rejected'
 
@@ -25,14 +26,31 @@ function initialiseConsentMode() {
       window.dataLayer?.push(arguments)
     }
 
-  window.gtag('consent', 'default', {
-    analytics_storage: 'denied',
-    ad_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
-    wait_for_update: 500,
+  if (!window.__v2jConsentDefaultsSet) {
+    window.gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      wait_for_update: 500,
+    })
+    window.gtag('set', 'ads_data_redaction', true)
+    window.__v2jConsentDefaultsSet = true
+  }
+}
+
+function openGooglePrivacySettings() {
+  window.googlefc = window.googlefc || {}
+
+  if (typeof window.googlefc.showRevocationMessage === 'function') {
+    window.googlefc.showRevocationMessage()
+    return
+  }
+
+  window.googlefc.callbackQueue = window.googlefc.callbackQueue || []
+  window.googlefc.callbackQueue.push({
+    CONSENT_API_READY: () => window.googlefc?.showRevocationMessage?.(),
   })
-  window.gtag('set', 'ads_data_redaction', true)
 }
 
 function readStoredChoice(): ConsentChoice | null {
@@ -40,11 +58,7 @@ function readStoredChoice(): ConsentChoice | null {
     const stored = window.localStorage.getItem(consentStorageKey)
     if (!stored) return null
     const parsed = JSON.parse(stored) as { choice?: ConsentChoice; savedAt?: number }
-    if (
-      !parsed.choice ||
-      !parsed.savedAt ||
-      Date.now() - parsed.savedAt > consentLifetime
-    ) {
+    if (!parsed.choice || !parsed.savedAt || Date.now() - parsed.savedAt > consentLifetime) {
       window.localStorage.removeItem(consentStorageKey)
       return null
     }
@@ -74,19 +88,18 @@ function clearAnalyticsCookies() {
     })
 }
 
-function loadAnalytics(onReady: () => void) {
+function loadAnalytics(onReady: () => void, grantAnalytics = true) {
   initialiseConsentMode()
-  window.gtag?.('consent', 'update', {
-    analytics_storage: 'granted',
-    ad_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
-  })
+  if (grantAnalytics) {
+    window.gtag?.('consent', 'update', {
+      analytics_storage: 'granted',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+    })
+  }
 
-  const existing = document.getElementById('v2j-google-analytics') as
-    | HTMLScriptElement
-    | null
-
+  const existing = document.getElementById('v2j-google-analytics') as HTMLScriptElement | null
   if (existing?.dataset.ready === 'true') {
     onReady()
     return
@@ -123,7 +136,10 @@ export function CookieSettingsButton() {
     <button
       className="footer-cookie-settings"
       type="button"
-      onClick={() => window.dispatchEvent(new Event(settingsEvent))}
+      onClick={() => {
+        if (adsenseEnabled) openGooglePrivacySettings()
+        else window.dispatchEvent(new Event(settingsEvent))
+      }}
     >
       Configurar cookies
     </button>
@@ -137,13 +153,14 @@ export function AnalyticsConsent() {
   const [panelOpen, setPanelOpen] = useState(false)
   const [analyticsReady, setAnalyticsReady] = useState(false)
 
-  const activate = useCallback(() => {
-    loadAnalytics(() => setAnalyticsReady(true))
+  const activate = useCallback((grantAnalytics = true) => {
+    loadAnalytics(() => setAnalyticsReady(true), grantAnalytics)
   }, [])
 
   useEffect(() => {
+    initialiseConsentMode()
+
     if (privatePage) {
-      initialiseConsentMode()
       window.gtag?.('consent', 'update', {
         analytics_storage: 'denied',
         ad_storage: 'denied',
@@ -153,7 +170,14 @@ export function AnalyticsConsent() {
       setAnalyticsReady(false)
       return
     }
-    initialiseConsentMode()
+
+    if (adsenseEnabled) {
+      setChoice(null)
+      setPanelOpen(false)
+      activate(false)
+      return
+    }
+
     const storedChoice = readStoredChoice()
     setChoice(storedChoice)
     setPanelOpen(storedChoice === null)
@@ -162,7 +186,10 @@ export function AnalyticsConsent() {
 
   useEffect(() => {
     if (privatePage) return
-    const openSettings = () => setPanelOpen(true)
+    const openSettings = () => {
+      if (adsenseEnabled) openGooglePrivacySettings()
+      else setPanelOpen(true)
+    }
     window.addEventListener(settingsEvent, openSettings)
     return () => window.removeEventListener(settingsEvent, openSettings)
   }, [privatePage])
@@ -189,11 +216,7 @@ export function AnalyticsConsent() {
           measured.textContent?.trim().slice(0, 100) ||
           'sin_etiqueta',
         ...(measured.dataset.analyticsValue
-          ? {
-              value:
-                Number(measured.dataset.analyticsValue) ||
-                measured.dataset.analyticsValue,
-            }
+          ? { value: Number(measured.dataset.analyticsValue) || measured.dataset.analyticsValue }
           : {}),
       })
     }
@@ -201,7 +224,7 @@ export function AnalyticsConsent() {
     return () => document.removeEventListener('click', captureMeasuredClick)
   }, [privatePage])
 
-  if (privatePage || choice === undefined || !panelOpen) return null
+  if (adsenseEnabled || privatePage || choice === undefined || !panelOpen) return null
 
   const acceptAnalytics = () => {
     storeChoice('accepted')
@@ -240,8 +263,7 @@ export function AnalyticsConsent() {
         <h2>{choice ? 'Tus preferencias' : '¿Nos ayudas a mejorar el blog?'}</h2>
         <p id="cookie-consent-description">
           Usamos Google Analytics únicamente para saber qué guías resultan útiles.
-          Si activamos anuncios, su consentimiento se gestiona por separado. Nunca
-          medimos la Zona Familia.
+          Nunca medimos la Zona Familia.
         </p>
         <Link href="/cookies">Ver la política de cookies</Link>
       </div>

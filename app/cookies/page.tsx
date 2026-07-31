@@ -17,14 +17,15 @@ export default function CookiesPage() {
       <section>
         <h2>1. Cómo funciona el consentimiento</h2>
         <p>
-          Al entrar puedes <strong>aceptar o rechazar</strong> la analítica con la
-          misma facilidad. Google Analytics permanece bloqueado hasta que eliges
-          «Aceptar analítica». Rechazar no limita ninguna página ni funcionalidad.
+          En los territorios donde es obligatorio, el panel de privacidad de Google
+          permite <strong>consentir, no consentir o gestionar las opciones</strong>
+          de analítica y publicidad desde un único lugar. Rechazar no limita ninguna
+          página ni funcionalidad.
         </p>
         <p>
-          La elección se guarda durante aproximadamente seis meses en el
-          almacenamiento local del navegador. Puedes cambiarla en cualquier momento
-          desde <strong>Configurar cookies</strong>, en el pie de la web.
+          Google conserva la elección durante el periodo previsto por su plataforma
+          de consentimiento. Puedes revisarla o retirarla en cualquier momento desde
+          <strong> Configurar cookies</strong>, en el pie de la web.
         </p>
       </section>
 
@@ -47,12 +48,6 @@ export default function CookiesPage() {
                 <td>Mantener el acceso del administrador al seguimiento.</td>
                 <td>Hasta 1 año o cierre de sesión</td>
                 <td>Propia, técnica, HttpOnly</td>
-              </tr>
-              <tr>
-                <td>v2j_analytics_consent</td>
-                <td>Guardar en el dispositivo si aceptaste o rechazaste la analítica.</td>
-                <td>Aproximadamente 6 meses</td>
-                <td>Almacenamiento local, técnico</td>
               </tr>
             </tbody>
           </table>
@@ -141,10 +136,9 @@ export default function CookiesPage() {
       <section>
         <h2>6. Retirar el consentimiento</h2>
         <p>
-          Abre <strong>Configurar cookies</strong> en el pie y pulsa «Rechazar».
-          La web comunicará la retirada a Google Analytics y eliminará las cookies
-          analíticas accesibles desde el navegador. También puedes borrar todos los
-          datos desde la configuración de privacidad del navegador.
+          Abre <strong>Configurar cookies</strong> en el pie para volver a mostrar el
+          panel de Google y cambiar o retirar tu elección. También puedes borrar todos
+          los datos desde la configuración de privacidad del navegador.
         </p>
       </section>
     </LegalDocument>
