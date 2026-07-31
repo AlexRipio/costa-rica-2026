@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { JsonLd } from '@/components/json-ld'
 import { MotionExperience } from '@/components/motion-experience'
 import { AnalyticsConsent } from '@/components/analytics-consent'
+import { adsenseClient } from '@/src/lib/adsense'
 import { authors, defaultSocialImage, siteDescription, siteName, siteUrl, tiktokUrl } from '@/src/data/siteSeo'
 import './globals.css'
 
@@ -65,6 +66,13 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es">
+      <head>
+        <script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
+          crossOrigin="anonymous"
+        />
+      </head>
       <body>
         <JsonLd
           data={{
