@@ -15,32 +15,6 @@ declare global {
 
 type AdStatus = 'loading' | 'filled' | 'unfilled'
 
-function loadAdSense(onReady: () => void) {
-  const scriptId = 'v2j-google-adsense'
-  const existing = document.getElementById(scriptId) as HTMLScriptElement | null
-
-  if (existing?.dataset.ready === 'true') {
-    onReady()
-    return
-  }
-
-  if (existing) {
-    existing.addEventListener('load', onReady, { once: true })
-    return
-  }
-
-  const script = document.createElement('script')
-  script.id = scriptId
-  script.async = true
-  script.crossOrigin = 'anonymous'
-  script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`
-  script.addEventListener('load', () => {
-    script.dataset.ready = 'true'
-    onReady()
-  }, { once: true })
-  document.head.appendChild(script)
-}
-
 export function AdSpace({ compact = false }: { compact?: boolean }) {
   const advertRef = useRef<HTMLModElement>(null)
   const requestedRef = useRef(false)
@@ -58,15 +32,14 @@ export function AdSpace({ compact = false }: { compact?: boolean }) {
     })
     observer.observe(advert, { attributes: true, attributeFilter: ['data-ad-status'] })
 
-    loadAdSense(() => {
-      if (requestedRef.current) return
+    if (!requestedRef.current) {
       requestedRef.current = true
       try {
         ;(window.adsbygoogle = window.adsbygoogle || []).push({})
       } catch {
         setStatus('unfilled')
       }
-    })
+    }
 
     return () => observer.disconnect()
   }, [])

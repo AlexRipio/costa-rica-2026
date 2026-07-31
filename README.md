@@ -36,9 +36,10 @@ El proyecto se despliega automáticamente en Vercel al actualizar la rama princi
 ## Publicidad
 
 La integración de Google AdSense utiliza anuncios manuales y adaptables dentro del
-contenido. Está desactivada si falta cualquiera de estas variables:
+contenido. El proyecto incluye los identificadores de Viajan2Juntos y permite
+sobrescribirlos mediante estas variables:
 
-- `NEXT_PUBLIC_GOOGLE_ADSENSE_ENABLED`: `true` para activar o `false` para apagar todos los anuncios.
+- `NEXT_PUBLIC_GOOGLE_ADSENSE_ENABLED`: `false` para apagar todos los anuncios.
 - `NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT`: identificador con formato `ca-pub-0000000000000000`.
 - `NEXT_PUBLIC_GOOGLE_ADSENSE_SLOT_CONTENT`: identificador numérico de la unidad de anuncio adaptable.
 

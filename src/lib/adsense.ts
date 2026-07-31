@@ -6,10 +6,11 @@ export const adsenseClient =
   'ca-pub-2951834278204379'
 
 export const adsenseContentSlot =
-  process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_SLOT_CONTENT?.trim() ?? ''
+  process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_SLOT_CONTENT?.trim() ??
+  '1041889976'
 
 export const adsenseEnabled =
-  process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ENABLED === 'true' &&
+  process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_ENABLED !== 'false' &&
   clientPattern.test(adsenseClient) &&
   slotPattern.test(adsenseContentSlot)
 
