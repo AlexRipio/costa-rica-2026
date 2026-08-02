@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import { ArrowRight, BadgePercent, Check, ShieldCheck } from 'lucide-react'
 import { IATI_AFFILIATE_URL, getInsuranceEditorial } from '@/src/lib/iati'
 import { Reveal } from './reveal'
@@ -7,6 +8,63 @@ type EditorialCardProps = {
   scope: 'internacional' | 'nacional'
   destination: string
   variant?: 'light' | 'dark'
+}
+
+type ContextualTextProps = {
+  text: string
+  slug: string
+}
+
+const insuranceMentionPattern =
+  /(seguro de viaje|viajar con seguro|viajar asegurad[oa]s?|asistencia m[eé]dica|repatriaci[oó]n)/gi
+
+export function IatiContextualText({ text, slug }: ContextualTextProps) {
+  const fragments: ReactNode[] = []
+  let cursor = 0
+
+  for (const match of text.matchAll(insuranceMentionPattern)) {
+    const index = match.index ?? 0
+    fragments.push(text.slice(cursor, index))
+    fragments.push(
+      <a
+        className="iati-contextual-link"
+        href={IATI_AFFILIATE_URL}
+        target="_blank"
+        rel="sponsored noopener noreferrer"
+        data-analytics-event="affiliate_click"
+        data-analytics-label={`iati_${slug}_contextual`}
+        key={`${index}-${match[0]}`}
+      >
+        {match[0]}
+      </a>,
+    )
+    cursor = index + match[0].length
+  }
+
+  if (cursor === 0) return text
+  fragments.push(text.slice(cursor))
+  return <>{fragments}</>
+}
+
+export function IatiSidebarCard({ slug, destination }: { slug: string; destination: string }) {
+  return (
+    <aside className="iati-sidebar-card" aria-label={`Seguro de viaje para ${destination}`}>
+      <ShieldCheck aria-hidden="true" />
+      <span>Seguro de viaje</span>
+      <strong>Viaja con IATI y consigue un 5% de descuento.</strong>
+      <p>Se aplica automáticamente al entrar desde Viajan2Juntos. No necesitas ningún código.</p>
+      <a
+        href={IATI_AFFILIATE_URL}
+        target="_blank"
+        rel="sponsored noopener noreferrer"
+        data-analytics-event="affiliate_click"
+        data-analytics-label={`iati_${slug}_sidebar`}
+      >
+        Calcular mi seguro <ArrowRight aria-hidden="true" />
+      </a>
+      <small>Enlace de afiliado. Podemos recibir una comisión sin que tú pagues más.</small>
+    </aside>
+  )
 }
 
 export function IatiEditorialCard({ slug, scope, destination, variant = 'light' }: EditorialCardProps) {
