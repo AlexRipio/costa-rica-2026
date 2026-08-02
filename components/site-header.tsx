@@ -123,6 +123,9 @@ export function SiteHeader({
             </div>
 
             <Link className="drawer-main-link" href="/#mapa" onClick={closeDrawer}>Mapa del mundo</Link>
+            <Link className="drawer-main-link drawer-insurance-link" href="/seguro-de-viaje" onClick={closeDrawer}>
+              Seguro de viaje <small>5% de descuento</small>
+            </Link>
             <Link className="drawer-main-link" href="/nosotros" onClick={closeDrawer}>Conócenos</Link>
           </nav>
 
