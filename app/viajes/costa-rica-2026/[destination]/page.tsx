@@ -487,19 +487,41 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
       </section>
 
       <section className="destination-route-navigation">
-        <div className="section-shell">
-          <div className="route-progress-label"><Route /> Estás en la etapa {currentIndex + 1} de {costaRicaGuides.length}</div>
+        <Reveal className="section-shell route-navigation-shell">
+          <div className="route-progress-head">
+            <div className="route-progress-label"><Route /><span>Ruta Costa Rica</span></div>
+            <span className="route-progress-count">Etapa {currentIndex + 1} <i>de</i> {costaRicaGuides.length}</span>
+          </div>
+          <div className="route-progress-track" aria-label={`Etapa ${currentIndex + 1} de ${costaRicaGuides.length}`}>
+            <span className="route-progress-fill" style={{ width: `${((currentIndex + 1) / costaRicaGuides.length) * 100}%` }} />
+            {costaRicaGuides.map((routeGuide, index) => (
+              <span
+                aria-current={index === currentIndex ? 'step' : undefined}
+                className={index <= currentIndex ? 'is-complete' : ''}
+                key={routeGuide.slug}
+              />
+            ))}
+          </div>
           <div className="destination-prev-next">
             {previous ? (
-              <Link href={`/viajes/costa-rica-2026/${previous.slug}`}><ArrowLeft /><span><small>Parada anterior</small><strong>{previous.title}</strong></span></Link>
+              <Link className="route-navigation-card route-navigation-card--previous" href={`/viajes/costa-rica-2026/${previous.slug}`}>
+                <span className="route-navigation-icon"><ArrowLeft /></span>
+                <span className="route-navigation-copy"><small>Volver a la etapa {currentIndex}</small><strong>{previous.title}</strong><em>Ver guía</em></span>
+              </Link>
             ) : <span />}
             {next ? (
-              <Link href={`/viajes/costa-rica-2026/${next.slug}`}><span><small>Siguiente parada</small><strong>{next.title}</strong></span><ArrowRight /></Link>
+              <Link className="route-navigation-card route-navigation-card--next" href={`/viajes/costa-rica-2026/${next.slug}`}>
+                <span className="route-navigation-copy"><small>Siguiente · Etapa {currentIndex + 2}</small><strong>{next.title}</strong><em>Continuar ruta</em></span>
+                <span className="route-navigation-icon"><ArrowRight /></span>
+              </Link>
             ) : (
-              <Link href="/viajes/costa-rica-2026"><span><small>Fin de la ruta</small><strong>Volver a Costa Rica</strong></span><ArrowRight /></Link>
+              <Link className="route-navigation-card route-navigation-card--finish" href="/viajes/costa-rica-2026">
+                <span className="route-navigation-copy"><small>Ruta completada</small><strong>Volver a Costa Rica</strong><em>Ver la guía completa</em></span>
+                <span className="route-navigation-icon"><ArrowRight /></span>
+              </Link>
             )}
           </div>
-        </div>
+        </Reveal>
       </section>
       <SiteFooter />
     </main>

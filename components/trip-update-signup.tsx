@@ -1,6 +1,6 @@
 'use client'
 
-import { Mail } from 'lucide-react'
+import { ArrowRight, Check, Mail } from 'lucide-react'
 import { useState, type FormEvent } from 'react'
 
 export function TripUpdateSignup() {
@@ -32,26 +32,31 @@ export function TripUpdateSignup() {
 
   return (
     <form className="trip-update-signup" onSubmit={submit}>
-      <div>
-        <Mail />
-        <div>
-          <span>Guía viva</span>
-          <h3>Te avisamos cuando añadamos itinerarios nuevos.</h3>
-          <p>Solo mandaremos correos útiles: nuevas rutas, mapas mejorados o cambios importantes de la guía.</p>
+      <div className="trip-update-intro">
+        <span className="trip-update-icon" aria-hidden="true"><Mail /></span>
+        <div className="trip-update-copy">
+          <h3>¿Te vienes al próximo?</h3>
+          <p>Nuevas rutas. Nada más.</p>
         </div>
       </div>
-      <label>
-        <span>Correo</span>
-        <input
-          type="email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-          placeholder="tu@email.com"
-          autoComplete="email"
-          required
-        />
-      </label>
-      <button type="submit" disabled={state === 'loading'}>{state === 'loading' ? 'Guardando...' : 'Quiero enterarme'}</button>
+      <div className="trip-update-fields">
+        <label>
+          <span className="sr-only">Tu correo</span>
+          <Mail aria-hidden="true" />
+          <input
+            type="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            placeholder="Tu correo"
+            autoComplete="email"
+            required
+          />
+        </label>
+        <button type="submit" disabled={state === 'loading'}>
+          <span>{state === 'loading' ? 'Un momento…' : state === 'success' ? 'Apuntado' : 'Apuntarme'}</span>
+          {state === 'success' ? <Check aria-hidden="true" /> : <ArrowRight aria-hidden="true" />}
+        </button>
+      </div>
       {message && <p className={`trip-update-message ${state}`}>{message}</p>}
     </form>
   )
