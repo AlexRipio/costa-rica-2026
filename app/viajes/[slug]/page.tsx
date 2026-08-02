@@ -16,7 +16,7 @@ import {
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { JsonLd } from '@/components/json-ld'
-import { IatiEditorialCard } from '@/components/iati-affiliate'
+import { IatiContextualText, IatiEditorialCard } from '@/components/iati-affiliate'
 import { LivingStatement } from '@/components/living-statement'
 import { Reveal } from '@/components/reveal'
 import { SiteFooter } from '@/components/site-footer'
@@ -131,7 +131,7 @@ export default async function TravelJournalPage({ params }: { params: Promise<{ 
             <h2>{journal.introTitle}</h2>
           </Reveal>
           <Reveal className="journal-intro-copy" delay={0.1}>
-            {journal.intro.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            {journal.intro.map((paragraph) => <p key={paragraph}><IatiContextualText text={paragraph} slug={trip.slug} /></p>)}
           </Reveal>
         </div>
         <div className="section-shell journal-facts">
@@ -173,7 +173,7 @@ export default async function TravelJournalPage({ params }: { params: Promise<{ 
           <div className="journal-confirmed-grid">
             {journal.confirmed.map((item, index) => (
               <Reveal className="journal-confirmed-card" delay={index * 0.05} key={item}>
-                <span>0{index + 1}</span><Check /><p>{item}</p>
+                <span>0{index + 1}</span><Check /><p><IatiContextualText text={item} slug={trip.slug} /></p>
               </Reveal>
             ))}
           </div>
@@ -191,7 +191,7 @@ export default async function TravelJournalPage({ params }: { params: Promise<{ 
               {journal.route.map((stop, index) => (
                 <Reveal className="journal-route-stop" key={`${stop.title}-${index}`}>
                   <span className="journal-route-number">{String(index + 1).padStart(2, '0')}</span>
-                  <div><small>{stop.label}</small><h3>{stop.title}</h3><p>{stop.text}</p></div>
+                  <div><small>{stop.label}</small><h3>{stop.title}</h3><p><IatiContextualText text={stop.text} slug={trip.slug} /></p></div>
                 </Reveal>
               ))}
             </div>
@@ -215,7 +215,7 @@ export default async function TravelJournalPage({ params }: { params: Promise<{ 
             <div className="journal-places-grid">
               {journal.places.map((place, index) => (
                 <Reveal className="journal-place-card" delay={index * 0.06} key={place.title}>
-                  <span>{String(index + 1).padStart(2, '0')}</span><MapPin /><h3>{place.title}</h3><p>{place.text}</p>
+                  <span>{String(index + 1).padStart(2, '0')}</span><MapPin /><h3>{place.title}</h3><p><IatiContextualText text={place.text} slug={trip.slug} /></p>
                 </Reveal>
               ))}
             </div>
@@ -233,7 +233,7 @@ export default async function TravelJournalPage({ params }: { params: Promise<{ 
             <div className="journal-notes-grid">
               {[...journal.reflections, ...journal.practical].map((note) => (
                 <Reveal className="journal-note" key={note.title}>
-                  <NotebookPen /><h3>{note.title}</h3><p>{note.text}</p>
+                  <NotebookPen /><h3>{note.title}</h3><p><IatiContextualText text={note.text} slug={trip.slug} /></p>
                 </Reveal>
               ))}
             </div>
