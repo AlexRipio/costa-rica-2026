@@ -20,6 +20,7 @@ import { AdSpace } from '@/components/ad-space'
 import { CostaRicaRouteProvider } from '@/components/costa-rica-route-context'
 import { CostaRicaExperienceGuide } from '@/components/costa-rica-experience-guide'
 import { JsonLd } from '@/components/json-ld'
+import { IatiEditorialCard } from '@/components/iati-affiliate'
 import { LivingStatement } from '@/components/living-statement'
 import { GoogleRouteCard } from '@/components/google-route-card'
 import { ProtectedImage } from '@/components/protected-image'
@@ -201,6 +202,7 @@ export default function CostaRicaPage() {
         <a href="#extras">Extras</a>
         <a href="#preparar">Preparar</a>
         <a href="#experiencia">Experiencia real</a>
+        <a href="#seguro">Seguro</a>
         <Link href="/viajes/costa-rica-2026/maleta">Maleta</Link>
       </nav>
 
@@ -457,6 +459,8 @@ export default function CostaRicaPage() {
       </section>
 
       <CostaRicaExperienceGuide />
+
+      <IatiEditorialCard slug="costa-rica-2026" scope="internacional" destination="Costa Rica" variant="dark" />
 
       <section className="media-journal-section">
         <div className="section-shell">
