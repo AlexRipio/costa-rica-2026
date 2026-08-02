@@ -1,0 +1,63 @@
+export type CostaRicaPlaceCategory = 'Dormir' | 'Comer' | 'Ver y hacer'
+
+export type CostaRicaSavedPlace = {
+  name: string
+  zone: string
+  category: CostaRicaPlaceCategory
+  status: 'Nuestra elección' | 'Lo probamos' | 'Guardado para valorar' | 'Idea para otra ruta'
+  note: string
+  mapUrl: string
+}
+
+const maps = (query: string) =>
+  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`
+
+/**
+ * Colección editorial propia de Viajan2Juntos.
+ * Los lugares que nos pasen se incorporan aquí después de revisarlos, sin
+ * depender del título, autor o disponibilidad de una lista externa.
+ */
+export const costaRicaSavedPlaces: CostaRicaSavedPlace[] = [
+  // Primero, nuestra experiencia real.
+  { name: 'El Rodeo Estancia Boutique Hotel', zone: 'Alajuela', category: 'Dormir', status: 'Nuestra elección', note: 'Nuestra primera noche cerca del aeropuerto, con aparcamiento y salida práctica hacia la ruta.', mapUrl: maps('El Rodeo Estancia Boutique Hotel Alajuela Costa Rica') },
+  { name: 'Natura Bungalows', zone: 'La Fortuna', category: 'Dormir', status: 'Nuestra elección', note: 'Nuestro alojamiento favorito del viaje: bungaló independiente, tranquilidad y vistas al Arenal cuando despejaba.', mapUrl: maps('Natura Bungalows La Fortuna Costa Rica') },
+  { name: 'Monteverde Eco Love', zone: 'Monteverde', category: 'Dormir', status: 'Nuestra elección', note: 'La base de nuestra etapa en Monteverde, bien situada para movernos por Santa Elena.', mapUrl: maps('Monteverde Eco Love Costa Rica') },
+  { name: 'Believe Surf & Yoga Lodge', zone: 'Santa Teresa', category: 'Dormir', status: 'Nuestra elección', note: 'Nuestra base durante cinco noches, con desayuno, ambiente viajero y alquiler de tablas.', mapUrl: maps('Believe Surf & Yoga Lodge Santa Teresa Costa Rica') },
+  { name: 'Glamping Tomaselli', zone: 'Manuel Antonio', category: 'Dormir', status: 'Nuestra elección', note: 'El alojamiento de nuestra etapa entre Quepos y Manuel Antonio.', mapUrl: maps('Glamping Tomaselli Manuel Antonio Costa Rica') },
+  { name: 'Chilamate Holiday House', zone: 'Puerto Viejo', category: 'Dormir', status: 'Nuestra elección', note: 'Nuestra casa en Playa Negra para cerrar la ruta por el Caribe.', mapUrl: maps('Chilamate Holiday House Puerto Viejo Costa Rica') },
+  { name: 'Soda La Fortuna', zone: 'La Fortuna', category: 'Comer', status: 'Lo probamos', note: 'Nuestra recomendación personal para pedir un casado completo sin pagar el precio de los locales más turísticos.', mapUrl: maps('Soda La Fortuna La Fortuna Costa Rica') },
+  { name: 'Restaurante Catarata del Toro', zone: 'Bajos del Toro', category: 'Comer', status: 'Lo probamos', note: 'La opción más cómoda dentro del recinto de la catarata; cuando fuimos, la comida se pagaba en efectivo.', mapUrl: maps('Restaurante Catarata del Toro Costa Rica') },
+
+  // Sitios concretos recuperados y filtrados de recomendaciones externas.
+  { name: 'Casa Luna Hotel & Spa', zone: 'La Fortuna', category: 'Dormir', status: 'Guardado para valorar', note: 'Hotel rodeado de vegetación al sur del pueblo; revisar precio y ubicación para las fechas reales.', mapUrl: maps('Casa Luna Hotel & Spa La Fortuna Costa Rica') },
+  { name: 'Camino Verde Bed & Breakfast', zone: 'Monteverde', category: 'Dormir', status: 'Guardado para valorar', note: 'Alternativa céntrica en Santa Elena que puede encajar si se busca desayuno y transporte organizado.', mapUrl: maps('Camino Verde Bed & Breakfast Monteverde Costa Rica') },
+  { name: 'Shana by the Beach', zone: 'Manuel Antonio', category: 'Dormir', status: 'Guardado para valorar', note: 'Opción próxima a Playa Biesanz; conviene comparar pendientes, transporte y precio final.', mapUrl: maps('Shana by the Beach Manuel Antonio Costa Rica') },
+  { name: 'Namu Garden Hotel & Spa', zone: 'Puerto Viejo', category: 'Dormir', status: 'Guardado para valorar', note: 'Hotel céntrico en Puerto Viejo guardado para comparar con casas y alojamientos de Playa Negra o Cocles.', mapUrl: maps('Namu Garden Hotel & Spa Puerto Viejo Costa Rica') },
+  { name: 'Barceló San José', zone: 'San José', category: 'Dormir', status: 'Guardado para valorar', note: 'Hotel urbano para una noche de llegada o salida; solo compensa si el traslado y el precio encajan.', mapUrl: maps('Barcelo San Jose Costa Rica') },
+
+  { name: 'El Chante Verde', zone: 'La Fortuna', category: 'Comer', status: 'Guardado para valorar', note: 'Restaurante ajardinado fuera del núcleo más turístico; revisar carta y horario antes de desplazarse.', mapUrl: maps('El Chante Verde La Fortuna Costa Rica') },
+  { name: 'Vita Café', zone: 'La Fortuna', category: 'Comer', status: 'Guardado para valorar', note: 'Cafetería junto al acceso de la catarata, práctica para unir desayuno o comida con esa visita.', mapUrl: maps('Vita Cafe La Fortuna Costa Rica') },
+  { name: 'Tayakiry Café', zone: 'La Fortuna', category: 'Comer', status: 'Guardado para valorar', note: 'Cafetería local guardada para desayunos o una parada ligera en el pueblo.', mapUrl: maps('Tayakiry Cafe La Fortuna Costa Rica') },
+  { name: 'Santa Elena Coffee Shop · Café Monteverde', zone: 'Monteverde', category: 'Comer', status: 'Guardado para valorar', note: 'Una parada centrada en café local dentro de Santa Elena.', mapUrl: maps('Santa Elena Coffee Shop Cafe Monteverde Costa Rica') },
+  { name: 'El Patio de Café Milagro', zone: 'Manuel Antonio', category: 'Comer', status: 'Guardado para valorar', note: 'Café y restaurante muy conocido en la carretera de Manuel Antonio; comparar precios antes de reservar.', mapUrl: maps('El Patio de Cafe Milagro Manuel Antonio Costa Rica') },
+  { name: "Emilio's Café", zone: 'Manuel Antonio', category: 'Comer', status: 'Guardado para valorar', note: 'Cafetería con vistas guardada para una comida especial, no como opción económica diaria.', mapUrl: maps("Emilio's Cafe Manuel Antonio Costa Rica") },
+  { name: 'Bread & Chocolate', zone: 'Puerto Viejo', category: 'Comer', status: 'Guardado para valorar', note: 'Uno de los desayunos más conocidos de Puerto Viejo; suele ser popular, así que conviene ir sin prisa.', mapUrl: maps('Bread and Chocolate Puerto Viejo Costa Rica') },
+  { name: 'La Ventana de Ely', zone: 'Puerto Viejo', category: 'Comer', status: 'Guardado para valorar', note: 'Pequeño punto de comida caribeña para revisar como alternativa a los restaurantes más turísticos.', mapUrl: maps('La Ventana de Ely Puerto Viejo Costa Rica') },
+  { name: "Stashu's Con Fusion", zone: 'Puerto Viejo', category: 'Comer', status: 'Guardado para valorar', note: 'Restaurante de cocina fusión guardado para una cena diferente en el centro.', mapUrl: maps("Stashu's Con Fusion Puerto Viejo Costa Rica") },
+  { name: 'SOCA Restaurant', zone: 'Puerto Viejo', category: 'Comer', status: 'Guardado para valorar', note: 'Opción frente al mar para comparar con la oferta caribeña del centro.', mapUrl: maps('SOCA Restaurant Puerto Viejo Costa Rica') },
+  { name: 'Grow Puerto Viejo', zone: 'Puerto Viejo', category: 'Comer', status: 'Guardado para valorar', note: 'Restaurante de playa con propuesta vegetal; útil si el grupo busca opciones distintas al rice and beans.', mapUrl: maps('Grow Puerto Viejo Costa Rica') },
+  { name: 'Choco', zone: 'Puerto Viejo', category: 'Comer', status: 'Guardado para valorar', note: 'Parada especializada en cacao y chocolate local para una visita corta por el centro.', mapUrl: maps('Choco Puerto Viejo Costa Rica') },
+  { name: 'Puerto Pirata Tiki Bar', zone: 'Puerto Viejo', category: 'Comer', status: 'Guardado para valorar', note: 'Bar informal guardado para tomar algo; comprobar ambiente y horario el mismo día.', mapUrl: maps('Puerto Pirata Tiki Bar Puerto Viejo Costa Rica') },
+
+  // Lugares que no formaron parte de nuestra ruta, conservados como ideas.
+  { name: 'Río Celeste', zone: 'Bijagua · Volcán Tenorio', category: 'Ver y hacer', status: 'Idea para otra ruta', note: 'Una ampliación natural desde Arenal si se duerme cerca y se evita convertirlo en una excursión apresurada.', mapUrl: maps('Rio Celeste Volcan Tenorio Costa Rica') },
+  { name: 'Parque Nacional Corcovado', zone: 'Península de Osa', category: 'Ver y hacer', status: 'Idea para otra ruta', note: 'Necesita varios días y planificación propia; no lo añadiríamos como ida y vuelta rápida desde Manuel Antonio.', mapUrl: maps('Parque Nacional Corcovado Costa Rica') },
+  { name: 'Tortuguero', zone: 'Caribe Norte', category: 'Ver y hacer', status: 'Idea para otra ruta', note: 'Canales, selva y fauna para una futura ruta que reorganice los traslados por el Caribe.', mapUrl: maps('Tortuguero Costa Rica') },
+  { name: 'Parque Nacional Marino Ballena', zone: 'Uvita', category: 'Ver y hacer', status: 'Idea para otra ruta', note: 'La ampliación más lógica hacia el Pacífico Sur después de Manuel Antonio.', mapUrl: maps('Parque Nacional Marino Ballena Uvita Costa Rica') },
+  { name: 'Parque Nacional Los Quetzales', zone: 'Dota', category: 'Ver y hacer', status: 'Idea para otra ruta', note: 'Bosque de altura y observación de aves para una ruta distinta por el interior.', mapUrl: maps('Parque Nacional Los Quetzales Costa Rica') },
+  { name: 'Volcán Poás', zone: 'Alajuela', category: 'Ver y hacer', status: 'Idea para otra ruta', note: 'Puede encajar al comienzo del viaje si la franja de entrada y la visibilidad acompañan.', mapUrl: maps('Volcan Poas Costa Rica') },
+  { name: 'Tabacón Thermal Resort & Spa', zone: 'La Fortuna', category: 'Ver y hacer', status: 'Guardado para valorar', note: 'Termas de gama alta para comparar con Baldi y con el acceso gratuito al río.', mapUrl: maps('Tabacon Thermal Resort and Spa Costa Rica') },
+  { name: 'Playa Hermosa', zone: 'Península de Nicoya', category: 'Ver y hacer', status: 'Guardado para valorar', note: 'Playa más tranquila al norte de Santa Teresa que sí visitamos durante la etapa de surf.', mapUrl: maps('Playa Hermosa Santa Teresa Costa Rica') },
+]
+
+export const costaRicaPlaceCategories: CostaRicaPlaceCategory[] = ['Dormir', 'Comer', 'Ver y hacer']

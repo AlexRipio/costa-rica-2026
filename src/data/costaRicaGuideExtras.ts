@@ -94,12 +94,14 @@ export const costaRicaGuideExtras: Record<string, CostaRicaGuideExtra> = {
       { name: 'Natura Bungalows', label: 'Nuestra elección', text: 'Nuestro alojamiento favorito del viaje: bungaló independiente, tranquilidad y vistas directas al volcán cuando despejaba.', mapUrl: maps('Natura Bungalows La Fortuna Costa Rica') },
       { name: 'Hotel Monte Real', label: 'Calidad-precio', text: 'Opción familiar cerca del centro, recomendada en blogs por combinar habitaciones sencillas, jardín, piscina y ubicación caminable.', mapUrl: maps('Hotel Monte Real La Fortuna Costa Rica') },
       { name: 'Arenal Xilopalo', label: 'Calidad-precio', text: 'Alternativa económica a poca distancia del pueblo, útil si prefieres gastar más en actividades que en un resort.', mapUrl: maps('Arenal Xilopalo La Fortuna Costa Rica') },
+      { name: 'Casa Luna Hotel & Spa', label: 'Calidad-precio', text: 'Una opción entre jardines al sur del pueblo recuperada de la lista que nos pasaron; compara el precio final con hoteles del centro antes de decidir.', mapUrl: maps('Casa Luna Hotel & Spa La Fortuna Costa Rica') },
     ],
     eat: 'Además de restaurantes turísticos, busca sodas para desayunos y casados. Para una noche especial hay opciones con vistas o cocina de autor, pero reserva solo si el presupuesto y el plan del día lo justifican.',
     eatRecommendations: [
       { name: 'Soda La Fortuna', label: 'Lo probamos', text: 'Nuestra recomendación personal para un casado completo sin pagar el precio de los locales más turísticos.', mapUrl: maps('Soda La Fortuna La Fortuna Costa Rica') },
       { name: 'Soda La Hormiga', label: 'Soda local', text: 'Muy repetida en guías de viaje para desayunar gallo pinto y comer platos típicos a precio contenido.', mapUrl: maps('Soda La Hormiga La Fortuna Costa Rica') },
       { name: 'Soda Víquez', label: 'Soda local', text: 'Otra alternativa céntrica para casados, zumos y cocina costarricense; conviene revisar el menú y horario del día.', mapUrl: maps('Soda Viquez La Fortuna Costa Rica') },
+      { name: 'El Chante Verde', label: 'Calidad-precio', text: 'Restaurante ajardinado fuera del centro guardado para una comida tranquila; revisa carta y horario antes de desplazarte.', mapUrl: maps('El Chante Verde La Fortuna Costa Rica') },
     ],
     reserve: ['Puentes colgantes o tour naturalista en la primera franja del día.', 'Termas si eliges un complejo con aforo limitado.', 'Coche o shuttle para actividades alejadas del centro.'],
     faq: [
@@ -134,12 +136,14 @@ export const costaRicaGuideExtras: Record<string, CostaRicaGuideExtra> = {
       { name: 'Monteverde Eco Love', label: 'Nuestra elección', text: 'El alojamiento de nuestra ruta, bien situado para movernos por Santa Elena y descansar después de las actividades.', mapUrl: maps('Monteverde Eco Love Monteverde Costa Rica') },
       { name: 'Cabinas Eddy B&B', label: 'Calidad-precio', text: 'Alojamiento sencillo cerca de Santa Elena, citado en guías por su desayuno y por permitir moverse a pie.', mapUrl: maps('Cabinas Eddy B&B Monteverde Costa Rica') },
       { name: "Freddy's Place B&B", label: 'Calidad-precio', text: 'Pequeño bed and breakfast familiar con desayuno, una alternativa práctica frente a los hoteles de montaña más caros.', mapUrl: maps("Freddy's Place B&B Monteverde Costa Rica") },
+      { name: 'Camino Verde Bed & Breakfast', label: 'Calidad-precio', text: 'Otra alternativa céntrica en Santa Elena, guardada para comparar por desayuno, vistas y facilidad para organizar traslados.', mapUrl: maps('Camino Verde Bed & Breakfast Monteverde Costa Rica') },
     ],
     eat: 'Santa Elena concentra cafeterías, sodas y restaurantes. El café local y los productos lácteos forman parte de la historia de la zona; deja una comida sin plan para elegir según dónde termine la caminata.',
     eatRecommendations: [
       { name: 'Sabor Tico', label: 'Soda local', text: 'Una de las sodas más recomendadas de Monteverde por su carta amplia de cocina costarricense y precios razonables.', mapUrl: maps('Sabor Tico Monteverde Costa Rica') },
       { name: 'Soda La Amistad', label: 'Soda local', text: 'Alternativa sencilla para casados y comida local, alejada del concepto de restaurante turístico de moda.', mapUrl: maps('Soda La Amistad Monteverde Costa Rica') },
       { name: 'La Cuchara de la Abuela', label: 'Calidad-precio', text: 'Cocina típica dentro del entorno de CASEM; una parada interesante para unir comida local y artesanía.', mapUrl: maps('La Cuchara de la Abuela CASEM Monteverde Costa Rica') },
+      { name: 'Santa Elena Coffee Shop', label: 'Calidad-precio', text: 'Café de Café Monteverde en el pueblo, útil para desayunar o probar producto local sin convertirlo en una excursión separada.', mapUrl: maps('Santa Elena Coffee Shop Cafe Monteverde Costa Rica') },
     ],
     reserve: ['La reserva natural que realmente quieras visitar; no todas ofrecen lo mismo.', 'Tour nocturno con grupo pequeño si la fauna es prioridad.', 'Canopy o puentes en una empresa con buenas prácticas y horario temprano.'],
     faq: [
@@ -214,12 +218,14 @@ export const costaRicaGuideExtras: Record<string, CostaRicaGuideExtra> = {
       { name: 'Glamping Tomaselli', label: 'Nuestra elección', text: 'El alojamiento que usamos en esta etapa; una base tranquila fuera de la primera línea turística.', mapUrl: maps('Glamping Tomaselli Manuel Antonio Costa Rica') },
       { name: 'Tico Tico Villas', label: 'Calidad-precio', text: 'Apartamentos en la zona de Quepos para ganar espacio y cocina sin subir al precio de los resorts con vistas.', mapUrl: maps('Tico Tico Villas Quepos Costa Rica') },
       { name: 'Hotel Flor Tica', label: 'Calidad-precio', text: 'Opción sencilla en Quepos para quien prioriza presupuesto y conexión en bus con el parque.', mapUrl: maps('Hotel Flor Tica Quepos Costa Rica') },
+      { name: 'Shana by the Beach', label: 'Calidad-precio', text: 'Alojamiento próximo a Playa Biesanz guardado para comparar; comprueba las pendientes, el transporte y el precio final.', mapUrl: maps('Shana by the Beach Manuel Antonio Costa Rica') },
     ],
     eat: 'La carretera del parque tiene restaurantes con vistas; Quepos ofrece sodas y precios más cotidianos. Evita dejar la comida como única razón para mover el coche en hora punta.',
     eatRecommendations: [
       { name: 'Restaurante Manuel Antonio', label: 'Lo probamos', text: 'Nos permitió combinar comida y aparcamiento cerca del parque; comprueba si mantienen la condición por consumo.', mapUrl: maps('Restaurante Manuel Antonio Costa Rica') },
       { name: 'Miguelitos Pizza', label: 'Lo probamos', text: 'Nuestra cena en una zona más local, con precios menos inflados que junto al parque aunque todavía turísticos.', mapUrl: maps('Miguelitos Pizza Quepos Costa Rica') },
       { name: 'Soda Sánchez', label: 'Soda local', text: 'Una recomendación recurrente de blogs en Quepos para desayunos, casados y comida típica a precio más cotidiano.', mapUrl: maps('Soda Sanchez Quepos Costa Rica') },
+      { name: 'El Patio de Café Milagro', label: 'Calidad-precio', text: 'Una cafetería muy conocida de la carretera de Manuel Antonio para comparar si apetece una comida más especial.', mapUrl: maps('El Patio de Cafe Milagro Manuel Antonio Costa Rica') },
     ],
     reserve: ['Entrada oficial del parque con fecha definida.', 'Guía naturalista acreditado si observar fauna es una prioridad.', 'Alojamiento con acceso sencillo al bus o aparcamiento real.'],
     faq: [
@@ -254,12 +260,14 @@ export const costaRicaGuideExtras: Record<string, CostaRicaGuideExtra> = {
       { name: 'Chilamate Holiday House', label: 'Nuestra elección', text: 'Nuestra casa entre vegetación: bonita y muy conectada con la selva, aunque con luz y sonidos de animales durante la noche.', mapUrl: maps('Chilamate Holiday House Puerto Viejo Costa Rica') },
       { name: 'Pagalù Hostel', label: 'Calidad-precio', text: 'Hostel céntrico citado en guías de presupuesto; práctico si quieres restaurantes y transporte a distancia caminable.', mapUrl: maps('Pagalu Hostel Puerto Viejo Costa Rica') },
       { name: 'Roots Family', label: 'Calidad-precio', text: 'Otra base económica en el pueblo para viajeros que priorizan ubicación y ambiente sobre servicios de resort.', mapUrl: maps('Roots Family Puerto Viejo Costa Rica') },
+      { name: 'Namu Garden Hotel & Spa', label: 'Calidad-precio', text: 'Hotel céntrico recuperado de la lista que nos pasaron para comparar con casas de Playa Negra y alojamientos de Cocles.', mapUrl: maps('Namu Garden Hotel & Spa Puerto Viejo Costa Rica') },
     ],
     eat: 'Busca rice and beans cocinado con coco, patí, pescado y cocina local. Algunos lugares populares requieren reserva, pero las sodas y pequeños restaurantes suelen dar la experiencia más directa.',
     eatRecommendations: [
       { name: "Soda Lidia's Place", label: 'Soda local', text: 'La recomendación más consistente de las guías consultadas para probar rice and beans caribeño y cocina local.', mapUrl: maps("Soda Lidia's Place Puerto Viejo Costa Rica") },
       { name: 'Bread & Chocolate', label: 'Calidad-precio', text: 'Una opción muy conocida para desayunos y brunch; suele llenarse, así que conviene llegar pronto y revisar el horario.', mapUrl: maps('Bread and Chocolate Puerto Viejo Costa Rica') },
       { name: 'Joe’s Snack Point', label: 'Calidad-precio', text: 'Pequeño local caribeño señalado en guías de bajo presupuesto por sus platos informales y ambiente sencillo.', mapUrl: maps("Joe's Snack Point Puerto Viejo Costa Rica") },
+      { name: 'La Ventana de Ely', label: 'Soda local', text: 'Pequeño punto de comida local guardado como alternativa a los restaurantes más turísticos del centro.', mapUrl: maps('La Ventana de Ely Puerto Viejo Costa Rica') },
     ],
     reserve: ['Alojamiento según movilidad real, no solo por el nombre “Puerto Viejo”.', 'Visita responsable a comunidad o proyecto cultural, si la haces.', 'Traslado largo de entrada o salida con margen por obras y tráfico.'],
     faq: [
