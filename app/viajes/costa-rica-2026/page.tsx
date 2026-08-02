@@ -20,7 +20,7 @@ import { AdSpace } from '@/components/ad-space'
 import { CostaRicaRouteProvider } from '@/components/costa-rica-route-context'
 import { CostaRicaExperienceGuide } from '@/components/costa-rica-experience-guide'
 import { JsonLd } from '@/components/json-ld'
-import { IatiEditorialCard } from '@/components/iati-affiliate'
+import { IatiContextualText, IatiEditorialCard } from '@/components/iati-affiliate'
 import { LivingStatement } from '@/components/living-statement'
 import { GoogleRouteCard } from '@/components/google-route-card'
 import { ProtectedImage } from '@/components/protected-image'
@@ -435,6 +435,7 @@ export default function CostaRicaPage() {
               <p>
                 En nuestra visita, Místico, Extremo Park y el bosque nuboso exigían o aconsejaban compra online.
                 Reserva lo que tenga cupo y <strong>mantén flexibles las playas y actividades que dependen del clima</strong>.
+                {' '}Para una ruta con surf, tirolinas y senderismo, también llevaríamos el <IatiContextualText text="seguro de viaje" slug="costa-rica-2026" /> resuelto antes de salir.
               </p>
               <a href="https://serviciosenlinea.sinac.go.cr/" target="_blank" rel="noreferrer">Entradas oficiales SINAC <ArrowRight /></a>
             </Reveal>
