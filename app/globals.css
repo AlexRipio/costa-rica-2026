@@ -16421,6 +16421,7 @@ main small {
 .iati-widget-shell:has(#mini-form-policy > *) .iati-widget-fallback { display: none; }
 #mini-form-policy { position: relative; z-index: 4; overflow: visible !important; }
 #mini-form-policy > * { overflow: visible !important; }
+.iati-widget-shell .DateRangePicker_picker { z-index: 100 !important; left: auto !important; right: 0 !important; }
 .iati-widget-fallback { position: absolute; z-index: 2; right: 50%; bottom: 2rem; transform: translateX(50%); display: inline-flex; gap: .45rem; align-items: center; color: #173f36; font-family: var(--ui); font-size: .84rem; font-weight: 750; text-align: center; }
 .iati-widget-fallback svg { width: 15px; }
 .iati-official-attribution { position: relative; z-index: 2; margin-top: .75rem; text-align: center; }
