@@ -68,6 +68,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="es">
       <head>
         <script
+          id="iati-script"
+          data-iati-site="1"
+          type="text/javascript"
+          src="https://ptunnel.iatiseguros.com/prod/iati-afiliates.js?idColaborator=85259934961431"
+          defer
+        />
+        <script
           dangerouslySetInnerHTML={{
             __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}window.gtag=window.gtag||gtag;gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});gtag('set','ads_data_redaction',true);window.__v2jConsentDefaultsSet=true;`,
           }}

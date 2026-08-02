@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ['', 1],
     ['/viajes', 0.9],
     ['/nosotros', 0.7],
+    ['/seguro-de-viaje', 0.85],
     ['/viajes/costa-rica-2026', 1],
     ['/viajes/costa-rica-2026/maleta', 0.8],
     ['/aviso-legal', 0.2],

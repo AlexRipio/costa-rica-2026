@@ -16158,3 +16158,240 @@ main small {
     transition: none;
   }
 }
+
+/* IATI · integración editorial y landing de seguro */
+.iati-editorial-section {
+  padding: clamp(5rem, 10vw, 9rem) 0;
+  color: var(--ink);
+  background: #eee8db;
+}
+
+.iati-editorial-dark { color: #fff; background: #102f29; }
+
+.iati-editorial-card {
+  position: relative;
+  padding: clamp(2rem, 5vw, 4.75rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr);
+  gap: clamp(2.5rem, 7vw, 7rem);
+  overflow: hidden;
+  background: #fffdf7;
+  border: 1px solid rgba(23, 41, 37, .12);
+  border-radius: 32px;
+  box-shadow: 0 30px 90px rgba(19, 44, 37, .1);
+}
+
+.iati-editorial-dark .iati-editorial-card {
+  color: #fff;
+  background: radial-gradient(circle at 92% 10%, rgba(241, 184, 74, .2), transparent 32%), #173d35;
+  border-color: rgba(255, 255, 255, .14);
+  box-shadow: 0 34px 100px rgba(0, 0, 0, .24);
+}
+
+.iati-editorial-heading .eyebrow { display: inline-flex; gap: .5rem; align-items: center; }
+.iati-editorial-heading .eyebrow svg { width: 17px; }
+
+.iati-editorial-heading h2 {
+  max-width: 720px;
+  margin: .85rem 0 1.5rem;
+  font-family: var(--serif);
+  font-size: clamp(2.7rem, 5vw, 5.4rem);
+  font-weight: 500;
+  letter-spacing: -.06em;
+  line-height: .94;
+  text-wrap: balance;
+}
+
+.iati-editorial-heading p {
+  max-width: 760px;
+  margin: 0;
+  color: #466159;
+  font-family: var(--ui);
+  font-size: clamp(1.02rem, 1.3vw, 1.18rem);
+  line-height: 1.72;
+}
+
+.iati-editorial-dark .iati-editorial-heading p { color: rgba(255, 255, 255, .74); }
+
+.iati-editorial-action {
+  align-self: stretch;
+  padding: clamp(1.5rem, 3vw, 2.4rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #f3eee3;
+  border-radius: 24px;
+}
+
+.iati-editorial-dark .iati-editorial-action {
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .1);
+}
+
+.iati-discount-badge { display: flex; gap: .8rem; align-items: center; color: #173f36; font-family: var(--ui); }
+.iati-editorial-dark .iati-discount-badge { color: #fff; }
+.iati-discount-badge svg { width: 30px; height: 30px; color: var(--sun); }
+.iati-discount-badge span { display: flex; align-items: baseline; gap: .4rem; font-size: .92rem; font-weight: 720; }
+.iati-discount-badge strong { font-family: var(--serif); font-size: 2.25rem; font-weight: 500; }
+
+.iati-editorial-action ul { margin: 1.45rem 0 1.7rem; padding: 0; display: grid; gap: .8rem; list-style: none; }
+.iati-editorial-action li { display: grid; grid-template-columns: auto 1fr; gap: .7rem; color: #4b655e; font-family: var(--ui); font-size: .94rem; line-height: 1.4; }
+.iati-editorial-dark .iati-editorial-action li { color: rgba(255, 255, 255, .77); }
+.iati-editorial-action li svg { width: 17px; color: #c78924; }
+
+.iati-primary-cta { justify-content: center; color: #142f29; background: var(--sun); border-color: var(--sun); text-align: center; }
+.iati-primary-cta:hover { color: #fff; background: #173f36; border-color: #173f36; }
+.iati-editorial-dark .iati-primary-cta:hover { color: #173f36; background: #fff; border-color: #fff; }
+
+.iati-editorial-action > small,
+.insurance-closing small { margin-top: 1rem; color: #6b7c77; font-family: var(--ui); font-size: .76rem; line-height: 1.5; }
+.iati-editorial-dark .iati-editorial-action > small { color: rgba(255, 255, 255, .6); }
+
+.iati-affiliate-disclosure {
+  grid-column: 1 / -1;
+  margin: -1rem 0 0;
+  padding-top: 1.25rem;
+  color: #72817c;
+  border-top: 1px solid rgba(23, 41, 37, .11);
+  font-family: var(--ui);
+  font-size: .76rem;
+  line-height: 1.55;
+}
+
+.iati-editorial-dark .iati-affiliate-disclosure { color: rgba(255, 255, 255, .58); border-top-color: rgba(255, 255, 255, .12); }
+
+.insurance-page { overflow: clip; color: var(--ink); background: #faf7ef; }
+.insurance-hero {
+  padding: clamp(7rem, 13vw, 11rem) 0 clamp(5rem, 10vw, 9rem);
+  background: radial-gradient(circle at 82% 22%, rgba(241, 184, 74, .26), transparent 28%), linear-gradient(135deg, #f8f3e9 0%, #eee6d7 100%);
+}
+
+.insurance-hero-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(280px, .55fr); gap: clamp(3rem, 8vw, 8rem); align-items: center; }
+.insurance-hero-copy .eyebrow { display: inline-flex; gap: .55rem; align-items: center; }
+.insurance-hero-copy .eyebrow svg { width: 17px; }
+
+.insurance-hero h1 {
+  max-width: 980px;
+  margin: 1rem 0 1.6rem;
+  font-family: var(--serif);
+  font-size: clamp(4rem, 8.5vw, 8.5rem);
+  font-weight: 500;
+  letter-spacing: -.075em;
+  line-height: .83;
+  text-wrap: balance;
+}
+
+.insurance-hero h1 em { color: #b8781f; font-weight: 500; }
+.insurance-hero-copy > div > p { max-width: 780px; margin: 0; color: #45615a; font-family: var(--ui); font-size: clamp(1.1rem, 1.6vw, 1.32rem); line-height: 1.68; }
+.insurance-hero-actions { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+.insurance-text-link { display: inline-flex; gap: .5rem; align-items: center; color: #173f36; font-family: var(--ui); font-weight: 760; text-decoration: none; }
+.insurance-text-link svg { width: 18px; }
+.insurance-disclosure { max-width: 690px; margin-top: 1.5rem; display: block; color: #71817c; font-family: var(--ui); font-size: .78rem; line-height: 1.5; }
+
+.insurance-hero-card {
+  aspect-ratio: 4 / 5;
+  min-height: 430px;
+  padding: clamp(1.8rem, 3vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  color: #fff;
+  background: radial-gradient(circle at 70% 18%, rgba(241, 184, 74, .55), transparent 28%), #143c33;
+  border-radius: 34px;
+  box-shadow: 0 35px 90px rgba(20, 60, 51, .22);
+}
+
+.insurance-hero-card svg { width: 44px; height: 44px; margin-bottom: auto; color: var(--sun); }
+.insurance-hero-card span { font-family: var(--ui); font-size: .8rem; font-weight: 780; letter-spacing: .08em; text-transform: uppercase; }
+.insurance-hero-card strong { margin: .3rem 0; font-family: var(--serif); font-size: clamp(6rem, 11vw, 9rem); font-weight: 500; letter-spacing: -.08em; line-height: .8; }
+.insurance-hero-card p { margin: 1rem 0 0; color: rgba(255, 255, 255, .72); font-family: var(--ui); line-height: 1.55; }
+
+.insurance-principles,
+.insurance-quote,
+.insurance-faq { padding: clamp(5rem, 10vw, 9rem) 0; }
+.insurance-section-heading { max-width: 900px; margin-bottom: clamp(2.5rem, 5vw, 4.5rem); }
+
+.insurance-section-heading h2,
+.insurance-how h2,
+.insurance-faq h2 { margin: .7rem 0 1.3rem; font-family: var(--serif); font-size: clamp(3rem, 5.5vw, 5.8rem); font-weight: 500; letter-spacing: -.06em; line-height: .92; text-wrap: balance; }
+.insurance-section-heading p { max-width: 730px; margin: 0; color: #4e6961; font-family: var(--ui); font-size: 1.08rem; line-height: 1.7; }
+
+.insurance-principles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.insurance-principles-grid > div { min-height: 330px; padding: clamp(1.8rem, 3vw, 3rem); display: grid; align-content: start; background: #f0ebdf; border-radius: 24px; }
+.insurance-principles-grid svg { margin-bottom: auto; color: #b8781f; }
+.insurance-principles-grid span { margin-top: 3rem; color: #b8781f; font-family: var(--ui); font-size: .78rem; font-weight: 800; }
+.insurance-principles-grid h3 { margin: .6rem 0 .8rem; font-family: var(--serif); font-size: clamp(2rem, 3vw, 3rem); font-weight: 500; letter-spacing: -.04em; }
+.insurance-principles-grid p { margin: 0; color: #516a63; font-family: var(--ui); line-height: 1.6; }
+
+.insurance-how { padding: clamp(5rem, 10vw, 9rem) 0; color: #fff; background: #153d34; }
+.insurance-how-grid { display: grid; grid-template-columns: minmax(260px, .8fr) minmax(0, 1.2fr); gap: clamp(3rem, 9vw, 9rem); }
+.insurance-how ol { margin: 0; padding: 0; list-style: none; border-top: 1px solid rgba(255, 255, 255, .16); }
+.insurance-how li { padding: 1.5rem 0; display: grid; grid-template-columns: 55px 1fr; gap: 1rem; border-bottom: 1px solid rgba(255, 255, 255, .16); }
+.insurance-how li span { color: var(--sun); font-family: var(--serif); font-size: 1.7rem; }
+.insurance-how li p { margin: 0; color: rgba(255, 255, 255, .78); font-family: var(--ui); font-size: 1.06rem; line-height: 1.55; }
+
+.insurance-quote { background: #eee8dc; }
+.insurance-quote-heading { text-align: center; margin-inline: auto; }
+.insurance-quote-heading p { margin-inline: auto; }
+
+.iati-widget-shell { position: relative; min-height: 430px; padding: clamp(1rem, 2vw, 1.5rem); overflow: hidden; background: #fff; border: 1px solid rgba(23, 41, 37, .11); border-radius: 28px; box-shadow: 0 28px 80px rgba(19, 44, 37, .12); }
+.iati-widget-vertical { min-height: 650px; }
+.iati-widget-loader { position: absolute; inset: 0; display: grid; place-items: center; color: #60736d; background: #fffdf8; font-family: var(--ui); font-size: .9rem; }
+.iati-widget-shell:has(#mini-form-policy > *) .iati-widget-loader,
+.iati-widget-shell:has(#mini-form-policy > *) .iati-widget-fallback { display: none; }
+#mini-form-policy { position: relative; z-index: 1; }
+.iati-widget-fallback { position: absolute; z-index: 2; right: 50%; bottom: 2rem; transform: translateX(50%); display: inline-flex; gap: .45rem; align-items: center; color: #173f36; font-family: var(--ui); font-size: .84rem; font-weight: 750; text-align: center; }
+.iati-widget-fallback svg { width: 15px; }
+.iati-official-attribution { position: relative; z-index: 2; margin-top: .75rem; text-align: center; }
+.iati-official-attribution a { color: #60736d; font-family: var(--ui); font-size: .72rem; }
+.insurance-check-note { margin: 1.5rem 0 0; display: flex; justify-content: center; gap: .55rem; align-items: center; color: #526962; font-family: var(--ui); font-size: .88rem; text-align: center; }
+.insurance-check-note svg { width: 17px; color: #b8781f; }
+
+.insurance-faq-grid { display: grid; grid-template-columns: minmax(240px, .7fr) minmax(0, 1.3fr); gap: clamp(3rem, 9vw, 9rem); }
+.insurance-faq details { border-bottom: 1px solid #d4d2c8; }
+.insurance-faq summary { padding: 1.4rem 2.6rem 1.4rem 0; color: #173f36; cursor: pointer; font-family: var(--serif); font-size: clamp(1.3rem, 2vw, 1.75rem); list-style: none; }
+.insurance-faq summary::-webkit-details-marker { display: none; }
+.insurance-faq details p { max-width: 760px; margin: -.3rem 0 1.5rem; color: #536b64; font-family: var(--ui); line-height: 1.65; }
+
+.insurance-closing { padding: clamp(6rem, 13vw, 12rem) 1.25rem; color: #fff; background: radial-gradient(circle at 50% 0, rgba(241, 184, 74, .24), transparent 38%), #102f29; text-align: center; }
+.insurance-closing > div { display: grid; justify-items: center; }
+.insurance-closing svg:first-child { width: 44px; height: 44px; margin-bottom: 1.5rem; color: var(--sun); }
+.insurance-closing span { font-family: var(--ui); font-size: .8rem; font-weight: 780; letter-spacing: .1em; text-transform: uppercase; }
+.insurance-closing h2 { max-width: 930px; margin: 1rem auto 2rem; font-family: var(--serif); font-size: clamp(3.5rem, 7vw, 7.5rem); font-weight: 500; letter-spacing: -.07em; line-height: .9; }
+.insurance-closing small { max-width: 620px; color: rgba(255, 255, 255, .58); }
+
+.iati-button-widget { display: inline-grid; gap: .65rem; justify-items: start; }
+.iati-button-widget .iati-btn { padding: .9rem 1.25rem; color: #173f36; background: var(--sun); border: 0; border-radius: 999px; cursor: pointer; font-family: var(--ui); font-weight: 780; }
+.iati-button-widget .iati-url-del { color: inherit; font-family: var(--ui); font-size: .78rem; }
+
+@media (max-width: 900px) {
+  .iati-editorial-card,
+  .insurance-hero-grid,
+  .insurance-how-grid,
+  .insurance-faq-grid { grid-template-columns: 1fr; }
+  .insurance-hero-card { width: min(100%, 480px); min-height: 400px; aspect-ratio: 5 / 4; }
+  .insurance-principles-grid { grid-template-columns: 1fr; }
+  .insurance-principles-grid > div { min-height: 260px; }
+}
+
+@media (max-width: 760px) {
+  .iati-editorial-section { padding: 4.5rem 0; }
+  .iati-editorial-card { padding: 1.35rem; gap: 2rem; border-radius: 24px; }
+  .iati-editorial-heading h2 { font-size: clamp(2.5rem, 12vw, 3.7rem); }
+  .iati-editorial-action { padding: 1.25rem; border-radius: 19px; }
+  .iati-affiliate-disclosure { margin-top: 0; }
+  .insurance-hero { padding-top: 7rem; }
+  .insurance-hero-grid { gap: 2.5rem; }
+  .insurance-hero h1 { font-size: clamp(3.8rem, 18vw, 6rem); line-height: .84; }
+  .insurance-hero-actions { align-items: stretch; flex-direction: column; }
+  .insurance-hero-actions .button { width: 100%; }
+  .insurance-text-link { justify-content: center; }
+  .insurance-hero-card { min-height: 390px; aspect-ratio: 4 / 5; border-radius: 26px; }
+  .insurance-section-heading h2,
+  .insurance-how h2,
+  .insurance-faq h2 { font-size: clamp(2.7rem, 13vw, 4rem); }
+  .iati-widget-shell { min-height: 590px; padding: .55rem; border-radius: 20px; }
+  .iati-widget-fallback { width: calc(100% - 2rem); justify-content: center; }
+  .insurance-check-note { align-items: flex-start; }
+}
