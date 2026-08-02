@@ -309,11 +309,29 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
               <div className="guide-stay-options">
                 {extra.stayAreas.map((area) => <div key={area.title}><h3>{area.title}</h3><p>{area.text}</p></div>)}
               </div>
+              <div className="guide-place-list" aria-label={`Alojamientos recomendados en ${guide.title}`}>
+                {extra.stayRecommendations.map((place) => (
+                  <a href={place.mapUrl} target="_blank" rel="noopener noreferrer" key={place.name}>
+                    <span><small>{place.label}</small><strong>{place.name}</strong></span>
+                    <p>{place.text}</p>
+                    <span className="guide-place-map">Ver en Google Maps <ExternalLink /></span>
+                  </a>
+                ))}
+              </div>
             </Reveal>
             <Reveal className="guide-stay-card">
               <Utensils />
               <span className="eyebrow">Comer sin caer en la lista de moda</span>
               <p>{extra.eat}</p>
+              <div className="guide-place-list" aria-label={`Restaurantes recomendados en ${guide.title}`}>
+                {extra.eatRecommendations.map((place) => (
+                  <a href={place.mapUrl} target="_blank" rel="noopener noreferrer" key={place.name}>
+                    <span><small>{place.label}</small><strong>{place.name}</strong></span>
+                    <p>{place.text}</p>
+                    <span className="guide-place-map">Ver en Google Maps <ExternalLink /></span>
+                  </a>
+                ))}
+              </div>
             </Reveal>
             <Reveal className="guide-stay-card guide-booking-card">
               <Check />
