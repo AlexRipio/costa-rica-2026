@@ -16,6 +16,7 @@ import {
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { JsonLd } from '@/components/json-ld'
+import { IatiEditorialCard } from '@/components/iati-affiliate'
 import { LivingStatement } from '@/components/living-statement'
 import { Reveal } from '@/components/reveal'
 import { SiteFooter } from '@/components/site-footer'
@@ -119,6 +120,7 @@ export default async function TravelJournalPage({ params }: { params: Promise<{ 
         {hasRoute && <a href="#ruta">Ruta</a>}
         {hasPlaces && <a href="#lugares">Lugares</a>}
         {hasNotes && <a href="#notas">Notas</a>}
+        <a href="#seguro">Seguro</a>
         <a href="#fotos">Fotos</a>
       </nav>
 
@@ -238,6 +240,8 @@ export default async function TravelJournalPage({ params }: { params: Promise<{ 
           </div>
         </section>
       )}
+
+      <IatiEditorialCard slug={trip.slug} scope={trip.scope} destination={trip.title} />
 
       <section className="journal-gallery" id="fotos">
         <div className="section-shell">
