@@ -15,6 +15,7 @@ export function SiteFooter() {
         <div className="footer-links">
           <Link href="/viajes">Todos los viajes</Link>
           <Link href="/nosotros">Quiénes somos</Link>
+          <a href="/seguro-de-viaje">Seguro de viaje · 5% descuento</a>
           <Link href="/familia">Zona Familia</Link>
           <a href="mailto:hola@viajan2juntos.com">
             Contacto <ArrowUpRight size={14} />
