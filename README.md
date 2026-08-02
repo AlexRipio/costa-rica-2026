@@ -36,7 +36,7 @@ El proyecto se despliega automáticamente en Vercel al actualizar la rama princi
 
 ## Afiliación IATI
 
-- El script oficial se carga una única vez desde `app/layout.tsx` con el colaborador `85259934961431`.
+- El componente del cotizador carga el script oficial al montarse con el colaborador `85259934961431`; así también se inicializa al llegar mediante navegación interna.
 - `IatiButtonWidget`, `IatiHorizontalWidget` e `IatiVerticalWidget` están disponibles en `components/iati-widgets.tsx`.
 - Los formatos horizontal y vertical comparten `id="mini-form-policy"`; nunca deben renderizarse juntos ni repetirse en una página.
 - La landing utiliza el horizontal. El vertical queda preparado para una columna estrecha existente y no debe crear una sidebar nueva.
