@@ -15,8 +15,8 @@ export type DestinationExperience = {
   lead: string
   moments: ExperienceMoment[]
   reality: string[]
-  lodging?: { name: string; verdict: string; text: string }
-  food: Array<{ name: string; text: string }>
+  lodging?: { name: string; verdict: string; text: string; mapUrl?: string }
+  food: Array<{ name: string; text: string; mapUrl?: string }>
   prices: ExperiencePrice[]
   personalFaq: Array<{ question: string; answer: string }>
   statement: { before: string; accent: string; after: string }
@@ -51,10 +51,17 @@ export const destinationExperiences: Record<string, DestinationExperience> = {
       'Nos paró la policía durante el trayecto. Comprobaron el pasaporte, vieron que éramos turistas y seguimos sin ninguna incidencia.',
       'En el recinto no teníamos cobertura móvil, aunque la entrada daba acceso a una red wifi potente.',
     ],
+    lodging: {
+      name: 'El Rodeo Estancia Boutique Hotel',
+      verdict: 'Nuestra primera noche',
+      text: 'Nos sirvió como llegada tranquila cerca del aeropuerto. Ahora recogeríamos el coche esa misma tarde, pero volveríamos a priorizar aparcamiento y una salida sencilla hacia la ruta.',
+      mapUrl: 'https://www.google.com/maps/search/?api=1&query=El%20Rodeo%20Estancia%20Boutique%20Hotel%20Alajuela%20Costa%20Rica',
+    },
     food: [
       {
         name: 'Restaurante de las cataratas',
         text: 'Comimos allí por un precio bastante razonable: unos 8 USD la hamburguesa y 6 USD el perrito. La comida se pagaba únicamente en efectivo, aunque la entrada sí admitía tarjeta.',
+        mapUrl: 'https://www.google.com/maps/search/?api=1&query=Restaurante%20Catarata%20del%20Toro%20Costa%20Rica',
       },
     ],
     prices: [
@@ -111,11 +118,13 @@ export const destinationExperiences: Record<string, DestinationExperience> = {
       name: 'Natura Bungalows',
       verdict: 'Nuestro alojamiento favorito del viaje',
       text: 'Dormimos en una casa o bungaló independiente con vistas directas al volcán. Era algo más caro dentro de nuestro presupuesto, pero la relación entre tranquilidad, espacio y paisaje nos pareció excelente.',
+      mapUrl: 'https://www.google.com/maps/search/?api=1&query=Natura%20Bungalows%20La%20Fortuna%20Costa%20Rica',
     },
     food: [
       {
         name: 'Soda La Fortuna',
         text: 'Nuestra opción recomendada para comer comida típica sin pagar el precio de los restaurantes turísticos. El casado rondaba 8–10 USD y era un plato muy completo.',
+        mapUrl: 'https://www.google.com/maps/search/?api=1&query=Soda%20La%20Fortuna%20La%20Fortuna%20Costa%20Rica',
       },
       {
         name: 'Cena en el alojamiento',
@@ -177,6 +186,12 @@ export const destinationExperiences: Record<string, DestinationExperience> = {
       'Compramos el paquete de fotos y vídeo del salto por 15 USD. No era necesario, pero nos hizo gracia conservar ese recuerdo.',
       'Para el bosque nuboso compramos online. El aparcamiento quedaba aproximadamente a un kilómetro y un autobús nos acercó a la entrada.',
     ],
+    lodging: {
+      name: 'Monteverde Eco Love',
+      verdict: 'Nuestra base en Monteverde',
+      text: 'Nos alojamos aquí durante la etapa. La ubicación nos resultó práctica para movernos por Santa Elena y descansar entre las tirolinas y el bosque nuboso.',
+      mapUrl: 'https://www.google.com/maps/search/?api=1&query=Monteverde%20Eco%20Love%20Costa%20Rica',
+    },
     food: [
       {
         name: 'Soda frente al lago',
@@ -242,9 +257,10 @@ export const destinationExperiences: Record<string, DestinationExperience> = {
       'Durante el tour pudimos volar el dron, pero las normas cambian: antes de llevarlo hay que comprobar restricciones y permisos actuales.',
     ],
     lodging: {
-      name: 'Nuestro hotel de surf y yoga',
+      name: 'Believe Surf & Yoga Lodge',
       verdict: 'Sencillo y perfecto para esta etapa',
       text: 'Teníamos desayuno, actividades y alquiler de tablas dentro del alojamiento. Pagamos unos 15 USD por una tabla durante 24 horas, menos que en varias tiendas independientes.',
+      mapUrl: 'https://www.google.com/maps/search/?api=1&query=Believe%20Surf%20%26%20Yoga%20Lodge%20Santa%20Teresa%20Costa%20Rica',
     },
     food: [
       {
@@ -312,18 +328,21 @@ export const destinationExperiences: Record<string, DestinationExperience> = {
       'Nos pareció una zona más cara y desarrollada que otras etapas. Para cenar buscamos una parte más local y encontramos precios menos inflados.',
     ],
     lodging: {
-      name: 'Day pass Hotel Mariposa',
-      verdict: 'Una forma inteligente de usar la tarde',
-      text: 'No dormimos allí: fuimos con day pass. Pagamos 50 USD por persona y 40 USD se convertían en crédito para consumir comida o bebida dentro del hotel. En la práctica, sentimos que el acceso a las piscinas y a las vistas de la bahía nos salía por unos 10 USD.',
+      name: 'Glamping Tomaselli',
+      verdict: 'Nuestro alojamiento en la zona',
+      text: 'Fue nuestra base para Manuel Antonio. El Hotel La Mariposa fue una experiencia distinta: allí no dormimos, solo utilizamos el day pass para pasar la tarde.',
+      mapUrl: 'https://www.google.com/maps/search/?api=1&query=Glamping%20Tomaselli%20Manuel%20Antonio%20Costa%20Rica',
     },
     food: [
       {
         name: 'Restaurante Manuel Antonio',
         text: 'Nos permitió unir aparcamiento y comida: con un consumo mínimo de 6.000 CRC, el parking quedaba incluido según nuestra experiencia.',
+        mapUrl: 'https://www.google.com/maps/search/?api=1&query=Restaurante%20Manuel%20Antonio%20Costa%20Rica',
       },
       {
         name: 'Miguelitos Pizza',
         text: 'Cenamos en una zona más local. Los precios seguían siendo altos para Costa Rica, pero ya no tenían el sobreprecio de la parte más turística. Conviene ir con tiempo y mantener las precauciones normales.',
+        mapUrl: 'https://www.google.com/maps/search/?api=1&query=Miguelitos%20Pizza%20Quepos%20Costa%20Rica',
       },
     ],
     prices: [
@@ -389,6 +408,7 @@ export const destinationExperiences: Record<string, DestinationExperience> = {
       name: 'Chilamate Holiday House',
       verdict: 'Bonito, abierto y muy metido en la naturaleza',
       text: 'Nos gustó el alojamiento, pero entraba mucha luz y durante la noche se escuchaban continuamente los animales. Esa conexión con la selva tenía encanto, aunque dormimos peor.',
+      mapUrl: 'https://www.google.com/maps/search/?api=1&query=Chilamate%20Holiday%20House%20Puerto%20Viejo%20Costa%20Rica',
     },
     food: [
       {

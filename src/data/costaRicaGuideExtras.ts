@@ -11,10 +11,22 @@ export type CostaRicaGuideExtra = {
   understand: string[]
   highlight: { before: string; accent: string; after: string }
   stayAreas: { title: string; text: string }[]
+  stayRecommendations: PlaceRecommendation[]
   eat: string
+  eatRecommendations: PlaceRecommendation[]
   reserve: string[]
   faq: { question: string; answer: string }[]
 }
+
+export type PlaceRecommendation = {
+  name: string
+  label: 'Nuestra elección' | 'Lo probamos' | 'Calidad-precio' | 'Soda local'
+  text: string
+  mapUrl: string
+}
+
+const maps = (query: string) =>
+  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`
 
 export const costaRicaGuideExtras: Record<string, CostaRicaGuideExtra> = {
   'alajuela-bajos-del-toro': {
@@ -38,7 +50,17 @@ export const costaRicaGuideExtras: Record<string, CostaRicaGuideExtra> = {
       { title: 'Alajuela', text: 'La opción sencilla para aterrizar, recoger el coche y descansar. Busca alojamiento con traslado o aparcamiento y comprueba que no esté en pleno centro si sales temprano.' },
       { title: 'Bajos del Toro', text: 'Mejor si quieres despertar ya en la montaña. Hay menos restaurantes y servicios, así que confirma cena, desayuno y estado del acceso antes de llegar.' },
     ],
+    stayRecommendations: [
+      { name: 'El Rodeo Estancia Boutique Hotel', label: 'Nuestra elección', text: 'Nuestra primera noche cerca del aeropuerto, con aparcamiento y una ubicación práctica para recoger el coche al día siguiente.', mapUrl: maps('El Rodeo Estancia Boutique Hotel Alajuela Costa Rica') },
+      { name: 'La Guaria Inn & Suites', label: 'Calidad-precio', text: 'Alternativa sencilla en Alajuela para una noche de llegada o salida, recurrente en guías de presupuesto por su cercanía al aeropuerto.', mapUrl: maps('La Guaria Inn & Suites Alajuela Costa Rica') },
+      { name: 'Hotel La Paz', label: 'Calidad-precio', text: 'En Poasito, encaja si prefieres despertar ya en la montaña y acercarte a Poás o Bajos del Toro sin pagar un lodge de lujo.', mapUrl: maps('Hotel La Paz Poasito Costa Rica') },
+    ],
     eat: 'En los pueblos pequeños funcionan mejor las sodas y restaurantes familiares que buscar una lista interminable. Pregunta por casado, olla de carne o trucha y revisa el horario: muchas cocinas cierran pronto.',
+    eatRecommendations: [
+      { name: 'Restaurante Catarata del Toro', label: 'Lo probamos', text: 'La opción dentro del recinto: cómoda para no desviar la ruta. En nuestra visita la comida se pagaba en efectivo.', mapUrl: maps('Restaurante Catarata del Toro Costa Rica') },
+      { name: 'Soda El Sesteo', label: 'Soda local', text: 'Una parada clásica en Alajuela para desayunos y platos costarricenses sin el precio de los restaurantes del aeropuerto.', mapUrl: maps('Soda El Sesteo Alajuela Costa Rica') },
+      { name: 'Chubascos', label: 'Calidad-precio', text: 'Restaurante de montaña en Fraijanes muy utilizado como parada hacia Poás; buena opción si el horario encaja con la ruta.', mapUrl: maps('Chubascos Restaurante Fraijanes Alajuela Costa Rica') },
+    ],
     reserve: ['Entrada con franja horaria al Volcán Poás si forma parte del plan.', 'La cascada elegida: algunos accesos tienen cupo, horario y último ingreso.', 'Alojamiento con cena si duermes en una zona rural.'],
     faq: [
       { question: '¿Dormimos en Alajuela o seguimos directamente?', answer: 'Si el vuelo llega por la tarde, dormir cerca del aeropuerto evita conducir cansados. Con llegada temprana se puede avanzar, pero no conviene estrenar las carreteras de montaña de noche.' },
@@ -68,7 +90,17 @@ export const costaRicaGuideExtras: Record<string, CostaRicaGuideExtra> = {
       { title: 'Centro de La Fortuna', text: 'Cómodo para salir a cenar, comprar y moverte sin coche por la noche. Hay más ambiente y menos sensación de retiro.' },
       { title: 'Carretera del volcán', text: 'Hoteles rodeados de vegetación y cerca de termas y senderos. Comprueba distancia al pueblo y si necesitarás coche para todas las comidas.' },
     ],
+    stayRecommendations: [
+      { name: 'Natura Bungalows', label: 'Nuestra elección', text: 'Nuestro alojamiento favorito del viaje: bungaló independiente, tranquilidad y vistas directas al volcán cuando despejaba.', mapUrl: maps('Natura Bungalows La Fortuna Costa Rica') },
+      { name: 'Hotel Monte Real', label: 'Calidad-precio', text: 'Opción familiar cerca del centro, recomendada en blogs por combinar habitaciones sencillas, jardín, piscina y ubicación caminable.', mapUrl: maps('Hotel Monte Real La Fortuna Costa Rica') },
+      { name: 'Arenal Xilopalo', label: 'Calidad-precio', text: 'Alternativa económica a poca distancia del pueblo, útil si prefieres gastar más en actividades que en un resort.', mapUrl: maps('Arenal Xilopalo La Fortuna Costa Rica') },
+    ],
     eat: 'Además de restaurantes turísticos, busca sodas para desayunos y casados. Para una noche especial hay opciones con vistas o cocina de autor, pero reserva solo si el presupuesto y el plan del día lo justifican.',
+    eatRecommendations: [
+      { name: 'Soda La Fortuna', label: 'Lo probamos', text: 'Nuestra recomendación personal para un casado completo sin pagar el precio de los locales más turísticos.', mapUrl: maps('Soda La Fortuna La Fortuna Costa Rica') },
+      { name: 'Soda La Hormiga', label: 'Soda local', text: 'Muy repetida en guías de viaje para desayunar gallo pinto y comer platos típicos a precio contenido.', mapUrl: maps('Soda La Hormiga La Fortuna Costa Rica') },
+      { name: 'Soda Víquez', label: 'Soda local', text: 'Otra alternativa céntrica para casados, zumos y cocina costarricense; conviene revisar el menú y horario del día.', mapUrl: maps('Soda Viquez La Fortuna Costa Rica') },
+    ],
     reserve: ['Puentes colgantes o tour naturalista en la primera franja del día.', 'Termas si eliges un complejo con aforo limitado.', 'Coche o shuttle para actividades alejadas del centro.'],
     faq: [
       { question: '¿Cuántas noches necesita La Fortuna?', answer: 'Tres noches permiten dos días completos y una visita sin correr. Con dos, elige dos experiencias principales; con cuatro puedes sumar Río Celeste o una jornada lenta.' },
@@ -98,7 +130,17 @@ export const costaRicaGuideExtras: Record<string, CostaRicaGuideExtra> = {
       { title: 'Santa Elena', text: 'Práctica para viajar sin coche, cenar andando y usar shuttles. Tiene más movimiento y queda a cierta distancia de varias reservas.' },
       { title: 'Cerro Plano y Monteverde', text: 'Más cerca de bosque y alojamientos tranquilos. Revisa la pendiente, las distancias reales y el transporte nocturno.' },
     ],
+    stayRecommendations: [
+      { name: 'Monteverde Eco Love', label: 'Nuestra elección', text: 'El alojamiento de nuestra ruta, bien situado para movernos por Santa Elena y descansar después de las actividades.', mapUrl: maps('Monteverde Eco Love Monteverde Costa Rica') },
+      { name: 'Cabinas Eddy B&B', label: 'Calidad-precio', text: 'Alojamiento sencillo cerca de Santa Elena, citado en guías por su desayuno y por permitir moverse a pie.', mapUrl: maps('Cabinas Eddy B&B Monteverde Costa Rica') },
+      { name: "Freddy's Place B&B", label: 'Calidad-precio', text: 'Pequeño bed and breakfast familiar con desayuno, una alternativa práctica frente a los hoteles de montaña más caros.', mapUrl: maps("Freddy's Place B&B Monteverde Costa Rica") },
+    ],
     eat: 'Santa Elena concentra cafeterías, sodas y restaurantes. El café local y los productos lácteos forman parte de la historia de la zona; deja una comida sin plan para elegir según dónde termine la caminata.',
+    eatRecommendations: [
+      { name: 'Sabor Tico', label: 'Soda local', text: 'Una de las sodas más recomendadas de Monteverde por su carta amplia de cocina costarricense y precios razonables.', mapUrl: maps('Sabor Tico Monteverde Costa Rica') },
+      { name: 'Soda La Amistad', label: 'Soda local', text: 'Alternativa sencilla para casados y comida local, alejada del concepto de restaurante turístico de moda.', mapUrl: maps('Soda La Amistad Monteverde Costa Rica') },
+      { name: 'La Cuchara de la Abuela', label: 'Calidad-precio', text: 'Cocina típica dentro del entorno de CASEM; una parada interesante para unir comida local y artesanía.', mapUrl: maps('La Cuchara de la Abuela CASEM Monteverde Costa Rica') },
+    ],
     reserve: ['La reserva natural que realmente quieras visitar; no todas ofrecen lo mismo.', 'Tour nocturno con grupo pequeño si la fauna es prioridad.', 'Canopy o puentes en una empresa con buenas prácticas y horario temprano.'],
     faq: [
       { question: '¿Monteverde y Santa Elena son lo mismo?', answer: 'Santa Elena es el pueblo principal y Monteverde da nombre a la región y a una de sus reservas. Comprueba siempre el punto exacto del alojamiento y de cada actividad.' },
@@ -128,7 +170,17 @@ export const costaRicaGuideExtras: Record<string, CostaRicaGuideExtra> = {
       { title: 'Playa Carmen', text: 'Más servicios, cruces y opciones para comer; práctica para una primera visita o si quieres moverte hacia Mal País.' },
       { title: 'Santa Teresa o Playa Hermosa', text: 'Más ambiente en Santa Teresa y más calma hacia Playa Hermosa. Confirma la distancia a pie a la playa y el ruido de la carretera.' },
     ],
+    stayRecommendations: [
+      { name: 'Believe Surf & Yoga Lodge', label: 'Nuestra elección', text: 'Nuestra base durante cinco noches, con desayuno, actividades y alquiler de tablas en el propio alojamiento.', mapUrl: maps('Believe Surf & Yoga Lodge Santa Teresa Costa Rica') },
+      { name: 'Otro Lado Lodge', label: 'Calidad-precio', text: 'Una alternativa que distintos blogs destacan por incluir desayuno, piscina y acceso cómodo a la playa.', mapUrl: maps('Otro Lado Lodge Santa Teresa Costa Rica') },
+      { name: 'Buena Onda Bungalows', label: 'Calidad-precio', text: 'Bungalós pequeños y bien situados que aparecen con frecuencia en guías de Santa Teresa para presupuestos medios.', mapUrl: maps('Buena Onda Bungalows Santa Teresa Costa Rica') },
+    ],
     eat: 'Hay mucha oferta internacional, pero los precios suben rápido. Alterna sodas y panaderías con una cena especial, y lleva efectivo para pequeños negocios o momentos en los que falle el datáfono.',
+    eatRecommendations: [
+      { name: 'Soda La Tiquicia', label: 'Soda local', text: 'Una de las recomendaciones más repetidas para comer cocina costarricense y escapar de los precios internacionales de Santa Teresa.', mapUrl: maps('Soda La Tiquicia Santa Teresa Costa Rica') },
+      { name: 'Soda Soy Tico', label: 'Soda local', text: 'Casados y platos locales en un formato sencillo; buena candidata para equilibrar el presupuesto entre desayunos y cenas especiales.', mapUrl: maps('Soda Soy Tico Santa Teresa Costa Rica') },
+      { name: 'The Bakery', label: 'Calidad-precio', text: 'Más conocida y menos barata que una soda, pero útil para desayunar o comprar algo rápido antes de la playa.', mapUrl: maps('The Bakery Santa Teresa Costa Rica') },
+    ],
     reserve: ['Alojamiento bien situado: aquí importa más la ubicación que una larga lista de servicios.', 'Clase de surf en horario de marea adecuado para principiantes.', 'Ferry y margen de carretera si llegas o sales hacia el continente.'],
     faq: [
       { question: '¿Cuál es la mejor zona para dormir?', answer: 'Playa Carmen es práctica; Santa Teresa concentra ambiente; Playa Hermosa es más tranquila. Elige según lo que quieras hacer andando y no solo por el precio.' },
@@ -158,7 +210,17 @@ export const costaRicaGuideExtras: Record<string, CostaRicaGuideExtra> = {
       { title: 'Carretera a Manuel Antonio', text: 'Buenas vistas y acceso a playas y restaurantes. Comprueba la pendiente y la parada de bus más cercana.' },
       { title: 'Quepos', text: 'Más local, más llano y normalmente más económico. El bus público conecta con el parque y Playa Espadilla.' },
     ],
+    stayRecommendations: [
+      { name: 'Glamping Tomaselli', label: 'Nuestra elección', text: 'El alojamiento que usamos en esta etapa; una base tranquila fuera de la primera línea turística.', mapUrl: maps('Glamping Tomaselli Manuel Antonio Costa Rica') },
+      { name: 'Tico Tico Villas', label: 'Calidad-precio', text: 'Apartamentos en la zona de Quepos para ganar espacio y cocina sin subir al precio de los resorts con vistas.', mapUrl: maps('Tico Tico Villas Quepos Costa Rica') },
+      { name: 'Hotel Flor Tica', label: 'Calidad-precio', text: 'Opción sencilla en Quepos para quien prioriza presupuesto y conexión en bus con el parque.', mapUrl: maps('Hotel Flor Tica Quepos Costa Rica') },
+    ],
     eat: 'La carretera del parque tiene restaurantes con vistas; Quepos ofrece sodas y precios más cotidianos. Evita dejar la comida como única razón para mover el coche en hora punta.',
+    eatRecommendations: [
+      { name: 'Restaurante Manuel Antonio', label: 'Lo probamos', text: 'Nos permitió combinar comida y aparcamiento cerca del parque; comprueba si mantienen la condición por consumo.', mapUrl: maps('Restaurante Manuel Antonio Costa Rica') },
+      { name: 'Miguelitos Pizza', label: 'Lo probamos', text: 'Nuestra cena en una zona más local, con precios menos inflados que junto al parque aunque todavía turísticos.', mapUrl: maps('Miguelitos Pizza Quepos Costa Rica') },
+      { name: 'Soda Sánchez', label: 'Soda local', text: 'Una recomendación recurrente de blogs en Quepos para desayunos, casados y comida típica a precio más cotidiano.', mapUrl: maps('Soda Sanchez Quepos Costa Rica') },
+    ],
     reserve: ['Entrada oficial del parque con fecha definida.', 'Guía naturalista acreditado si observar fauna es una prioridad.', 'Alojamiento con acceso sencillo al bus o aparcamiento real.'],
     faq: [
       { question: '¿Dónde se compran las entradas?', answer: 'Solo en el sistema oficial de parques de Costa Rica. Desconfía de webs que imitan la venta o mezclan entrada y tour sin explicarlo.' },
@@ -188,7 +250,17 @@ export const costaRicaGuideExtras: Record<string, CostaRicaGuideExtra> = {
       { title: 'Puerto Viejo', text: 'Ideal para cenar andando y tener transporte y servicios. Hay más ruido y movimiento, sobre todo cerca del centro.' },
       { title: 'Cocles, Chiquita o Punta Uva', text: 'Más naturaleza y calma. Confirma distancia a restaurantes, iluminación y transporte si no tendrás coche.' },
     ],
+    stayRecommendations: [
+      { name: 'Chilamate Holiday House', label: 'Nuestra elección', text: 'Nuestra casa entre vegetación: bonita y muy conectada con la selva, aunque con luz y sonidos de animales durante la noche.', mapUrl: maps('Chilamate Holiday House Puerto Viejo Costa Rica') },
+      { name: 'Pagalù Hostel', label: 'Calidad-precio', text: 'Hostel céntrico citado en guías de presupuesto; práctico si quieres restaurantes y transporte a distancia caminable.', mapUrl: maps('Pagalu Hostel Puerto Viejo Costa Rica') },
+      { name: 'Roots Family', label: 'Calidad-precio', text: 'Otra base económica en el pueblo para viajeros que priorizan ubicación y ambiente sobre servicios de resort.', mapUrl: maps('Roots Family Puerto Viejo Costa Rica') },
+    ],
     eat: 'Busca rice and beans cocinado con coco, patí, pescado y cocina local. Algunos lugares populares requieren reserva, pero las sodas y pequeños restaurantes suelen dar la experiencia más directa.',
+    eatRecommendations: [
+      { name: "Soda Lidia's Place", label: 'Soda local', text: 'La recomendación más consistente de las guías consultadas para probar rice and beans caribeño y cocina local.', mapUrl: maps("Soda Lidia's Place Puerto Viejo Costa Rica") },
+      { name: 'Bread & Chocolate', label: 'Calidad-precio', text: 'Una opción muy conocida para desayunos y brunch; suele llenarse, así que conviene llegar pronto y revisar el horario.', mapUrl: maps('Bread and Chocolate Puerto Viejo Costa Rica') },
+      { name: 'Joe’s Snack Point', label: 'Calidad-precio', text: 'Pequeño local caribeño señalado en guías de bajo presupuesto por sus platos informales y ambiente sencillo.', mapUrl: maps("Joe's Snack Point Puerto Viejo Costa Rica") },
+    ],
     reserve: ['Alojamiento según movilidad real, no solo por el nombre “Puerto Viejo”.', 'Visita responsable a comunidad o proyecto cultural, si la haces.', 'Traslado largo de entrada o salida con margen por obras y tráfico.'],
     faq: [
       { question: '¿Puerto Viejo o Cahuita como base?', answer: 'Puerto Viejo tiene más ambiente y restaurantes; Cahuita es más tranquila y está junto al parque. Para varios días también funciona dividir la estancia.' },
