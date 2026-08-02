@@ -19,6 +19,7 @@ import Link from 'next/link'
 import { AdSpace } from '@/components/ad-space'
 import { CostaRicaRouteProvider } from '@/components/costa-rica-route-context'
 import { CostaRicaExperienceGuide } from '@/components/costa-rica-experience-guide'
+import { CostaRicaPlacesMap } from '@/components/costa-rica-places-map'
 import { JsonLd } from '@/components/json-ld'
 import { IatiContextualText, IatiEditorialCard } from '@/components/iati-affiliate'
 import { LivingStatement } from '@/components/living-statement'
@@ -70,7 +71,7 @@ const contents = [
   { number: '03', title: 'Conoce cada lugar', text: 'Qué hay, dónde está y cuántos días darle.', href: '#destinos' },
   { number: '04', title: 'Prepara el viaje', text: 'Coche, clima, dinero, reservas y comida.', href: '#preparar' },
   { number: '05', title: 'Haz la maleta', text: 'Una lista completa en su propia página.', href: '/viajes/costa-rica-2026/maleta' },
-  { number: '06', title: 'Guarda sitios reales', text: 'Hoteles, sodas y lugares enlazados a Maps.', href: '/viajes/costa-rica-2026/lugares-recomendados' },
+  { number: '06', title: 'Guarda sitios reales', text: 'Hoteles, sodas y lugares enlazados a Maps.', href: '#mapa-lugares' },
   { number: '07', title: 'Mira otras rutas', text: 'Paradas recomendadas que nosotros no hicimos.', href: '#extras' },
 ]
 
@@ -344,6 +345,16 @@ export default function CostaRicaPage() {
         </div>
       </section>
 
+      <section className="costa-places-section" id="mapa-lugares">
+        <div className="section-shell">
+          <Reveal className="split-heading costa-places-heading">
+            <div><span className="eyebrow">Nuestros sitios de Costa Rica</span><h2>Los lugares que apuntaríamos antes de volver.</h2></div>
+            <p>Alojamientos, sodas, restaurantes y paradas que usamos o que tenemos guardadas. Pulsa cualquiera para verlo en Google Maps.</p>
+          </Reveal>
+          <CostaRicaPlacesMap />
+        </div>
+      </section>
+
       <section className="travel-carousel-section" aria-label="Más imágenes de los destinos">
         <div className="section-shell">
           <Reveal className="split-heading gallery-heading">
@@ -397,7 +408,7 @@ export default function CostaRicaPage() {
         <div className="section-shell">
           <Reveal className="prepare-guide-heading">
             <span className="eyebrow">Preparar Costa Rica por libre</span>
-            <h2>Las preguntas que aparecen antes de comprar los vuelos.</h2>
+            <h2>¿Qué necesitas saber antes de comprar los vuelos?</h2>
             <p>Respuestas directas, con lo importante en negrita y sin esconder la información útil entre párrafos eternos.</p>
           </Reveal>
 

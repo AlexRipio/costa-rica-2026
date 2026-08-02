@@ -1,6 +1,6 @@
 'use client'
 
-import { ChevronDown, Compass, LockKeyhole, Menu, X } from 'lucide-react'
+import { ChevronDown, Compass, LockKeyhole, Menu, ShieldCheck, X } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { Logo } from './logo'
@@ -123,11 +123,14 @@ export function SiteHeader({
             </div>
 
             <Link className="drawer-main-link" href="/#mapa" onClick={closeDrawer}>Mapa del mundo</Link>
-            <Link className="drawer-main-link drawer-insurance-link" href="/seguro-de-viaje" onClick={closeDrawer}>
-              Seguro de viaje <small>5% de descuento</small>
-            </Link>
             <Link className="drawer-main-link" href="/nosotros" onClick={closeDrawer}>Conócenos</Link>
           </nav>
+
+          <Link className="drawer-secondary-link" href="/seguro-de-viaje" onClick={closeDrawer}>
+            <ShieldCheck />
+            <span><strong>Seguro de viaje</strong><small>5% de descuento con IATI</small></span>
+            <span aria-hidden="true">→</span>
+          </Link>
 
           <div className="drawer-family">
             <LockKeyhole />
