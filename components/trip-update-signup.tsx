@@ -35,8 +35,8 @@ export function TripUpdateSignup() {
       <div className="trip-update-intro">
         <span className="trip-update-icon" aria-hidden="true"><Mail /></span>
         <div className="trip-update-copy">
-          <h3>¿Te vienes al próximo?</h3>
-          <p>Nuevas rutas. Nada más.</p>
+          <h3>Nuevas guías por email</h3>
+          <p>Te avisamos cuando publiquemos una.</p>
         </div>
       </div>
       <div className="trip-update-fields">
