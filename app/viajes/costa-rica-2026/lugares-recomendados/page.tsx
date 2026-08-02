@@ -24,17 +24,17 @@ export default function CostaRicaSavedPlacesPage() {
       <SiteHeader />
       <section className="saved-places-hero">
         <Reveal className="section-shell saved-places-hero-grid">
-          <div>
+          <div className="saved-places-hero-copy">
             <Link href="/viajes/costa-rica-2026"><ArrowLeft /> Volver a Costa Rica</Link>
-            <span className="eyebrow">El mapa que sigue creciendo</span>
-            <h1>Lugares que guardaríamos en Costa Rica.</h1>
-            <p>Aquí reunimos nuestras elecciones reales y otros sitios concretos que queremos valorar. No todo lo guardado es una recomendación personal: cada ficha indica claramente qué probamos y qué sigue pendiente.</p>
+            <span className="eyebrow">Nuestra lista de Costa Rica</span>
+            <h1>Sitios que merece la pena guardar.</h1>
+            <p>Primero están los alojamientos y restaurantes que probamos nosotros. Después, otros sitios que tenemos apuntados y que revisaríamos antes de una próxima ruta.</p>
           </div>
           <div className="saved-places-hero-card">
             <MapPinned />
             <strong>{costaRicaSavedPlaces.length}</strong>
-            <span>lugares revisados y ordenados</span>
-            <p>Cuando encontremos un alojamiento, una soda o una parada nueva, la añadiremos a esta colección.</p>
+            <span>sitios reunidos en el mapa</span>
+            <p>Cuando añadamos un alojamiento, una soda o una parada nueva, aparecerá también en el mapa de la guía.</p>
           </div>
         </Reveal>
       </section>
@@ -74,8 +74,8 @@ export default function CostaRicaSavedPlacesPage() {
       <section className="saved-places-note">
         <Reveal className="section-shell">
           <MapPinned />
-          <h2>Una lista útil, no una colección de nombres.</h2>
-          <p>Antes de reservar, comprueba siempre reseñas recientes, ubicación exacta, horarios y precio final. Los lugares marcados como “guardado para valorar” todavía no forman parte de nuestra experiencia personal.</p>
+          <h2>Antes de reservar, échales un vistazo.</h2>
+          <p>Comprueba las reseñas recientes, la ubicación, los horarios y el precio final. Si pone “guardado para valorar”, significa que todavía no lo hemos probado nosotros.</p>
           <Link className="button button-light" href="/viajes/costa-rica-2026">Seguir con la guía <ArrowUpRight /></Link>
         </Reveal>
       </section>
