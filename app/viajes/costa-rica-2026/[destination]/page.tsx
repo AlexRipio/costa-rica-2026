@@ -21,6 +21,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { JsonLd } from '@/components/json-ld'
 import { AdSpace } from '@/components/ad-space'
+import { IatiContextualText, IatiSidebarCard } from '@/components/iati-affiliate'
 import { ProtectedImage } from '@/components/protected-image'
 import { Reveal } from '@/components/reveal'
 import { LivingStatement } from '@/components/living-statement'
@@ -218,9 +219,10 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
               <a href="#consejos">05 · Consejos prácticos</a>
               <a href="#dudas">06 · Dudas frecuentes</a>
             </nav>
+            <IatiSidebarCard slug={`costa-rica-2026-${guide.slug}`} destination={guide.title} />
           </Reveal>
           <Reveal className="guide-long-copy">
-            {extra.understand.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+            {extra.understand.map((paragraph, index) => <p key={index}><IatiContextualText text={paragraph} slug={`costa-rica-2026-${guide.slug}`} /></p>)}
           </Reveal>
         </div>
       </section>
@@ -332,7 +334,7 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
             <p>Consejos concretos para este lugar, no frases que sirven para cualquier país.</p>
           </div>
           <ul className="guide-advice-list">
-            {guide.advice.map((tip) => <li key={tip}><Check size={18} /><span>{tip}</span></li>)}
+            {guide.advice.map((tip) => <li key={tip}><Check size={18} /><span><IatiContextualText text={tip} slug={`costa-rica-2026-${guide.slug}`} /></span></li>)}
           </ul>
         </Reveal>
       </section>
@@ -382,7 +384,7 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
               <Reveal key={item.question} delay={index * 0.04}>
                 <details>
                   <summary><span>0{index + 1}</span>{item.question}</summary>
-                  <p>{item.answer}</p>
+                  <p><IatiContextualText text={item.answer} slug={`costa-rica-2026-${guide.slug}`} /></p>
                 </details>
               </Reveal>
             ))}
