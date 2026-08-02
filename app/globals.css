@@ -16414,12 +16414,13 @@ main small {
 .insurance-quote-heading { text-align: center; margin-inline: auto; }
 .insurance-quote-heading p { margin-inline: auto; }
 
-.iati-widget-shell { position: relative; min-height: 430px; padding: clamp(1rem, 2vw, 1.5rem); overflow: hidden; background: #fff; border: 1px solid rgba(23, 41, 37, .11); border-radius: 28px; box-shadow: 0 28px 80px rgba(19, 44, 37, .12); }
+.iati-widget-shell { position: relative; z-index: 3; min-height: 430px; padding: clamp(1rem, 2vw, 1.5rem); overflow: visible; background: #fff; border: 1px solid rgba(23, 41, 37, .11); border-radius: 28px; box-shadow: 0 28px 80px rgba(19, 44, 37, .12); }
 .iati-widget-vertical { min-height: 650px; }
 .iati-widget-loader { position: absolute; inset: 0; display: grid; place-items: center; color: #60736d; background: #fffdf8; font-family: var(--ui); font-size: .9rem; }
 .iati-widget-shell:has(#mini-form-policy > *) .iati-widget-loader,
 .iati-widget-shell:has(#mini-form-policy > *) .iati-widget-fallback { display: none; }
-#mini-form-policy { position: relative; z-index: 1; }
+#mini-form-policy { position: relative; z-index: 4; overflow: visible !important; }
+#mini-form-policy > * { overflow: visible !important; }
 .iati-widget-fallback { position: absolute; z-index: 2; right: 50%; bottom: 2rem; transform: translateX(50%); display: inline-flex; gap: .45rem; align-items: center; color: #173f36; font-family: var(--ui); font-size: .84rem; font-weight: 750; text-align: center; }
 .iati-widget-fallback svg { width: 15px; }
 .iati-official-attribution { position: relative; z-index: 2; margin-top: .75rem; text-align: center; }
@@ -16480,6 +16481,64 @@ main small {
 .iati-sidebar-card > a svg { width: 16px; }
 .iati-sidebar-card > small { color: rgba(255, 255, 255, .52); font-family: var(--ui); font-size: .66rem; line-height: 1.45; }
 
+.drawer-insurance-link {
+  display: flex !important;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  color: #173f36 !important;
+  background: linear-gradient(110deg, rgba(241, 184, 74, .2), rgba(241, 184, 74, .06));
+  border-radius: 12px;
+}
+
+.drawer-insurance-link small {
+  color: #a56616;
+  font-family: var(--ui);
+  font-size: .64rem;
+  font-weight: 850;
+  letter-spacing: .06em;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+/* Costa Rica · colección editorial de lugares guardados */
+.saved-places-page { color: #173f36; background: #f8f4eb; }
+.saved-places-hero { padding: clamp(9rem, 15vw, 13rem) 0 clamp(5rem, 9vw, 8rem); background: radial-gradient(circle at 85% 20%, rgba(241, 184, 74, .24), transparent 27%), #eee8dc; }
+.saved-places-hero-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr); gap: clamp(3rem, 9vw, 8rem); align-items: end; }
+.saved-places-hero-grid > div:first-child > a { margin-bottom: 2.2rem; display: inline-flex; gap: .45rem; align-items: center; color: #536b64; font-family: var(--ui); font-size: .82rem; font-weight: 780; }
+.saved-places-hero-grid > div:first-child > a svg { width: 16px; }
+.saved-places-hero h1 { max-width: 920px; margin: 1rem 0 1.5rem; font-family: var(--serif); font-size: clamp(4rem, 8vw, 8rem); font-weight: 500; letter-spacing: -.075em; line-height: .86; text-wrap: balance; }
+.saved-places-hero-grid > div:first-child > p { max-width: 720px; margin: 0; color: #506860; font-family: var(--ui); font-size: 1.08rem; line-height: 1.75; }
+.saved-places-hero-card { min-height: 390px; padding: clamp(1.7rem, 3vw, 2.5rem); display: flex; flex-direction: column; justify-content: flex-end; color: #fff; background: radial-gradient(circle at 75% 10%, rgba(241, 184, 74, .36), transparent 31%), #173f36; border-radius: 30px; box-shadow: 0 30px 80px rgba(20, 63, 54, .16); }
+.saved-places-hero-card svg { width: 42px; height: 42px; margin-bottom: auto; color: var(--sun); }
+.saved-places-hero-card strong { font-family: var(--serif); font-size: clamp(5rem, 10vw, 8rem); font-weight: 500; letter-spacing: -.08em; line-height: .78; }
+.saved-places-hero-card span { margin-top: .7rem; color: var(--sun); font-family: var(--ui); font-size: .74rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+.saved-places-hero-card p { margin: 1.2rem 0 0; color: rgba(255, 255, 255, .68); font-family: var(--ui); font-size: .9rem; line-height: 1.55; }
+.saved-places-nav { position: sticky; z-index: 12; top: 0; padding: 0 1.25rem; display: flex; justify-content: center; gap: clamp(1.2rem, 5vw, 4rem); background: rgba(248, 244, 235, .94); border-bottom: 1px solid rgba(23, 63, 54, .12); backdrop-filter: blur(18px); }
+.saved-places-nav a { padding: 1.1rem 0; color: #173f36; font-family: var(--ui); font-size: .78rem; font-weight: 820; letter-spacing: .04em; text-transform: uppercase; }
+.saved-places-content { padding-top: clamp(5rem, 10vw, 9rem); padding-bottom: clamp(6rem, 12vw, 10rem); }
+.saved-places-group { padding-top: 2rem; scroll-margin-top: 5rem; }
+.saved-places-group + .saved-places-group { margin-top: clamp(6rem, 11vw, 10rem); }
+.saved-places-heading { margin-bottom: clamp(2rem, 5vw, 4rem); display: flex; gap: 1.3rem; align-items: flex-end; border-bottom: 1px solid rgba(23, 63, 54, .16); }
+.saved-places-heading > svg { width: 38px; height: 38px; margin-bottom: 1.25rem; color: #b8781f; }
+.saved-places-heading h2 { margin: .25rem 0 1rem; font-family: var(--serif); font-size: clamp(3.3rem, 6vw, 6rem); font-weight: 500; letter-spacing: -.055em; line-height: .9; }
+.saved-places-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; align-items: stretch; }
+.saved-places-grid > * { height: 100%; }
+.saved-place-card { min-height: 350px; height: 100%; padding: clamp(1.35rem, 2.5vw, 2rem); display: flex; flex-direction: column; color: inherit; background: rgba(255, 255, 255, .67); border: 1px solid rgba(23, 63, 54, .12); border-radius: 22px; text-decoration: none; transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
+.saved-place-card:hover { transform: translateY(-4px); border-color: rgba(184, 120, 31, .45); box-shadow: 0 22px 60px rgba(20, 63, 54, .09); }
+.saved-place-card > div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .6rem; align-items: center; }
+.saved-place-card small { color: #6b7c77; font-family: var(--ui); font-size: .7rem; font-weight: 700; }
+.saved-place-status { padding: .35rem .55rem; color: #8e5c17; background: rgba(241, 184, 74, .18); border-radius: 999px; font-family: var(--ui); font-size: .62rem; font-weight: 850; letter-spacing: .05em; text-transform: uppercase; }
+.saved-place-card h3 { margin: 2.2rem 0 .8rem; font-family: var(--serif); font-size: clamp(1.8rem, 2.5vw, 2.6rem); font-weight: 550; letter-spacing: -.035em; line-height: 1; }
+.saved-place-card p { margin: 0 0 2rem; color: #536b64; font-family: var(--ui); font-size: .9rem; line-height: 1.65; }
+.saved-place-card > strong { margin-top: auto; display: flex; justify-content: space-between; gap: .6rem; align-items: center; color: #173f36; font-family: var(--ui); font-size: .76rem; }
+.saved-place-card > strong svg { width: 16px; }
+.saved-places-note { padding: clamp(6rem, 12vw, 10rem) 0; color: #fff; background: #173f36; text-align: center; }
+.saved-places-note .section-shell { display: grid; justify-items: center; }
+.saved-places-note svg:first-child { width: 42px; height: 42px; color: var(--sun); }
+.saved-places-note h2 { max-width: 850px; margin: 1.4rem 0 1.2rem; font-family: var(--serif); font-size: clamp(3rem, 6vw, 6rem); font-weight: 500; letter-spacing: -.06em; line-height: .92; }
+.saved-places-note p { max-width: 720px; margin: 0 0 2rem; color: rgba(255, 255, 255, .68); font-family: var(--ui); line-height: 1.7; }
+
 @media (max-width: 900px) {
   .iati-editorial-card,
   .insurance-hero-grid,
@@ -16489,6 +16548,9 @@ main small {
   .insurance-principles-grid { grid-template-columns: 1fr; }
   .insurance-principles-grid > div { min-height: 260px; }
   .iati-sidebar-card { max-width: 420px; }
+  .saved-places-hero-grid { grid-template-columns: 1fr; }
+  .saved-places-hero-card { width: min(100%, 480px); }
+  .saved-places-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 760px) {
@@ -16510,4 +16572,12 @@ main small {
   .iati-widget-shell { min-height: 590px; padding: .55rem; border-radius: 20px; }
   .iati-widget-fallback { width: calc(100% - 2rem); justify-content: center; }
   .insurance-check-note { align-items: flex-start; }
+  .drawer-insurance-link { align-items: center; }
+  .saved-places-hero { padding-top: 8rem; }
+  .saved-places-hero h1 { font-size: clamp(3.8rem, 17vw, 5.8rem); }
+  .saved-places-hero-card { min-height: 330px; }
+  .saved-places-nav { justify-content: flex-start; overflow-x: auto; }
+  .saved-places-nav a { white-space: nowrap; }
+  .saved-places-grid { grid-template-columns: 1fr; }
+  .saved-place-card { min-height: 310px; }
 }
