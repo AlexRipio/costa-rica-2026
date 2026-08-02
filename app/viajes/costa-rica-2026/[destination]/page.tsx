@@ -6,6 +6,7 @@ import {
   Ban,
   Car,
   Check,
+  ChevronDown,
   Clock3,
   Compass,
   ExternalLink,
@@ -33,7 +34,7 @@ import {
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { costaRicaGuideBySlug, costaRicaGuides } from '@/src/data/costaRicaGuides'
-import { costaRicaGuideExtras } from '@/src/data/costaRicaGuideExtras'
+import { costaRicaGuideExtras, type PlaceRecommendation } from '@/src/data/costaRicaGuideExtras'
 import { destinationExperiences } from '@/src/data/costaRicaExperience'
 import { images } from '@/src/data/images'
 import {
@@ -46,6 +47,64 @@ import {
 import { initialTripData } from '@/src/data/tripData'
 
 type GuidePageProps = { params: Promise<{ destination: string }> }
+
+const accommodationCategoryOrder = ['Hotel', 'B&B', 'Bungaló', 'Hostel', 'Lodge']
+const foodCategoryOrder = ['Soda', 'Restaurante', 'Café y desayuno', 'Cena especial']
+
+function PlaceCard({ place, featured = false }: { place: PlaceRecommendation; featured?: boolean }) {
+  return (
+    <a
+      className={`${featured ? 'guide-place-featured' : ''} ${place.premium ? 'guide-place-premium' : ''}`.trim()}
+      href={place.mapUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <span className="guide-place-heading">
+        <span><small>{place.label}</small><strong>{place.name}</strong></span>
+        <span className="guide-place-price"><b>{place.priceRange}</b><small>{place.priceBasis}</small></span>
+      </span>
+      <p>{place.text}</p>
+      <span className="guide-place-map">Ver en Google Maps <ExternalLink /></span>
+    </a>
+  )
+}
+
+function PlaceRecommendations({
+  places,
+  kind,
+}: {
+  places: PlaceRecommendation[]
+  kind: 'stay' | 'eat'
+}) {
+  const featured = places.find((place) => place.featured) ?? places[0]
+  const rest = places.filter((place) => place !== featured)
+  const order = kind === 'stay' ? accommodationCategoryOrder : foodCategoryOrder
+  const groups = order
+    .map((category) => ({ category, places: rest.filter((place) => place.category === category) }))
+    .filter((group) => group.places.length > 0)
+
+  return (
+    <div className="guide-recommendations">
+      <div className="guide-primary-place">
+        <span className="guide-list-title">{kind === 'stay' ? 'Nuestra recomendación principal' : 'Por dónde empezaríamos'}</span>
+        <PlaceCard place={featured} featured />
+      </div>
+      <div className="guide-place-accordions">
+        {groups.map((group) => (
+          <details key={group.category}>
+            <summary>
+              <span><strong>{group.category}</strong><small>{group.places.length} {group.places.length === 1 ? 'opción' : 'opciones'}</small></span>
+              <ChevronDown aria-hidden="true" />
+            </summary>
+            <div className="guide-place-list">
+              {group.places.map((place) => <PlaceCard place={place} key={place.name} />)}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  )
+}
 
 export function generateStaticParams() {
   return costaRicaGuides.map((guide) => ({ destination: guide.slug }))
@@ -299,39 +358,30 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
       <section className="guide-stay-section" id="dormir">
         <div className="section-shell">
           <Reveal className="guide-section-heading">
-            <span className="eyebrow">Decisiones que cambian el viaje</span>
-            <h2>Dónde dormir, qué probar y qué reservar.</h2>
-            <p>La parte práctica explicada antes de que una mala ubicación o una reserva innecesaria te complique el día.</p>
+            <span className="eyebrow">Nuestras elecciones y alternativas</span>
+            <h2>Dónde dormir y dónde comer.</h2>
+            <p>Primero verás nuestra recomendación principal. Si quieres comparar, abre los desplegables por tipo y revisa el precio orientativo de cada sitio.</p>
           </Reveal>
           <div className="guide-stay-grid">
             <Reveal className="guide-stay-card guide-stay-card-wide">
               <Hotel />
               <span className="eyebrow">Dónde dormir</span>
-              <div className="guide-stay-options">
-                {extra.stayAreas.map((area) => <div key={area.title}><h3>{area.title}</h3><p>{area.text}</p></div>)}
-              </div>
-              <div className="guide-place-list" aria-label={`Alojamientos recomendados en ${guide.title}`}>
-                {extra.stayRecommendations.map((place) => (
-                  <a href={place.mapUrl} target="_blank" rel="noopener noreferrer" key={place.name}>
-                    <span><small>{place.label}</small><strong>{place.name}</strong></span>
-                    <p>{place.text}</p>
-                    <span className="guide-place-map">Ver en Google Maps <ExternalLink /></span>
-                  </a>
-                ))}
+              <details className="guide-area-picker">
+                <summary><span><strong>Antes: elige bien la zona</strong><small>{extra.stayAreas.length} zonas explicadas</small></span><ChevronDown aria-hidden="true" /></summary>
+                <div className="guide-stay-options">
+                  {extra.stayAreas.map((area) => <div key={area.title}><h3>{area.title}</h3><p>{area.text}</p></div>)}
+                </div>
+              </details>
+              <div aria-label={`Alojamientos recomendados en ${guide.title}`}>
+                <PlaceRecommendations places={extra.stayRecommendations} kind="stay" />
               </div>
             </Reveal>
             <Reveal className="guide-stay-card">
               <Utensils />
-              <span className="eyebrow">Comer sin caer en la lista de moda</span>
+              <span className="eyebrow">Dónde comer</span>
               <p>{extra.eat}</p>
-              <div className="guide-place-list" aria-label={`Restaurantes recomendados en ${guide.title}`}>
-                {extra.eatRecommendations.map((place) => (
-                  <a href={place.mapUrl} target="_blank" rel="noopener noreferrer" key={place.name}>
-                    <span><small>{place.label}</small><strong>{place.name}</strong></span>
-                    <p>{place.text}</p>
-                    <span className="guide-place-map">Ver en Google Maps <ExternalLink /></span>
-                  </a>
-                ))}
+              <div aria-label={`Restaurantes recomendados en ${guide.title}`}>
+                <PlaceRecommendations places={extra.eatRecommendations} kind="eat" />
               </div>
             </Reveal>
             <Reveal className="guide-stay-card guide-booking-card">
@@ -340,6 +390,7 @@ export default async function CostaRicaDestinationGuide({ params }: GuidePagePro
               <ul>{extra.reserve.map((item) => <li key={item}>{item}</li>)}</ul>
             </Reveal>
           </div>
+          <p className="guide-price-note">Precios orientativos revisados en agosto de 2026. Alojamiento para dos personas por noche; en hostels se distingue entre cama y habitación privada. Comida por persona y sin alcohol. Comprueba siempre el total final, impuestos y temporada antes de reservar.</p>
         </div>
       </section>
 
