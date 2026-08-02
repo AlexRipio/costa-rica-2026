@@ -40,6 +40,7 @@ El proyecto se despliega automáticamente en Vercel al actualizar la rama princi
 - `IatiButtonWidget`, `IatiHorizontalWidget` e `IatiVerticalWidget` están disponibles en `components/iati-widgets.tsx`.
 - Los formatos horizontal y vertical comparten `id="mini-form-policy"`; nunca deben renderizarse juntos ni repetirse en una página.
 - La landing utiliza el horizontal. El vertical queda preparado para una columna estrecha existente y no debe crear una sidebar nueva.
+- `IatiContextualText` enlaza automáticamente menciones editoriales inequívocas del seguro y `IatiSidebarCard` usa la columna lateral existente de las guías sin duplicar el cotizador.
 - Todos los enlaces propios y fallbacks conservan la URL oficial completa y se marcan como patrocinados.
 
 ## Publicidad
