@@ -39,6 +39,7 @@ export default function LegalNoticePage() {
         <h2>4. Enlaces, reservas y recomendaciones</h2>
         <p>Los enlaces a hoteles, parques, mapas, vuelos o terceros se facilitan para ayudar al lector. Viajan2Juntos no controla sus contenidos, disponibilidad, precios ni políticas y no interviene en la relación que el usuario pueda establecer con esas entidades.</p>
         <p>Algunas páginas pueden mostrar publicidad automática de Google AdSense, siempre identificada como tal y separada del contenido editorial. Si una publicación incluye una colaboración, invitación, enlace afiliado o contenido patrocinado, también se identificará de forma visible y no modificará nuestra obligación de contar la experiencia con honestidad.</p>
+        <p>Viajan2Juntos participa en el programa de afiliación de IATI Seguros. Los enlaces y widgets identificados permiten aplicar al lector un 5% de descuento automático y pueden generar una comisión para el proyecto sin aumentar el precio final. La contratación, el cobro, las coberturas y la asistencia corresponden exclusivamente a IATI; recomendamos leer las condiciones de la modalidad elegida antes de pagar.</p>
       </section>
       <section>
         <h2>5. Responsabilidad</h2>
