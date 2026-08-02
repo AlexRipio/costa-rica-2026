@@ -1,4 +1,4 @@
-import { BadgeDollarSign, BedDouble, Check, Utensils } from 'lucide-react'
+import { BadgeDollarSign, BedDouble, Check, ExternalLink, Utensils } from 'lucide-react'
 import { LivingStatement } from '@/components/living-statement'
 import { ProtectedImage } from '@/components/protected-image'
 import { Reveal } from '@/components/reveal'
@@ -92,7 +92,7 @@ export function DestinationExperiencePractical({
             <Reveal className="experience-lodging-card">
               <BedDouble />
               <span className="eyebrow">{experience.lodging.verdict}</span>
-              <h3>{experience.lodging.name}</h3>
+              <h3>{experience.lodging.mapUrl ? <a href={experience.lodging.mapUrl} target="_blank" rel="noopener noreferrer">{experience.lodging.name}<ExternalLink /></a> : experience.lodging.name}</h3>
               <p>{experience.lodging.text}</p>
             </Reveal>
           )}
@@ -100,7 +100,7 @@ export function DestinationExperiencePractical({
             <Utensils />
             <span className="eyebrow">Dónde comimos o cómo ahorramos</span>
             {experience.food.map((item) => (
-              <div key={item.name}><h3>{item.name}</h3><p>{item.text}</p></div>
+              <div key={item.name}><h3>{item.mapUrl ? <a href={item.mapUrl} target="_blank" rel="noopener noreferrer">{item.name}<ExternalLink /></a> : item.name}</h3><p>{item.text}</p></div>
             ))}
           </Reveal>
           <Reveal className="experience-price-card">
