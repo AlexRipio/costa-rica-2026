@@ -7,6 +7,7 @@ Blog personal de viajes de Andrea y Alejandro. La portada reúne todas las avent
 - `/`: portada de Viajan2Juntos.
 - `/viajes`: archivo de viajes.
 - `/viajes/costa-rica-2026`: itinerario público y visual de Costa Rica.
+- `/seguro-de-viaje`: landing editorial y cotizador horizontal oficial de IATI.
 - `/familia`: acceso privado.
 - `/familia/costa-rica-2026`: seguimiento horario, mapa, hoteles y vuelos.
 
@@ -32,6 +33,14 @@ La zona privada necesita dos variables de entorno:
 - `AUTH_SECRET`: secreto largo utilizado para firmar la sesión.
 
 El proyecto se despliega automáticamente en Vercel al actualizar la rama principal de GitHub.
+
+## Afiliación IATI
+
+- El script oficial se carga una única vez desde `app/layout.tsx` con el colaborador `85259934961431`.
+- `IatiButtonWidget`, `IatiHorizontalWidget` e `IatiVerticalWidget` están disponibles en `components/iati-widgets.tsx`.
+- Los formatos horizontal y vertical comparten `id="mini-form-policy"`; nunca deben renderizarse juntos ni repetirse en una página.
+- La landing utiliza el horizontal. El vertical queda preparado para una columna estrecha existente y no debe crear una sidebar nueva.
+- Todos los enlaces propios y fallbacks conservan la URL oficial completa y se marcan como patrocinados.
 
 ## Publicidad
 
