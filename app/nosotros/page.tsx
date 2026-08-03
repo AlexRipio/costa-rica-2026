@@ -47,7 +47,7 @@ export default function AboutPage() {
         <div className="section-shell about-story-grid">
           <Reveal className="about-portrait-placeholder about-real-portrait">
             <img src="/about/aventura-montana.jpeg" alt="Andrea y Alejandro preparados para una aventura de montaña en Costa Rica" />
-            <div><strong>Nosotros, en ruta</strong><span>Costa Rica · 2026</span></div>
+            <div><strong>Extremo Park, Monteverde</strong></div>
           </Reveal>
           <Reveal className="about-story-copy" delay={0.1}>
             <span className="eyebrow">Quiénes somos</span>
@@ -57,7 +57,7 @@ export default function AboutPage() {
             <div className="about-handwritten">Nuestro álbum, nuestra guía, nuestra historia.</div>
             <figure className="about-candid-photo">
               <img src="/about/senderismo-selva.jpg" alt="Andrea y Alejandro haciendo senderismo por la selva de Costa Rica" />
-              <figcaption>Una ruta por la selva, tal y como somos: disfrutando del camino.</figcaption>
+              <figcaption>Bosque Nuboso de Monteverde</figcaption>
             </figure>
           </Reveal>
         </div>
