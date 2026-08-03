@@ -531,8 +531,8 @@ export default function CostaRicaPage() {
 
       <section className="trip-closing">
         <Reveal>
-          <span>UN VIAJE VIVIDO, UNA GUÍA EN MOVIMIENTO</span>
-          <h2>Lo que aprendimos en Costa Rica.</h2>
+          <span>HASTA LA PRÓXIMA RUTA</span>
+          <h2>Gracias por acompañarnos hasta aquí.</h2>
           <Link className="button button-light" href="/viajes">Todos los viajes <ArrowRight size={17} /></Link>
           <TripUpdateSignup />
         </Reveal>
