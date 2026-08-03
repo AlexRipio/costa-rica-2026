@@ -56,7 +56,7 @@ export default function CreditsPage() {
       </section>
       <section>
         <h2>Imágenes de alojamientos</h2>
-        <p>Las imágenes de alojamientos se limitan a la zona privada de seguimiento familiar, se usan como referencia de una reserva concreta y pertenecen a sus respectivos establecimientos o plataformas de origen. No forman parte de las guías editoriales públicas. Si un titular desea solicitar una corrección o retirada puede escribir a <a href="mailto:hola@viajan2juntos.com">hola@viajan2juntos.com</a>.</p>
+        <p>Las tarjetas públicas de alojamientos utilizan imágenes oficiales del propio hotel o de sus plataformas de reserva, se muestran como referencia editorial del establecimiento y pertenecen a sus respectivos titulares. No usamos fotografías genéricas para representar hoteles. Si un titular desea solicitar una corrección o retirada puede escribir a <a href="mailto:hola@viajan2juntos.com">hola@viajan2juntos.com</a>.</p>
       </section>
     </LegalDocument>
   )
