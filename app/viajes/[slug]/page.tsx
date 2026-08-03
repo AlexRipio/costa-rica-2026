@@ -254,7 +254,7 @@ export default async function TravelJournalPage({ params }: { params: Promise<{ 
               {journal.gallery.map((image, index) => (
                 <Reveal className={`journal-gallery-photo journal-gallery-photo-${index + 1}`} key={image.id}>
                   <img src={image.url} alt={image.alt} />
-                  <span><Camera /> {image.alt}</span>
+                  <span><Camera /> {image.location}</span>
                 </Reveal>
               ))}
             </div>
