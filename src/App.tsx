@@ -214,7 +214,7 @@ function Photo({ imageKey, className = '', compact = false }: { imageKey: keyof 
   return (
     <figure className={`photo ${className}`}>
       <img src={image.url} alt={image.alt} loading={compact ? 'lazy' : 'eager'} onError={(event) => { event.currentTarget.src = imageFallback }} />
-      {!compact && <figcaption>Foto: {image.author} · {image.license}</figcaption>}
+      {!compact && <figcaption>{image.location}</figcaption>}
     </figure>
   )
 }
