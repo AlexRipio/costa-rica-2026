@@ -34,6 +34,13 @@ La zona privada necesita dos variables de entorno:
 
 El proyecto se despliega automáticamente en Vercel al actualizar la rama principal de GitHub.
 
+## Regla de alojamientos
+
+- Todas las tarjetas de alojamientos de cualquier destino deben llevar imagen.
+- La imagen debe ser oficial del hotel o de una plataforma de reserva del propio alojamiento.
+- No se deben usar fotos genéricas, de stock o de otro hotel para representar un alojamiento.
+- En los datos, las entradas con categoría `Dormir` deben incluir siempre `image`.
+
 ## Afiliación IATI
 
 - El componente del cotizador carga el script oficial al montarse con el colaborador `85259934961431`; así también se inicializa al llegar mediante navegación interna.
@@ -57,4 +64,3 @@ Al configurar el cliente se genera automáticamente `/ads.txt`. Antes de activar
 publicidad en producción debe publicarse desde AdSense un mensaje europeo mediante
 una CMP certificada por Google. Para volver a una web sin anuncios basta con cambiar
 `NEXT_PUBLIC_GOOGLE_ADSENSE_ENABLED` a `false` y desplegar de nuevo.
-
