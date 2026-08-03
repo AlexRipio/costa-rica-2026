@@ -71,6 +71,7 @@ const typographicCover = (id: string, title: string, accent: string, secondary: 
       </svg>`,
     ),
   alt: `Portada gráfica del viaje a ${title}`,
+  location: title,
   author: 'Viajan2Juntos',
   license: 'Diseño propio',
   source: '',
