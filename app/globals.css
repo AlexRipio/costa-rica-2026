@@ -8649,34 +8649,6 @@ img {
   }
 
   .hero-memory-strip img {
-
-
-/* Hotel images in saved places */
-.saved-place-card { overflow: hidden; }
-.saved-place-card-with-image { padding: 0; background: rgba(255, 255, 255, .78); }
-.saved-place-image { position: relative; display: block; aspect-ratio: 16 / 10; overflow: hidden; background: #d8ded7; }
-.saved-place-image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(20, 63, 54, .14)); pointer-events: none; }
-
-
-/* Hotel images in saved places */
-.saved-place-card { overflow: hidden; }
-.saved-place-card-with-image { padding: 0; background: rgba(255, 255, 255, .78); }
-.saved-place-image { position: relative; display: block; aspect-ratio: 16 / 10; overflow: hidden; background: #d8ded7; }
-.saved-place-image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(20, 63, 54, .14)); pointer-events: none; }
-.saved-place-image img { width: 100%; height: 100%; display: block; object-fit: cover; filter: saturate(.9) contrast(.98); transition: transform .45s ease, filter .45s ease; }
-.saved-place-card-with-image:hover .saved-place-image img { transform: scale(1.035); filter: saturate(.98) contrast(1); }
-.saved-place-body { min-height: 0; flex: 1; padding: clamp(1.2rem, 2.3vw, 1.75rem); display: flex; flex-direction: column; }
-.saved-place-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .6rem; align-items: center; }
-.saved-place-card-with-image h3 { margin-top: 1.45rem; }
-.saved-place-card strong { margin-top: auto; display: flex; justify-content: space-between; gap: .6rem; align-items: center; color: #173f36; font-family: var(--ui); font-size: .76rem; }
-.saved-place-card strong svg { width: 16px; }
-.saved-place-image img { width: 100%; height: 100%; display: block; object-fit: cover; filter: saturate(.9) contrast(.98); transition: transform .45s ease, filter .45s ease; }
-.saved-place-card-with-image:hover .saved-place-image img { transform: scale(1.035); filter: saturate(.98) contrast(1); }
-.saved-place-body { min-height: 0; flex: 1; padding: clamp(1.2rem, 2.3vw, 1.75rem); display: flex; flex-direction: column; }
-.saved-place-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .6rem; align-items: center; }
-.saved-place-card-with-image h3 { margin-top: 1.45rem; }
-.saved-place-card strong { margin-top: auto; display: flex; justify-content: space-between; gap: .6rem; align-items: center; color: #173f36; font-family: var(--ui); font-size: .76rem; }
-.saved-place-card strong svg { width: 16px; }
     height: 78px;
   }
 
@@ -17237,4 +17209,89 @@ main small {
   .costa-places-map-tabs button { flex: 0 0 auto; }
   .costa-places-map-list { max-height: 360px; }
   .costa-places-map-all { margin-top: 1.2rem; }
+}
+
+/* Costa Rica guide: sticky reading index with active section. */
+.trip-section-nav-active {
+  min-height: 66px;
+  gap: 8px;
+  padding: 9px max(18px, env(safe-area-inset-left)) 10px;
+  box-shadow: 0 18px 48px rgba(23, 63, 54, .08);
+}
+
+.trip-section-nav-active::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(197, 56, 45, .14), transparent 24%, transparent 76%, rgba(246, 200, 95, .2)),
+    rgba(250, 248, 242, .9);
+  pointer-events: none;
+}
+
+.trip-section-nav-active a {
+  position: relative;
+  border: 1px solid transparent;
+  color: rgba(23, 63, 54, .72);
+  background: rgba(255, 255, 255, .32);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .28);
+}
+
+.trip-section-nav-active a.is-main {
+  color: #173f36;
+  background: rgba(255, 255, 255, .58);
+}
+
+.trip-section-nav-active a::after {
+  content: "";
+  position: absolute;
+  right: 14px;
+  bottom: 6px;
+  left: 14px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #c5382d, #f6c85f);
+  opacity: 0;
+  transform: scaleX(.45);
+  transform-origin: center;
+  transition: opacity .28s ease, transform .28s ease;
+}
+
+.trip-section-nav-active a[data-active="true"],
+.trip-section-nav-active a[aria-current="true"] {
+  color: #fff;
+  border-color: rgba(197, 56, 45, .2);
+  background:
+    radial-gradient(circle at 24% 20%, rgba(246, 200, 95, .4), transparent 36%),
+    linear-gradient(135deg, #173f36, #24594d);
+  box-shadow: 0 14px 34px rgba(23, 63, 54, .22);
+  transform: translateY(-1px);
+}
+
+.trip-section-nav-active a[data-active="true"]::after,
+.trip-section-nav-active a[aria-current="true"]::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.trip-section-nav-active a:hover {
+  color: #fff;
+  border-color: rgba(23, 63, 54, .16);
+  background: #173f36;
+}
+
+@media (max-width: 760px) {
+  .trip-section-nav-active {
+    top: 0;
+    min-height: 60px;
+    padding: 8px 14px;
+    justify-content: flex-start;
+    scroll-padding-inline: 14px;
+  }
+
+  .trip-section-nav-active a {
+    padding: 9px 13px;
+    font-size: 13px;
+  }
 }
