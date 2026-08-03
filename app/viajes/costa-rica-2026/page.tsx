@@ -202,7 +202,7 @@ export default function CostaRicaPage() {
         <a href="#mapa-ruta">Mapa</a>
         <a href="#destinos">Lugares</a>
         <a href="#extras">Extras</a>
-        <a href="#preparar">Preparar</a>
+        <a href="#preparar">Consejos</a>
         <a href="#experiencia">Experiencia real</a>
         <a href="#seguro">Seguro</a>
         <Link href="/viajes/costa-rica-2026/lugares-recomendados">Sitios guardados</Link>
