@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
-import { ArrowRight, BadgePercent, Check, HeartPulse, Luggage, Route, ShieldCheck } from 'lucide-react'
+import { ArrowRight, Check, HeartPulse, Luggage, Route, ShieldCheck } from 'lucide-react'
 import { IatiLandingCta } from '@/components/iati-affiliate'
+import { IatiBrand } from '@/components/iati-brand'
 import { IatiHorizontalWidget } from '@/components/iati-widgets'
 import { JsonLd } from '@/components/json-ld'
 import { Reveal } from '@/components/reveal'
@@ -43,7 +44,8 @@ export default function TravelInsurancePage() {
       <section className="insurance-hero">
         <div className="section-shell insurance-hero-grid">
           <Reveal className="insurance-hero-copy">
-            <span className="eyebrow"><ShieldCheck /> Viajar con tranquilidad</span>
+            <IatiBrand label="Nosotros viajamos con" />
+            <span className="eyebrow insurance-hero-eyebrow"><ShieldCheck /> Viajar con tranquilidad</span>
             <h1>El seguro no hace el viaje.<br /><em>Pero puede salvarlo.</em></h1>
             <p>Nosotros viajamos con IATI. Desde Viajan2Juntos puedes calcular tu póliza con un <strong>5% de descuento automático</strong>, sin códigos ni pasos escondidos.</p>
             <div className="insurance-hero-actions">
@@ -53,7 +55,7 @@ export default function TravelInsurancePage() {
             <small className="insurance-disclosure">Esta página contiene enlaces de afiliado. Si contratas, podemos recibir una comisión sin coste adicional para ti.</small>
           </Reveal>
           <Reveal className="insurance-hero-card" delay={0.1}>
-            <BadgePercent />
+            <IatiBrand compact label="Descuento con" />
             <span>Descuento Viajan2Juntos</span>
             <strong>5%</strong>
             <p>Se aplica al entrar desde nuestros enlaces. Antes de pagar, comprueba que aparece en el resumen.</p>
@@ -94,6 +96,7 @@ export default function TravelInsurancePage() {
       <section className="insurance-quote" id="cotiza">
         <div className="section-shell">
           <Reveal className="insurance-section-heading insurance-quote-heading">
+            <IatiBrand className="iati-brand-centered" label="Cotizador oficial de" />
             <span className="eyebrow">Cotizador oficial de IATI</span>
             <h2>Calcula tu seguro de viaje con un 5% de descuento.</h2>
             <p>Introduce los datos de tu viaje y consulta las opciones disponibles. El descuento se aplica automáticamente al acceder desde Viajan2Juntos.</p>
@@ -112,7 +115,7 @@ export default function TravelInsurancePage() {
 
       <section className="insurance-closing">
         <Reveal>
-          <ShieldCheck />
+          <IatiBrand className="iati-brand-centered iati-brand-on-dark" label="Contratación directa con" />
           <span>Una decisión pequeña antes de salir</span>
           <h2>Viaja por la historia, no por los imprevistos.</h2>
           <a className="button button-light" href={IATI_AFFILIATE_URL} target="_blank" rel="sponsored noopener noreferrer" data-analytics-event="affiliate_click" data-analytics-label="iati_landing_final">
