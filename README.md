@@ -33,13 +33,7 @@ La zona privada necesita dos variables de entorno:
 - `AUTH_SECRET`: secreto largo utilizado para firmar la sesión.
 
 El proyecto se despliega automáticamente en Vercel al actualizar la rama principal de GitHub.
-
-## Regla de alojamientos
-
-- Todas las tarjetas de alojamientos de cualquier destino deben llevar imagen.
-- La imagen debe ser oficial del hotel o de una plataforma de reserva del propio alojamiento.
-- No se deben usar fotos genéricas, de stock o de otro hotel para representar un alojamiento.
-- En los datos, las entradas con categoría `Dormir` deben incluir siempre `image`.
+Último redeploy manual: índice activo de Costa Rica.
 
 ## Afiliación IATI
 
