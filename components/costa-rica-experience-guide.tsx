@@ -41,7 +41,7 @@ export function CostaRicaExperienceGuide() {
               </div>
             ))}
           </div>
-          <a href="#dudas-experiencia">Resolver las dudas que teníamos <ArrowRight /></a>
+          <a href="#dudas-experiencia">¡Te resolvemos las dudas más frecuentes! <ArrowRight /></a>
         </Reveal>
       </div>
     </section>
