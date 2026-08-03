@@ -17,6 +17,7 @@ type TripSectionNavProps = {
 export function TripSectionNav({ ariaLabel, items }: TripSectionNavProps) {
   const sectionItems = useMemo(() => items.filter((item) => item.href.startsWith('#')), [items])
   const [activeHref, setActiveHref] = useState(sectionItems[0]?.href ?? '')
+  const activeLabel = sectionItems.find((item) => item.href === activeHref)?.label ?? sectionItems[0]?.label
 
   useEffect(() => {
     const sections = sectionItems
@@ -47,6 +48,10 @@ export function TripSectionNav({ ariaLabel, items }: TripSectionNavProps) {
 
   return (
     <nav className="trip-section-nav trip-section-nav-active" aria-label={ariaLabel}>
+      <div className="trip-section-current" aria-live="polite">
+        <span>Leyendo ahora</span>
+        <strong>{activeLabel}</strong>
+      </div>
       {items.map((item) => {
         const isAnchor = item.href.startsWith('#')
         const isActive = activeHref === item.href
