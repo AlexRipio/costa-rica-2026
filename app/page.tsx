@@ -34,8 +34,8 @@ export default function HomePage() {
           </HeroLine>
         </HeroMotion>
         <div className="hero-memory-strip">
-          <figure><img src="/about/playa-palmeras.jpeg" alt="Andrea y Alejandro bajo las palmeras de una playa de Costa Rica" /><figcaption>Caribe · Costa Rica</figcaption></figure>
-          <figure><img src="/about/atardecer-playa.jpeg" alt="Andrea y Alejandro frente a un atardecer en la playa" /><figcaption>Atardecer · 2026</figcaption></figure>
+          <figure><img src="/about/playa-palmeras.jpeg" alt="Andrea y Alejandro bajo las palmeras de una playa de Costa Rica" /><figcaption>Isla Tortuga</figcaption></figure>
+          <figure><img src="/about/atardecer-playa.jpeg" alt="Andrea y Alejandro frente a un atardecer en la playa" /><figcaption>Playa Santa Teresa</figcaption></figure>
         </div>
         <div className="hero-year-mark" aria-hidden="true">
           <img src="/brand/viajan2juntos-wordmark-glow.png" alt="" />
@@ -64,7 +64,7 @@ export default function HomePage() {
         <div className="section-shell about-us-grid">
           <Reveal className="couple-photo-placeholder couple-photo-real">
             <img src="/about/aventura-montana.jpeg" alt="Andrea y Alejandro durante una aventura de montaña en Costa Rica" />
-            <div><strong>Andrea & Alejandro</strong><span>Costa Rica · 2026</span></div>
+            <div><strong>Extremo Park, Monteverde</strong></div>
           </Reveal>
           <Reveal className="about-us-copy" delay={0.12}>
             <span className="eyebrow">Andrea & Alejandro</span><h2>Viajar es nuestra forma favorita de estar juntos.</h2>
