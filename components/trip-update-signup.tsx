@@ -35,8 +35,9 @@ export function TripUpdateSignup() {
       <div className="trip-update-intro">
         <span className="trip-update-icon" aria-hidden="true"><Mail /></span>
         <div className="trip-update-copy">
-          <h3>Nuevas guías por email</h3>
-          <p>Te avisamos cuando publiquemos una.</p>
+          <span>Hasta la próxima ruta</span>
+          <h3>Recibe la siguiente guía</h3>
+          <p>Te avisamos solo cuando publiquemos una ruta útil de verdad.</p>
         </div>
       </div>
       <div className="trip-update-fields">
@@ -47,7 +48,7 @@ export function TripUpdateSignup() {
             type="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
-            placeholder="Tu correo"
+            placeholder="hola@viajan2juntos.com"
             autoComplete="email"
             required
           />
