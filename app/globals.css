@@ -8649,6 +8649,34 @@ img {
   }
 
   .hero-memory-strip img {
+
+
+/* Hotel images in saved places */
+.saved-place-card { overflow: hidden; }
+.saved-place-card-with-image { padding: 0; background: rgba(255, 255, 255, .78); }
+.saved-place-image { position: relative; display: block; aspect-ratio: 16 / 10; overflow: hidden; background: #d8ded7; }
+.saved-place-image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(20, 63, 54, .14)); pointer-events: none; }
+
+
+/* Hotel images in saved places */
+.saved-place-card { overflow: hidden; }
+.saved-place-card-with-image { padding: 0; background: rgba(255, 255, 255, .78); }
+.saved-place-image { position: relative; display: block; aspect-ratio: 16 / 10; overflow: hidden; background: #d8ded7; }
+.saved-place-image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(20, 63, 54, .14)); pointer-events: none; }
+.saved-place-image img { width: 100%; height: 100%; display: block; object-fit: cover; filter: saturate(.9) contrast(.98); transition: transform .45s ease, filter .45s ease; }
+.saved-place-card-with-image:hover .saved-place-image img { transform: scale(1.035); filter: saturate(.98) contrast(1); }
+.saved-place-body { min-height: 0; flex: 1; padding: clamp(1.2rem, 2.3vw, 1.75rem); display: flex; flex-direction: column; }
+.saved-place-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .6rem; align-items: center; }
+.saved-place-card-with-image h3 { margin-top: 1.45rem; }
+.saved-place-card strong { margin-top: auto; display: flex; justify-content: space-between; gap: .6rem; align-items: center; color: #173f36; font-family: var(--ui); font-size: .76rem; }
+.saved-place-card strong svg { width: 16px; }
+.saved-place-image img { width: 100%; height: 100%; display: block; object-fit: cover; filter: saturate(.9) contrast(.98); transition: transform .45s ease, filter .45s ease; }
+.saved-place-card-with-image:hover .saved-place-image img { transform: scale(1.035); filter: saturate(.98) contrast(1); }
+.saved-place-body { min-height: 0; flex: 1; padding: clamp(1.2rem, 2.3vw, 1.75rem); display: flex; flex-direction: column; }
+.saved-place-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .6rem; align-items: center; }
+.saved-place-card-with-image h3 { margin-top: 1.45rem; }
+.saved-place-card strong { margin-top: auto; display: flex; justify-content: space-between; gap: .6rem; align-items: center; color: #173f36; font-family: var(--ui); font-size: .76rem; }
+.saved-place-card strong svg { width: 16px; }
     height: 78px;
   }
 
