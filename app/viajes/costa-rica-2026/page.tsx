@@ -29,6 +29,7 @@ import { Reveal } from '@/components/reveal'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { StoryMap } from '@/components/story-map'
+import { TripSectionNav } from '@/components/trip-section-nav'
 import { TravelAutoCarousel } from '@/components/travel-auto-carousel'
 import { TripItineraryPlanner } from '@/components/trip-itinerary-planner'
 import { TripTimeline } from '@/components/trip-timeline'
@@ -73,6 +74,19 @@ const contents = [
   { number: '05', title: 'Haz la maleta', text: 'Una lista completa en su propia página.', href: '/viajes/costa-rica-2026/maleta' },
   { number: '06', title: 'Guarda sitios reales', text: 'Hoteles, sodas y lugares enlazados a Maps.', href: '#mapa-lugares' },
   { number: '07', title: 'Mira otras rutas', text: 'Paradas recomendadas que nosotros no hicimos.', href: '#extras' },
+]
+
+const tripSectionNavItems = [
+  { href: '#empezar', label: 'La guía', main: true },
+  { href: '#itinerarios', label: 'Itinerarios', main: true },
+  { href: '#mapa-ruta', label: 'Mapa', main: true },
+  { href: '#destinos', label: 'Lugares', main: true },
+  { href: '#extras', label: 'Extras' },
+  { href: '#preparar', label: 'Preparar', main: true },
+  { href: '#experiencia', label: 'Experiencia real', main: true },
+  { href: '#seguro', label: 'Seguro', main: true },
+  { href: '/viajes/costa-rica-2026/lugares-recomendados', label: 'Sitios guardados' },
+  { href: '/viajes/costa-rica-2026/maleta', label: 'Maleta' },
 ]
 
 const extraStops = [
@@ -196,18 +210,7 @@ export default function CostaRicaPage() {
         </div>
       </section>
 
-      <nav className="trip-section-nav" aria-label="Secciones de la guía de Costa Rica">
-        <a href="#empezar">La guía</a>
-        <a href="#itinerarios">Itinerarios</a>
-        <a href="#mapa-ruta">Mapa</a>
-        <a href="#destinos">Lugares</a>
-        <a href="#extras">Extras</a>
-        <a href="#preparar">Consejos</a>
-        <a href="#experiencia">Experiencia real</a>
-        <a href="#seguro">Seguro</a>
-        <Link href="/viajes/costa-rica-2026/lugares-recomendados">Sitios guardados</Link>
-        <Link href="/viajes/costa-rica-2026/maleta">Maleta</Link>
-      </nav>
+      <TripSectionNav ariaLabel="Secciones de la guía de Costa Rica" items={tripSectionNavItems} />
 
       <section className="trip-intro-section blog-intro-section" id="empezar">
         <div className="section-shell blog-intro-grid">
