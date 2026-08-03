@@ -57,3 +57,4 @@ Al configurar el cliente se genera automáticamente `/ads.txt`. Antes de activar
 publicidad en producción debe publicarse desde AdSense un mensaje europeo mediante
 una CMP certificada por Google. Para volver a una web sin anuncios basta con cambiar
 `NEXT_PUBLIC_GOOGLE_ADSENSE_ENABLED` a `false` y desplegar de nuevo.
+
