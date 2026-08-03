@@ -57,11 +57,18 @@ export default function CostaRicaSavedPlacesPage() {
               <div className="saved-places-grid">
                 {places.map((place, index) => (
                   <Reveal delay={(index % 3) * 0.04} key={`${place.category}-${place.name}`}>
-                    <a className="saved-place-card" href={place.mapUrl} target="_blank" rel="noopener noreferrer">
-                      <div><span className={`saved-place-status status-${place.status.toLowerCase().replaceAll(' ', '-')}`}>{place.status}</span><small>{place.zone}</small></div>
-                      <h3>{place.name}</h3>
-                      <p>{place.note}</p>
-                      <strong>Ver ficha en Google Maps <ArrowUpRight /></strong>
+                    <a className={`saved-place-card ${place.image ? 'saved-place-card-with-image' : ''}`} href={place.mapUrl} target="_blank" rel="noopener noreferrer">
+                      {place.image ? (
+                        <span className="saved-place-image" aria-hidden="true">
+                          <img src={place.image} alt="" loading="lazy" />
+                        </span>
+                      ) : null}
+                      <span className="saved-place-body">
+                        <span className="saved-place-meta"><span className={`saved-place-status status-${place.status.toLowerCase().replaceAll(' ', '-')}`}>{place.status}</span><small>{place.zone}</small></span>
+                        <h3>{place.name}</h3>
+                        <p>{place.note}</p>
+                        <strong>Ver ficha en Google Maps <ArrowUpRight /></strong>
+                      </span>
                     </a>
                   </Reveal>
                 ))}
