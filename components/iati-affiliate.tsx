@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { ArrowRight, BadgePercent, Check, ShieldCheck } from 'lucide-react'
 import { IATI_AFFILIATE_URL, getInsuranceEditorial } from '@/src/lib/iati'
+import { IatiBrand } from './iati-brand'
 import { Reveal } from './reveal'
 
 type EditorialCardProps = {
@@ -49,7 +50,7 @@ export function IatiContextualText({ text, slug }: ContextualTextProps) {
 export function IatiSidebarCard({ slug, destination }: { slug: string; destination: string }) {
   return (
     <aside className="iati-sidebar-card" aria-label={`Seguro de viaje para ${destination}`}>
-      <ShieldCheck aria-hidden="true" />
+      <IatiBrand compact label="Seguro recomendado" />
       <span>Seguro de viaje</span>
       <strong>Viaja con IATI y consigue un 5% de descuento.</strong>
       <p>Se aplica automáticamente al entrar desde Viajan2Juntos. No necesitas ningún código.</p>
@@ -75,6 +76,7 @@ export function IatiEditorialCard({ slug, scope, destination, variant = 'light' 
       <div className="section-shell">
         <Reveal className="iati-editorial-card">
           <div className="iati-editorial-heading">
+            <IatiBrand label="Nosotros viajamos con" />
             <span className="eyebrow"><ShieldCheck /> {editorial.eyebrow}</span>
             <h2>{editorial.title}</h2>
             <p>{editorial.body}</p>

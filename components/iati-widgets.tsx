@@ -1,6 +1,7 @@
 'use client'
 
 import { ArrowUpRight } from 'lucide-react'
+import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { IATI_AFFILIATE_URL } from '@/src/lib/iati'
 
@@ -36,13 +37,19 @@ function WidgetFallback() {
 
 function OfficialAttributionLink() {
   return (
-    <div
-      className="iati-official-attribution"
-      suppressHydrationWarning
-      dangerouslySetInnerHTML={{
-        __html: `<a class="iati-url-del" href="${IATI_AFFILIATE_URL}" rel="sponsored noopener noreferrer">IATI SEGUROS</a>`,
-      }}
-    />
+    <a
+      className="iati-official-attribution iati-url-del"
+      href={IATI_AFFILIATE_URL}
+      target="_blank"
+      rel="sponsored noopener noreferrer"
+      data-analytics-event="affiliate_click"
+      data-analytics-label="iati_widget_attribution"
+    >
+      <span>Cotizador oficial de</span>
+      <span className="iati-brand-logo">
+        <Image src="/brand/iati-logo-white.png" width={120} height={66} alt="IATI Seguros" />
+      </span>
+    </a>
   )
 }
 
