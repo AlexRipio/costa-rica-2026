@@ -47,7 +47,7 @@ function OfficialAttributionLink() {
     >
       <span>Cotizador oficial de</span>
       <span className="iati-brand-logo">
-        <Image src="/brand/iati-logo-white.png" width={120} height={66} alt="IATI Seguros" />
+        <Image src="/brand/iati-logo-official.png" width={240} height={162} alt="IATI Seguros de viaje" />
       </span>
     </a>
   )
