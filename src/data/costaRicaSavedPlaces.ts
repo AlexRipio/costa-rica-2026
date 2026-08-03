@@ -1,14 +1,25 @@
 export type CostaRicaPlaceCategory = 'Dormir' | 'Comer' | 'Ver y hacer'
 
-export type CostaRicaSavedPlace = {
+type BaseCostaRicaSavedPlace = {
   name: string
   zone: string
-  category: CostaRicaPlaceCategory
   status: 'Nuestra elección' | 'Lo probamos' | 'Guardado para valorar' | 'Idea para otra ruta'
   note: string
   mapUrl: string
+}
+
+type CostaRicaHotelPlace = BaseCostaRicaSavedPlace & {
+  category: 'Dormir'
+  // Regla del proyecto: toda tarjeta de alojamiento debe usar una imagen oficial del hotel.
+  image: string
+}
+
+type CostaRicaNonHotelPlace = BaseCostaRicaSavedPlace & {
+  category: Exclude<CostaRicaPlaceCategory, 'Dormir'>
   image?: string
 }
+
+export type CostaRicaSavedPlace = CostaRicaHotelPlace | CostaRicaNonHotelPlace
 
 const maps = (query: string) =>
   `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`
@@ -30,11 +41,11 @@ export const costaRicaSavedPlaces: CostaRicaSavedPlace[] = [
   { name: 'Restaurante Catarata del Toro', zone: 'Bajos del Toro', category: 'Comer', status: 'Lo probamos', note: 'La opción más cómoda dentro del recinto de la catarata; cuando fuimos, la comida se pagaba en efectivo.', mapUrl: maps('Restaurante Catarata del Toro Costa Rica') },
 
   // Sitios concretos recuperados y filtrados de recomendaciones externas.
-  { name: 'Casa Luna Hotel & Spa', zone: 'La Fortuna', category: 'Dormir', status: 'Guardado para valorar', note: 'Hotel rodeado de vegetación al sur del pueblo; revisar precio y ubicación para las fechas reales.', mapUrl: maps('Casa Luna Hotel & Spa La Fortuna Costa Rica') },
-  { name: 'Camino Verde Bed & Breakfast', zone: 'Monteverde', category: 'Dormir', status: 'Guardado para valorar', note: 'Alternativa céntrica en Santa Elena que puede encajar si se busca desayuno y transporte organizado.', mapUrl: maps('Camino Verde Bed & Breakfast Monteverde Costa Rica') },
-  { name: 'Shana by the Beach', zone: 'Manuel Antonio', category: 'Dormir', status: 'Guardado para valorar', note: 'Opción próxima a Playa Biesanz; conviene comparar pendientes, transporte y precio final.', mapUrl: maps('Shana by the Beach Manuel Antonio Costa Rica') },
-  { name: 'Namu Garden Hotel & Spa', zone: 'Puerto Viejo', category: 'Dormir', status: 'Guardado para valorar', note: 'Hotel céntrico en Puerto Viejo guardado para comparar con casas y alojamientos de Playa Negra o Cocles.', mapUrl: maps('Namu Garden Hotel & Spa Puerto Viejo Costa Rica') },
-  { name: 'Barceló San José', zone: 'San José', category: 'Dormir', status: 'Guardado para valorar', note: 'Hotel urbano para una noche de llegada o salida; solo compensa si el traslado y el precio encajan.', mapUrl: maps('Barcelo San Jose Costa Rica') },
+  { name: 'Casa Luna Hotel & Spa', zone: 'La Fortuna', category: 'Dormir', status: 'Guardado para valorar', note: 'Hotel rodeado de vegetación al sur del pueblo; revisar precio y ubicación para las fechas reales.', mapUrl: maps('Casa Luna Hotel & Spa La Fortuna Costa Rica'), image: 'https://casalunahotel.com/wp-content/uploads/2017/04/slide2.jpg' },
+  { name: 'Camino Verde Bed & Breakfast', zone: 'Monteverde', category: 'Dormir', status: 'Guardado para valorar', note: 'Alternativa céntrica en Santa Elena que puede encajar si se busca desayuno y transporte organizado.', mapUrl: maps('Camino Verde Bed & Breakfast Monteverde Costa Rica'), image: 'https://hotelcaminoverde.com/wp-content/uploads/2017/09/camino-verde-monteverde-front.jpg' },
+  { name: 'Shana by the Beach', zone: 'Manuel Antonio', category: 'Dormir', status: 'Guardado para valorar', note: 'Opción próxima a Playa Biesanz; conviene comparar pendientes, transporte y precio final.', mapUrl: maps('Shana by the Beach Manuel Antonio Costa Rica'), image: 'https://shanabythebeach.com/img/home/DJI_20241101132543_0083_D-1-C.webp' },
+  { name: 'Namu Garden Hotel & Spa', zone: 'Puerto Viejo', category: 'Dormir', status: 'Guardado para valorar', note: 'Hotel céntrico en Puerto Viejo guardado para comparar con casas y alojamientos de Playa Negra o Cocles.', mapUrl: maps('Namu Garden Hotel & Spa Puerto Viejo Costa Rica'), image: 'https://namuhotelpuertoviejo.com/wp-content/uploads/2023/04/banner-home-namu.webp' },
+  { name: 'Barceló San José', zone: 'San José', category: 'Dormir', status: 'Guardado para valorar', note: 'Hotel urbano para una noche de llegada o salida; solo compensa si el traslado y el precio encajan.', mapUrl: maps('Barcelo San Jose Costa Rica'), image: 'https://static.barcelo.com/content/dam/bhg/master/es/hoteles/costa-rica/san-jose-de-costa-rica/barcelo-san-jose/main-photos/hotel/BSJOS_POOL_28.jpg' },
 
   { name: 'El Chante Verde', zone: 'La Fortuna', category: 'Comer', status: 'Guardado para valorar', note: 'Restaurante ajardinado fuera del núcleo más turístico; revisar carta y horario antes de desplazarse.', mapUrl: maps('El Chante Verde La Fortuna Costa Rica') },
   { name: 'Vita Café', zone: 'La Fortuna', category: 'Comer', status: 'Guardado para valorar', note: 'Cafetería junto al acceso de la catarata, práctica para unir desayuno o comida con esa visita.', mapUrl: maps('Vita Cafe La Fortuna Costa Rica') },
