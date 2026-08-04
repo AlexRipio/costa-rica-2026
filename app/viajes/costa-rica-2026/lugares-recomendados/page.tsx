@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { ArrowLeft, ArrowUpRight, BedDouble, Binoculars, MapPinned, Utensils } from 'lucide-react'
 import Link from 'next/link'
+import { CostaRicaPlacesMap } from '@/components/costa-rica-places-map'
 import { Reveal } from '@/components/reveal'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
@@ -40,8 +41,18 @@ export default function CostaRicaSavedPlacesPage() {
       </section>
 
       <nav className="saved-places-nav" aria-label="Categorías de lugares recomendados">
+        <a href="#mapa-completo">Mapa completo</a>
         {costaRicaPlaceCategories.map((category) => <a href={`#${category.toLowerCase().replaceAll(' ', '-').replace('y-', '')}`} key={category}>{category}</a>)}
       </nav>
+
+      <section className="saved-places-map-section section-shell" id="mapa-completo">
+        <Reveal className="saved-places-map-intro">
+          <span className="eyebrow">Todos juntos, de un vistazo</span>
+          <h2>Ubica los destinos.</h2>
+          <p>Explora el mapa libremente, encuentra tu ubicación y abre cualquier parada en Google Maps cuando quieras llegar hasta ella.</p>
+        </Reveal>
+        <CostaRicaPlacesMap showListLink={false} />
+      </section>
 
       <section className="saved-places-content section-shell">
         {costaRicaPlaceCategories.map((category) => {
