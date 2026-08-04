@@ -9,9 +9,72 @@ export type TripImage = {
 }
 
 const commonsFile = (name: string) =>
-  `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(name)}?width=1800`
+  `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(name)}?width=2600`
 
 export const images: Record<string, TripImage> = {
+  romeColosseum: {
+    id: 'rome-colosseum',
+    url: commonsFile('Panoramic photograph of interior of Colosseum.jpg'),
+    alt: 'Interior panorámico del Coliseo de Roma',
+    location: 'Coliseo, Roma',
+    author: 'ThePhotografer',
+    license: 'CC BY-SA 4.0',
+    source: 'https://commons.wikimedia.org/wiki/File:Panoramic_photograph_of_interior_of_Colosseum.jpg',
+  },
+  veniceSunrise: {
+    id: 'venice-sunrise',
+    url: commonsFile('Venice awakes (20618763815).jpg'),
+    alt: 'Amanecer sobre góndolas en el Gran Canal de Venecia',
+    location: 'Gran Canal, Venecia',
+    author: 'Benh LIEU SONG',
+    license: 'CC BY-SA 4.0',
+    source: 'https://commons.wikimedia.org/wiki/File:Venice_awakes_(20618763815).jpg',
+  },
+  marrakechJemaa: {
+    id: 'marrakech-jemaa',
+    url: commonsFile('Place Jemaa el-Fna - Marrakech - Morocco - Maroc - Maroko - Μαρόκο - Fas - Marruecos - Marokko - Марокко - Night - Nuit - Photo Image Photography (9126147462).jpg'),
+    alt: 'Puesta de sol sobre la plaza Jemaa el-Fna en Marrakech',
+    location: 'Jemaa el-Fna, Marrakech',
+    author: 'Grand Parc - Bordeaux, France',
+    license: 'CC BY 2.0',
+    source: 'https://commons.wikimedia.org/wiki/File:Place_Jemaa_el-Fna_-_Marrakech_-_Morocco_-_Maroc_-_Maroko_-_%CE%9C%CE%B1%CF%81%CF%8C%CE%BA%CE%BF_-_Fas_-_Marruecos_-_Marokko_-_%D0%9C%D0%B0%D1%80%D0%BE%D0%BA%D0%BA%D0%BE_-_Night_-_Nuit_-_Photo_Image_Photography_(9126147462).jpg',
+  },
+  malagaMalagueta: {
+    id: 'malaga-malagueta',
+    url: commonsFile('Malagueta panorámica.jpg'),
+    alt: 'Vista panorámica de La Malagueta y la costa de Málaga',
+    location: 'La Malagueta, Málaga',
+    author: 'DraXus',
+    license: 'CC BY 2.0',
+    source: 'https://commons.wikimedia.org/wiki/File:Malagueta_panor%C3%A1mica.jpg',
+  },
+  sevillePlaza: {
+    id: 'seville-plaza',
+    url: commonsFile('Plaza de España (Sevilla) - 01.jpg'),
+    alt: 'Galería de la Plaza de España de Sevilla',
+    location: 'Plaza de España, Sevilla',
+    author: 'Carlos Delgado',
+    license: 'CC BY-SA 4.0',
+    source: 'https://commons.wikimedia.org/wiki/File:Plaza_de_Espa%C3%B1a_(Sevilla)_-_01.jpg',
+  },
+  asturiasCoast: {
+    id: 'asturias-coast',
+    url: commonsFile('Playa de Estaño, Gijón.jpg'),
+    alt: 'Costa verde y acantilados de la playa de Estaño en Asturias',
+    location: 'Playa de Estaño, Asturias',
+    author: 'Triedros',
+    license: 'CC BY-SA 4.0',
+    source: 'https://commons.wikimedia.org/wiki/File:Playa_de_Esta%C3%B1o,_Gij%C3%B3n.jpg',
+  },
+  calpeIfach: {
+    id: 'calpe-ifach',
+    url: commonsFile('View on Peñon de Ifach, Calpe beach.jpg'),
+    alt: 'Playa de Calpe con el Peñón de Ifach al fondo',
+    location: 'Peñón de Ifach, Calpe',
+    author: 'Jorghé Van Hecke',
+    license: 'CC BY-SA 4.0',
+    source: 'https://commons.wikimedia.org/wiki/File:View_on_Pe%C3%B1on_de_Ifach,_Calpe_beach.jpg',
+  },
   palawanLagoon: {
     id: 'palawan-lagoon',
     url: commonsFile('El Nido Bay, Island lagoon, Palawan, Philippines.jpg'),
