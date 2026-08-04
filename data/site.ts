@@ -28,54 +28,12 @@ export type Trip = {
   mapLabel: string
   mapCoordinates: [number, number]
   available: boolean
+  heroVideo?: {
+    desktop: string
+    mobile: string
+    poster: string
+  }
 }
-
-const typographicCover = (id: string, title: string, accent: string, secondary: string): TripImage => ({
-  id,
-  url:
-    'data:image/svg+xml;charset=UTF-8,' +
-    encodeURIComponent(
-      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1000">
-        <defs>
-          <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-            <stop stop-color="${accent}"/>
-            <stop offset="1" stop-color="${secondary}"/>
-          </linearGradient>
-          <pattern id="p" width="46" height="46" patternUnits="userSpaceOnUse">
-            <circle cx="4" cy="4" r="2" fill="white" opacity=".13"/>
-          </pattern>
-        </defs>
-        <rect width="1400" height="1000" fill="url(#g)"/>
-        <rect width="1400" height="1000" fill="url(#p)"/>
-        <circle cx="1110" cy="185" r="118" fill="none" stroke="white" stroke-width="3" opacity=".34"/>
-        <circle cx="258" cy="238" r="18" fill="white" opacity=".78"/>
-        <circle cx="735" cy="566" r="18" fill="white" opacity=".78"/>
-        <circle cx="1170" cy="744" r="18" fill="white" opacity=".78"/>
-        <path d="M258 238 C390 350 560 440 735 566 S1010 675 1170 744" fill="none" stroke="white" stroke-width="5" stroke-linecap="round" opacity=".52"/>
-        <path d="M-120 890 C190 615 430 910 735 650 S1120 700 1520 400" fill="none" stroke="white" stroke-width="3" opacity=".3"/>
-        <path d="M100 122 H510" stroke="white" stroke-width="3" opacity=".28"/>
-        <path d="M890 882 H1290" stroke="white" stroke-width="3" opacity=".28"/>
-        <rect x="72" y="676" width="1256" height="224" rx="28" fill="#082b24" opacity=".28" stroke="white" stroke-width="2"/>
-        <text
-          x="700"
-          y="824"
-          fill="white"
-          font-family="Arial, Helvetica, sans-serif"
-          font-size="${Math.min(190, Math.round(1250 / Math.max(title.length, 1)))}"
-          font-weight="800"
-          letter-spacing="-5"
-          textLength="${Math.min(title.length * 120, 880)}"
-          lengthAdjust="spacingAndGlyphs"
-          text-anchor="middle"
-        >${title}</text>
-      </svg>`,
-    ),
-  alt: `Portada gráfica del viaje a ${title}`,
-  location: title,
-  author: 'Viajan2Juntos',
-  license: 'Diseño propio',
-  source: '',
-})
 
 export const trips: Trip[] = [
   {
@@ -100,6 +58,11 @@ export const trips: Trip[] = [
     mapLabel: 'Costa Rica · 2026',
     mapCoordinates: [-84.2, 9.8],
     available: true,
+    heroVideo: {
+      desktop: '/media/playa-negra-drone.mp4',
+      mobile: '/media/playa-negra-drone-mobile.mp4',
+      poster: '/media/playa-negra-drone-poster.jpg',
+    },
   },
   {
     slug: 'roma-2026',
@@ -115,7 +78,7 @@ export const trips: Trip[] = [
     duration: '5 días',
     bases: '1 ciudad',
     status: 'Historia vivida',
-    image: typographicCover('roma-2026', 'ROMA', '#a84432', '#e9ae57'),
+    image: images.romeColosseum,
     hasPersonalPhotos: false,
     accent: '#d26448',
     secondary: '#6f3027',
@@ -138,7 +101,7 @@ export const trips: Trip[] = [
     duration: 'Por completar',
     bases: 'Ruta por recuperar',
     status: 'Historia vivida',
-    image: typographicCover('italia-2025', 'ITALIA', '#395d50', '#c18b56'),
+    image: images.veniceSunrise,
     hasPersonalPhotos: false,
     accent: '#4e7868',
     secondary: '#8d5f3e',
@@ -207,7 +170,7 @@ export const trips: Trip[] = [
     duration: 'Por completar',
     bases: 'Marrakech + desierto',
     status: 'Historia vivida',
-    image: typographicCover('marrakech-desierto', 'MARRAKECH', '#b84d2f', '#e5a23d'),
+    image: images.marrakechJemaa,
     hasPersonalPhotos: false,
     accent: '#cf6540',
     secondary: '#744028',
@@ -230,7 +193,7 @@ export const trips: Trip[] = [
     duration: 'Por completar',
     bases: 'Málaga',
     status: 'Historia vivida',
-    image: typographicCover('malaga', 'MÁLAGA', '#167b84', '#e1a64b'),
+    image: images.malagaMalagueta,
     hasPersonalPhotos: false,
     accent: '#2c989d',
     secondary: '#a56d2f',
@@ -253,7 +216,7 @@ export const trips: Trip[] = [
     duration: 'Por completar',
     bases: 'Sevilla',
     status: 'Historia vivida',
-    image: typographicCover('sevilla', 'SEVILLA', '#9f3e2f', '#e6a83e'),
+    image: images.sevillePlaza,
     hasPersonalPhotos: false,
     accent: '#bd5038',
     secondary: '#834027',
@@ -276,7 +239,7 @@ export const trips: Trip[] = [
     duration: 'Por completar',
     bases: 'Asturias',
     status: 'Historia vivida',
-    image: typographicCover('asturias-luarca', 'ASTURIAS', '#174e52', '#5d8c78'),
+    image: images.asturiasCoast,
     hasPersonalPhotos: false,
     accent: '#286e6a',
     secondary: '#173f3d',
@@ -299,7 +262,7 @@ export const trips: Trip[] = [
     duration: 'Por completar',
     bases: 'Calpe',
     status: 'Historia vivida',
-    image: typographicCover('calpe', 'CALPE', '#206e85', '#e2ad4c'),
+    image: images.calpeIfach,
     hasPersonalPhotos: false,
     accent: '#2a8297',
     secondary: '#b57d35',
