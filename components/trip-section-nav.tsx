@@ -31,12 +31,14 @@ export function TripSectionNav({ ariaLabel, items }: TripSectionNavProps) {
     const updateActiveSection = () => {
       ticking = false
 
-      const readingLine = (navRef.current?.offsetHeight ?? 52) + 96
+      const scrollTop =
+        window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0
+      const readingLine = scrollTop + (navRef.current?.offsetHeight ?? 52) + 128
       const current =
         sections
           .map((section) => ({
             id: section.id,
-            distance: section.getBoundingClientRect().top - readingLine,
+            distance: section.offsetTop - readingLine,
           }))
           .sort((a, b) => Math.abs(a.distance) - Math.abs(b.distance))[0] ?? { id: sections[0].id }
 
@@ -52,10 +54,14 @@ export function TripSectionNav({ ariaLabel, items }: TripSectionNavProps) {
     updateActiveSection()
     window.addEventListener('scroll', requestUpdate, { passive: true })
     window.addEventListener('resize', requestUpdate)
+    document.addEventListener('scroll', requestUpdate, { capture: true, passive: true })
+    const refreshInterval = window.setInterval(requestUpdate, 350)
 
     return () => {
       window.removeEventListener('scroll', requestUpdate)
       window.removeEventListener('resize', requestUpdate)
+      document.removeEventListener('scroll', requestUpdate, { capture: true })
+      window.clearInterval(refreshInterval)
     }
   }, [sectionItems])
 
