@@ -17149,20 +17149,37 @@ main small {
 .costa-places-leaflet-map .leaflet-control-attribution { font-size: 9px; background: rgba(255, 255, 255, .78); }
 .costa-places-leaflet-map .leaflet-tooltip { padding: .45rem .65rem; color: #173f36; background: #fffaf1; border: 0; border-radius: 9px; box-shadow: 0 8px 24px rgba(23, 63, 54, .16); font-family: var(--ui); font-size: .68rem; font-weight: 800; }
 .saved-place-map-icon { border: 0; background: transparent; }
-.saved-place-map-icon span { width: 28px; height: 28px; display: block; background: #173f36; border: 4px solid #fffaf1; border-radius: 50% 50% 50% 0; box-shadow: 0 5px 15px rgba(23, 63, 54, .28); transform: rotate(-45deg); transition: transform .18s ease; }
-.saved-place-map-icon:hover span { transform: rotate(-45deg) scale(1.12); }
+.saved-place-map-icon span { width: 36px; height: 36px; display: grid; place-items: center; color: #173f36; background: rgba(255, 252, 246, .97); border: 1px solid rgba(23, 63, 54, .16); border-radius: 50% 50% 50% 12px; box-shadow: 0 7px 20px rgba(23, 63, 54, .2); transform: rotate(-45deg); transition: transform .18s ease, box-shadow .18s ease; }
+.saved-place-map-icon span::after { position: absolute; inset: -5px; content: ''; border: 1px solid rgba(255, 255, 255, .8); border-radius: inherit; pointer-events: none; }
+.saved-place-map-icon svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; transform: rotate(45deg); }
+.saved-place-map-icon:hover span { box-shadow: 0 9px 26px rgba(23, 63, 54, .27); transform: rotate(-45deg) scale(1.1); }
 .saved-place-map-icon.marker-comer span { background: #d18c2c; }
 .saved-place-map-icon.marker-ver-hacer span { background: #e9684e; }
+.saved-place-map-icon.marker-comer span,
+.saved-place-map-icon.marker-ver-hacer span { color: #fff; border-color: rgba(255, 255, 255, .8); }
 .costa-places-locate { position: absolute; z-index: 500; top: 1rem; right: 1rem; padding: .72rem .9rem; display: inline-flex; gap: .45rem; align-items: center; color: #173f36; background: rgba(255, 250, 241, .95); border: 1px solid rgba(23, 63, 54, .15); border-radius: 12px; box-shadow: 0 8px 30px rgba(23, 63, 54, .14); font-family: var(--ui); font-size: .7rem; font-weight: 820; cursor: pointer; backdrop-filter: blur(12px); }
 .costa-places-locate svg { width: 16px; height: 16px; color: #2878ff; }
 .costa-places-locate:disabled { cursor: wait; opacity: .7; }
-.costa-places-location-error { position: absolute; z-index: 500; top: 4.4rem; right: 1rem; width: min(270px, calc(100% - 2rem)); padding: .7rem .8rem; color: #fff; background: rgba(23, 63, 54, .92); border-radius: 10px; font-family: var(--ui); font-size: .65rem; line-height: 1.4; }
-.costa-places-map-current { position: absolute; right: 1rem; bottom: 1rem; left: 1rem; padding: 1.15rem 1.25rem; display: grid; gap: .25rem; color: #fff; background: rgba(23, 63, 54, .94); border: 1px solid rgba(255, 255, 255, .16); border-radius: 18px; box-shadow: 0 16px 45px rgba(20, 63, 54, .22); backdrop-filter: blur(15px); }
-.costa-places-map-current small { color: rgba(255, 255, 255, .65); font-family: var(--ui); font-size: .66rem; font-weight: 750; letter-spacing: .05em; text-transform: uppercase; }
-.costa-places-map-current strong { font-family: var(--serif); font-size: clamp(1.35rem, 2.4vw, 2rem); font-weight: 550; line-height: 1.05; }
-.costa-places-map-current > span { max-width: 640px; color: rgba(255, 255, 255, .72); font-family: var(--ui); font-size: .7rem; line-height: 1.45; }
-.costa-places-map-current a { margin-top: .45rem; display: inline-flex; gap: .45rem; align-items: center; color: var(--sun); font-family: var(--ui); font-size: .73rem; font-weight: 820; text-decoration: none; }
-.costa-places-map-current a svg { width: 15px; height: 15px; }
+.costa-places-reset { position: absolute; z-index: 500; top: 4.25rem; right: 1rem; padding: .62rem .75rem; display: inline-flex; gap: .4rem; align-items: center; color: #536b64; background: rgba(255, 250, 241, .94); border: 1px solid rgba(23, 63, 54, .12); border-radius: 11px; box-shadow: 0 8px 26px rgba(23, 63, 54, .1); font-family: var(--ui); font-size: .65rem; font-weight: 800; cursor: pointer; backdrop-filter: blur(12px); }
+.costa-places-reset svg { width: 14px; height: 14px; }
+.costa-places-location-error { position: absolute; z-index: 500; top: 7.2rem; right: 1rem; width: min(270px, calc(100% - 2rem)); padding: .7rem .8rem; color: #fff; background: rgba(23, 63, 54, .92); border-radius: 10px; font-family: var(--ui); font-size: .65rem; line-height: 1.4; }
+.costa-places-map-current { position: absolute; z-index: 510; right: 1rem; bottom: 1rem; left: 1rem; max-height: min(410px, calc(100% - 2rem)); display: grid; grid-template-columns: 1fr; overflow: hidden; color: #173f36; background: rgba(255, 252, 246, .97); border: 1px solid rgba(255, 255, 255, .76); border-radius: 20px; box-shadow: 0 20px 55px rgba(20, 63, 54, .25); backdrop-filter: blur(18px); }
+.costa-places-map-current.has-image { grid-template-columns: minmax(150px, 34%) 1fr; }
+.costa-places-map-current > img { width: 100%; height: 100%; min-height: 225px; object-fit: cover; }
+.costa-places-map-current-body { position: relative; min-width: 0; padding: 1.15rem 1.25rem; display: grid; align-content: center; gap: .3rem; }
+.costa-places-map-current-body > button { position: absolute; top: .65rem; right: .65rem; width: 30px; height: 30px; display: grid; place-items: center; color: #536b64; background: rgba(23, 63, 54, .07); border: 0; border-radius: 50%; cursor: pointer; }
+.costa-places-map-current-body > button svg { width: 15px; height: 15px; }
+.costa-places-map-current small { padding-right: 2rem; color: #70817c; font-family: var(--ui); font-size: .61rem; font-weight: 780; letter-spacing: .05em; text-transform: uppercase; }
+.costa-places-map-current strong { max-width: 92%; font-family: var(--serif); font-size: clamp(1.35rem, 2.4vw, 2rem); font-weight: 560; line-height: 1.05; }
+.costa-places-map-current-body > span { max-width: 640px; color: #536b64; font-family: var(--ui); font-size: .68rem; line-height: 1.45; }
+.costa-places-map-current-body .costa-places-approximate { margin-top: .2rem; color: #8b6a31; font-size: .59rem; font-weight: 720; }
+.costa-places-map-facts { margin-top: .45rem; display: flex; flex-wrap: wrap; gap: .5rem 1rem; align-items: center; }
+.costa-places-map-facts b { color: #173f36; font-family: var(--ui); font-size: .7rem; }
+.costa-places-map-facts b em { color: #70817c; font-size: .58rem; font-style: normal; font-weight: 650; }
+.costa-places-map-facts a { display: inline-flex; gap: .35rem; align-items: center; color: #8d681d; font-family: var(--ui); font-size: .64rem; font-weight: 800; text-decoration: none; }
+.costa-places-map-facts a svg { width: 14px; height: 14px; fill: #d4a62a; stroke: #d4a62a; }
+.costa-places-map-current .costa-places-map-google { margin-top: .4rem; display: inline-flex; gap: .45rem; align-items: center; color: #b8781f; font-family: var(--ui); font-size: .72rem; font-weight: 840; text-decoration: none; }
+.costa-places-map-current .costa-places-map-google svg { width: 15px; height: 15px; }
 .costa-places-map-browser { min-width: 0; padding: clamp(1.5rem, 3.5vw, 3.2rem); display: flex; flex-direction: column; }
 .costa-places-map-heading > span { display: flex; gap: .45rem; align-items: center; color: #b8781f; font-family: var(--ui); font-size: .7rem; font-weight: 850; letter-spacing: .06em; text-transform: uppercase; }
 .costa-places-map-heading > span svg { width: 16px; height: 16px; }
@@ -17237,7 +17254,12 @@ main small {
   .costa-places-map-card { min-height: 0; border-radius: 22px; }
   .costa-places-map-frame,
   .costa-places-leaflet-map { min-height: 440px; }
-  .costa-places-map-current { right: .65rem; bottom: .65rem; left: .65rem; padding: 1rem; }
+  .costa-places-map-current,
+  .costa-places-map-current.has-image { right: .65rem; bottom: .65rem; left: .65rem; max-height: 365px; grid-template-columns: 1fr; overflow-y: auto; }
+  .costa-places-map-current > img { height: 112px; min-height: 112px; }
+  .costa-places-map-current-body { padding: .95rem 1rem 1rem; }
+  .costa-places-map-current strong { font-size: 1.25rem; }
+  .costa-places-map-current-body > span { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
   .costa-places-map-browser { padding: 1.3rem; }
   .costa-places-map-tabs { flex-wrap: nowrap; overflow-x: auto; }
   .costa-places-map-tabs button { flex: 0 0 auto; }
