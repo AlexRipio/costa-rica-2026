@@ -68,12 +68,12 @@ const gallery = [
 
 const contents = [
   { number: '01', title: 'Elige tu ruta', text: 'Versiones de 10, 15 y 20 días.', href: '#itinerarios' },
-  { number: '02', title: 'Mira el mapa', text: 'Distancias, orden y rutas guardables.', href: '#mapa-ruta' },
-  { number: '03', title: 'Conoce cada lugar', text: 'Qué hay, dónde está y cuántos días darle.', href: '#destinos' },
-  { number: '04', title: 'Prepara el viaje', text: 'Coche, clima, dinero, reservas y comida.', href: '#preparar' },
-  { number: '05', title: 'Haz la maleta', text: 'Una lista completa en su propia página.', href: '/viajes/costa-rica-2026/maleta' },
-  { number: '06', title: 'Guarda sitios reales', text: 'Hoteles, sodas y lugares enlazados a Maps.', href: '#mapa-lugares' },
-  { number: '07', title: 'Mira otras rutas', text: 'Paradas recomendadas que nosotros no hicimos.', href: '#extras' },
+  { number: '02', title: 'Ubica los destinos', text: 'Distancias, orden y rutas guardables.', href: '#mapa-ruta' },
+  { number: '03', title: 'Conoce en detalle cada parada', text: 'Qué hay, dónde está y cuántos días darle.', href: '#destinos' },
+  { number: '04', title: 'Consejos', text: 'Coche, clima, dinero, reservas y comida.', href: '#preparar' },
+  { number: '05', title: 'Recomendaciones: dónde fuimos nosotros', text: 'Hoteles, sodas y lugares enlazados a Maps.', href: '#mapa-lugares' },
+  { number: '06', title: 'Mira otras rutas', text: 'Paradas recomendadas que nosotros no hicimos.', href: '#extras' },
+  { number: '07', title: 'Haz la maleta', text: 'Una lista completa en su propia página.', href: '/viajes/costa-rica-2026/maleta' },
 ]
 
 const tripSectionNavItems = [
