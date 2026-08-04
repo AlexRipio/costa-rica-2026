@@ -31,15 +31,14 @@ export function TripSectionNav({ ariaLabel, items }: TripSectionNavProps) {
     const updateActiveSection = () => {
       ticking = false
 
-      const readingLine = Math.min(112, (navRef.current?.offsetHeight ?? 52) + 42)
+      const readingLine = (navRef.current?.offsetHeight ?? 52) + 96
       const current =
         sections
           .map((section) => ({
             id: section.id,
             distance: section.getBoundingClientRect().top - readingLine,
           }))
-          .filter((section) => section.distance <= 0)
-          .sort((a, b) => b.distance - a.distance)[0] ?? { id: sections[0].id }
+          .sort((a, b) => Math.abs(a.distance) - Math.abs(b.distance))[0] ?? { id: sections[0].id }
 
       setActiveHref(`#${current.id}`)
     }
