@@ -17276,7 +17276,7 @@ main small {
 
 .trip-section-nav-active a[data-active="true"],
 .trip-section-nav-active a[aria-current="true"] {
-  color: #173f36;
+  color: rgba(23, 63, 54, .96);
   border-color: transparent;
   background: transparent;
   box-shadow: none;
