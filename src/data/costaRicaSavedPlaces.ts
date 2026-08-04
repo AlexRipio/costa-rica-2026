@@ -1,3 +1,5 @@
+import { costaRicaGuideExtras, type PlaceRecommendation } from './costaRicaGuideExtras'
+
 export type CostaRicaPlaceCategory = 'Dormir' | 'Comer' | 'Ver y hacer'
 
 type BaseCostaRicaSavedPlace = {
@@ -7,12 +9,13 @@ type BaseCostaRicaSavedPlace = {
   status: 'Nuestra elección' | 'Lo probamos' | 'Guardado para valorar' | 'Idea para otra ruta'
   note: string
   mapUrl: string
+  coordinatesApproximate?: boolean
 }
 
 type CostaRicaHotelPlace = BaseCostaRicaSavedPlace & {
   category: 'Dormir'
   // Regla del proyecto: toda tarjeta de alojamiento debe usar una imagen oficial del hotel.
-  image: string
+  image?: string
 }
 
 type CostaRicaNonHotelPlace = BaseCostaRicaSavedPlace & {
@@ -30,7 +33,7 @@ const maps = (query: string) =>
  * Los lugares que nos pasen se incorporan aquí después de revisarlos, sin
  * depender del título, autor o disponibilidad de una lista externa.
  */
-export const costaRicaSavedPlaces: CostaRicaSavedPlace[] = [
+const editorialSavedPlaces: CostaRicaSavedPlace[] = [
   // Primero, nuestra experiencia real.
   { name: 'El Rodeo Estancia Boutique Hotel', zone: 'Alajuela', coordinates: [9.9672, -84.2627], category: 'Dormir', status: 'Nuestra elección', note: 'Nuestra primera noche cerca del aeropuerto, con aparcamiento y salida práctica hacia la ruta.', mapUrl: maps('El Rodeo Estancia Boutique Hotel Alajuela Costa Rica'), image: '/hotels/hotel-el-rodeo.jpg' },
   { name: 'Natura Bungalows', zone: 'La Fortuna', coordinates: [10.4691, -84.6353], category: 'Dormir', status: 'Nuestra elección', note: 'Nuestro alojamiento favorito del viaje: bungaló independiente, tranquilidad y vistas al Arenal cuando despejaba.', mapUrl: maps('Natura Bungalows La Fortuna Costa Rica'), image: '/hotels/hotel-natura-bungalows.jpg' },
@@ -72,5 +75,81 @@ export const costaRicaSavedPlaces: CostaRicaSavedPlace[] = [
   { name: 'Tabacón Thermal Resort & Spa', zone: 'La Fortuna', coordinates: [10.4883, -84.7320], category: 'Ver y hacer', status: 'Guardado para valorar', note: 'Termas de gama alta para comparar con Baldi y con el acceso gratuito al río.', mapUrl: maps('Tabacon Thermal Resort and Spa Costa Rica') },
   { name: 'Playa Hermosa', zone: 'Península de Nicoya', coordinates: [9.6790, -85.1840], category: 'Ver y hacer', status: 'Guardado para valorar', note: 'Playa más tranquila al norte de Santa Teresa que sí visitamos durante la etapa de surf.', mapUrl: maps('Playa Hermosa Santa Teresa Costa Rica') },
 ]
+
+const guideZoneData: Record<string, { zone: string; center: readonly [number, number] }> = {
+  'alajuela-bajos-del-toro': { zone: 'Alajuela y Bajos del Toro', center: [10.0155, -84.2137] },
+  'la-fortuna-arenal': { zone: 'La Fortuna', center: [10.4704, -84.6448] },
+  monteverde: { zone: 'Monteverde', center: [10.3165, -84.8247] },
+  'santa-teresa': { zone: 'Santa Teresa', center: [9.6425, -85.1665] },
+  'manuel-antonio': { zone: 'Manuel Antonio y Quepos', center: [9.4205, -84.1595] },
+  'puerto-viejo': { zone: 'Puerto Viejo', center: [9.6558, -82.7532] },
+}
+
+const verifiedGuideCoordinates = new Map<string, readonly [number, number]>([
+  ['La Guaria Inn & Suites', [10.015465, -84.2121332]],
+  ['Peace Lodge', [10.2029874, -84.1611737]],
+  ['Hotel Monte Real', [10.4704475, -84.6426197]],
+  ['Arenal Xilopalo', [10.4723525, -84.6496836]],
+  ['Nayara Springs', [10.5031933, -84.6874109]],
+  ['Soda La Hormiga', [10.4699611, -84.6459529]],
+  ['Soda Víquez', [10.4707212, -84.6445419]],
+  ['Cabinas Eddy B&B', [10.3164617, -84.8257596]],
+  ["Freddy's Place B&B", [10.3221273, -84.822865]],
+  ['Cloud Forest Lodge', [10.3242351, -84.8159506]],
+  ['Sabor Tico', [10.3223552, -84.8243707]],
+  ['Soda La Amistad', [10.3154682, -84.8266094]],
+  ['Otro Lado Lodge', [9.6419152, -85.1654282]],
+  ['Florblanca', [9.652808, -85.178392]],
+  ['Tico Tico Villas', [9.4206047, -84.1591592]],
+  ['Miguelitos Pizza', [9.4313059, -84.1635437]],
+  ['Soda Sánchez', [9.4301014, -84.1624896]],
+  ['El Lagarto', [9.4131382, -84.1559209]],
+  ['Pagalù Hostel', [9.6548362, -82.754322]],
+  ['Roots Family', [9.6567273, -82.7528341]],
+  ['Hotel Aguas Claras', [9.6428901, -82.720446]],
+  ["Soda Lidia's Place", [9.6559887, -82.75214]],
+  ['KOKi Beach', [9.6577884, -82.7525543]],
+])
+
+function categoryForRecommendation(place: PlaceRecommendation): CostaRicaPlaceCategory {
+  return ['Hotel', 'B&B', 'Bungaló', 'Hostel', 'Lodge'].includes(place.category) ? 'Dormir' : 'Comer'
+}
+
+function statusForRecommendation(place: PlaceRecommendation): BaseCostaRicaSavedPlace['status'] {
+  if (place.label === 'Nuestra elección') return 'Nuestra elección'
+  if (place.label === 'Lo probamos') return 'Lo probamos'
+  return 'Guardado para valorar'
+}
+
+function spreadAround(center: readonly [number, number], name: string): readonly [number, number] {
+  const hash = [...name].reduce((value, character) => ((value * 31) + character.charCodeAt(0)) >>> 0, 7)
+  const angle = (hash % 360) * (Math.PI / 180)
+  const radius = .0028 + ((hash >> 8) % 26) / 10000
+  return [center[0] + Math.sin(angle) * radius, center[1] + Math.cos(angle) * radius]
+}
+
+const knownNames = new Set(editorialSavedPlaces.map((place) => place.name))
+const guidePlaces: CostaRicaSavedPlace[] = Object.entries(costaRicaGuideExtras).flatMap(([slug, guide]) => {
+  const zoneData = guideZoneData[slug]
+  if (!zoneData) return []
+
+  return [...guide.stayRecommendations, ...guide.eatRecommendations]
+    .filter((place) => !knownNames.has(place.name))
+    .map((place) => {
+      const exactCoordinates = verifiedGuideCoordinates.get(place.name)
+      return {
+        name: place.name,
+        zone: zoneData.zone,
+        coordinates: exactCoordinates ?? spreadAround(zoneData.center, place.name),
+        coordinatesApproximate: !exactCoordinates,
+        category: categoryForRecommendation(place),
+        status: statusForRecommendation(place),
+        note: place.text,
+        mapUrl: place.mapUrl,
+      }
+    })
+})
+
+export const costaRicaSavedPlaces: CostaRicaSavedPlace[] = [...editorialSavedPlaces, ...guidePlaces]
 
 export const costaRicaPlaceCategories: CostaRicaPlaceCategory[] = ['Dormir', 'Comer', 'Ver y hacer']
