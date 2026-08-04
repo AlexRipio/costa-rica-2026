@@ -31,7 +31,7 @@ export function TripSectionNav({ ariaLabel, items }: TripSectionNavProps) {
     const updateActiveSection = () => {
       ticking = false
 
-      const readingLine = window.innerHeight * 0.34
+      const readingLine = Math.min(112, (navRef.current?.offsetHeight ?? 52) + 42)
       const current =
         sections
           .map((section) => ({
