@@ -17229,9 +17229,9 @@ main small {
 /* Costa Rica guide: sticky reading index with active section. */
 .trip-section-nav-active {
   min-height: 52px;
-  gap: 6px;
+  gap: 4px;
   padding: 6px max(18px, env(safe-area-inset-left)) 7px;
-  box-shadow: 0 12px 28px rgba(23, 63, 54, .05);
+  box-shadow: 0 10px 24px rgba(23, 63, 54, .045);
 }
 
 .trip-section-nav-active::before {
@@ -17248,13 +17248,14 @@ main small {
 .trip-section-nav-active a {
   position: relative;
   border: 1px solid transparent;
-  color: rgba(23, 63, 54, .58);
+  color: rgba(23, 63, 54, .62);
   background: transparent;
   box-shadow: none;
+  opacity: 1;
 }
 
 .trip-section-nav-active a.is-main {
-  color: #173f36;
+  color: rgba(23, 63, 54, .62);
   background: transparent;
 }
 
@@ -17276,9 +17277,9 @@ main small {
 .trip-section-nav-active a[data-active="true"],
 .trip-section-nav-active a[aria-current="true"] {
   color: #173f36;
-  border-color: rgba(23, 63, 54, .08);
-  background: rgba(255, 255, 255, .36);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .42);
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
   transform: none;
 }
 
@@ -17290,8 +17291,8 @@ main small {
 
 .trip-section-nav-active a:hover {
   color: #173f36;
-  border-color: rgba(23, 63, 54, .1);
-  background: rgba(255, 255, 255, .46);
+  border-color: transparent;
+  background: rgba(255, 255, 255, .28);
 }
 
 @media (max-width: 760px) {
