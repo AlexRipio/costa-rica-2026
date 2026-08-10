@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next'
 import { siteUrl } from '@/src/data/siteSeo'
 
 export default function robots(): MetadataRoute.Robots {
-  const privatePaths = ['/familia', '/actualizar', '/api/', '/hotels/']
+  const privatePaths = ['/actualizar', '/api/', '/hotels/']
 
   return {
     rules: [
