@@ -263,7 +263,7 @@ export function AnalyticsConsent() {
         <h2>{choice ? 'Tus preferencias' : '¿Nos ayudas a mejorar el blog?'}</h2>
         <p id="cookie-consent-description">
           Usamos Google Analytics únicamente para saber qué guías resultan útiles.
-          Nunca medimos la Zona Familia.
+          Nunca medimos las áreas privadas.
         </p>
         <Link href="/cookies">Ver la política de cookies</Link>
       </div>

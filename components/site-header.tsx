@@ -1,6 +1,6 @@
 'use client'
 
-import { ChevronDown, Compass, LockKeyhole, Menu, ShieldCheck, X } from 'lucide-react'
+import { ChevronDown, Compass, Menu, ShieldCheck, X } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { Logo } from './logo'
@@ -132,11 +132,6 @@ export function SiteHeader({
             <span aria-hidden="true">→</span>
           </Link>
 
-          <div className="drawer-family">
-            <LockKeyhole />
-            <div><span>Acceso privado</span><strong>Zona Familia</strong></div>
-            <Link href="/familia" onClick={closeDrawer}>Entrar</Link>
-          </div>
           <div className="drawer-signoff"><Compass /> Dos personas, una brújula y muchas historias.</div>
         </div>
       </aside>
