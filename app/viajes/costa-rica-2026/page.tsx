@@ -509,7 +509,6 @@ export default function CostaRicaPage() {
             <span className="eyebrow">Nuestro viaje</span>
             <h2>La ruta original, día a día.</h2>
             <p>No es la única forma de hacerlo. Es la nuestra, contada para que puedas quedarte con lo que te sirva.</p>
-            <Link className="private-hint" href="/familia">¿Eres de la familia? Accede al seguimiento privado <ArrowRight size={15} /></Link>
           </Reveal>
           <Reveal><TripTimeline days={trip.days} /></Reveal>
         </div>
