@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server'
 import {
   familyCookieName,
-  familySessionValue,
   isValidFamilyAccessToken,
 } from '@/data/family-auth'
 
@@ -19,7 +18,10 @@ export async function GET(request: Request, { params }: { params: Promise<{ toke
   const response = NextResponse.redirect(new URL('/familia/viajes', origin), 303)
   response.headers.set('Referrer-Policy', 'no-referrer')
   response.headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive')
-  response.cookies.set(familyCookieName, familySessionValue(), {
+  // Keep the already validated private token in an HttpOnly cookie. This makes
+  // link access independent from AUTH_SECRET while preserving password-based
+  // sessions when that environment variable is configured.
+  response.cookies.set(familyCookieName, token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'strict',
