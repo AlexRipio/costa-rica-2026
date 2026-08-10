@@ -19,6 +19,8 @@ export function familySessionValue() {
 }
 
 export function isValidFamilySession(value?: string) {
+  if (value && isValidFamilyAccessToken(value)) return true
+
   const expected = familySessionValue()
   return Boolean(value && expected && safeEqual(value, expected))
 }
