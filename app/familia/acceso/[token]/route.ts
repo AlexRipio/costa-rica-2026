@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { familyCookieName, familySessionValue, isValidFamilyAccessToken } from '@/data/family-auth'
+import { familyCookieName, isValidFamilyAccessToken } from '@/data/family-auth'
 
 export async function GET(request: Request, { params }: { params: Promise<{ token: string }> }) {
   const { token } = await params
@@ -14,7 +14,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ toke
   const response = NextResponse.redirect(new URL('/familia/viajes', origin), 303)
   response.headers.set('Referrer-Policy', 'no-referrer')
   response.headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive')
-  response.cookies.set(familyCookieName, familySessionValue(), {
+  response.cookies.set(familyCookieName, token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'strict',
