@@ -30,7 +30,7 @@ export default function PrivacyPage() {
           <li><strong>Mensajes:</strong> correo, nombre si se facilita y contenido de la conversación.</li>
           <li><strong>Avisos y listas de guías:</strong> correo electrónico si decides recibir tu lista pendiente de maleta, novedades o mejoras de una guía concreta.</li>
           <li><strong>Seguridad:</strong> datos técnicos mínimos como IP, fecha, solicitud y eventos de error presentes en registros de infraestructura.</li>
-          <li><strong>Accesos privados:</strong> cookies técnicas que confirman el acceso a Familia o al editor, sin guardar la contraseña.</li>
+          <li><strong>Accesos privados:</strong> cookies técnicas que confirman una sesión autorizada o el acceso al editor, sin guardar contraseñas.</li>
           <li><strong>Seguimiento privado:</strong> ubicación y estado introducidos por los administradores durante un viaje.</li>
           <li><strong>Analítica consentida:</strong> identificador seudónimo de navegador, páginas visitadas, duración, dispositivo, ubicación aproximada e interacciones con el contenido.</li>
           <li><strong>Publicidad:</strong> señales técnicas, consentimiento, dispositivo, ubicación aproximada e interacciones necesarias para seleccionar, limitar y medir anuncios y prevenir fraude.</li>
