@@ -38,8 +38,8 @@ export default function CookiesPage() {
             </thead>
             <tbody>
               <tr>
-                <td>v2j_family_session</td>
-                <td>Recordar el acceso correcto a la Zona Familia.</td>
+                <td>v2j_private_session</td>
+                <td>Mantener una sesión de acceso privado solicitada por el usuario.</td>
                 <td>Hasta 1 año o cierre de sesión</td>
                 <td>Propia, técnica, HttpOnly</td>
               </tr>
@@ -65,7 +65,7 @@ export default function CookiesPage() {
         </p>
         <p>
           Hemos desactivado las señales de Google y la personalización publicitaria.
-          Tampoco cargamos Analytics dentro de la Zona Familia ni del editor.
+          Tampoco cargamos Analytics dentro de las áreas privadas ni del editor.
         </p>
         <div className="legal-table-wrap">
           <table>
