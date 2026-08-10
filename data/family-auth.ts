@@ -4,7 +4,7 @@ export const familyCookieName = 'v2j_private_session'
 
 // Only the SHA-256 fingerprint is kept in the repository. The private URL itself
 // is never exposed in source, navigation, metadata, robots.txt or the sitemap.
-const privateAccessTokenHash = 'a579442db3ee680c5f7e6874353d2d0183119d865e032d13aa3af7b71622da92'
+const privateAccessTokenHash = 'ef1233a0bdff8b48e1e72865c7a85ad715f3a14a48ae6b13be5fb87e895a004b'
 
 function safeEqual(left: string, right: string) {
   const leftBuffer = Buffer.from(left)
