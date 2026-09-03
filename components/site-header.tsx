@@ -1,6 +1,6 @@
 'use client'
 
-import { ChevronDown, Compass, Menu, ShieldCheck, X } from 'lucide-react'
+import { ChevronDown, Compass, Menu, ShieldCheck, Wifi, X } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { Logo } from './logo'
@@ -131,6 +131,20 @@ export function SiteHeader({
             <span><strong>Seguro de viaje</strong><small>5% de descuento con IATI</small></span>
             <span aria-hidden="true">→</span>
           </Link>
+
+          <a
+            className="drawer-secondary-link drawer-holafly-link"
+            href="https://holafly.sjv.io/c/7542907/3856277/24764"
+            target="_blank"
+            rel="sponsored noopener noreferrer"
+            onClick={closeDrawer}
+            data-analytics-event="affiliate_click"
+            data-analytics-label="holafly_navigation"
+          >
+            <Wifi />
+            <span><strong>Internet de viaje</strong><small>Código 2JUNTOS · 5% de descuento</small></span>
+            <span aria-hidden="true">→</span>
+          </a>
 
           <div className="drawer-signoff"><Compass /> Dos personas, una brújula y muchas historias.</div>
         </div>

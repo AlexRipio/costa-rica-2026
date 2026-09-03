@@ -16,6 +16,7 @@ export function SiteFooter() {
           <Link href="/viajes">Todos los viajes</Link>
           <Link href="/nosotros">Quiénes somos</Link>
           <a href="/seguro-de-viaje">Seguro de viaje · 5% descuento</a>
+          <a href="https://holafly.sjv.io/c/7542907/3856277/24764" target="_blank" rel="sponsored noopener noreferrer">eSIM Holafly · código 2JUNTOS</a>
           <a href="mailto:hola@viajan2juntos.com">
             Contacto <ArrowUpRight size={14} />
           </a>
