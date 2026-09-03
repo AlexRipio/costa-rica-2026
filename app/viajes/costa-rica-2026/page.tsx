@@ -374,7 +374,7 @@ export default function CostaRicaPage() {
         <div className="section-shell">
           <Reveal className="extra-stops-heading">
             <span className="eyebrow">Más allá de nuestra ruta</span>
-            <h2>No estuvimos aquí.<br /><em>Pero merece la pena tenerlos en el mapa.</em></h2>
+            <h2>No estuvimos aquí.<br /><em>Pero merece la pena tenerlos en cuenta.</em></h2>
             <p>
               Estas no son recomendaciones basadas en nuestra experiencia. Son alternativas que aparecen de forma
               recurrente en rutas de viajeros y que hemos contrastado con la información oficial de los parques.
