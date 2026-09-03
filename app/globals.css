@@ -1624,9 +1624,11 @@
 .blog-faq-grid summary {
   padding: 25px 45px 25px 0;
   position: relative;
-  font-family: var(--serif);
-  font-size: 1.25rem;
-  font-weight: 650;
+  font-family: var(--ui);
+  font-size: clamp(1.08rem, 1.45vw, 1.25rem);
+  font-weight: 720;
+  letter-spacing: -.018em;
+  line-height: 1.28;
   cursor: pointer;
   list-style: none;
 }
@@ -17464,3 +17466,46 @@ main small {
     font-size: 12px;
   }
 }
+
+/* TikTok bio · intentionally unlinked from the main navigation */
+.bio-page { position: relative; min-height: 100svh; overflow: hidden; color: #fffaf1; background: #0d3029; isolation: isolate; }
+.bio-page::before { position: absolute; inset: 0; z-index: -2; content: ''; background-image: radial-gradient(rgba(255, 255, 255, .12) .7px, transparent .7px); background-size: 15px 15px; mask-image: linear-gradient(180deg, #000, transparent 76%); opacity: .38; }
+.bio-orb { position: absolute; z-index: -1; border-radius: 50%; filter: blur(2px); pointer-events: none; }
+.bio-orb-one { top: -16rem; right: -14rem; width: 36rem; height: 36rem; background: radial-gradient(circle, rgba(241, 184, 74, .29), rgba(241, 184, 74, 0) 68%); }
+.bio-orb-two { bottom: -12rem; left: -14rem; width: 31rem; height: 31rem; background: radial-gradient(circle, rgba(235, 111, 83, .19), rgba(235, 111, 83, 0) 70%); }
+.bio-shell { width: min(100% - 2rem, 620px); margin: 0 auto; padding: clamp(2.35rem, 7vw, 5.5rem) 0 2.4rem; }
+.bio-header { display: grid; justify-items: center; text-align: center; }
+.bio-header > a { width: min(290px, 72vw); display: block; }
+.bio-header img { width: 100%; height: auto; display: block; }
+.bio-header p { max-width: 440px; margin: 1.4rem 0 0; color: rgba(255, 250, 241, .73); font-family: var(--ui); font-size: clamp(.93rem, 2.6vw, 1.03rem); line-height: 1.55; text-wrap: balance; }
+.bio-group { margin-top: clamp(3.2rem, 8vw, 4.7rem); }
+.bio-group-heading { margin-bottom: 1rem; }
+.bio-group-heading > span { color: #f1c34a; font-family: var(--ui); font-size: .69rem; font-weight: 840; letter-spacing: .105em; text-transform: uppercase; }
+.bio-group-heading h1, .bio-group-heading h2 { margin: .42rem 0 0; font-family: var(--serif); font-size: clamp(2.4rem, 8vw, 4.3rem); font-weight: 520; letter-spacing: -.057em; line-height: .93; }
+.bio-link-list { display: grid; gap: .66rem; }
+.bio-link-card { min-height: 78px; padding: .78rem .86rem; display: grid; grid-template-columns: 44px minmax(0, 1fr) 20px; gap: .82rem; align-items: center; color: #fffaf1; background: rgba(255, 253, 247, .075); border: 1px solid rgba(255, 253, 247, .18); border-radius: 18px; box-shadow: 0 15px 35px rgba(2, 20, 16, .12); text-decoration: none; transition: transform .24s ease, background .24s ease, border-color .24s ease; backdrop-filter: blur(12px); }
+.bio-link-card:hover { background: rgba(255, 253, 247, .13); border-color: rgba(241, 195, 74, .62); transform: translateY(-3px); }
+.bio-link-icon { width: 44px; height: 44px; display: grid; place-items: center; color: #f1c34a; background: rgba(241, 195, 74, .13); border-radius: 13px; }
+.bio-link-icon svg { width: 20px; height: 20px; }
+.bio-link-card > span:nth-child(2) { min-width: 0; display: grid; gap: .2rem; }
+.bio-link-card strong { overflow: hidden; color: #fffdf7; font-family: var(--ui); font-size: clamp(.88rem, 2.7vw, 1rem); font-weight: 790; letter-spacing: -.015em; text-overflow: ellipsis; white-space: nowrap; }
+.bio-link-card small { overflow: hidden; color: rgba(255, 250, 241, .6); font-family: var(--ui); font-size: .69rem; font-weight: 570; text-overflow: ellipsis; white-space: nowrap; }
+.bio-link-card small b { color: #f4ce67; font-weight: 840; letter-spacing: .05em; }
+.bio-link-card > svg { width: 18px; height: 18px; color: rgba(255, 250, 241, .72); }
+.bio-perks { padding: clamp(1.35rem, 4vw, 1.8rem); background: rgba(7, 34, 28, .54); border: 1px solid rgba(255, 253, 247, .1); border-radius: 24px; }
+.bio-perks .bio-link-card + .bio-link-card { margin-top: .66rem; }
+.bio-link-card-featured { color: #183b32; background: linear-gradient(120deg, #f1c34a, #f8d875); border-color: transparent; }
+.bio-link-card-featured:hover { color: #183b32; background: linear-gradient(120deg, #f7d15e, #ffe492); border-color: transparent; }
+.bio-link-card-featured .bio-link-icon { color: #173f36; background: rgba(255, 255, 255, .34); }
+.bio-link-card-featured strong { color: #173f36; }
+.bio-link-card-featured small, .bio-link-card-featured > svg { color: rgba(23, 63, 54, .76); }
+.bio-link-card-featured small b { color: #173f36; }
+.bio-tiktok { margin-top: 1rem; min-height: 55px; padding: .7rem 1rem; display: flex; gap: .75rem; align-items: center; color: #fffaf1; border-bottom: 1px solid rgba(255, 253, 247, .18); font-family: var(--ui); font-size: .8rem; text-decoration: none; }
+.bio-tiktok > span { width: 31px; height: 31px; display: grid; place-items: center; color: #173f36; background: #fffaf1; border-radius: 50%; }
+.bio-tiktok > span svg { width: 14px; height: 14px; }
+.bio-tiktok strong { font-weight: 760; }
+.bio-tiktok > svg { width: 17px; height: 17px; margin-left: auto; color: #f1c34a; }
+.bio-footer { margin-top: 1.45rem; display: grid; gap: .45rem; color: rgba(255, 250, 241, .48); font-family: var(--ui); font-size: .64rem; line-height: 1.48; text-align: center; }
+.bio-footer p { max-width: 430px; margin: 0 auto; }
+.bio-footer a { color: rgba(255, 250, 241, .68); text-underline-offset: 3px; }
+@media (max-width: 520px) { .bio-shell { width: min(100% - 1.35rem, 620px); } .bio-link-card { border-radius: 16px; } .bio-perks { padding: 1rem; border-radius: 20px; } }

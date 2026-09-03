@@ -87,6 +87,7 @@ const tripSectionNavItems = [
   { href: '#preparar', label: 'Preparar', main: true },
   { href: '#experiencia', label: 'Experiencia real', main: true },
   { href: '#diario-visual', label: 'Diario visual', main: true },
+  { href: '#galeria-fotos', label: 'Galería' },
   { href: '#seguro', label: 'Seguro', main: true },
   { href: '/viajes/costa-rica-2026/lugares-recomendados', label: 'Sitios guardados' },
   { href: '/viajes/costa-rica-2026/maleta', label: 'Maleta' },
@@ -361,16 +362,6 @@ export default function CostaRicaPage() {
         </div>
       </section>
 
-      <section className="travel-carousel-section" aria-label="Más imágenes de los destinos">
-        <div className="section-shell">
-          <Reveal className="split-heading gallery-heading">
-            <div><span className="eyebrow">Para ir abriendo boca</span><h2>Así cambia el paisaje durante la ruta.</h2></div>
-            <Camera size={34} />
-          </Reveal>
-          <TravelAutoCarousel />
-        </div>
-      </section>
-
       <section className="extra-stops-section" id="extras">
         <div className="section-shell">
           <Reveal className="extra-stops-heading">
@@ -561,6 +552,16 @@ export default function CostaRicaPage() {
           <Link className="button button-light" href="/viajes">Todos los viajes <ArrowRight size={17} /></Link>
           <TripUpdateSignup />
         </Reveal>
+      </section>
+
+      <section className="travel-carousel-section travel-gallery-final" id="galeria-fotos" aria-label="Galería de fotos de Costa Rica">
+        <div className="section-shell">
+          <Reveal className="split-heading gallery-heading">
+            <div><span className="eyebrow">Galería de fotos</span><h2>Así cambia el paisaje durante la ruta.</h2></div>
+            <Camera size={34} />
+          </Reveal>
+          <TravelAutoCarousel />
+        </div>
       </section>
       <SiteFooter />
     </main>
