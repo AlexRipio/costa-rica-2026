@@ -86,6 +86,7 @@ const tripSectionNavItems = [
   { href: '#extras', label: 'Extras' },
   { href: '#preparar', label: 'Preparar', main: true },
   { href: '#experiencia', label: 'Experiencia real', main: true },
+  { href: '#diario-visual', label: 'Diario visual', main: true },
   { href: '#seguro', label: 'Seguro', main: true },
   { href: '/viajes/costa-rica-2026/lugares-recomendados', label: 'Sitios guardados' },
   { href: '/viajes/costa-rica-2026/maleta', label: 'Maleta' },
@@ -493,7 +494,7 @@ export default function CostaRicaPage() {
 
       <IatiEditorialCard slug="costa-rica-2026" scope="internacional" destination="Costa Rica" variant="dark" />
 
-      <section className="media-journal-section">
+      <section className="media-journal-section" id="diario-visual">
         <div className="section-shell">
           <Reveal className="blog-section-heading">
             <span className="eyebrow eyebrow-light">Diario visual</span>
