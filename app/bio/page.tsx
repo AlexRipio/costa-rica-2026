@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowUpRight, Backpack, Compass, Map, Play, ShieldCheck, Wifi } from 'lucide-react'
 import { holaflyAffiliateUrl } from '@/components/holafly-affiliate-card'
+import { trips } from '@/data/site'
 import { IATI_AFFILIATE_URL } from '@/src/lib/iati'
 import { tiktokUrl } from '@/src/data/siteSeo'
 
@@ -30,13 +31,29 @@ export default function BioPage() {
           <Link href="/" aria-label="Ir al inicio de Viajan2Juntos">
             <Image src="/brand/v2-logo-white.png" alt="Viajan2Juntos" width={720} height={190} priority />
           </Link>
-          <p>Rutas reales, ideas que nos guardaríamos y todo lo que te puede servir antes de salir.</p>
+          <p>Guías y rutas reales para guardar antes de tu próximo viaje.</p>
         </header>
 
-        <section className="bio-group" aria-labelledby="bio-guides">
+        <section className="bio-group bio-trips" aria-labelledby="bio-trips">
           <div className="bio-group-heading">
-            <span>Empezamos por aquí</span>
-            <h1 id="bio-guides">Costa Rica, bien guardada.</h1>
+            <span>Elige tu viaje</span>
+            <h1 id="bio-trips">¿A dónde te vas?</h1>
+          </div>
+          <div className="bio-trip-list">
+            {trips.map((trip, index) => (
+              <Link className={`bio-trip-card ${index === 0 ? 'bio-trip-card-current' : ''}`} href={`/viajes/${trip.slug}`} key={trip.slug}>
+                <span className="bio-trip-index">{String(index + 1).padStart(2, '0')}</span>
+                <span className="bio-trip-copy"><strong>{trip.title}</strong><small>{trip.subtitle}</small></span>
+                <ArrowUpRight aria-hidden="true" />
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="bio-group bio-costa-rica" aria-labelledby="bio-guides">
+          <div className="bio-group-heading">
+            <span>Si vienes por Costa Rica</span>
+            <h2 id="bio-guides">Todo en un solo sitio.</h2>
           </div>
           <div className="bio-link-list">
             {guideLinks.map(({ href, icon: Icon, title, note }) => (
