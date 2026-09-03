@@ -49,7 +49,7 @@ export default function TravelInsurancePage() {
             <h1>El seguro no hace el viaje.<br /><em>Pero puede salvarlo.</em></h1>
             <p>Nosotros viajamos con IATI. Desde Viajan2Juntos puedes calcular tu póliza con un <strong>5% de descuento automático</strong>, sin códigos ni pasos escondidos.</p>
             <div className="insurance-hero-actions">
-              <IatiLandingCta label="Calcular mi seguro" placement="hero" />
+              <IatiLandingCta label="Contratar seguro" placement="hero" />
               <a className="insurance-text-link" href="#como-funciona">Cómo funciona <ArrowRight /></a>
             </div>
             <small className="insurance-disclosure">Esta página contiene enlaces de afiliado. Si contratas, podemos recibir una comisión sin coste adicional para ti.</small>

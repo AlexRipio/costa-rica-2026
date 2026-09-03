@@ -12,7 +12,7 @@ type WidgetStatus = 'loading' | 'ready' | 'failed'
 export function IatiButtonWidget() {
   return (
     <div className="iati-button-widget">
-      <button className="iati-btn" type="button">Calcular seguro con un 5% de descuento</button>
+      <button className="iati-btn" type="button">Contratar seguro con un 5% de descuento</button>
       <a className="iati-url-del" href={IATI_AFFILIATE_URL} rel="sponsored noopener noreferrer">
         Seguro de viaje IATI
       </a>
@@ -30,7 +30,7 @@ function WidgetFallback() {
       data-analytics-event="affiliate_click"
       data-analytics-label="iati_widget_fallback"
     >
-      Abrir el cálculo directamente en IATI <ArrowUpRight />
+      Contratar seguro directamente en IATI <ArrowUpRight />
     </a>
   )
 }
@@ -94,7 +94,7 @@ function IatiQuoteWidget({ vertical = false }: { vertical?: boolean }) {
       {status === 'failed' && (
         <div className="iati-widget-error" role="status">
           <strong>El cotizador no ha cargado.</strong>
-          <span>Puedes calcularlo directamente en IATI con el mismo 5% de descuento.</span>
+          <span>Puedes contratarlo directamente en IATI con el mismo 5% de descuento.</span>
         </div>
       )}
       <div id="mini-form-policy" className={vertical ? 'vertical-form' : undefined} ref={formRef} />

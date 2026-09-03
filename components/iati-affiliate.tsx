@@ -61,7 +61,7 @@ export function IatiSidebarCard({ slug, destination }: { slug: string; destinati
         data-analytics-event="affiliate_click"
         data-analytics-label={`iati_${slug}_sidebar`}
       >
-        Calcular mi seguro <ArrowRight aria-hidden="true" />
+        Contratar seguro <ArrowRight aria-hidden="true" />
       </a>
       <small>Enlace de afiliado. Podemos recibir una comisión sin que tú pagues más.</small>
     </aside>
@@ -97,7 +97,7 @@ export function IatiEditorialCard({ slug, scope, destination, variant = 'light' 
               data-analytics-event="affiliate_click"
               data-analytics-label={`iati_${slug}_editorial`}
             >
-              Calcular seguro para {destination} <ArrowRight />
+              Contratar seguro para {destination} <ArrowRight />
             </a>
             <small>Entra desde este enlace, completa los datos y comprueba el descuento antes de pagar. No necesitas código.</small>
           </div>
