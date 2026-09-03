@@ -339,7 +339,7 @@ export default function CostaRicaPage() {
                       <p>{guide?.intro}</p>
                       <div className="destination-card-footer">
                         <span><Moon size={14} /> {guide?.stay}</span>
-                        <strong>Entender esta parada <ArrowRight size={14} /></strong>
+                        <strong>Más información <ArrowRight size={14} /></strong>
                       </div>
                     </div>
                   </Link>
