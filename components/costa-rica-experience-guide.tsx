@@ -1,5 +1,6 @@
 import { BadgeDollarSign, ArrowRight } from 'lucide-react'
 import { Reveal } from '@/components/reveal'
+import { HolaflyAffiliateCard } from '@/components/holafly-affiliate-card'
 import { costaRicaPaidPrices, costaRicaTripLessons } from '@/src/data/costaRicaExperience'
 
 export function CostaRicaExperienceGuide() {
@@ -26,6 +27,9 @@ export function CostaRicaExperienceGuide() {
             </Reveal>
           ))}
         </div>
+        <Reveal>
+          <HolaflyAffiliateCard compact />
+        </Reveal>
         <Reveal className="costa-prices-panel">
           <div className="costa-prices-intro">
             <BadgeDollarSign />

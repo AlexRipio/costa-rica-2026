@@ -1398,6 +1398,97 @@
   width: 15px;
 }
 
+.prepare-connectivity-card {
+  color: white;
+  background: linear-gradient(135deg, #0b3029 0%, #195f4f 100%);
+}
+
+.prepare-connectivity-card:hover {
+  background: linear-gradient(135deg, #0b3029 0%, #237260 100%);
+}
+
+.prepare-connectivity-card > svg,
+.prepare-connectivity-card > a,
+.prepare-connectivity-card p a {
+  color: var(--blog-yellow);
+}
+
+.prepare-connectivity-card > span,
+.prepare-connectivity-card p {
+  color: rgba(255, 255, 255, .77);
+}
+
+.prepare-connectivity-card p a {
+  font-weight: 800;
+}
+
+.affiliate-disclosure {
+  margin-top: 16px;
+  color: rgba(255, 255, 255, .58);
+  font-size: .66rem;
+  line-height: 1.35;
+}
+
+.holafly-affiliate-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 20px 26px;
+  margin: 26px 0 0;
+  padding: 28px 30px;
+  color: white;
+  background: #0b3029;
+  border-radius: 22px;
+}
+
+.holafly-affiliate-card > svg {
+  width: 29px;
+  height: 29px;
+  color: var(--blog-yellow);
+}
+
+.holafly-affiliate-card .eyebrow {
+  color: var(--blog-yellow);
+}
+
+.holafly-affiliate-card h3 {
+  margin: 5px 0 7px;
+  font-family: var(--serif);
+  font-size: clamp(1.55rem, 2.8vw, 2.2rem);
+  line-height: 1;
+}
+
+.holafly-affiliate-card p {
+  margin: 0;
+  color: rgba(255, 255, 255, .76);
+  font-size: .88rem;
+}
+
+.holafly-affiliate-card > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 12px 15px;
+  color: #173c33;
+  background: var(--blog-yellow);
+  border-radius: 999px;
+  font-size: .72rem;
+  font-weight: 900;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.holafly-affiliate-card > a:hover {
+  transform: translateY(-2px);
+}
+
+.holafly-affiliate-card > small {
+  grid-column: 2 / -1;
+  color: rgba(255, 255, 255, .54);
+  font-size: .62rem;
+  line-height: 1.35;
+}
+
 .prepare-packing-link {
   color: white;
   background: var(--blog-green);
@@ -3076,6 +3167,24 @@
 
   .prepare-article {
     min-height: 390px;
+  }
+
+  .holafly-affiliate-card {
+    grid-template-columns: 30px 1fr;
+    align-items: start;
+    padding: 22px;
+    gap: 14px;
+    border-radius: 18px;
+  }
+
+  .holafly-affiliate-card > a,
+  .holafly-affiliate-card > small {
+    grid-column: 1 / -1;
+  }
+
+  .holafly-affiliate-card > a {
+    justify-content: center;
+    width: 100%;
   }
 
   .media-journal-grid {

@@ -86,7 +86,14 @@ export default function PrivacyPage() {
       </section>
 
       <section>
-        <h2>6. Conservación</h2>
+        <h2>6. Enlaces de afiliación</h2>
+        <p>
+          Algunos enlaces identificados como afiliados, como los de Holafly, incorporan parámetros de atribución para reconocer si una compra procede de Viajan2Juntos. Al pulsarlos pasarás a la web del proveedor, cuya política de privacidad y cookies será aplicable desde ese momento. No recibimos los datos de pago ni el contenido de tu compra.
+        </p>
+      </section>
+
+      <section>
+        <h2>7. Conservación</h2>
         <p>
           Los mensajes se conservan durante el tiempo necesario para responder y
           atender responsabilidades. Los contadores de intentos caducan
@@ -100,7 +107,7 @@ export default function PrivacyPage() {
       </section>
 
       <section>
-        <h2>7. Proveedores</h2>
+        <h2>8. Proveedores</h2>
         <p>
           La web utiliza{' '}
           <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noreferrer">Vercel</a>{' '}
@@ -115,7 +122,7 @@ export default function PrivacyPage() {
       </section>
 
       <section>
-        <h2>8. Derechos</h2>
+        <h2>9. Derechos</h2>
         <p>
           Puedes solicitar acceso, rectificación, supresión, oposición, limitación
           o portabilidad escribiendo al correo indicado, además de retirar el
@@ -127,7 +134,7 @@ export default function PrivacyPage() {
       </section>
 
       <section>
-        <h2>9. Menores y cambios</h2>
+        <h2>10. Menores y cambios</h2>
         <p>
           La web no está diseñada para recoger datos de menores. Esta política se
           actualizará si se añaden formularios, comentarios u otra

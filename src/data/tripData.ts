@@ -368,7 +368,7 @@ export const initialTripData: TripData = {
     { id: 'ferry', label: 'Naviera Tambor', group: 'Transporte', url: 'https://navieratambor.com/' },
     { id: 'falls', label: 'Catarata del Toro / Blue Falls', group: 'Actividades', url: 'https://www.catarata-del-toro.com/prices/' },
     { id: 'nauyaca', label: 'Nauyaca', group: 'Actividades', url: 'https://www.nauyacawaterfall.com/' },
-    { id: 'holafly', label: 'Holafly', group: 'Preparación', url: 'https://esim.holafly.com/es/' },
+    { id: 'holafly', label: 'Holafly · código 2JUNTOS', group: 'Preparación', url: 'https://holafly.sjv.io/c/7542907/3856277/24764' },
     { id: 'iati', label: 'IATI', group: 'Preparación', url: 'https://www.iatiseguros.com/' },
     { id: 'rtve', label: 'RTVE Play', group: 'Fútbol', url: 'https://www.rtve.es/play/' },
     { id: 'tdmax', label: 'TDMAX', group: 'Fútbol', url: 'https://tdmax.com/' },

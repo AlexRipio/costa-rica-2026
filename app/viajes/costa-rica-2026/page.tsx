@@ -13,6 +13,7 @@ import {
   Moon,
   Plane,
   ShieldCheck,
+  Wifi,
   WalletCards,
 } from 'lucide-react'
 import Link from 'next/link'
@@ -24,6 +25,7 @@ import { JsonLd } from '@/components/json-ld'
 import { IatiContextualText, IatiEditorialCard } from '@/components/iati-affiliate'
 import { LivingStatement } from '@/components/living-statement'
 import { GoogleRouteCard } from '@/components/google-route-card'
+import { holaflyAffiliateUrl } from '@/components/holafly-affiliate-card'
 import { ProtectedImage } from '@/components/protected-image'
 import { Reveal } from '@/components/reveal'
 import { SiteFooter } from '@/components/site-footer'
@@ -455,8 +457,20 @@ export default function CostaRicaPage() {
               </p>
               <a href="https://serviciosenlinea.sinac.go.cr/" target="_blank" rel="noreferrer">Entradas oficiales SINAC <ArrowRight /></a>
             </Reveal>
-            <Reveal className="prepare-article">
-              <Coffee />
+          <Reveal className="prepare-article prepare-connectivity-card">
+            <Wifi />
+            <span>Internet y eSIM</span>
+            <h3>Llegar con datos hace el primer día mucho más fácil.</h3>
+            <p>
+              La usamos para Waze, reservas y avisar al alojamiento. Nosotros fuimos con{' '}
+              <a href={holaflyAffiliateUrl} target="_blank" rel="sponsored noopener noreferrer">Holafly</a>:
+              con el código <strong>2JUNTOS</strong> tienes un <strong>5% de descuento</strong>.
+            </p>
+            <a href={holaflyAffiliateUrl} target="_blank" rel="sponsored noopener noreferrer">Ver eSIM para Costa Rica <ArrowRight /></a>
+            <small className="affiliate-disclosure">Enlace de afiliación · puede generarnos una comisión sin coste extra para ti.</small>
+          </Reveal>
+          <Reveal className="prepare-article">
+            <Coffee />
               <span>Qué comer</span>
               <h3>Casados, gallo pinto y cocina caribeña.</h3>
               <p>
@@ -523,7 +537,15 @@ export default function CostaRicaPage() {
           </Reveal>
           <div>
             {costaRicaExperienceFaq.map((item) => (
-              <details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>
+              <details key={item.question}>
+                <summary>{item.question}</summary>
+                <p>
+                  {item.answer}
+                  {item.question === '¿Tuvimos cobertura?' && (
+                    <> Si quieres probarla, <a href={holaflyAffiliateUrl} target="_blank" rel="sponsored noopener noreferrer">Holafly aplica el código 2JUNTOS</a> con un 5% de descuento.</>
+                  )}
+                </p>
+              </details>
             ))}
           </div>
         </div>
