@@ -19,6 +19,45 @@ const categoryIcons = {
   'Ver y hacer': Binoculars,
 }
 
+const placeLandscapePhotos = {
+  mountain: {
+    src: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1400&q=82',
+    alt: 'Bosque tropical de montaña en Costa Rica',
+  },
+  arenal: {
+    src: 'https://images.unsplash.com/photo-1639417443882-8d710bccf8b2?auto=format&fit=crop&w=1400&q=82',
+    alt: 'Volcán Arenal entre la vegetación de Costa Rica',
+  },
+  cloudForest: {
+    src: 'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1400&q=82',
+    alt: 'Bosque verde y húmedo',
+  },
+  pacific: {
+    src: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=82',
+    alt: 'Costa tropical del Pacífico',
+  },
+  caribbean: {
+    src: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=82',
+    alt: 'Vegetación y costa del Caribe',
+  },
+  rainforest: {
+    src: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1400&q=82',
+    alt: 'Paisaje de selva tropical',
+  },
+} as const
+
+function getPlacePhoto(place: (typeof costaRicaSavedPlaces)[number]) {
+  if (place.image) return { src: place.image, alt: place.name }
+
+  const zone = place.zone.toLowerCase()
+  if (zone.includes('fortuna') || zone.includes('arenal') || zone.includes('bijagua') || zone.includes('poás')) return placeLandscapePhotos.arenal
+  if (zone.includes('monteverde') || zone.includes('dota')) return placeLandscapePhotos.cloudForest
+  if (zone.includes('santa teresa') || zone.includes('nicoya') || zone.includes('manuel antonio') || zone.includes('quepos') || zone.includes('uvita') || zone.includes('osa')) return placeLandscapePhotos.pacific
+  if (zone.includes('puerto viejo') || zone.includes('caribe') || zone.includes('tortuguero')) return placeLandscapePhotos.caribbean
+  if (zone.includes('alajuela') || zone.includes('bajos del toro')) return placeLandscapePhotos.mountain
+  return placeLandscapePhotos.rainforest
+}
+
 export default function CostaRicaSavedPlacesPage() {
   return (
     <main className="saved-places-page">
@@ -68,12 +107,15 @@ export default function CostaRicaSavedPlacesPage() {
               <div className="saved-places-grid">
                 {places.map((place, index) => (
                   <Reveal delay={(index % 3) * 0.04} key={`${place.category}-${place.name}`}>
-                    <a className={`saved-place-card ${place.image ? 'saved-place-card-with-image' : ''}`} href={place.mapUrl} target="_blank" rel="noopener noreferrer">
-                      {place.image ? (
-                        <span className="saved-place-image" aria-hidden="true">
-                          <img src={place.image} alt="" loading="lazy" />
-                        </span>
-                      ) : null}
+                    <a className="saved-place-card saved-place-card-with-image" href={place.mapUrl} target="_blank" rel="noopener noreferrer">
+                      {(() => {
+                        const photo = getPlacePhoto(place)
+                        return (
+                          <span className="saved-place-image">
+                            <img src={photo.src} alt={photo.alt} loading="lazy" />
+                          </span>
+                        )
+                      })()}
                       <span className="saved-place-body">
                         <span className="saved-place-meta"><span className={`saved-place-status status-${place.status.toLowerCase().replaceAll(' ', '-')}`}>{place.status}</span><small>{place.zone}</small></span>
                         <h3>{place.name}</h3>
