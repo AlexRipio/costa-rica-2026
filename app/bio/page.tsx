@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowUpRight, Backpack, Compass, Map, Play, ShieldCheck, Wifi } from 'lucide-react'
+import { BioShareButton } from '@/components/bio-share-button'
 import { holaflyAffiliateUrl } from '@/components/holafly-affiliate-card'
 import { trips } from '@/data/site'
 import { IATI_AFFILIATE_URL } from '@/src/lib/iati'
@@ -28,21 +29,25 @@ export default function BioPage() {
       <div className="bio-orb bio-orb-two" aria-hidden="true" />
       <section className="bio-shell">
         <header className="bio-header">
-          <Link href="/" aria-label="Ir al inicio de Viajan2Juntos">
-            <Image src="/brand/v2-logo-white.png" alt="Viajan2Juntos" width={720} height={190} priority />
-          </Link>
-          <p>Guías y rutas reales para guardar antes de tu próximo viaje.</p>
+          <div className="bio-topline">
+            <Link className="bio-home-mark" href="/" aria-label="Ir al inicio de Viajan2Juntos">V2</Link>
+            <BioShareButton />
+          </div>
+          <Image className="bio-avatar" src="/icon.png" alt="Logo de Viajan2Juntos" width={112} height={112} priority />
+          <h1>Viajan2Juntos <em>✦</em></h1>
+          <p>Guías, rutas y descuentos para tu próximo viaje.</p>
+          <a className="bio-social" href={tiktokUrl} target="_blank" rel="noreferrer"><Play fill="currentColor" aria-hidden="true" /> TikTok @viajan2juntos</a>
         </header>
 
         <section className="bio-group bio-trips" aria-labelledby="bio-trips">
           <div className="bio-group-heading">
-            <span>Elige tu viaje</span>
-            <h1 id="bio-trips">¿A dónde te vas?</h1>
+            <span>Guías de viaje</span>
+            <h2 id="bio-trips">Elige tu próximo destino</h2>
           </div>
           <div className="bio-trip-list">
             {trips.map((trip, index) => (
               <Link className={`bio-trip-card ${index === 0 ? 'bio-trip-card-current' : ''}`} href={`/viajes/${trip.slug}`} key={trip.slug}>
-                <span className="bio-trip-index">{String(index + 1).padStart(2, '0')}</span>
+                <span className="bio-trip-image"><img src={trip.image.url.replace('width=2600', 'width=180')} alt="" loading={index < 2 ? 'eager' : 'lazy'} /></span>
                 <span className="bio-trip-copy"><strong>{trip.title}</strong><small>{trip.subtitle}</small></span>
                 <ArrowUpRight aria-hidden="true" />
               </Link>
@@ -53,7 +58,7 @@ export default function BioPage() {
         <section className="bio-group bio-costa-rica" aria-labelledby="bio-guides">
           <div className="bio-group-heading">
             <span>Si vienes por Costa Rica</span>
-            <h2 id="bio-guides">Todo en un solo sitio.</h2>
+            <h2 id="bio-guides">Planifica la ruta</h2>
           </div>
           <div className="bio-link-list">
             {guideLinks.map(({ href, icon: Icon, title, note }) => (

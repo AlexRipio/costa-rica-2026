@@ -17522,3 +17522,71 @@ main small {
 .bio-footer p { max-width: 430px; margin: 0 auto; }
 .bio-footer a { color: rgba(255, 250, 241, .68); text-underline-offset: 3px; }
 @media (max-width: 520px) { .bio-shell { width: min(100% - 1.35rem, 620px); } .bio-header > a { width: min(260px, 70vw); } .bio-link-card { min-height: 70px; border-radius: 16px; } .bio-trip-card { min-height: 66px; padding: .65rem .72rem; border-radius: 15px; } .bio-trip-copy small { font-size: .61rem; } .bio-perks { padding: 1rem; border-radius: 20px; } }
+
+/* TikTok bio · a focused, mobile-first link hub. */
+.bio-page { min-height: 100svh; color: #182b26; background: #d9d4ca; }
+.bio-page::before { background: radial-gradient(rgba(24, 43, 38, .16) .65px, transparent .65px); background-size: 15px 15px; mask-image: none; opacity: .34; }
+.bio-orb { filter: blur(12px); opacity: .85; }
+.bio-orb-one { top: -15rem; right: -14rem; background: radial-gradient(circle, rgba(241, 184, 74, .43), rgba(241, 184, 74, 0) 69%); }
+.bio-orb-two { bottom: -14rem; left: -14rem; background: radial-gradient(circle, rgba(38, 100, 83, .28), rgba(38, 100, 83, 0) 70%); }
+.bio-shell { width: min(100% - 2rem, 680px); min-height: 100svh; margin: 0 auto; padding: 1.2rem clamp(1rem, 4vw, 2.15rem) 2.25rem; background: rgba(255, 254, 250, .94); box-shadow: 0 20px 70px rgba(22, 42, 36, .17); }
+.bio-header { display: grid; justify-items: center; text-align: center; }
+.bio-topline { width: 100%; min-height: 38px; display: flex; justify-content: space-between; align-items: center; }
+.bio-home-mark, .bio-share-button { width: 35px; height: 35px; display: grid; place-items: center; color: #182b26; background: transparent; border: 0; border-radius: 50%; font-family: var(--ui); font-size: .72rem; font-weight: 900; text-decoration: none; cursor: pointer; transition: background .2s ease, transform .2s ease; }
+.bio-header > .bio-home-mark { width: 35px; display: grid; }
+.bio-home-mark { letter-spacing: -.08em; }
+.bio-share-button:hover, .bio-home-mark:hover { background: rgba(24, 43, 38, .07); transform: translateY(-1px); }
+.bio-share-button svg { width: 18px; height: 18px; }
+.bio-header .bio-avatar { width: 88px; height: 88px; margin-top: .8rem; display: block; object-fit: cover; background: #143c32; border: 3px solid #fffefa; border-radius: 50%; box-shadow: 0 8px 26px rgba(24, 43, 38, .18); }
+.bio-header h1 { margin: .9rem 0 .2rem; color: #172925; font-family: var(--ui); font-size: clamp(1.35rem, 4vw, 1.65rem); font-weight: 850; letter-spacing: -.055em; line-height: 1; }
+.bio-header h1 em { color: #e56f51; font-size: .78em; font-style: normal; vertical-align: top; }
+.bio-header p { max-width: 360px; margin: 0; color: #52645e; font-family: var(--ui); font-size: .88rem; line-height: 1.45; }
+.bio-social { margin-top: .9rem; display: inline-flex; gap: .42rem; align-items: center; color: #172925; font-family: var(--ui); font-size: .75rem; font-weight: 760; text-decoration: none; transition: color .2s ease, transform .2s ease; }
+.bio-social:hover { color: #c75440; transform: translateY(-1px); }
+.bio-social svg { width: 17px; height: 17px; }
+.bio-group { margin-top: 2rem; }
+.bio-group-heading { display: grid; justify-items: center; margin: 0 0 .86rem; text-align: center; }
+.bio-group-heading > span { color: #c85844; font-size: .64rem; font-weight: 860; letter-spacing: .105em; }
+.bio-group-heading h1, .bio-group-heading h2 { margin: .28rem 0 0; color: #172925; font-family: var(--ui); font-size: clamp(1rem, 3.6vw, 1.18rem); font-weight: 830; letter-spacing: -.03em; line-height: 1.15; }
+.bio-trip-list, .bio-link-list { display: grid; gap: .7rem; }
+.bio-trip-card, .bio-link-card { min-height: 68px; padding: .5rem .72rem; display: grid; grid-template-columns: 54px minmax(0, 1fr) 23px; gap: .78rem; align-items: center; color: #172925; background: #fffefa; border: 1px solid rgba(23, 41, 37, .12); border-radius: 15px; box-shadow: 0 5px 13px rgba(23, 41, 37, .06); text-align: left; text-decoration: none; transition: transform .22s cubic-bezier(.16, 1, .3, 1), box-shadow .22s ease, background .22s ease; }
+.bio-trip-card:hover, .bio-link-card:hover { background: #fff; border-color: rgba(23, 41, 37, .22); box-shadow: 0 11px 22px rgba(23, 41, 37, .12); transform: translateY(-2px); }
+.bio-trip-card:active, .bio-link-card:active { transform: scale(.985); }
+.bio-trip-image { width: 54px; height: 54px; overflow: hidden; display: block; background: #d3d8d2; border-radius: 11px; }
+.bio-trip-image img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .45s ease; }
+.bio-trip-card:hover .bio-trip-image img { transform: scale(1.09); }
+.bio-trip-copy { min-width: 0; display: grid; gap: .16rem; }
+.bio-trip-copy strong, .bio-link-card strong { overflow: hidden; color: #172925; font-family: var(--ui); font-size: .86rem; font-weight: 820; letter-spacing: -.018em; text-overflow: ellipsis; white-space: nowrap; }
+.bio-trip-copy small, .bio-link-card small { overflow: hidden; color: #63716c; font-family: var(--ui); font-size: .63rem; font-weight: 580; text-overflow: ellipsis; white-space: nowrap; }
+.bio-trip-card > svg, .bio-link-card > svg { width: 17px; height: 17px; color: #ba5240; }
+.bio-trip-card-current { color: #fffefa; background: #143c32; border-color: #143c32; }
+.bio-trip-card-current:hover { color: #fffefa; background: #194b3e; border-color: #194b3e; }
+.bio-trip-card-current .bio-trip-copy strong { color: #fffefa; }
+.bio-trip-card-current .bio-trip-copy small, .bio-trip-card-current > svg { color: rgba(255, 254, 250, .68); }
+.bio-costa-rica { padding: 1.25rem; background: #f2eee5; border-radius: 22px; }
+.bio-costa-rica .bio-group-heading { justify-items: start; text-align: left; }
+.bio-link-card { min-height: 64px; grid-template-columns: 39px minmax(0, 1fr) 23px; border-radius: 13px; }
+.bio-link-icon { width: 39px; height: 39px; color: #bf5743; background: #f7e8de; border-radius: 10px; }
+.bio-link-icon svg { width: 18px; height: 18px; }
+.bio-link-card small b { color: #b64735; }
+.bio-perks { padding: 1.25rem; background: #173e34; border: 0; border-radius: 22px; }
+.bio-perks .bio-group-heading { justify-items: start; text-align: left; }
+.bio-perks .bio-group-heading > span { color: #f1c34a; }
+.bio-perks .bio-group-heading h2 { color: #fffefa; }
+.bio-perks .bio-link-card { background: rgba(255, 254, 250, .96); border-color: transparent; }
+.bio-perks .bio-link-card + .bio-link-card { margin-top: 0; }
+.bio-perks .bio-link-card-featured { background: #f1c34a; }
+.bio-link-card-featured strong { color: #173f36; }
+.bio-link-card-featured small, .bio-link-card-featured > svg { color: rgba(23, 63, 54, .74); }
+.bio-tiktok { min-height: 56px; margin-top: 1.3rem; padding: .7rem .8rem; display: flex; gap: .75rem; align-items: center; color: #172925; border-bottom: 0; border-radius: 14px; font-size: .78rem; transition: background .2s ease, transform .2s ease; }
+.bio-tiktok:hover { background: rgba(23, 41, 37, .06); transform: translateY(-1px); }
+.bio-tiktok > span { width: 32px; height: 32px; color: #fffefa; background: #172925; }
+.bio-tiktok > svg { color: #ba5240; }
+.bio-footer { margin-top: 1.4rem; color: #8a928e; font-size: .61rem; }
+.bio-footer a { color: #65716d; }
+.bio-trip-card, .bio-link-card, .bio-perks, .bio-costa-rica { animation: bio-enter .52s both; animation-timing-function: cubic-bezier(.16, 1, .3, 1); }
+.bio-trip-card:nth-child(1) { animation-delay: .03s; }.bio-trip-card:nth-child(2) { animation-delay: .06s; }.bio-trip-card:nth-child(3) { animation-delay: .09s; }.bio-trip-card:nth-child(4) { animation-delay: .12s; }.bio-trip-card:nth-child(5) { animation-delay: .15s; }.bio-trip-card:nth-child(6) { animation-delay: .18s; }.bio-trip-card:nth-child(7) { animation-delay: .21s; }.bio-trip-card:nth-child(8) { animation-delay: .24s; }.bio-trip-card:nth-child(9) { animation-delay: .27s; }.bio-trip-card:nth-child(10) { animation-delay: .3s; }
+@keyframes bio-enter { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 700px) { .bio-page { background: #fffefa; } .bio-shell { width: 100%; padding: .9rem 1rem 2rem; box-shadow: none; } }
+@media (max-width: 420px) { .bio-shell { padding-right: .8rem; padding-left: .8rem; } .bio-header .bio-avatar { width: 80px; height: 80px; } .bio-trip-card { min-height: 64px; grid-template-columns: 50px minmax(0, 1fr) 20px; gap: .65rem; } .bio-trip-image { width: 50px; height: 50px; } .bio-trip-copy strong { font-size: .83rem; } .bio-trip-copy small { font-size: .59rem; } }
+@media (prefers-reduced-motion: reduce) { .bio-trip-card, .bio-link-card, .bio-perks, .bio-costa-rica { animation: none; transition: none; } }
